@@ -4,8 +4,8 @@
 #---------------------------------------------------------------------------
 .SUFFIXES: .c .o .u
 
-CC	= gcc
-RANLIB	= ranlib
+CC	:= gcc
+RANLIB	:= ranlib
 
 MFLAG	=
 ICFLAGS = -g -O6 -Wall
