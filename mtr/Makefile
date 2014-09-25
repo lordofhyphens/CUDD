@@ -4,8 +4,8 @@
 #---------------------------
 .SUFFIXES: .o .c .u
 
-CC	= cc
-RANLIB	= ranlib
+CC	:= cc
+RANLIB	:= ranlib
 PURE	=
 # Define EXE as .exe for MS-DOS and derivatives.
 EXE	=

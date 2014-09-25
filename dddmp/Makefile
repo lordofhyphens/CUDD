@@ -37,7 +37,7 @@ INCLUDE = $(WHERE)/include
 # Define C Compiler Used #
 #------------------------#
 
-CC	= gcc
+CC	:= gcc
 #CC	= g++
 #CC	= cc
 #CC	= icc
@@ -52,7 +52,7 @@ CC	= gcc
 #---------------#
 
 # For machines with ranlib and you think it is needed
-RANLIB	= ranlib
+RANLIB	:= ranlib
 # For machines which either do not have ranlib or can do without it
 #RANLIB	= :
 

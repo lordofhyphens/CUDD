@@ -4,9 +4,9 @@
 #---------------------------------------------------------------------------
 .SUFFIXES: .o .c .u
 
-CC	= gcc
+CC	:= gcc
 #CC	= cc
-RANLIB	= ranlib
+RANLIB	:= ranlib
 #RANLIB	= :
 PURE	=
 
