@@ -1,0 +1,5 @@
+*.a
+include/*
+*.o
+nanotrav/nanotrav
+*.swp
