@@ -1,13 +1,14 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddFind.c]
+  \file cuddAddFind.c
 
   PackageName [cudd]
 
   Synopsis    [Functions to find maximum and minimum in an ADD and to
   extract the i-th bit.]
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addFindMax()
 		<li> Cudd_addFindMin()
@@ -18,7 +19,7 @@
 		<li> addDoIthBit()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -107,13 +108,14 @@ static DdNode * addDoIthBit (DdManager *dd, DdNode *f, DdNode *index);
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the maximum discriminant of f.]
+  \brief Finds the maximum discriminant of f.
 
-  Description [Returns a pointer to a constant ADD.]
+  \details [Returns a pointer to a constant ADD.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -147,13 +149,14 @@ Cudd_addFindMax(
 } /* end of Cudd_addFindMax */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the minimum discriminant of f.]
+  \brief Finds the minimum discriminant of f.
 
-  Description [Returns a pointer to a constant ADD.]
+  \details [Returns a pointer to a constant ADD.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -187,11 +190,12 @@ Cudd_addFindMin(
 } /* end of Cudd_addFindMin */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Extracts the i-th bit from an ADD.]
+  \brief Extracts the i-th bit from an ADD.
 
-  Description [Produces an ADD from another ADD by replacing all
+  \details [Produces an ADD from another ADD by replacing all
   discriminants whose i-th bit is equal to 1 with 1, and all other
   discriminants with 0. The i-th bit refers to the integer
   representation of the leaf value. If the value is has a fractional
@@ -200,9 +204,9 @@ Cudd_addFindMin(
   bit of the leaf values. Returns a pointer to the resulting ADD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddIthBit]
+  \see Cudd_addBddIthBit
 
 ******************************************************************************/
 DdNode *
@@ -248,16 +252,17 @@ Cudd_addIthBit(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addIthBit.]
+  \brief Performs the recursive step for Cudd_addIthBit.
 
-  Description [Performs the recursive step for Cudd_addIthBit.
+  \details [Performs the recursive step for Cudd_addIthBit.
   Returns a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *

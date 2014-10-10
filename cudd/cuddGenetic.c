@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddGenetic.c]
+  \file cuddGenetic.c
 
   PackageName [cudd]
 
-  Synopsis    [Genetic algorithm for variable reordering.]
+  \brief Genetic algorithm for variable reordering.
 
-  Description [Internal procedures included in this file:
+  \details [Internal procedures included in this file:
 		<ul>
 		<li> cuddGa()
 		</ul>
@@ -42,9 +43,9 @@
   the DD in the population with the smallest size is chosen as the
   result.  This DD must then be built from the reference DD.]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Curt Musfeldt, Alan Shuler, Fabio Somenzi]
+  \author Curt Musfeldt, Alan Shuler, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -169,19 +170,20 @@ static int roulette (int *p1, int *p2);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Genetic algorithm for DD reordering.]
+  \brief Genetic algorithm for DD reordering.
 
-  Description [Genetic algorithm for DD reordering.
+  \details [Genetic algorithm for DD reordering.
   The two children of a crossover will be stored in
   storedd[popsize] and storedd[popsize+1] --- the last two slots in the
   storedd array.  (This will make comparisons and replacement easy.)
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -431,17 +433,18 @@ cuddGa(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates the random sequences for the initial population.]
+  \brief Generates the random sequences for the initial population.
 
-  Description [Generates the random sequences for the initial population.
+  \details [Generates the random sequences for the initial population.
   The sequences are permutations of the indices between lower and
   upper in the current order.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -499,17 +502,18 @@ make_random(
 } /* end of make_random */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Moves one variable up.]
+  \brief Moves one variable up.
 
-  Description [Takes a variable from position x and sifts it up to
+  \details [Takes a variable from position x and sifts it up to
   position x_low;  x_low should be less than x. Returns 1 if successful;
   0 otherwise]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -535,17 +539,18 @@ sift_up(
 } /* end of sift_up */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Builds a DD from a given order.]
+  \brief Builds a DD from a given order.
 
-  Description [Builds a DD from a given order.  This procedure also
+  \details [Builds a DD from a given order.  This procedure also
   sifts the final order and inserts into the array the size in nodes
   of the result. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -606,17 +611,18 @@ build_dd(
 } /* end of build_dd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the largest DD in the population.]
+  \brief Finds the largest DD in the population.
 
-  Description [Finds the largest DD in the population. If an order is
+  \details [Finds the largest DD in the population. If an order is
   repeated, it avoids choosing the copy that is in the computed table
   (it has repeat[i] > 1).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -637,15 +643,16 @@ largest(void)
 } /* end of largest */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a random number between 0 and the integer a.]
+  \brief Generates a random number between 0 and the integer a.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -657,16 +664,17 @@ rand_int(
 } /* end of rand_int */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Hash function for the computed table.]
+  \brief Hash function for the computed table.
 
-  Description [Hash function for the computed table. Returns the bucket
+  \details [Hash function for the computed table. Returns the bucket
   number.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -689,16 +697,17 @@ array_hash(
 } /* end of array_hash */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function for the computed table.]
+  \brief Comparison function for the computed table.
 
-  Description [Comparison function for the computed table. Returns 0 if
+  \details [Comparison function for the computed table. Returns 0 if
   the two arrays are equal; 1 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -720,15 +729,16 @@ array_compare(
 } /* end of array_compare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the index of the fittest individual.]
+  \brief Returns the index of the fittest individual.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -747,15 +757,16 @@ find_best(void)
 } /* end of find_best */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the average fitness of the population.]
+  \brief Returns the average fitness of the population.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #ifdef DD_STATS
@@ -776,17 +787,18 @@ find_average_fitness(void)
 #endif
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the crossover between two parents.]
+  \brief Performs the crossover between two parents.
 
-  Description [Performs the crossover between two randomly chosen
+  \details [Performs the crossover between two randomly chosen
   parents, and creates two children, x1 and x2. Uses the Partially
   Matched Crossover operator.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -897,16 +909,17 @@ PMX(
 } /* end of PMX */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Selects two parents with the roulette wheel method.]
+  \brief Selects two parents with the roulette wheel method.
 
-  Description [Selects two distinct parents with the roulette wheel method.]
+  \details [Selects two distinct parents with the roulette wheel method.]
 
   SideEffects [The indices of the selected parents are returned as side
   effects.]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

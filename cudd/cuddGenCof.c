@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddGenCof.c]
+  \file cuddGenCof.c
 
   PackageName [cudd]
 
-  Synopsis    [Generalized cofactors for BDDs and ADDs.]
+  \brief Generalized cofactors for BDDs and ADDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddConstrain()
 		<li> Cudd_bddRestrict()
@@ -43,7 +44,7 @@
 		</ul>
 		]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -152,11 +153,12 @@ static DdNode * cuddBddSqueeze (DdManager *dd, DdNode *l, DdNode *u);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes f constrain c.]
+  \brief Computes f constrain c.
 
-  Description [Computes f constrain c (f @ c).
+  \details [Computes f constrain c (f @ c).
   Uses a canonical form: (f' @ c) = (f @ c)'.  (Note: this is not true
   for c.)  List of special cases:
     <ul>
@@ -171,9 +173,9 @@ static DdNode * cuddBddSqueeze (DdManager *dd, DdNode *l, DdNode *u);
   F=(f1,...,fn) and reordering takes place while computing F @ c, then the
   image restriction property (Img(F,c) = Img(F @ c)) is lost.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRestrict Cudd_addConstrain]
+  \see Cudd_bddRestrict Cudd_addConstrain
 
 ******************************************************************************/
 DdNode *
@@ -193,19 +195,20 @@ Cudd_bddConstrain(
 } /* end of Cudd_bddConstrain */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [BDD restrict according to Coudert and Madre's algorithm
   (ICCAD90).]
 
-  Description [BDD restrict according to Coudert and Madre's algorithm
+  \details [BDD restrict according to Coudert and Madre's algorithm
   (ICCAD90). Returns the restricted BDD if successful; otherwise NULL.
   If application of restrict results in a BDD larger than the input
   BDD, the input BDD is returned.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain Cudd_addRestrict]
+  \see Cudd_bddConstrain Cudd_addRestrict
 
 ******************************************************************************/
 DdNode *
@@ -276,11 +279,12 @@ Cudd_bddRestrict(
 } /* end of Cudd_bddRestrict */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes f non-polluting-and g.]
+  \brief Computes f non-polluting-and g.
 
-  Description [Computes f non-polluting-and g.  The non-polluting AND
+  \details [Computes f non-polluting-and g.  The non-polluting AND
   of f and g is a hybrid of AND and Restrict.  From Restrict, this
   operation takes the idea of existentially quantifying the top
   variable of the second operand if it does not appear in the first.
@@ -290,9 +294,9 @@ Cudd_bddRestrict(
 
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain Cudd_bddRestrict]
+  \see Cudd_bddConstrain Cudd_bddRestrict
 
 ******************************************************************************/
 DdNode *
@@ -312,11 +316,12 @@ Cudd_bddNPAnd(
 } /* end of Cudd_bddNPAnd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes f constrain c for ADDs.]
+  \brief Computes f constrain c for ADDs.
 
-  Description [Computes f constrain c (f @ c), for f an ADD and c a 0-1
+  \details [Computes f constrain c (f @ c), for f an ADD and c a 0-1
   ADD.  List of special cases:
     <ul>
     <li> F @ 0 = 0
@@ -327,9 +332,9 @@ Cudd_bddNPAnd(
     </ul>
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain]
+  \see Cudd_bddConstrain
 
 ******************************************************************************/
 DdNode *
@@ -349,11 +354,12 @@ Cudd_addConstrain(
 } /* end of Cudd_addConstrain */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [BDD conjunctive decomposition as in McMillan's CAV96 paper.]
+  \brief BDD conjunctive decomposition as in McMillan's CAV96 paper.
 
-  Description [BDD conjunctive decomposition as in McMillan's CAV96
+  \details [BDD conjunctive decomposition as in McMillan's CAV96
   paper.  The decomposition is canonical only for a given variable
   order. If canonicity is required, variable ordering must be disabled
   after the decomposition has been computed. Returns an array with one
@@ -362,9 +368,9 @@ Cudd_addConstrain(
   already incremented (unlike the results of most other functions in
   the package).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain Cudd_bddExistAbstract]
+  \see Cudd_bddConstrain Cudd_bddExistAbstract
 
 ******************************************************************************/
 DdNode **
@@ -412,19 +418,20 @@ Cudd_bddConstrainDecomp(
 } /* end of Cudd_bddConstrainDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [ADD restrict according to Coudert and Madre's algorithm
   (ICCAD90).]
 
-  Description [ADD restrict according to Coudert and Madre's algorithm
+  \details [ADD restrict according to Coudert and Madre's algorithm
   (ICCAD90). Returns the restricted ADD if successful; otherwise NULL.
   If application of restrict results in an ADD larger than the input
   ADD, the input ADD is returned.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addConstrain Cudd_bddRestrict]
+  \see Cudd_addConstrain Cudd_bddRestrict
 
 ******************************************************************************/
 DdNode *
@@ -483,11 +490,12 @@ Cudd_addRestrict(
 } /* end of Cudd_addRestrict */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes a vector whose image equals a non-zero function.]
+  \brief Computes a vector whose image equals a non-zero function.
 
-  Description [Computes a vector of BDDs whose image equals a non-zero
+  \details [Computes a vector of BDDs whose image equals a non-zero
   function.
   The result depends on the variable order. The i-th component of the vector
   depends only on the first i variables in the order.  Each BDD in the vector
@@ -501,9 +509,9 @@ Cudd_addRestrict(
   already incremented (unlike the results of most other functions in 
   the package).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain]
+  \see Cudd_bddConstrain
 
 ******************************************************************************/
 DdNode **
@@ -547,11 +555,12 @@ Cudd_bddCharToVect(
 } /* end of Cudd_bddCharToVect */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs safe minimization of a BDD.]
+  \brief Performs safe minimization of a BDD.
 
-  Description [Performs safe minimization of a BDD. Given the BDD
+  \details [Performs safe minimization of a BDD. Given the BDD
   <code>f</code> of a function to be minimized and a BDD
   <code>c</code> representing the care set, Cudd_bddLICompaction
   produces the BDD of a function that agrees with <code>f</code>
@@ -561,9 +570,9 @@ Cudd_bddCharToVect(
   al..  Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRestrict]
+  \see Cudd_bddRestrict
 
 ******************************************************************************/
 DdNode *
@@ -583,19 +592,20 @@ Cudd_bddLICompaction(
 } /* end of Cudd_bddLICompaction */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds a small BDD in a function interval.]
+  \brief Finds a small BDD in a function interval.
 
-  Description [Finds a small BDD in a function interval. Given BDDs
+  \details [Finds a small BDD in a function interval. Given BDDs
   <code>l</code> and <code>u</code>, representing the lower bound and
   upper bound of a function interval, Cudd_bddSqueeze produces the BDD
   of a function within the interval with a small BDD.  Returns a
   pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRestrict Cudd_bddLICompaction]
+  \see Cudd_bddRestrict Cudd_bddLICompaction
 
 ******************************************************************************/
 DdNode *
@@ -635,18 +645,19 @@ Cudd_bddSqueeze(
 } /* end of Cudd_bddSqueeze */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Finds a small BDD that agrees with <code>f</code> over
   <code>c</code>.]
 
-  Description [Finds a small BDD that agrees with <code>f</code> over
+  \details [Finds a small BDD that agrees with <code>f</code> over
   <code>c</code>.  Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRestrict Cudd_bddLICompaction Cudd_bddSqueeze]
+  \see Cudd_bddRestrict Cudd_bddLICompaction Cudd_bddSqueeze
 
 ******************************************************************************/
 DdNode *
@@ -678,11 +689,12 @@ Cudd_bddMinimize(
 } /* end of Cudd_bddMinimize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Find a dense subset of BDD <code>f</code>.]
+  \brief Find a dense subset of BDD <code>f</code>.
 
-  Description [Finds a dense subset of BDD <code>f</code>. Density is
+  \details [Finds a dense subset of BDD <code>f</code>. Density is
   the ratio of number of minterms to number of nodes.  Uses several
   techniques in series. It is more expensive than other subsetting
   procedures, but often produces better results. See
@@ -690,9 +702,9 @@ Cudd_bddMinimize(
   parameters.  Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RemapUnderApprox Cudd_SubsetShortPaths
+  \see     [Cudd_RemapUnderApprox Cudd_SubsetShortPaths
   Cudd_SubsetHeavyBranch Cudd_bddSqueeze]
 
 ******************************************************************************/
@@ -728,11 +740,12 @@ Cudd_SubsetCompress(
 } /* end of Cudd_SubsetCompress */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Find a dense superset of BDD <code>f</code>.]
+  \brief Find a dense superset of BDD <code>f</code>.
 
-  Description [Finds a dense superset of BDD <code>f</code>. Density is
+  \details [Finds a dense superset of BDD <code>f</code>. Density is
   the ratio of number of minterms to number of nodes.  Uses several
   techniques in series. It is more expensive than other supersetting
   procedures, but often produces better results. See
@@ -740,9 +753,9 @@ Cudd_SubsetCompress(
   parameters.  Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetCompress Cudd_SupersetRemap Cudd_SupersetShortPaths
+  \see     [Cudd_SubsetCompress Cudd_SupersetRemap Cudd_SupersetShortPaths
   Cudd_SupersetHeavyBranch Cudd_bddSqueeze]
 
 ******************************************************************************/
@@ -767,16 +780,17 @@ Cudd_SupersetCompress(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddConstrain.]
+  \brief Performs the recursive step of Cudd_bddConstrain.
 
-  Description [Performs the recursive step of Cudd_bddConstrain.
+  \details [Performs the recursive step of Cudd_bddConstrain.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain]
+  \see Cudd_bddConstrain
 
 ******************************************************************************/
 DdNode *
@@ -896,16 +910,17 @@ cuddBddConstrainRecur(
 } /* end of cuddBddConstrainRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddRestrict.]
+  \brief Performs the recursive step of Cudd_bddRestrict.
 
-  Description [Performs the recursive step of Cudd_bddRestrict.
+  \details [Performs the recursive step of Cudd_bddRestrict.
   Returns the restricted BDD if successful; otherwise NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRestrict]
+  \see Cudd_bddRestrict
 
 ******************************************************************************/
 DdNode *
@@ -1046,16 +1061,17 @@ cuddBddRestrictRecur(
 } /* end of cuddBddRestrictRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Implements the recursive step of Cudd_bddAnd.]
+  \brief Implements the recursive step of Cudd_bddAnd.
 
-  Description [Implements the recursive step of Cudd_bddNPAnd.
+  \details [Implements the recursive step of Cudd_bddNPAnd.
   Returns a pointer to the result is successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddNPAnd]
+  \see Cudd_bddNPAnd
 
 ******************************************************************************/
 DdNode *
@@ -1187,16 +1203,17 @@ cuddBddNPAndRecur(
 } /* end of cuddBddNPAndRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addConstrain.]
+  \brief Performs the recursive step of Cudd_addConstrain.
 
-  Description [Performs the recursive step of Cudd_addConstrain.
+  \details [Performs the recursive step of Cudd_addConstrain.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addConstrain]
+  \see Cudd_addConstrain
 
 ******************************************************************************/
 DdNode *
@@ -1291,16 +1308,17 @@ cuddAddConstrainRecur(
 } /* end of cuddAddConstrainRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addRestrict.]
+  \brief Performs the recursive step of Cudd_addRestrict.
 
-  Description [Performs the recursive step of Cudd_addRestrict.
+  \details [Performs the recursive step of Cudd_addRestrict.
   Returns the restricted ADD if successful; otherwise NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addRestrict]
+  \see Cudd_addRestrict
 
 ******************************************************************************/
 DdNode *
@@ -1411,11 +1429,12 @@ cuddAddRestrictRecur(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs safe minimization of a BDD.]
+  \brief Performs safe minimization of a BDD.
 
-  Description [Performs safe minimization of a BDD. Given the BDD
+  \details [Performs safe minimization of a BDD. Given the BDD
   <code>f</code> of a function to be minimized and a BDD
   <code>c</code> representing the care set, Cudd_bddLICompaction
   produces the BDD of a function that agrees with <code>f</code>
@@ -1425,9 +1444,9 @@ cuddAddRestrictRecur(
   al..  Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction]
+  \see Cudd_bddLICompaction
 
 ******************************************************************************/
 DdNode *
@@ -1488,16 +1507,17 @@ cuddBddLICompaction(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddConstrainDecomp.]
+  \brief Performs the recursive step of Cudd_bddConstrainDecomp.
 
-  Description [Performs the recursive step of Cudd_bddConstrainDecomp.
+  \details [Performs the recursive step of Cudd_bddConstrainDecomp.
   Returns f super (i) if successful; otherwise NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrainDecomp]
+  \see Cudd_bddConstrainDecomp
 
 ******************************************************************************/
 static int
@@ -1549,17 +1569,18 @@ cuddBddConstrainDecomp(
 } /* end of cuddBddConstrainDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddCharToVect.]
+  \brief Performs the recursive step of Cudd_bddCharToVect.
 
-  Description [Performs the recursive step of Cudd_bddCharToVect.
+  \details [Performs the recursive step of Cudd_bddCharToVect.
   This function maintains the invariant that f is non-zero.
   Returns the i-th component of the vector if successful; otherwise NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddCharToVect]
+  \see Cudd_bddCharToVect
 
 ******************************************************************************/
 static DdNode *
@@ -1630,17 +1651,18 @@ cuddBddCharToVect(
 } /* end of cuddBddCharToVect */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the edge marking step of Cudd_bddLICompaction.]
+  \brief Performs the edge marking step of Cudd_bddLICompaction.
 
-  Description [Performs the edge marking step of Cudd_bddLICompaction.
+  \details [Performs the edge marking step of Cudd_bddLICompaction.
   Returns the LUB of the markings of the two outgoing edges of <code>f</code>
   if successful; otherwise CUDD_OUT_OF_MEM.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction cuddBddLICBuildResult]
+  \see Cudd_bddLICompaction cuddBddLICBuildResult
 
 ******************************************************************************/
 static int
@@ -1750,16 +1772,17 @@ cuddBddLICMarkEdges(
 } /* end of cuddBddLICMarkEdges */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the result of Cudd_bddLICompaction.]
+  \brief Builds the result of Cudd_bddLICompaction.
 
-  Description [Builds the results of Cudd_bddLICompaction.
+  \details [Builds the results of Cudd_bddLICompaction.
   Returns a pointer to the minimized BDD if successful; otherwise NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction cuddBddLICMarkEdges]
+  \see Cudd_bddLICompaction cuddBddLICMarkEdges
 
 ******************************************************************************/
 static DdNode *
@@ -1859,16 +1882,17 @@ cuddBddLICBuildResult(
 } /* end of cuddBddLICBuildResult */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Hash function for the computed table of cuddBddLICMarkEdges.]
+  \brief Hash function for the computed table of cuddBddLICMarkEdges.
 
-  Description [Hash function for the computed table of
+  \details [Hash function for the computed table of
   cuddBddLICMarkEdges.  Returns the bucket number.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction]
+  \see Cudd_bddLICompaction
 
 ******************************************************************************/
 static int
@@ -1889,18 +1913,19 @@ MarkCacheHash(
 } /* end of MarkCacheHash */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Comparison function for the computed table of
   cuddBddLICMarkEdges.]
 
-  Description [Comparison function for the computed table of
+  \details [Comparison function for the computed table of
   cuddBddLICMarkEdges. Returns 0 if the two nodes of the key are equal; 1
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction]
+  \see Cudd_bddLICompaction
 
 ******************************************************************************/
 static int
@@ -1918,17 +1943,18 @@ MarkCacheCompare(
 } /* end of MarkCacheCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Frees memory associated with computed table of
   cuddBddLICMarkEdges.]
 
-  Description [Frees memory associated with computed table of
+  \details [Frees memory associated with computed table of
   cuddBddLICMarkEdges. Returns ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLICompaction]
+  \see Cudd_bddLICompaction
 
 ******************************************************************************/
 static enum st_retval
@@ -1946,20 +1972,21 @@ MarkCacheCleanUp(
 } /* end of MarkCacheCleanUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddSqueeze.]
+  \brief Performs the recursive step of Cudd_bddSqueeze.
 
-  Description [Performs the recursive step of Cudd_bddSqueeze.  This
+  \details [Performs the recursive step of Cudd_bddSqueeze.  This
   procedure exploits the fact that if we complement and swap the
   bounds of the interval we obtain a valid solution by taking the
   complement of the solution to the original problem. Therefore, we
   can enforce the condition that the upper bound is always regular.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddSqueeze]
+  \see Cudd_bddSqueeze
 
 ******************************************************************************/
 static DdNode *

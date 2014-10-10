@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddAbs.c]
+  \file cuddAddAbs.c
 
   PackageName [cudd]
 
-  Synopsis    [Quantification functions for ADDs.]
+  \brief Quantification functions for ADDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addExistAbstract()
 		<li> Cudd_addUnivAbstract()
@@ -23,7 +24,7 @@
 		<li> addCheckPositiveCube()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -107,17 +108,18 @@ static int addCheckPositiveCube (DdManager *manager, DdNode *cube);
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Existentially Abstracts all the variables in cube from f.]
+  \brief Existentially Abstracts all the variables in cube from f.
 
-  Description [Abstracts all the variables in cube from f by summing
+  \details [Abstracts all the variables in cube from f by summing
   over all possible values taken by the variables. Returns the
   abstracted ADD.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addUnivAbstract Cudd_bddExistAbstract
+  \see     [Cudd_addUnivAbstract Cudd_bddExistAbstract
   Cudd_addOrAbstract]
 
 ******************************************************************************/
@@ -156,17 +158,18 @@ Cudd_addExistAbstract(
 } /* end of Cudd_addExistAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Universally Abstracts all the variables in cube from f.]
+  \brief Universally Abstracts all the variables in cube from f.
 
-  Description [Abstracts all the variables in cube from f by taking
+  \details [Abstracts all the variables in cube from f by taking
   the product over all possible values taken by the variable. Returns
   the abstracted ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addExistAbstract Cudd_bddUnivAbstract
+  \see     [Cudd_addExistAbstract Cudd_bddUnivAbstract
   Cudd_addOrAbstract]
 
 ******************************************************************************/
@@ -193,19 +196,20 @@ Cudd_addUnivAbstract(
 } /* end of Cudd_addUnivAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Disjunctively abstracts all the variables in cube from the
   0-1 ADD f.]
 
-  Description [Abstracts all the variables in cube from the 0-1 ADD f
+  \details [Abstracts all the variables in cube from the 0-1 ADD f
   by taking the disjunction over all possible values taken by the
   variables.  Returns the abstracted ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addUnivAbstract Cudd_addExistAbstract]
+  \see Cudd_addUnivAbstract Cudd_addExistAbstract
 
 ******************************************************************************/
 DdNode *
@@ -235,17 +239,18 @@ Cudd_addOrAbstract(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addExistAbstract.]
+  \brief Performs the recursive step of Cudd_addExistAbstract.
 
-  Description [Performs the recursive step of Cudd_addExistAbstract.
+  \details [Performs the recursive step of Cudd_addExistAbstract.
   Returns the ADD obtained by abstracting the variables of cube from f,
   if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -340,17 +345,18 @@ cuddAddExistAbstractRecur(
 } /* end of cuddAddExistAbstractRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addUnivAbstract.]
+  \brief Performs the recursive step of Cudd_addUnivAbstract.
 
-  Description [Performs the recursive step of Cudd_addUnivAbstract.
+  \details [Performs the recursive step of Cudd_addUnivAbstract.
   Returns the ADD obtained by abstracting the variables of cube from f,
   if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -448,17 +454,18 @@ cuddAddUnivAbstractRecur(
 } /* end of cuddAddUnivAbstractRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addOrAbstract.]
+  \brief Performs the recursive step of Cudd_addOrAbstract.
 
-  Description [Performs the recursive step of Cudd_addOrAbstract.
+  \details [Performs the recursive step of Cudd_addOrAbstract.
   Returns the ADD obtained by abstracting the variables of cube from f,
   if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -549,17 +556,18 @@ cuddAddOrAbstractRecur(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Checks whether cube is an ADD representing the product
   of positive literals.]
 
-  Description [Checks whether cube is an ADD representing the product of
+  \details [Checks whether cube is an ADD representing the product of
   positive literals. Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

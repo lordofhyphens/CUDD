@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAndAbs.c]
+  \file cuddAndAbs.c
 
   PackageName [cudd]
 
-  Synopsis    [Combined AND and existential abstraction for BDDs]
+  \brief Combined AND and existential abstraction for BDDs
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddAndAbstract()
 		<li> Cudd_bddAndAbstractLimit()
@@ -16,7 +17,7 @@
 		<li> cuddBddAndAbstractRecur()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -100,20 +101,21 @@ static char rcsid[] DD_UNUSED = "$Id: cuddAndAbs.c,v 1.20 2012/02/05 01:07:18 fa
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Takes the AND of two BDDs and simultaneously abstracts the
   variables in cube.]
 
-  Description [Takes the AND of two BDDs and simultaneously abstracts
+  \details [Takes the AND of two BDDs and simultaneously abstracts
   the variables in cube. The variables are existentially abstracted.
   Returns a pointer to the result is successful; NULL otherwise.
   Cudd_bddAndAbstract implements the semiring matrix multiplication
   algorithm for the boolean semiring.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addMatrixMultiply Cudd_addTriangle Cudd_bddAnd]
+  \see Cudd_addMatrixMultiply Cudd_addTriangle Cudd_bddAnd
 
 ******************************************************************************/
 DdNode *
@@ -134,20 +136,21 @@ Cudd_bddAndAbstract(
 } /* end of Cudd_bddAndAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Takes the AND of two BDDs and simultaneously abstracts the
   variables in cube.  Returns NULL if too many nodes are required.]
 
-  Description [Takes the AND of two BDDs and simultaneously abstracts
+  \details [Takes the AND of two BDDs and simultaneously abstracts
   the variables in cube. The variables are existentially abstracted.
   Returns a pointer to the result is successful; NULL otherwise.
   In particular, if the number of new nodes created exceeds
   <code>limit</code>, this function returns NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAndAbstract]
+  \see Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -178,18 +181,19 @@ Cudd_bddAndAbstractLimit(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Takes the AND of two BDDs and simultaneously abstracts the
   variables in cube.]
 
-  Description [Takes the AND of two BDDs and simultaneously abstracts
+  \details [Takes the AND of two BDDs and simultaneously abstracts
   the variables in cube. The variables are existentially abstracted.
   Returns a pointer to the result is successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAndAbstract]
+  \see Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *

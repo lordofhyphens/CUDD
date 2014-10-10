@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddMatMult.c]
+  \file cuddMatMult.c
 
   PackageName [cudd]
 
-  Synopsis    [Matrix multiplication functions.]
+  \brief Matrix multiplication functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addMatrixMultiply()
 		<li> Cudd_addTimesPlus()
@@ -20,7 +21,7 @@
 		<li> cuddAddOuterSumRecur()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -105,12 +106,13 @@ static DdNode * cuddAddOuterSumRecur (DdManager *dd, DdNode *M, DdNode *r, DdNod
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Calculates the product of two matrices represented as
   ADDs.]
 
-  Description [Calculates the product of two matrices, A and B,
+  \details [Calculates the product of two matrices, A and B,
   represented as ADDs. This procedure implements the quasiring multiplication
   algorithm.  A is assumed to depend on variables x (rows) and z
   (columns).  B is assumed to depend on variables z (rows) and y
@@ -119,9 +121,9 @@ static DdNode * cuddAddOuterSumRecur (DdManager *dd, DdNode *M, DdNode *r, DdNod
   they are the "summation" variables.  Returns a pointer to the
   result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addTimesPlus Cudd_addTriangle Cudd_bddAndAbstract]
+  \see Cudd_addTimesPlus Cudd_addTriangle Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -159,12 +161,13 @@ Cudd_addMatrixMultiply(
 } /* end of Cudd_addMatrixMultiply */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Calculates the product of two matrices represented as
   ADDs.]
 
-  Description [Calculates the product of two matrices, A and B,
+  \details [Calculates the product of two matrices, A and B,
   represented as ADDs, using the CMU matrix by matrix multiplication
   procedure by Clarke et al..  Matrix A has x's as row variables and z's
   as column variables, while matrix B has z's as row variables and y's
@@ -172,9 +175,9 @@ Cudd_addMatrixMultiply(
   NULL otherwise. The resulting matrix has x's as row variables and y's
   as column variables.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addMatrixMultiply]
+  \see Cudd_addMatrixMultiply
 
 ******************************************************************************/
 DdNode *
@@ -216,12 +219,13 @@ Cudd_addTimesPlus(
 } /* end of Cudd_addTimesPlus */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Performs the triangulation step for the shortest path
   computation.]
 
-  Description [Implements the semiring multiplication algorithm used in
+  \details [Implements the semiring multiplication algorithm used in
   the triangulation step for the shortest path computation.  f
   is assumed to depend on variables x (rows) and z (columns).  g is
   assumed to depend on variables z (rows) and y (columns).  The product
@@ -230,9 +234,9 @@ Cudd_addTimesPlus(
   "abstraction" variables.  Returns a pointer to the result if
   successful; NULL otherwise. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addMatrixMultiply Cudd_bddAndAbstract]
+  \see Cudd_addMatrixMultiply Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -274,18 +278,19 @@ Cudd_addTriangle(
 } /* end of Cudd_addTriangle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Takes the minimum of a matrix and the outer sum of two vectors.]
+  \brief Takes the minimum of a matrix and the outer sum of two vectors.
 
-  Description [Takes the pointwise minimum of a matrix and the outer
+  \details [Takes the pointwise minimum of a matrix and the outer
   sum of two vectors.  This procedure is used in the Floyd-Warshall
   all-pair shortest path algorithm.  Returns a pointer to the result if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -315,14 +320,15 @@ Cudd_addOuterSum(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addMatrixMultiply.]
+  \brief Performs the recursive step of Cudd_addMatrixMultiply.
 
-  Description [Performs the recursive step of Cudd_addMatrixMultiply.
+  \details [Performs the recursive step of Cudd_addMatrixMultiply.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *
@@ -526,14 +532,15 @@ addMMRecur(
 } /* end of addMMRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addTriangle.]
+  \brief Performs the recursive step of Cudd_addTriangle.
 
-  Description [Performs the recursive step of Cudd_addTriangle. Returns
+  \details [Performs the recursive step of Cudd_addTriangle. Returns
   a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *
@@ -619,16 +626,17 @@ addTriangleRecur(
 } /* end of addTriangleRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addOuterSum.]
+  \brief Performs the recursive step of Cudd_addOuterSum.
 
-  Description [Performs the recursive step of Cudd_addOuterSum.
+  \details [Performs the recursive step of Cudd_addOuterSum.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *

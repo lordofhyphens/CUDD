@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddExport.c]
+  \file cuddExport.c
 
   PackageName [cudd]
 
-  Synopsis    [Export functions.]
+  \brief Export functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_DumpBlif()
 		<li> Cudd_DumpBlifBody()
@@ -26,7 +27,7 @@
 		<li> ddDoDumpFactoredForm()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -108,11 +109,12 @@ static int ddDoDumpFactoredForm (DdManager *dd, DdNode *f, FILE *fp, char **name
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a blif file representing the argument BDDs.]
+  \brief Writes a blif file representing the argument BDDs.
 
-  Description [Writes a blif file representing the argument BDDs as a
+  \details [Writes a blif file representing the argument BDDs as a
   network of multiplexers. One multiplexer is written for each BDD
   node. It returns 1 in case of success; 0 otherwise (e.g.,
   out-of-memory, file system full, or an ADD with constants different
@@ -122,9 +124,9 @@ static int ddDoDumpFactoredForm (DdManager *dd, DdNode *f, FILE *fp, char **name
   inames is non-null, it is assumed to hold the pointers to the names
   of the inputs. Similarly for onames.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpBlifBody Cudd_DumpDot Cudd_PrintDebug Cudd_DumpDDcal
+  \see     [Cudd_DumpBlifBody Cudd_DumpDot Cudd_PrintDebug Cudd_DumpDDcal
   Cudd_DumpDaVinci Cudd_DumpFactoredForm]
 
 ******************************************************************************/
@@ -222,11 +224,12 @@ failure:
 } /* end of Cudd_DumpBlif */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a blif body representing the argument BDDs.]
+  \brief Writes a blif body representing the argument BDDs.
 
-  Description [Writes a blif body representing the argument BDDs as a
+  \details [Writes a blif body representing the argument BDDs as a
   network of multiplexers.  No header (.model, .inputs, and .outputs) and
   footer (.end) are produced by this function.  One multiplexer is written
   for each BDD node. It returns 1 in case of success; 0 otherwise (e.g.,
@@ -238,9 +241,9 @@ failure:
   of the inputs. Similarly for onames. This function prints out only
   .names part.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpBlif Cudd_DumpDot Cudd_PrintDebug Cudd_DumpDDcal
+  \see     [Cudd_DumpBlif Cudd_DumpDot Cudd_PrintDebug Cudd_DumpDDcal
   Cudd_DumpDaVinci Cudd_DumpFactoredForm]
 
 ******************************************************************************/
@@ -307,11 +310,12 @@ failure:
 } /* end of Cudd_DumpBlifBody */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a dot file representing the argument DDs.]
+  \brief Writes a dot file representing the argument DDs.
 
-  Description [Writes a file representing the argument DDs in a format
+  \details [Writes a file representing the argument DDs in a format
   suitable for the graph drawing program dot.
   It returns 1 in case of success; 0 otherwise (e.g., out-of-memory,
   file system full).
@@ -330,9 +334,9 @@ failure:
   sheet.
   ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpBlif Cudd_PrintDebug Cudd_DumpDDcal
+  \see     [Cudd_DumpBlif Cudd_PrintDebug Cudd_DumpDDcal
   Cudd_DumpDaVinci Cudd_DumpFactoredForm]
 
 ******************************************************************************/
@@ -604,11 +608,12 @@ failure:
 } /* end of Cudd_DumpDot */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a daVinci file representing the argument BDDs.]
+  \brief Writes a daVinci file representing the argument BDDs.
 
-  Description [Writes a daVinci file representing the argument BDDs.
+  \details [Writes a daVinci file representing the argument BDDs.
   It returns 1 in case of success; 0 otherwise (e.g., out-of-memory or
   file system full).  Cudd_DumpDaVinci does not close the file: This
   is the caller responsibility. Cudd_DumpDaVinci uses a minimal unique
@@ -616,9 +621,9 @@ failure:
   argument inames is non-null, it is assumed to hold the pointers to
   the names of the inputs. Similarly for onames.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDDcal
+  \see     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDDcal
   Cudd_DumpFactoredForm]
 
 ******************************************************************************/
@@ -718,11 +723,12 @@ failure:
 } /* end of Cudd_DumpDaVinci */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a DDcal file representing the argument BDDs.]
+  \brief Writes a DDcal file representing the argument BDDs.
 
-  Description [Writes a DDcal file representing the argument BDDs.
+  \details [Writes a DDcal file representing the argument BDDs.
   It returns 1 in case of success; 0 otherwise (e.g., out-of-memory or
   file system full).  Cudd_DumpDDcal does not close the file: This
   is the caller responsibility. Cudd_DumpDDcal uses a minimal unique
@@ -730,9 +736,9 @@ failure:
   argument inames is non-null, it is assumed to hold the pointers to
   the names of the inputs. Similarly for onames.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDaVinci
+  \see     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDaVinci
   Cudd_DumpFactoredForm]
 
 ******************************************************************************/
@@ -874,11 +880,12 @@ failure:
 } /* end of Cudd_DumpDDcal */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes factored forms representing the argument BDDs.]
+  \brief Writes factored forms representing the argument BDDs.
 
-  Description [Writes factored forms representing the argument BDDs.
+  \details [Writes factored forms representing the argument BDDs.
   The format of the factored form is the one used in the genlib files
   for technology mapping in sis.  It returns 1 in case of success; 0
   otherwise (e.g., file system full).  Cudd_DumpFactoredForm does not
@@ -888,9 +895,9 @@ failure:
   to hold the pointers to the names of the inputs. Similarly for
   onames.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDaVinci
+  \see     [Cudd_DumpDot Cudd_PrintDebug Cudd_DumpBlif Cudd_DumpDaVinci
   Cudd_DumpDDcal]
 
 ******************************************************************************/
@@ -947,18 +954,19 @@ Cudd_DumpFactoredForm(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_DumpBlif.]
+  \brief Performs the recursive step of Cudd_DumpBlif.
 
-  Description [Performs the recursive step of Cudd_DumpBlif. Traverses
+  \details [Performs the recursive step of Cudd_DumpBlif. Traverses
   the BDD f and writes a multiplexer-network description to the file
   pointed by fp in blif format. f is assumed to be a regular pointer
   and ddDoDumpBlif guarantees this assumption in the recursive calls.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1108,18 +1116,19 @@ ddDoDumpBlif(
 } /* end of ddDoDumpBlif */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_DumpDaVinci.]
+  \brief Performs the recursive step of Cudd_DumpDaVinci.
 
-  Description [Performs the recursive step of Cudd_DumpDaVinci. Traverses
+  \details [Performs the recursive step of Cudd_DumpDaVinci. Traverses
   the BDD f and writes a term expression to the file
   pointed by fp in daVinci format. f is assumed to be a regular pointer
   and ddDoDumpDaVinci guarantees this assumption in the recursive calls.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1207,18 +1216,19 @@ ddDoDumpDaVinci(
 } /* end of ddDoDumpDaVinci */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_DumpDDcal.]
+  \brief Performs the recursive step of Cudd_DumpDDcal.
 
-  Description [Performs the recursive step of Cudd_DumpDDcal. Traverses
+  \details [Performs the recursive step of Cudd_DumpDDcal. Traverses
   the BDD f and writes a line for each node to the file
   pointed by fp in DDcal format. f is assumed to be a regular pointer
   and ddDoDumpDDcal guarantees this assumption in the recursive calls.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1298,11 +1308,12 @@ ddDoDumpDDcal(
 } /* end of ddDoDumpDDcal */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_DumpFactoredForm.]
+  \brief Performs the recursive step of Cudd_DumpFactoredForm.
 
-  Description [Performs the recursive step of
+  \details [Performs the recursive step of
   Cudd_DumpFactoredForm. Traverses the BDD f and writes a factored
   form for each node to the file pointed by fp in terms of the
   factored forms of the children. Constants are propagated, and
@@ -1310,9 +1321,9 @@ ddDoDumpDDcal(
   ddDoDumpFActoredForm guarantees this assumption in the recursive
   calls.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpFactoredForm]
+  \see Cudd_DumpFactoredForm
 
 ******************************************************************************/
 static int

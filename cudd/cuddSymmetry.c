@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSymmetry.c]
+  \file cuddSymmetry.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for symmetry-based variable reordering.]
+  \brief Functions for symmetry-based variable reordering.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_SymmProfile()
 		</ul>
@@ -29,7 +30,7 @@
 		<li> ddSymmSummary()
 		</ul>]
 
-  Author      [Shipra Panda, Fabio Somenzi]
+  \author Shipra Panda, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -125,13 +126,14 @@ static void ddSymmSummary (DdManager *table, int lower, int upper, int *symvars,
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints statistics on symmetric variables.]
+  \brief Prints statistics on symmetric variables.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 void
@@ -173,15 +175,16 @@ Cudd_SymmProfile(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks for symmetry of x and y.]
+  \brief Checks for symmetry of x and y.
 
-  Description [Checks for symmetry of x and y. Ignores projection
+  \details [Checks for symmetry of x and y. Ignores projection
   functions, unless they are isolated. Returns 1 in case of symmetry; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -292,11 +295,12 @@ cuddSymmCheck(
 } /* end of cuddSymmCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Symmetric sifting algorithm.]
+  \brief Symmetric sifting algorithm.
 
-  Description [Symmetric sifting algorithm.
+  \details [Symmetric sifting algorithm.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries in
@@ -309,9 +313,9 @@ cuddSymmCheck(
   Returns 1 plus the number of symmetric variables if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddSymmSiftingConv]
+  \see cuddSymmSiftingConv
 
 ******************************************************************************/
 int
@@ -412,11 +416,12 @@ ddSymmSiftingOutOfMem:
 } /* end of cuddSymmSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Symmetric sifting to convergence algorithm.]
+  \brief Symmetric sifting to convergence algorithm.
 
-  Description [Symmetric sifting to convergence algorithm.
+  \details [Symmetric sifting to convergence algorithm.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries in
@@ -430,9 +435,9 @@ ddSymmSiftingOutOfMem:
   Returns 1 plus the number of symmetric variables if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddSymmSifting]
+  \see cuddSymmSifting
 
 ******************************************************************************/
 int
@@ -597,16 +602,17 @@ ddSymmSiftingConvOutOfMem:
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the variables
+  \details [Comparison function used by qsort to order the variables
   according to the number of keys in the subtables.
   Returns the difference in number of keys between the two
   variables being compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -624,17 +630,18 @@ ddSymmUniqueCompare(
 } /* end of ddSymmUniqueCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Assumes that x is not part of a symmetry group. Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -925,18 +932,19 @@ ddSymmSiftingAuxOutOfMem:
 } /* end of ddSymmSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Assumes that x is either an isolated variable, or it is the bottom of
   a symmetry group. All symmetries may not have been found, because of
   exceeded growth limit. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1181,19 +1189,20 @@ ddSymmSiftingConvAuxOutOfMem:
 } /* end of ddSymmSiftingConvAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Moves x up until either it reaches the bound (xLow) or
   the size of the DD heap increases too much.]
 
-  Description [Moves x up until either it reaches the bound (xLow) or
+  \details [Moves x up until either it reaches the bound (xLow) or
   the size of the DD heap increases too much. Assumes that x is the top
   of a symmetry group.  Checks x for symmetry to the adjacent
   variables. If symmetry is found, the symmetry group of x is merged
   with the symmetry group of the other variable. Returns the set of
   moves in case of success; MV_OOM if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1323,19 +1332,20 @@ ddSymmSiftingUpOutOfMem:
 } /* end of ddSymmSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Moves x down until either it reaches the bound (xHigh) or
   the size of the DD heap increases too much.]
 
-  Description [Moves x down until either it reaches the bound (xHigh)
+  \details [Moves x down until either it reaches the bound (xHigh)
   or the size of the DD heap increases too much. Assumes that x is the
   bottom of a symmetry group. Checks x for symmetry to the adjacent
   variables. If symmetry is found, the symmetry group of x is merged
   with the symmetry group of the other variable. Returns the set of
   moves in case of success; MV_OOM if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1464,16 +1474,17 @@ ddSymmSiftingDownOutOfMem:
 } /* end of ddSymmSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps two groups.]
+  \brief Swaps two groups.
 
-  Description [Swaps two groups. x is assumed to be the bottom variable
+  \details [Swaps two groups. x is assumed to be the bottom variable
   of the first group. y is assumed to be the top variable of the second
   group.  Updates the list of moves. Returns the number of keys in the
   table if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1545,16 +1556,17 @@ ddSymmGroupMove(
 } /* end of ddSymmGroupMove */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Undoes the swap of two groups.]
+  \brief Undoes the swap of two groups.
 
-  Description [Undoes the swap of two groups. x is assumed to be the
+  \details [Undoes the swap of two groups. x is assumed to be the
   bottom variable of the first group. y is assumed to be the top
   variable of the second group.  Returns the number of keys in the table
   if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1615,17 +1627,18 @@ ddSymmGroupMoveBackward(
 } /* end of ddSymmGroupMoveBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the DD heap to the position
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the DD heap to the
+  \details [Given a set of moves, returns the DD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1662,14 +1675,15 @@ ddSymmSiftingBackward(
 } /* end of ddSymmSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Counts numbers of symmetric variables and symmetry
   groups.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void

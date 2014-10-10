@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddDecomp.c]
+  \file cuddDecomp.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for BDD decomposition.]
+  \brief Functions for BDD decomposition.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_bddApproxConjDecomp()
 		<li> Cudd_bddApproxDisjDecomp()
@@ -25,7 +26,7 @@
 		<li> ConjunctsFree()
 		</ul>]
 
-  Author      [Kavita Ravi, Fabio Somenzi]
+  \author Kavita Ravi, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -144,11 +145,12 @@ static int cuddConjunctsAux (DdManager * dd, DdNode * f, DdNode ** c1, DdNode **
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way conjunctive decomposition of a BDD.]
+  \brief Performs two-way conjunctive decomposition of a BDD.
 
-  Description [Performs two-way conjunctive decomposition of a
+  \details [Performs two-way conjunctive decomposition of a
   BDD. This procedure owes its name to the use of supersetting to
   obtain an initial factor of the given function. Returns the number
   of conjuncts produced, that is, 2 if successful; 1 if no meaningful
@@ -162,7 +164,7 @@ static int cuddConjunctsAux (DdManager * dd, DdNode * f, DdNode ** c1, DdNode **
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddApproxDisjDecomp Cudd_bddIterConjDecomp
+  \see     [Cudd_bddApproxDisjDecomp Cudd_bddIterConjDecomp
   Cudd_bddGenConjDecomp Cudd_bddVarConjDecomp Cudd_RemapOverApprox
   Cudd_bddSqueeze Cudd_bddLICompaction]
 
@@ -245,11 +247,12 @@ Cudd_bddApproxConjDecomp(
 } /* end of Cudd_bddApproxConjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way disjunctive decomposition of a BDD.]
+  \brief Performs two-way disjunctive decomposition of a BDD.
 
-  Description [Performs two-way disjunctive decomposition of a BDD.
+  \details [Performs two-way disjunctive decomposition of a BDD.
   Returns the number of disjuncts produced, that is, 2 if successful;
   1 if no meaningful decomposition was found; 0 otherwise. The
   disjuncts produced by this procedure tend to be imbalanced.]
@@ -261,7 +264,7 @@ Cudd_bddApproxConjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddApproxConjDecomp Cudd_bddIterDisjDecomp
+  \see     [Cudd_bddApproxConjDecomp Cudd_bddIterDisjDecomp
   Cudd_bddGenDisjDecomp Cudd_bddVarDisjDecomp]
 
 ******************************************************************************/
@@ -282,11 +285,12 @@ Cudd_bddApproxDisjDecomp(
 } /* end of Cudd_bddApproxDisjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way conjunctive decomposition of a BDD.]
+  \brief Performs two-way conjunctive decomposition of a BDD.
 
-  Description [Performs two-way conjunctive decomposition of a
+  \details [Performs two-way conjunctive decomposition of a
   BDD. This procedure owes its name to the iterated use of
   supersetting to obtain a factor of the given function. Returns the
   number of conjuncts produced, that is, 2 if successful; 1 if no
@@ -300,7 +304,7 @@ Cudd_bddApproxDisjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddIterDisjDecomp Cudd_bddApproxConjDecomp
+  \see     [Cudd_bddIterDisjDecomp Cudd_bddApproxConjDecomp
   Cudd_bddGenConjDecomp Cudd_bddVarConjDecomp Cudd_RemapOverApprox
   Cudd_bddSqueeze Cudd_bddLICompaction]
 
@@ -428,11 +432,12 @@ Cudd_bddIterConjDecomp(
 } /* end of Cudd_bddIterConjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way disjunctive decomposition of a BDD.]
+  \brief Performs two-way disjunctive decomposition of a BDD.
 
-  Description [Performs two-way disjunctive decomposition of a BDD.
+  \details [Performs two-way disjunctive decomposition of a BDD.
   Returns the number of disjuncts produced, that is, 2 if successful;
   1 if no meaningful decomposition was found; 0 otherwise. The
   disjuncts produced by this procedure tend to be imbalanced.]
@@ -444,7 +449,7 @@ Cudd_bddIterConjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddIterConjDecomp Cudd_bddApproxDisjDecomp
+  \see     [Cudd_bddIterConjDecomp Cudd_bddApproxDisjDecomp
   Cudd_bddGenDisjDecomp Cudd_bddVarDisjDecomp]
 
 ******************************************************************************/
@@ -465,11 +470,12 @@ Cudd_bddIterDisjDecomp(
 } /* end of Cudd_bddIterDisjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way conjunctive decomposition of a BDD.]
+  \brief Performs two-way conjunctive decomposition of a BDD.
 
-  Description [Performs two-way conjunctive decomposition of a
+  \details [Performs two-way conjunctive decomposition of a
   BDD. This procedure owes its name to the fact tht it generalizes the
   decomposition based on the cofactors with respect to one
   variable. Returns the number of conjuncts produced, that is, 2 if
@@ -484,7 +490,7 @@ Cudd_bddIterDisjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddGenDisjDecomp Cudd_bddApproxConjDecomp
+  \see     [Cudd_bddGenDisjDecomp Cudd_bddApproxConjDecomp
   Cudd_bddIterConjDecomp Cudd_bddVarConjDecomp]
 
 ******************************************************************************/
@@ -547,11 +553,12 @@ Cudd_bddGenConjDecomp(
 } /* end of Cudd_bddGenConjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way disjunctive decomposition of a BDD.]
+  \brief Performs two-way disjunctive decomposition of a BDD.
 
-  Description [Performs two-way disjunctive decomposition of a BDD.
+  \details [Performs two-way disjunctive decomposition of a BDD.
   Returns the number of disjuncts produced, that is, 2 if successful;
   1 if no meaningful decomposition was found; 0 otherwise. The
   disjuncts produced by this procedure tend to be balanced.]
@@ -563,7 +570,7 @@ Cudd_bddGenConjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddGenConjDecomp Cudd_bddApproxDisjDecomp
+  \see     [Cudd_bddGenConjDecomp Cudd_bddApproxDisjDecomp
   Cudd_bddIterDisjDecomp Cudd_bddVarDisjDecomp]
 
 ******************************************************************************/
@@ -584,11 +591,12 @@ Cudd_bddGenDisjDecomp(
 } /* end of Cudd_bddGenDisjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way conjunctive decomposition of a BDD.]
+  \brief Performs two-way conjunctive decomposition of a BDD.
 
-  Description [Conjunctively decomposes one BDD according to a
+  \details [Conjunctively decomposes one BDD according to a
   variable.  If <code>f</code> is the function of the BDD and
   <code>x</code> is the variable, the decomposition is
   <code>(f+x)(f+x')</code>.  The variable is chosen so as to balance
@@ -603,7 +611,7 @@ Cudd_bddGenDisjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddVarDisjDecomp Cudd_bddGenConjDecomp
+  \see     [Cudd_bddVarDisjDecomp Cudd_bddGenConjDecomp
   Cudd_bddApproxConjDecomp Cudd_bddIterConjDecomp]
 
 *****************************************************************************/
@@ -702,11 +710,12 @@ Cudd_bddVarConjDecomp(
 } /* end of Cudd_bddVarConjDecomp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs two-way disjunctive decomposition of a BDD.]
+  \brief Performs two-way disjunctive decomposition of a BDD.
 
-  Description [Performs two-way disjunctive decomposition of a BDD
+  \details [Performs two-way disjunctive decomposition of a BDD
   according to a variable. If <code>f</code> is the function of the
   BDD and <code>x</code> is the variable, the decomposition is
   <code>f*x + f*x'</code>.  The variable is chosen so as to balance
@@ -721,7 +730,7 @@ Cudd_bddVarConjDecomp(
   not allocated. If the function returns 1, the only factor equals the
   function to be decomposed.]
 
-  SeeAlso     [Cudd_bddVarConjDecomp Cudd_bddApproxDisjDecomp
+  \see     [Cudd_bddVarConjDecomp Cudd_bddApproxDisjDecomp
   Cudd_bddIterDisjDecomp Cudd_bddGenDisjDecomp]
 
 ******************************************************************************/
@@ -751,17 +760,18 @@ Cudd_bddVarDisjDecomp(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Get longest distance of node from constant.]
+  \brief Get longest distance of node from constant.
 
-  Description [Get longest distance of node from constant. Returns the
+  \details [Get longest distance of node from constant. Returns the
   distance of the root from the constant if successful; CUDD_OUT_OF_MEM
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static NodeStat *
@@ -821,16 +831,17 @@ CreateBotDist(
 } /* end of CreateBotDist */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Count the number of minterms of each node ina a BDD and
   store it in a hash table.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static double
@@ -885,15 +896,16 @@ CountMinterms(
 } /* end of CountMinterms */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Free factors structure]
+  \brief Free factors structure
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -909,11 +921,12 @@ ConjunctsFree(
 } /* end of ConjunctsFree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Check whether the given pair is in the tables.]
+  \brief Check whether the given pair is in the tables.
 
-  Description [.Check whether the given pair is in the tables.  gTable
+  \details [.Check whether the given pair is in the tables.  gTable
   and hTable are combined.
   absence in both is indicated by 0,
   presence in gTable is indicated by 1,
@@ -931,9 +944,9 @@ ConjunctsFree(
   BOTH_H implies both in hTable
   NONE implies none in table; ]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [CheckTablesCacheAndReturn CheckInTables]
+  \see CheckTablesCacheAndReturn CheckInTables
 
 ******************************************************************************/
 static int
@@ -972,18 +985,19 @@ PairInTables(
 } /* end of PairInTables */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Check the tables for the existence of pair and return one
   combination, cache the result.]
 
-  Description [Check the tables for the existence of pair and return
+  \details [Check the tables for the existence of pair and return
   one combination, cache the result. The assumption is that one of the
   conjuncts is already in the tables.]
 
-  SideEffects [g and h referenced for the cache]
+  \sideeffects g and h referenced for the cache
 
-  SeeAlso     [ZeroCase]
+  \see ZeroCase
 
 ******************************************************************************/
 static Conjuncts *
@@ -1076,19 +1090,20 @@ CheckTablesCacheAndReturn(
 
 } /* end of CheckTablesCacheAndReturn */
 	
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Check the tables for the existence of pair and return one
   combination, store in cache.]
 
-  Description [Check the tables for the existence of pair and return
+  \details [Check the tables for the existence of pair and return
   one combination, store in cache. The pair that has more pointers to
   it is picked. An approximation of the number of local pointers is
   made by taking the reference count of the pairs sent. ]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [ZeroCase BuildConjuncts]
+  \see ZeroCase BuildConjuncts
 
 ******************************************************************************/
 static Conjuncts *
@@ -1195,18 +1210,19 @@ PickOnePair(
 } /* end of PickOnePair */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Check if the two pairs exist in the table, If any of the
   conjuncts do exist, store in the cache and return the corresponding pair.]
 
-  Description [Check if the two pairs exist in the table. If any of
+  \details [Check if the two pairs exist in the table. If any of
   the conjuncts do exist, store in the cache and return the
   corresponding pair.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [ZeroCase BuildConjuncts]
+  \see ZeroCase BuildConjuncts
 
 ******************************************************************************/
 static Conjuncts *
@@ -1424,11 +1440,12 @@ CheckInTables(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [If one child is zero, do explicitly what Restrict does or better]
+  \brief If one child is zero, do explicitly what Restrict does or better
 
-  Description [If one child is zero, do explicitly what Restrict does or better.
+  \details [If one child is zero, do explicitly what Restrict does or better.
   First separate a variable and its child in the base case. In case of a cube
   times a function, separate the cube and function. As a last resort, look in
   tables.]
@@ -1436,7 +1453,7 @@ CheckInTables(
   SideEffects [Frees the BDDs in factorsNv. factorsNv itself is not freed
   because it is freed above.]
 
-  SeeAlso     [BuildConjuncts]
+  \see BuildConjuncts
 
 ******************************************************************************/
 static Conjuncts *
@@ -1658,11 +1675,12 @@ ZeroCase(
 } /* end of ZeroCase */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the conjuncts recursively, bottom up.]
+  \brief Builds the conjuncts recursively, bottom up.
 
-  Description [Builds the conjuncts recursively, bottom up. Constants
+  \details [Builds the conjuncts recursively, bottom up. Constants
   are returned as (f, f). The cache is checked for previously computed
   result. The decomposition points are determined by the local
   reference count of this node and the longest distance from the
@@ -1672,9 +1690,9 @@ ZeroCase(
   one that already occurs in the gh table. Occurence in g is indicated
   by value 1, occurence in h by 2, occurence in both 3.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [cuddConjunctsAux]
+  \see cuddConjunctsAux
 
 ******************************************************************************/
 static Conjuncts *
@@ -1984,17 +2002,18 @@ BuildConjuncts(
 } /* end of BuildConjuncts */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Procedure to compute two conjunctive factors of f and place in *c1 and *c2.]
+  \brief Procedure to compute two conjunctive factors of f and place in *c1 and *c2.
 
-  Description [Procedure to compute two conjunctive factors of f and
+  \details [Procedure to compute two conjunctive factors of f and
   place in *c1 and *c2. Sets up the required data - table of distances
   from the constant and local reference count. Also minterm table. ]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddUtil.c]
+  \file cuddUtil.c
 
   PackageName [cudd]
 
-  Synopsis    [Utility functions.]
+  \brief Utility functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_PrintMinterm()
 		<li> Cudd_bddPrintCover()
@@ -74,7 +75,7 @@
                 <li> indexCompare()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -201,19 +202,20 @@ static int indexCompare(const void *a, const void *b);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints a disjoint sum of products.]
+  \brief Prints a disjoint sum of products.
 
-  Description [Prints a disjoint sum of product cover for the function
+  \details [Prints a disjoint sum of product cover for the function
   rooted at node. Each product corresponds to a path from node to a
   leaf node different from the logical zero, and different from the
   background value. Uses the package default output file.  Returns 1
   if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintDebug Cudd_bddPrintCover]
+  \see Cudd_PrintDebug Cudd_bddPrintCover
 
 ******************************************************************************/
 int
@@ -238,19 +240,20 @@ Cudd_PrintMinterm(
 } /* end of Cudd_PrintMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints a sum of prime implicants of a BDD.]
+  \brief Prints a sum of prime implicants of a BDD.
 
-  Description [Prints a sum of product cover for an incompletely
+  \details [Prints a sum of product cover for an incompletely
   specified function given by a lower bound and an upper bound.  Each
   product is a prime implicant obtained by expanding the product
   corresponding to a path from node to the constant one.  Uses the
   package default output file.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintMinterm]
+  \see Cudd_PrintMinterm
 
 ******************************************************************************/
 int
@@ -356,11 +359,12 @@ Cudd_bddPrintCover(
 } /* end of Cudd_bddPrintCover */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints to the standard output a DD and its statistics.]
+  \brief Prints to the standard output a DD and its statistics.
 
-  Description [Prints to the standard output a DD and its statistics.
+  \details [Prints to the standard output a DD and its statistics.
   The statistics include the number of nodes, the number of leaves, and
   the number of minterms. (The number of minterms is the number of
   assignments to the variables that cause the function to be different
@@ -376,9 +380,9 @@ Cudd_bddPrintCover(
   For the purpose of counting the number of minterms, the function is
   supposed to depend on n variables. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DagSize Cudd_CountLeaves Cudd_CountMinterm
+  \see     [Cudd_DagSize Cudd_CountLeaves Cudd_CountMinterm
   Cudd_PrintMinterm]
 
 ******************************************************************************/
@@ -430,16 +434,17 @@ Cudd_PrintDebug(
 } /* end of Cudd_PrintDebug */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of nodes in a DD.]
+  \brief Counts the number of nodes in a DD.
 
-  Description [Counts the number of nodes in a DD. Returns the number
+  \details [Counts the number of nodes in a DD. Returns the number
   of nodes in the graph rooted at node.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SharingSize Cudd_PrintDebug]
+  \see Cudd_SharingSize Cudd_PrintDebug
 
 ******************************************************************************/
 int
@@ -456,11 +461,12 @@ Cudd_DagSize(
 } /* end of Cudd_DagSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Estimates the number of nodes in a cofactor of a DD.]
+  \brief Estimates the number of nodes in a cofactor of a DD.
 
-  Description [Estimates the number of nodes in a cofactor of a DD.
+  \details [Estimates the number of nodes in a cofactor of a DD.
   Returns an estimate of the number of nodes in a cofactor of
   the graph rooted at node with respect to the variable whose index is i.
   In case of failure, returns CUDD_OUT_OF_MEM.
@@ -472,9 +478,9 @@ Cudd_DagSize(
   If this is a concern, one should use Cudd_EstimateCofactorSimple, which
   is faster, does not allocate any memory, but is less accurate.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DagSize Cudd_EstimateCofactorSimple]
+  \see Cudd_DagSize Cudd_EstimateCofactorSimple
 
 ******************************************************************************/
 int
@@ -500,11 +506,12 @@ Cudd_EstimateCofactor(
 } /* end of Cudd_EstimateCofactor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Estimates the number of nodes in a cofactor of a DD.]
+  \brief Estimates the number of nodes in a cofactor of a DD.
 
-  Description [Estimates the number of nodes in a cofactor of a DD.
+  \details [Estimates the number of nodes in a cofactor of a DD.
   Returns an estimate of the number of nodes in the positive cofactor of
   the graph rooted at node with respect to the variable whose index is i.
   This procedure implements with minor changes the algorithm of Cabodi et al.
@@ -512,9 +519,9 @@ Cudd_EstimateCofactor(
   state of the manager, and it is fast. However, it has been observed to
   overestimate the size of the cofactor by as much as a factor of 2.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DagSize]
+  \see Cudd_DagSize
 
 ******************************************************************************/
 int
@@ -532,16 +539,17 @@ Cudd_EstimateCofactorSimple(
 } /* end of Cudd_EstimateCofactorSimple */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of nodes in an array of DDs.]
+  \brief Counts the number of nodes in an array of DDs.
 
-  Description [Counts the number of nodes in an array of DDs. Shared
+  \details [Counts the number of nodes in an array of DDs. Shared
   nodes are counted only once.  Returns the total number of nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DagSize]
+  \see Cudd_DagSize
 
 ******************************************************************************/
 int
@@ -563,19 +571,20 @@ Cudd_SharingSize(
 } /* end of Cudd_SharingSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of minterms of a DD.]
+  \brief Counts the number of minterms of a DD.
 
-  Description [Counts the number of minterms of a DD. The function is
+  \details [Counts the number of minterms of a DD. The function is
   assumed to depend on nvars variables. The minterm count is
   represented as a double, to allow for a larger number of variables.
   Returns the number of minterms of the function rooted at node if
   successful; (double) CUDD_OUT_OF_MEM otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintDebug Cudd_CountPath]
+  \see Cudd_PrintDebug Cudd_CountPath
 
 ******************************************************************************/
 double
@@ -608,19 +617,20 @@ Cudd_CountMinterm(
 } /* end of Cudd_CountMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of paths of a DD.]
+  \brief Counts the number of paths of a DD.
 
-  Description [Counts the number of paths of a DD.  Paths to all
+  \details [Counts the number of paths of a DD.  Paths to all
   terminal nodes are counted. The path count is represented as a
   double, to allow for a larger number of variables.  Returns the
   number of paths of the function rooted at node if successful;
   (double) CUDD_OUT_OF_MEM otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CountMinterm]
+  \see Cudd_CountMinterm
 
 ******************************************************************************/
 double
@@ -643,18 +653,19 @@ Cudd_CountPath(
 } /* end of Cudd_CountPath */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of minterms of a DD with extended precision.]
+  \brief Counts the number of minterms of a DD with extended precision.
 
-  Description [Counts the number of minterms of a DD with extended precision.
+  \details [Counts the number of minterms of a DD with extended precision.
   The function is assumed to depend on nvars variables. The minterm count is
   represented as an EpDouble, to allow any number of variables.
   Returns 0 if successful; CUDD_OUT_OF_MEM otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintDebug Cudd_CountPath]
+  \see Cudd_PrintDebug Cudd_CountPath
 
 ******************************************************************************/
 int
@@ -693,18 +704,19 @@ Cudd_EpdCountMinterm(
 } /* end of Cudd_EpdCountMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of paths to a non-zero terminal of a DD.]
+  \brief Counts the number of paths to a non-zero terminal of a DD.
 
-  Description [Counts the number of paths to a non-zero terminal of a
+  \details [Counts the number of paths to a non-zero terminal of a
   DD.  The path count is
   represented as a double, to allow for a larger number of variables.
   Returns the number of paths of the function rooted at node.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CountMinterm Cudd_CountPath]
+  \see Cudd_CountMinterm Cudd_CountPath
 
 ******************************************************************************/
 double
@@ -727,17 +739,18 @@ Cudd_CountPathsToNonZero(
 } /* end of Cudd_CountPathsToNonZero */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a DD depends.]
+  \brief Finds the variables on which a DD depends.
 
-  Description [Finds the variables on which a DD depends.  Returns the
+  \details [Finds the variables on which a DD depends.  Returns the
   number of variables if successful; CUDD_OUT_OF_MEM otherwise.]
 
   SideEffects [The indices of the support variables are returned as
   side effects.  If the function is constant, no array is allocated.]
 
-  SeeAlso     [Cudd_Support Cudd_SupportIndex Cudd_VectorSupportIndices]
+  \see Cudd_Support Cudd_SupportIndex Cudd_VectorSupportIndices
 
 ******************************************************************************/
 int
@@ -772,17 +785,18 @@ Cudd_SupportIndices(
 } /* end of Cudd_SupportIndices */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a DD depends.]
+  \brief Finds the variables on which a DD depends.
 
-  Description [Finds the variables on which a DD depends.
+  \details [Finds the variables on which a DD depends.
   Returns a BDD consisting of the product of the variables if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_VectorSupport Cudd_ClassifySupport]
+  \see Cudd_VectorSupport Cudd_ClassifySupport
 
 ******************************************************************************/
 DdNode *
@@ -823,19 +837,20 @@ Cudd_Support(
 } /* end of Cudd_Support */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a DD depends.]
+  \brief Finds the variables on which a DD depends.
 
-  Description [Finds the variables on which a DD depends.  Returns an
+  \details [Finds the variables on which a DD depends.  Returns an
   index array of the variables if successful; NULL otherwise.  The
   size of the array equals the number of variables in the manager.
   Each entry of the array is 1 if the corresponding variable is in the
   support of the DD and 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Support Cudd_SupportIndices Cudd_ClassifySupport]
+  \see Cudd_Support Cudd_SupportIndices Cudd_ClassifySupport
 
 ******************************************************************************/
 int *
@@ -867,15 +882,16 @@ Cudd_SupportIndex(
 } /* end of Cudd_SupportIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the variables on which a DD depends.]
+  \brief Counts the variables on which a DD depends.
 
-  Description [Returns the variables on which a DD depends.]
+  \details [Returns the variables on which a DD depends.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Support Cudd_SupportIndices]
+  \see Cudd_Support Cudd_SupportIndices
 
 ******************************************************************************/
 int
@@ -894,18 +910,19 @@ Cudd_SupportSize(
 } /* end of Cudd_SupportSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a set of DDs depends.]
+  \brief Finds the variables on which a set of DDs depends.
 
-  Description [Finds the variables on which a set of DDs depends.  The
+  \details [Finds the variables on which a set of DDs depends.  The
   set must contain either BDDs and ADDs, or ZDDs.  Returns the number
   of variables if successful; CUDD_OUT_OF_MEM otherwise.]
 
   SideEffects [The indices of the support variables are returned as
   side effects.  If the function is constant, no array is allocated.]
 
-  SeeAlso     [Cudd_Support Cudd_SupportIndex Cudd_VectorSupportIndices]
+  \see Cudd_Support Cudd_SupportIndex Cudd_VectorSupportIndices
 
 ******************************************************************************/
 int
@@ -948,18 +965,19 @@ Cudd_VectorSupportIndices(
 } /* end of Cudd_VectorSupportIndices */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a set of DDs depends.]
+  \brief Finds the variables on which a set of DDs depends.
 
-  Description [Finds the variables on which a set of DDs depends.
+  \details [Finds the variables on which a set of DDs depends.
   The set must contain either BDDs and ADDs, or ZDDs.
   Returns a BDD consisting of the product of the variables if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Support Cudd_ClassifySupport]
+  \see Cudd_Support Cudd_ClassifySupport
 
 ******************************************************************************/
 DdNode *
@@ -1000,17 +1018,18 @@ Cudd_VectorSupport(
 } /* end of Cudd_VectorSupport */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a set of DDs depends.]
+  \brief Finds the variables on which a set of DDs depends.
 
-  Description [Finds the variables on which a set of DDs depends.
+  \details [Finds the variables on which a set of DDs depends.
   The set must contain either BDDs and ADDs, or ZDDs.
   Returns an index array of the variables if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SupportIndex Cudd_VectorSupport Cudd_VectorSupportIndices]
+  \see Cudd_SupportIndex Cudd_VectorSupport Cudd_VectorSupportIndices
 
 ******************************************************************************/
 int *
@@ -1047,16 +1066,17 @@ Cudd_VectorSupportIndex(
 } /* end of Cudd_VectorSupportIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the variables on which a set of DDs depends.]
+  \brief Counts the variables on which a set of DDs depends.
 
-  Description [Returns the variables on which a set of DDs depends.
+  \details [Returns the variables on which a set of DDs depends.
   The set must contain either BDDs and ADDs, or ZDDs.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_VectorSupport Cudd_SupportSize]
+  \see Cudd_VectorSupport Cudd_SupportSize
 
 ******************************************************************************/
 int
@@ -1082,11 +1102,12 @@ Cudd_VectorSupportSize(
 } /* end of Cudd_VectorSupportSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Classifies the variables in the support of two DDs.]
+  \brief Classifies the variables in the support of two DDs.
 
-  Description [Classifies the variables in the support of two DDs
+  \details [Classifies the variables in the support of two DDs
   <code>f</code> and <code>g</code>, depending on whther they appear
   in both DDs, only in <code>f</code>, or only in <code>g</code>.
   Returns 1 if successful; 0 otherwise.]
@@ -1094,7 +1115,7 @@ Cudd_VectorSupportSize(
   SideEffects [The cubes of the three classes of variables are
   returned as side effects.]
 
-  SeeAlso     [Cudd_Support Cudd_VectorSupport]
+  \see Cudd_Support Cudd_VectorSupport
 
 ******************************************************************************/
 int
@@ -1185,17 +1206,18 @@ Cudd_ClassifySupport(
 } /* end of Cudd_ClassifySupport */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of leaves in a DD.]
+  \brief Counts the number of leaves in a DD.
 
-  Description [Counts the number of leaves in a DD. Returns the number
+  \details [Counts the number of leaves in a DD. Returns the number
   of leaves in the DD rooted at node if successful; CUDD_OUT_OF_MEM
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintDebug]
+  \see Cudd_PrintDebug
 
 ******************************************************************************/
 int
@@ -1211,18 +1233,19 @@ Cudd_CountLeaves(
 } /* end of Cudd_CountLeaves */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Picks one on-set cube randomly from the given DD.]
+  \brief Picks one on-set cube randomly from the given DD.
 
-  Description [Picks one on-set cube randomly from the given DD. The
+  \details [Picks one on-set cube randomly from the given DD. The
   cube is written into an array of characters.  The array must have at
   least as many entries as there are variables. Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPickOneMinterm]
+  \see Cudd_bddPickOneMinterm
 
 ******************************************************************************/
 int
@@ -1272,11 +1295,12 @@ Cudd_bddPickOneCube(
 } /* end of Cudd_bddPickOneCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Picks one on-set minterm randomly from the given DD.]
+  \brief Picks one on-set minterm randomly from the given DD.
 
-  Description [Picks one on-set minterm randomly from the given
+  \details [Picks one on-set minterm randomly from the given
   DD. The minterm is in terms of <code>vars</code>. The array
   <code>vars</code> should contain at least all variables in the
   support of <code>f</code>; if this condition is not met the minterm
@@ -1290,9 +1314,9 @@ Cudd_bddPickOneCube(
   <li> the minterm may not be contained in <code>f</code>.
   </ul>]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPickOneCube]
+  \see Cudd_bddPickOneCube
 
 ******************************************************************************/
 DdNode *
@@ -1374,11 +1398,12 @@ Cudd_bddPickOneMinterm(
 }  /* end of Cudd_bddPickOneMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Picks k on-set minterms evenly distributed from given DD.]
+  \brief Picks k on-set minterms evenly distributed from given DD.
 
-  Description [Picks k on-set minterms evenly distributed from given DD.
+  \details [Picks k on-set minterms evenly distributed from given DD.
   The minterms are in terms of <code>vars</code>. The array
   <code>vars</code> should contain at least all variables in the
   support of <code>f</code>; if this condition is not met the minterms
@@ -1392,9 +1417,9 @@ Cudd_bddPickOneMinterm(
   <li> the minterms may not be contained in <code>f</code>.
   </ul>]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPickOneMinterm Cudd_bddPickOneCube]
+  \see Cudd_bddPickOneMinterm Cudd_bddPickOneCube
 
 ******************************************************************************/
 DdNode **
@@ -1584,11 +1609,12 @@ Cudd_bddPickArbitraryMinterms(
 }  /* end of Cudd_bddPickArbitraryMinterms */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Extracts a subset from a BDD.]
+  \brief Extracts a subset from a BDD.
 
-  Description [Extracts a subset from a BDD in the following procedure.
+  \details [Extracts a subset from a BDD in the following procedure.
   1. Compute the weight for each mask variable by counting the number of
      minterms for both positive and negative cofactors of the BDD with
      respect to each mask variable. (weight = #positive - #negative)
@@ -1601,9 +1627,9 @@ Cudd_bddPickArbitraryMinterms(
      variable with a constant(1 or 0) depending on the weight.
   4. Make a subset of the BDD by multiplying with the modified cube.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -1776,11 +1802,12 @@ Cudd_SubsetWithMaskVars(
 } /* end of Cudd_SubsetWithMaskVars */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the first cube of a decision diagram.]
+  \brief Finds the first cube of a decision diagram.
 
-  Description [Defines an iterator on the onset of a decision diagram
+  \details [Defines an iterator on the onset of a decision diagram
   and finds its first cube. Returns a generator that contains the
   information necessary to continue the enumeration if successful; NULL
   otherwise.<p>
@@ -1796,9 +1823,9 @@ Cudd_SubsetWithMaskVars(
   For ADDs, the offset is the set of cubes whose value is the
   background value. The cubes of the offset are not enumerated.]
 
-  SideEffects [The first cube and its value are returned as side effects.]
+  \sideeffects The first cube and its value are returned as side effects.
 
-  SeeAlso     [Cudd_ForeachCube Cudd_NextCube Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachCube Cudd_NextCube Cudd_GenFree Cudd_IsGenEmpty
   Cudd_FirstNode]
 
 ******************************************************************************/
@@ -1906,18 +1933,19 @@ done:
 } /* end of Cudd_FirstCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates the next cube of a decision diagram onset.]
+  \brief Generates the next cube of a decision diagram onset.
 
-  Description [Generates the next cube of a decision diagram onset,
+  \details [Generates the next cube of a decision diagram onset,
   using generator gen. Returns 0 if the enumeration is completed; 1
   otherwise.]
 
   SideEffects [The cube and its value are returned as side effects. The
   generator is modified.]
 
-  SeeAlso     [Cudd_ForeachCube Cudd_FirstCube Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachCube Cudd_FirstCube Cudd_GenFree Cudd_IsGenEmpty
   Cudd_NextNode]
 
 ******************************************************************************/
@@ -2003,11 +2031,12 @@ done:
 } /* end of Cudd_NextCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the first prime of a Boolean function.]
+  \brief Finds the first prime of a Boolean function.
 
-  Description [Defines an iterator on a pair of BDDs describing a
+  \details [Defines an iterator on a pair of BDDs describing a
   (possibly incompletely specified) Boolean functions and finds the
   first cube of a cover of the function.  Returns a generator
   that contains the information necessary to continue the enumeration
@@ -2026,9 +2055,9 @@ done:
 
   This iterator can only be used on BDDs.]
 
-  SideEffects [The first cube is returned as side effect.]
+  \sideeffects The first cube is returned as side effect.
 
-  SeeAlso     [Cudd_ForeachPrime Cudd_NextPrime Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachPrime Cudd_NextPrime Cudd_GenFree Cudd_IsGenEmpty
   Cudd_FirstCube Cudd_FirstNode]
 
 ******************************************************************************/
@@ -2119,18 +2148,19 @@ Cudd_FirstPrime(
 } /* end of Cudd_FirstPrime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates the next prime of a Boolean function.]
+  \brief Generates the next prime of a Boolean function.
 
-  Description [Generates the next cube of a Boolean function,
+  \details [Generates the next cube of a Boolean function,
   using generator gen. Returns 0 if the enumeration is completed; 1
   otherwise.]
 
   SideEffects [The cube and is returned as side effects. The
   generator is modified.]
 
-  SeeAlso     [Cudd_ForeachPrime Cudd_FirstPrime Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachPrime Cudd_FirstPrime Cudd_GenFree Cudd_IsGenEmpty
   Cudd_NextCube Cudd_NextNode]
 
 ******************************************************************************/
@@ -2185,19 +2215,20 @@ Cudd_NextPrime(
 } /* end of Cudd_NextPrime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the cube of an array of BDD variables.]
+  \brief Computes the cube of an array of BDD variables.
 
-  Description [Computes the cube of an array of BDD variables. If
+  \details [Computes the cube of an array of BDD variables. If
   non-null, the phase argument indicates which literal of each
   variable should appear in the cube. If phase\[i\] is nonzero, then the
   positive literal is used. If phase is NULL, the cube is positive unate.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addComputeCube Cudd_IndicesToCube Cudd_CubeArrayToBdd]
+  \see Cudd_addComputeCube Cudd_IndicesToCube Cudd_CubeArrayToBdd
 
 ******************************************************************************/
 DdNode *
@@ -2235,19 +2266,20 @@ Cudd_bddComputeCube(
 }  /* end of Cudd_bddComputeCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the cube of an array of ADD variables.]
+  \brief Computes the cube of an array of ADD variables.
 
-  Description [Computes the cube of an array of ADD variables.  If
+  \details [Computes the cube of an array of ADD variables.  If
   non-null, the phase argument indicates which literal of each
   variable should appear in the cube. If phase\[i\] is nonzero, then the
   positive literal is used. If phase is NULL, the cube is positive unate.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddComputeCube]
+  \see Cudd_bddComputeCube
 
 ******************************************************************************/
 DdNode *
@@ -2286,20 +2318,21 @@ Cudd_addComputeCube(
 } /* end of Cudd_addComputeCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the BDD of a cube from a positional array.]
+  \brief Builds the BDD of a cube from a positional array.
 
-  Description [Builds a cube from a positional array.  The array must
+  \details [Builds a cube from a positional array.  The array must
   have one integer entry for each BDD variable.  If the i-th entry is
   1, the variable of index i appears in true form in the cube; If the
   i-th entry is 0, the variable of index i appears complemented in the
   cube; otherwise the variable does not appear in the cube.  Returns a
   pointer to the BDD for the cube if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddComputeCube Cudd_IndicesToCube Cudd_BddToCubeArray]
+  \see Cudd_bddComputeCube Cudd_IndicesToCube Cudd_BddToCubeArray
 
 ******************************************************************************/
 DdNode *
@@ -2332,11 +2365,12 @@ Cudd_CubeArrayToBdd(
 } /* end of Cudd_CubeArrayToBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds a positional array from the BDD of a cube.]
+  \brief Builds a positional array from the BDD of a cube.
 
-  Description [Builds a positional array from the BDD of a cube.
+  \details [Builds a positional array from the BDD of a cube.
   Array must have one entry for each BDD variable.  The positional
   array has 1 in i-th position if the variable of index i appears in
   true form in the cube; it has 0 in i-th position if the variable of
@@ -2345,9 +2379,9 @@ Cudd_CubeArrayToBdd(
   cube.  Returns 1 if successful (the BDD is indeed a cube); 0
   otherwise.]
 
-  SideEffects [The result is in the array passed by reference.]
+  \sideeffects The result is in the array passed by reference.
 
-  SeeAlso     [Cudd_CubeArrayToBdd]
+  \see Cudd_CubeArrayToBdd
 
 ******************************************************************************/
 int
@@ -2387,20 +2421,21 @@ Cudd_BddToCubeArray(
 } /* end of Cudd_BddToCubeArray */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the first node of a decision diagram.]
+  \brief Finds the first node of a decision diagram.
 
-  Description [Defines an iterator on the nodes of a decision diagram
+  \details [Defines an iterator on the nodes of a decision diagram
   and finds its first node. Returns a generator that contains the
   information necessary to continue the enumeration if successful;
   NULL otherwise.  The nodes are enumerated in a reverse topological
   order, so that a node is always preceded in the enumeration by its
   descendants.]
 
-  SideEffects [The first node is returned as a side effect.]
+  \sideeffects The first node is returned as a side effect.
 
-  SeeAlso     [Cudd_ForeachNode Cudd_NextNode Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachNode Cudd_NextNode Cudd_GenFree Cudd_IsGenEmpty
   Cudd_FirstCube]
 
 ******************************************************************************/
@@ -2450,16 +2485,17 @@ Cudd_FirstNode(
 } /* end of Cudd_FirstNode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the next node of a decision diagram.]
+  \brief Finds the next node of a decision diagram.
 
-  Description [Finds the node of a decision diagram, using generator
+  \details [Finds the node of a decision diagram, using generator
   gen. Returns 0 if the enumeration is completed; 1 otherwise.]
 
-  SideEffects [The next node is returned as a side effect.]
+  \sideeffects The next node is returned as a side effect.
 
-  SeeAlso     [Cudd_ForeachNode Cudd_FirstNode Cudd_GenFree Cudd_IsGenEmpty
+  \see     [Cudd_ForeachNode Cudd_FirstNode Cudd_GenFree Cudd_IsGenEmpty
   Cudd_NextCube]
 
 ******************************************************************************/
@@ -2482,16 +2518,17 @@ Cudd_NextNode(
 } /* end of Cudd_NextNode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees a CUDD generator.]
+  \brief Frees a CUDD generator.
 
-  Description [Frees a CUDD generator. Always returns 0, so that it can
+  \details [Frees a CUDD generator. Always returns 0, so that it can
   be used in mis-like foreach constructs.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ForeachCube Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube
+  \see     [Cudd_ForeachCube Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube
   Cudd_FirstNode Cudd_NextNode Cudd_IsGenEmpty]
 
 ******************************************************************************/
@@ -2522,16 +2559,17 @@ Cudd_GenFree(
 } /* end of Cudd_GenFree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Queries the status of a generator.]
+  \brief Queries the status of a generator.
 
-  Description [Queries the status of a generator. Returns 1 if the
+  \details [Queries the status of a generator. Returns 1 if the
   generator is empty or NULL; 0 otherswise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ForeachCube Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube
+  \see     [Cudd_ForeachCube Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube
   Cudd_FirstNode Cudd_NextNode Cudd_GenFree]
 
 ******************************************************************************/
@@ -2545,16 +2583,17 @@ Cudd_IsGenEmpty(
 } /* end of Cudd_IsGenEmpty */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds a cube of BDD variables from an array of indices.]
+  \brief Builds a cube of BDD variables from an array of indices.
 
-  Description [Builds a cube of BDD variables from an array of indices.
+  \details [Builds a cube of BDD variables from an array of indices.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddComputeCube Cudd_CubeArrayToBdd]
+  \see Cudd_bddComputeCube Cudd_CubeArrayToBdd
 
 ******************************************************************************/
 DdNode *
@@ -2585,15 +2624,16 @@ Cudd_IndicesToCube(
 } /* end of Cudd_IndicesToCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints the package version number.]
+  \brief Prints the package version number.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -2605,17 +2645,18 @@ Cudd_PrintVersion(
 } /* end of Cudd_PrintVersion */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the average distance between adjacent nodes.]
+  \brief Computes the average distance between adjacent nodes.
 
-  Description [Computes the average distance between adjacent nodes in
+  \details [Computes the average distance between adjacent nodes in
   the manager. Adjacent nodes are node pairs such that the second node
   is the then child, else child, or next node in the collision list.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 double
@@ -2689,11 +2730,12 @@ Cudd_AverageDistance(
 } /* end of Cudd_AverageDistance */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Portable random number generator.]
+  \brief Portable random number generator.
 
-  Description [Portable number generator based on ran2 from "Numerical
+  \details [Portable number generator based on ran2 from "Numerical
   Recipes in C." It is a long period (> 2 * 10^18) random number generator
   of L'Ecuyer with Bays-Durham shuffle. Returns a long integer uniformly
   distributed between 0 and 2147483561 (inclusive of the endpoint values).
@@ -2701,9 +2743,9 @@ Cudd_AverageDistance(
   Cudd_Srandom. If no explicit initialization is performed, then the
   seed 1 is assumed.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Srandom]
+  \see Cudd_Srandom
 
 ******************************************************************************/
 long
@@ -2752,20 +2794,21 @@ Cudd_Random(void)
 } /* end of Cudd_Random */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializer for the portable random number generator.]
+  \brief Initializer for the portable random number generator.
 
-  Description [Initializer for the portable number generator based on
+  \details [Initializer for the portable number generator based on
   ran2 in "Numerical Recipes in C." The input is the seed for the
   generator. If it is negative, its absolute value is taken as seed.
   If it is 0, then 1 is taken as seed. The initialized sets up the two
   recurrences used to generate a long-period stream, and sets up the
   shuffle table.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Random]
+  \see Cudd_Random
 
 ******************************************************************************/
 void
@@ -2791,19 +2834,20 @@ Cudd_Srandom(
 } /* end of Cudd_Srandom */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the density of a BDD or ADD.]
+  \brief Computes the density of a BDD or ADD.
 
-  Description [Computes the density of a BDD or ADD. The density is
+  \details [Computes the density of a BDD or ADD. The density is
   the ratio of the number of minterms to the number of nodes. If 0 is
   passed as number of variables, the number of variables existing in
   the manager is used. Returns the density if successful; (double)
   CUDD_OUT_OF_MEM otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CountMinterm Cudd_DagSize]
+  \see Cudd_CountMinterm Cudd_DagSize
 
 ******************************************************************************/
 double
@@ -2826,19 +2870,20 @@ Cudd_Density(
 } /* end of Cudd_Density */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Warns that a memory allocation failed.]
+  \brief Warns that a memory allocation failed.
 
-  Description [Warns that a memory allocation failed.
+  \details [Warns that a memory allocation failed.
   This function can be used as replacement of MMout_of_memory to prevent
   the safe_mem functions of the util package from exiting when malloc
   returns NULL. One possible use is in case of discretionary allocations;
   for instance, the allocation of memory to enlarge the computed table.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -2857,17 +2902,18 @@ Cudd_OutOfMem(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Prints a DD to the standard output. One line per node is
   printed.]
 
-  Description [Prints a DD to the standard output. One line per node is
+  \details [Prints a DD to the standard output. One line per node is
   printed. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrintDebug]
+  \see Cudd_PrintDebug
 
 ******************************************************************************/
 int
@@ -2888,15 +2934,16 @@ cuddP(
 } /* end of cuddP */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Frees the memory used to store the minterm counts recorded
   in the visited table.]
 
-  Description [Frees the memory used to store the minterm counts
+  \details [Frees the memory used to store the minterm counts
   recorded in the visited table. Returns ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 enum st_retval
@@ -2914,19 +2961,20 @@ cuddStCountfree(
 } /* end of cuddStCountfree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Recursively collects all the nodes of a DD in a symbol
   table.]
 
-  Description [Traverses the DD f and collects all its nodes in a
+  \details [Traverses the DD f and collects all its nodes in a
   symbol table.  f is assumed to be a regular pointer and
   cuddCollectNodes guarantees this assumption in the recursive calls.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -2968,19 +3016,20 @@ cuddCollectNodes(
 } /* end of cuddCollectNodes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Recursively collects all the nodes of a DD in an array.]
+  \brief Recursively collects all the nodes of a DD in an array.
 
-  Description [Traverses the DD f and collects all its nodes in an array.
+  \details [Traverses the DD f and collects all its nodes in an array.
   The caller should free the array returned by cuddNodeArray.
   Returns a pointer to the array of nodes in case of success; NULL
   otherwise.  The nodes are collected in reverse topological order, so
   that a node is always preceded in the array by all its descendants.]
 
-  SideEffects [The number of nodes is returned as a side effect.]
+  \sideeffects The number of nodes is returned as a side effect.
 
-  SeeAlso     [Cudd_FirstNode]
+  \see Cudd_FirstNode
 
 ******************************************************************************/
 DdNodePtr *
@@ -3012,14 +3061,15 @@ cuddNodeArray(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of cuddP.]
+  \brief Performs the recursive step of cuddP.
 
-  Description [Performs the recursive step of cuddP. Returns 1 in case
+  \details [Performs the recursive step of cuddP. Returns 1 in case
   of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -3106,13 +3156,14 @@ dp2(
 } /* end of dp2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_PrintMinterm.]
+  \brief Performs the recursive step of Cudd_PrintMinterm.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -3159,14 +3210,15 @@ ddPrintMintermAux(
 } /* end of ddPrintMintermAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_DagSize.]
+  \brief Performs the recursive step of Cudd_DagSize.
 
-  Description [Performs the recursive step of Cudd_DagSize. Returns the
+  \details [Performs the recursive step of Cudd_DagSize. Returns the
   number of nodes in the graph rooted at n.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -3189,19 +3241,20 @@ ddDagInt(
 } /* end of ddDagInt */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of cuddNodeArray.]
+  \brief Performs the recursive step of cuddNodeArray.
 
-  Description [Performs the recursive step of cuddNodeArray.  Returns
+  \details [Performs the recursive step of cuddNodeArray.  Returns
   an the number of nodes in the DD.  Clear the least significant bit
   of the next field that was used as visited flag by
   cuddNodeArrayRecur when counting the nodes.  node is supposed to be
   regular; the invariant is maintained by this procedure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -3229,19 +3282,20 @@ cuddNodeArrayRecur(
 } /* end of cuddNodeArrayRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CofactorEstimate.]
+  \brief Performs the recursive step of Cudd_CofactorEstimate.
 
-  Description [Performs the recursive step of Cudd_CofactorEstimate.
+  \details [Performs the recursive step of Cudd_CofactorEstimate.
   Returns an estimate of the number of nodes in the DD of a
   cofactor of node. Uses the least significant bit of the next field as
   visited flag. node is supposed to be regular; the invariant is maintained
   by this procedure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -3332,16 +3386,17 @@ cuddEstimateCofactor(
 } /* end of cuddEstimateCofactor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks the unique table for the existence of an internal node.]
+  \brief Checks the unique table for the existence of an internal node.
 
-  Description [Checks the unique table for the existence of an internal
+  \details [Checks the unique table for the existence of an internal
   node. Returns a pointer to the node if it is in the table; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUniqueInter]
+  \see cuddUniqueInter
 
 ******************************************************************************/
 static DdNode *
@@ -3388,19 +3443,20 @@ cuddUniqueLookup(
 } /* end of cuddUniqueLookup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CofactorEstimateSimple.]
+  \brief Performs the recursive step of Cudd_CofactorEstimateSimple.
 
-  Description [Performs the recursive step of Cudd_CofactorEstimateSimple.
+  \details [Performs the recursive step of Cudd_CofactorEstimateSimple.
   Returns an estimate of the number of nodes in the DD of the positive
   cofactor of node. Uses the least significant bit of the next field as
   visited flag. node is supposed to be regular; the invariant is maintained
   by this procedure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -3425,11 +3481,12 @@ cuddEstimateCofactorSimple(
 } /* end of cuddEstimateCofactorSimple */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CountMinterm.]
+  \brief Performs the recursive step of Cudd_CountMinterm.
 
-  Description [Performs the recursive step of Cudd_CountMinterm.
+  \details [Performs the recursive step of Cudd_CountMinterm.
   It is based on the following identity. Let |f| be the
   number of minterms of f. Then:
   <xmp>
@@ -3440,7 +3497,7 @@ cuddEstimateCofactorSimple(
   roundoff.  Returns the number of minterms of the function rooted at
   node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static double
@@ -3499,11 +3556,12 @@ ddCountMintermAux(
 } /* end of ddCountMintermAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CountPath.]
+  \brief Performs the recursive step of Cudd_CountPath.
 
-  Description [Performs the recursive step of Cudd_CountPath.
+  \details [Performs the recursive step of Cudd_CountPath.
   It is based on the following identity. Let |f| be the
   number of paths of f. Then:
   <xmp>
@@ -3513,7 +3571,7 @@ ddCountMintermAux(
   identity |f'| = |f|, to improve the utilization of the (local) cache.
   Returns the number of paths of the function rooted at node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static double
@@ -3559,11 +3617,12 @@ ddCountPathAux(
 } /* end of ddCountPathAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_EpdCountMinterm.]
+  \brief Performs the recursive step of Cudd_EpdCountMinterm.
 
-  Description [Performs the recursive step of Cudd_EpdCountMinterm.
+  \details [Performs the recursive step of Cudd_EpdCountMinterm.
   It is based on the following identity. Let |f| be the
   number of minterms of f. Then:
   <xmp>
@@ -3574,7 +3633,7 @@ ddCountPathAux(
   roundoff.  Returns the number of minterms of the function rooted at
   node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -3633,11 +3692,12 @@ ddEpdCountMintermAux(
 } /* end of ddEpdCountMintermAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CountPathsToNonZero.]
+  \brief Performs the recursive step of Cudd_CountPathsToNonZero.
 
-  Description [Performs the recursive step of Cudd_CountPathsToNonZero.
+  \details [Performs the recursive step of Cudd_CountPathsToNonZero.
   It is based on the following identity. Let |f| be the
   number of paths of f. Then:
   <xmp>
@@ -3646,7 +3706,7 @@ ddEpdCountMintermAux(
   where f0 and f1 are the two cofactors of f.  Returns the number of
   paths of the function rooted at node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static double
@@ -3695,17 +3755,18 @@ ddCountPathsToNonZero(
 } /* end of ddCountPathsToNonZero */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_Support.]
+  \brief Performs the recursive step of Cudd_Support.
 
-  Description [Performs the recursive step of Cudd_Support. Performs a
+  \details [Performs the recursive step of Cudd_Support. Performs a
   DFS from f. The support is accumulated in supp as a side effect. Uses
   the LSB of the then pointer as visited flag.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [ddClearFlag]
+  \see ddClearFlag
 
 ******************************************************************************/
 static void
@@ -3725,16 +3786,17 @@ ddSupportStep(
 } /* end of ddSupportStep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Performs a DFS from f, clearing the LSB of the next
   pointers.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [ddSupportStep ddFindSupport ddLeavesInt ddDagInt]
+  \see ddSupportStep ddFindSupport ddLeavesInt ddDagInt
 
 ******************************************************************************/
 static void
@@ -3756,16 +3818,17 @@ ddClearFlag(
 } /* end of ddClearFlag */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CountLeaves.]
+  \brief Performs the recursive step of Cudd_CountLeaves.
 
-  Description [Performs the recursive step of Cudd_CountLeaves. Returns
+  \details [Performs the recursive step of Cudd_CountLeaves. Returns
   the number of leaves in the DD rooted at n.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CountLeaves]
+  \see Cudd_CountLeaves
 
 ******************************************************************************/
 static int
@@ -3788,16 +3851,17 @@ ddLeavesInt(
 } /* end of ddLeavesInt */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddPickArbitraryMinterms.]
+  \brief Performs the recursive step of Cudd_bddPickArbitraryMinterms.
 
-  Description [Performs the recursive step of Cudd_bddPickArbitraryMinterms.
+  \details [Performs the recursive step of Cudd_bddPickArbitraryMinterms.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso [Cudd_bddPickArbitraryMinterms]
+  \see Cudd_bddPickArbitraryMinterms
 
 ******************************************************************************/
 static int
@@ -3849,16 +3913,17 @@ ddPickArbitraryMinterms(
 } /* end of ddPickArbitraryMinterms */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds a representative cube of a BDD.]
+  \brief Finds a representative cube of a BDD.
 
-  Description [Finds a representative cube of a BDD with the weight of
+  \details [Finds a representative cube of a BDD with the weight of
   each variable. From the top variable, if the weight is greater than or
   equal to 0.0, choose THEN branch unless the child is the constant 0.
   Otherwise, choose ELSE branch unless the child is the constant 0.]
 
-  SideEffects [Cudd_SubsetWithMaskVars Cudd_bddPickOneCube]
+  \sideeffects Cudd_SubsetWithMaskVars Cudd_bddPickOneCube
 
 ******************************************************************************/
 static int
@@ -3913,15 +3978,16 @@ ddPickRepresentativeCube(
 } /* end of ddPickRepresentativeCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Frees the memory used to store the minterm counts recorded
   in the visited table.]
 
-  Description [Frees the memory used to store the minterm counts
+  \details [Frees the memory used to store the minterm counts
   recorded in the visited table. Returns ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static enum st_retval
@@ -3939,11 +4005,12 @@ ddEpdFree(
 } /* end of ddEpdFree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Recursively find the support of f.]
+  \brief Recursively find the support of f.
 
-  Description [Recursively find the support of f.  This function uses the
+  \details [Recursively find the support of f.  This function uses the
   LSB of the next field of the nodes of f as visited flag.  It also uses the
   LSB of the next field of the variables as flag to remember whether a
   certain index has already been seen.  Finally, it uses the manager stack
@@ -3985,13 +4052,14 @@ ddFindSupport(
 } /* end of ddFindSupport */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Clears visited flags for variables.]
+  \brief Clears visited flags for variables.
 
-  Description [Clears visited flags for variables.]
+  \details [Clears visited flags for variables.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -4010,14 +4078,15 @@ ddClearVars(
 } /* end of ddClearVars */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Compares indices for qsort.]
+  \brief Compares indices for qsort.
 
-  Description [Compares indices for qsort.  Subtracting these integers
+  \details [Compares indices for qsort.  Subtracting these integers
   cannot produce overflow, because they are non-negative.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int

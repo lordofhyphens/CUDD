@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSat.c]
+  \file cuddSat.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for the solution of satisfiability related problems.]
+  \brief Functions for the solution of satisfiability related problems.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_Eval()
 		<li> Cudd_ShortestPath()
@@ -36,7 +37,7 @@
                 <li> ddShortestPathUnate()
 		</ul>]
 
-  Author      [Seh-Woong Jeong, Fabio Somenzi]
+  \author Seh-Woong Jeong, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -140,19 +141,20 @@ static DdNode * ddGetLargestCubeUnate(DdManager *dd, DdNode *f, int *phases, st_
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the value of a DD for a given variable assignment.]
+  \brief Returns the value of a DD for a given variable assignment.
 
-  Description [Finds the value of a DD for a given variable
+  \details [Finds the value of a DD for a given variable
   assignment. The variable assignment is passed in an array of int's,
   that should specify a zero or a one for each variable in the support
   of the function. Returns a pointer to a constant node. No new nodes
   are produced.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLeq Cudd_addEvalConst]
+  \see Cudd_bddLeq Cudd_addEvalConst
 
 ******************************************************************************/
 DdNode *
@@ -180,11 +182,12 @@ Cudd_Eval(
 } /* end of Cudd_Eval */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds a shortest path in a DD.]
+  \brief Finds a shortest path in a DD.
 
-  Description [Finds a shortest path in a DD. f is the DD we want to
+  \details [Finds a shortest path in a DD. f is the DD we want to
   get the shortest path for; weight\[i\] is the weight of the THEN arc
   coming from the node whose index is i. If weight is NULL, then unit
   weights are assumed for all THEN arcs. All ELSE arcs have 0 weight.
@@ -196,7 +199,7 @@ Cudd_Eval(
   If support is NULL on entry, then Cudd_ShortestPath does not compute
   the true support info. length contains the length of the path.]
 
-  SeeAlso     [Cudd_ShortestLength Cudd_LargestCube]
+  \see Cudd_ShortestLength Cudd_LargestCube
 
 ******************************************************************************/
 DdNode *
@@ -267,11 +270,12 @@ Cudd_ShortestPath(
 } /* end of Cudd_ShortestPath */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds a largest cube in a DD.]
+  \brief Finds a largest cube in a DD.
 
-  Description [Finds a largest cube in a DD. f is the DD we want to
+  \details [Finds a largest cube in a DD. f is the DD we want to
   get the largest cube for. The problem is translated into the one of
   finding a shortest path in f, when both THEN and ELSE arcs are assumed to
   have unit length. This yields a largest cube in the disjoint cover
@@ -281,7 +285,7 @@ Cudd_ShortestPath(
   SideEffects [The number of literals of the cube is returned in the location
   pointed by length if it is non-null.]
 
-  SeeAlso     [Cudd_ShortestPath]
+  \see Cudd_ShortestPath
 
 ******************************************************************************/
 DdNode *
@@ -344,20 +348,21 @@ Cudd_LargestCube(
 } /* end of Cudd_LargestCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Find the length of the shortest path(s) in a DD.]
+  \brief Find the length of the shortest path(s) in a DD.
 
-  Description [Find the length of the shortest path(s) in a DD. f is
+  \details [Find the length of the shortest path(s) in a DD. f is
   the DD we want to get the shortest path for; weight\[i\] is the
   weight of the THEN edge coming from the node whose index is i. All
   ELSE edges have 0 weight. Returns the length of the shortest
   path(s) if such a path is found; a large number if the function is
   identically 0, and CUDD_OUT_OF_MEM in case of failure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ShortestPath]
+  \see Cudd_ShortestPath
 
 ******************************************************************************/
 int
@@ -405,19 +410,20 @@ Cudd_ShortestLength(
 } /* end of Cudd_ShortestLength */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Determines whether a BDD is negative unate in a
   variable.]
 
-  Description [Determines whether the function represented by BDD f is
+  \details [Determines whether the function represented by BDD f is
   negative unate (monotonic decreasing) in variable i. Returns the
   constant one is f is unate and the (logical) constant zero if it is not.
   This function does not generate any new nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Increasing]
+  \see Cudd_Increasing
 
 ******************************************************************************/
 DdNode *
@@ -485,19 +491,20 @@ Cudd_Decreasing(
 } /* end of Cudd_Decreasing */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Determines whether a BDD is positive unate in a
   variable.]
 
-  Description [Determines whether the function represented by BDD f is
+  \details [Determines whether the function represented by BDD f is
   positive unate (monotonic increasing) in variable i. It is based on
   Cudd_Decreasing and the fact that f is monotonic increasing in i if
   and only if its complement is monotonic decreasing in i.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Decreasing]
+  \see Cudd_Decreasing
 
 ******************************************************************************/
 DdNode *
@@ -511,18 +518,19 @@ Cudd_Increasing(
 } /* end of Cudd_Increasing */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tells whether F and G are identical wherever D is 0.]
+  \brief Tells whether F and G are identical wherever D is 0.
 
-  Description [Tells whether F and G are identical wherever D is 0.  F
+  \details [Tells whether F and G are identical wherever D is 0.  F
   and G are either two ADDs or two BDDs.  D is either a 0-1 ADD or a
   BDD.  The function returns 1 if F and G are equivalent, and 0
   otherwise.  No new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLeqUnless]
+  \see Cudd_bddLeqUnless
 
 ******************************************************************************/
 int
@@ -612,17 +620,18 @@ Cudd_EquivDC(
 } /* end of Cudd_EquivDC */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tells whether f is less than of equal to G unless D is 1.]
+  \brief Tells whether f is less than of equal to G unless D is 1.
 
-  Description [Tells whether f is less than of equal to G unless D is
+  \details [Tells whether f is less than of equal to G unless D is
   1.  f, g, and D are BDDs.  The function returns 1 if f is less than
   of equal to G, and 0 otherwise.  No new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_EquivDC Cudd_bddLeq Cudd_bddIteConstant]
+  \see Cudd_EquivDC Cudd_bddLeq Cudd_bddIteConstant
 
 ******************************************************************************/
 int
@@ -783,20 +792,21 @@ Cudd_bddLeqUnless(
 } /* end of Cudd_bddLeqUnless */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Compares two ADDs for equality within tolerance.]
+  \brief Compares two ADDs for equality within tolerance.
 
-  Description [Compares two ADDs for equality within tolerance. Two
+  \details [Compares two ADDs for equality within tolerance. Two
   ADDs are reported to be equal if the maximum difference between them
   (the sup norm of their difference) is less than or equal to the
   tolerance parameter. Returns 1 if the two ADDs are equal (within
   tolerance); 0 otherwise. If parameter <code>pr</code> is positive
   the first failure is reported to the standard output.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -854,17 +864,18 @@ Cudd_EqualSupNorm(
 } /* end of Cudd_EqualSupNorm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Expands cube to a prime implicant of f.]
+  \brief Expands cube to a prime implicant of f.
 
-  Description [Expands cube to a prime implicant of f. Returns the prime
+  \details [Expands cube to a prime implicant of f. Returns the prime
   if successful; NULL otherwise.  In particular, NULL is returned if cube
   is not a real cube or is not an implicant of f.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddMaximallyExpand]
+  \see Cudd_bddMaximallyExpand
 
 ******************************************************************************/
 DdNode *
@@ -886,20 +897,21 @@ Cudd_bddMakePrime(
 } /* end of Cudd_bddMakePrime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Expands lb to prime implicants of (f and ub).]
+  \brief Expands lb to prime implicants of (f and ub).
 
-  Description [Expands lb to all prime implicants of (f and ub) that contain lb.
+  \details [Expands lb to all prime implicants of (f and ub) that contain lb.
   Assumes that lb is contained in ub.  Returns the disjunction of the primes if
   lb is contained in f; returns the zero BDD if lb is not contained in f;
   returns NULL in case of failure.  In particular, NULL is returned if cube is
   not a real cube or is not an implicant of f.  Returning the disjunction of
   all prime implicants works because the resulting function is unate.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddMakePrime]
+  \see Cudd_bddMakePrime
 
 ******************************************************************************/
 DdNode *
@@ -922,19 +934,20 @@ Cudd_bddMaximallyExpand(
 } /* end of Cudd_bddMaximallyExpand */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Find a largest prime of a unate function.]
+  \brief Find a largest prime of a unate function.
 
-  Description [Find a largest prime implicant of a unate function.
+  \details [Find a largest prime implicant of a unate function.
   Returns the BDD for the prime if succesful; NULL otherwise.  The behavior
   is undefined if f is not unate.  The third argument is used to determine
   whether f is unate positive (increasing) or negative (decreasing)
   in each of the variables in its support.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddMaximallyExpand]
+  \see Cudd_bddMaximallyExpand
 
 ******************************************************************************/
 DdNode *
@@ -979,16 +992,17 @@ Cudd_bddLargestPrimeUnate(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddMakePrime.]
+  \brief Performs the recursive step of Cudd_bddMakePrime.
 
-  Description [Performs the recursive step of Cudd_bddMakePrime.
+  \details [Performs the recursive step of Cudd_bddMakePrime.
   Returns the prime if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -1046,14 +1060,15 @@ cuddBddMakePrime(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees the entries of the visited symbol table.]
+  \brief Frees the entries of the visited symbol table.
 
-  Description [Frees the entries of the visited symbol table. Returns
+  \details [Frees the entries of the visited symbol table. Returns
   ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static enum st_retval
@@ -1071,11 +1086,12 @@ freePathPair(
 } /* end of freePathPair */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the length of the shortest path(s) in a DD.]
+  \brief Finds the length of the shortest path(s) in a DD.
 
-  Description [Finds the length of the shortest path(s) in a DD.
+  \details [Finds the length of the shortest path(s) in a DD.
   Uses a local symbol table to store the lengths for each
   node. Only the lengths for the regular nodes are entered in the table,
   because those for the complement nodes are simply obtained by swapping
@@ -1084,9 +1100,9 @@ freePathPair(
   and the length of the shortest path to 0. This is done so as to take
   complement arcs into account.]
 
-  SideEffects [Accumulates the support of the DD in support.]
+  \sideeffects Accumulates the support of the DD in support.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static cuddPathPair
@@ -1167,11 +1183,12 @@ getShortest(
 } /* end of getShortest */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Build a BDD for a shortest path of f.]
+  \brief Build a BDD for a shortest path of f.
 
-  Description [Build a BDD for a shortest path of f.
+  \details [Build a BDD for a shortest path of f.
   Given the minimum length from the root, and the minimum
   lengths for each node (in visited), apply triangulation at each node.
   Of the two children of each node on a shortest path, at least one is
@@ -1180,9 +1197,9 @@ getShortest(
   Returns a pointer to the cube BDD representing the path if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1258,11 +1275,12 @@ getPath(
 } /* end of getPath */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the size of the largest cube(s) in a DD.]
+  \brief Finds the size of the largest cube(s) in a DD.
 
-  Description [Finds the size of the largest cube(s) in a DD.
+  \details [Finds the size of the largest cube(s) in a DD.
   This problem is translated into finding the shortest paths from a node
   when both THEN and ELSE arcs have unit lengths.
   Uses a local symbol table to store the lengths for each
@@ -1273,9 +1291,9 @@ getPath(
   and the length of the shortest path to 0. This is done so as to take
   complement arcs into account.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static cuddPathPair
@@ -1348,11 +1366,12 @@ getLargest(
 } /* end of getLargest */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Build a BDD for a largest cube of f.]
+  \brief Build a BDD for a largest cube of f.
 
-  Description [Build a BDD for a largest cube of f.
+  \details [Build a BDD for a largest cube of f.
   Given the minimum length from the root, and the minimum
   lengths for each node (in visited), apply triangulation at each node.
   Of the two children of each node on a shortest path, at least one is
@@ -1361,9 +1380,9 @@ getLargest(
   Returns a pointer to the cube BDD representing the path if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1438,18 +1457,19 @@ getCube(
 } /* end of getCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddMaximallyExpand.]
+  \brief Performs the recursive step of Cudd_bddMaximallyExpand.
 
-  Description [Performs the recursive step of Cudd_bddMaximallyExpand.
+  \details [Performs the recursive step of Cudd_bddMaximallyExpand.
   Returns set of primes or zero BDD if successful; NULL otherwise.  On entry
   to this function, ub and lb should be different from the zero BDD.  The
   function then maintains this invariant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1646,19 +1666,20 @@ ddBddMaximallyExpand(
 } /* end of ddBddMaximallyExpand */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs shortest path computation on a unate function.]
+  \brief Performs shortest path computation on a unate function.
 
-  Description [Performs shortest path computation on a unate function.
+  \details [Performs shortest path computation on a unate function.
   Returns the length of the shortest path to one if successful;
   CUDD_OUT_OF_MEM otherwise.  This function is based on the observation
   that in the BDD of a unate function no node except the constant is
   reachable from the root via paths of different parity.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [getShortest]
+  \see getShortest
 
 ******************************************************************************/
 static int
@@ -1701,16 +1722,17 @@ ddBddShortestPathUnate(
 } /* end of ddShortestPathUnate */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Extracts largest prime of a unate function.]
+  \brief Extracts largest prime of a unate function.
 
-  Description [Extracts largest prime of a unate function.  Returns the BDD of
+  \details [Extracts largest prime of a unate function.  Returns the BDD of
   the prime if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [getPath]
+  \see getPath
 
 ******************************************************************************/
 static DdNode *

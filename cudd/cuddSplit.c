@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSplit.c]
+  \file cuddSplit.c
 
   PackageName [cudd]
 
-  Synopsis    [Returns a subset of minterms from a boolean function.]
+  \brief Returns a subset of minterms from a boolean function.
 
-  Description [External functions included in this modoule:
+  \details [External functions included in this modoule:
 		<ul>
 		<li> Cudd_SplitSet()
 		</ul>
@@ -21,9 +22,9 @@
 		<li> bddAnnotateMintermCount()
 		</ul> ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Balakrishna Kumthekar]
+  \author Balakrishna Kumthekar
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -104,20 +105,21 @@ static double bddAnnotateMintermCount (DdManager *manager, DdNode *node, double 
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns m minterms from a BDD.]
+  \brief Returns m minterms from a BDD.
 
-  Description [Returns <code>m</code> minterms from a BDD whose
+  \details [Returns <code>m</code> minterms from a BDD whose
   support has <code>n</code> variables at most.  The procedure tries
   to create as few extra nodes as possible. The function represented
   by <code>S</code> depends on at most <code>n</code> of the variables
   in <code>xVars</code>. Returns a BDD with <code>m</code> minterms
   of the on-set of S if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -218,11 +220,12 @@ Cudd_SplitSet(
 /* Definition of internal functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_SplitSet.]
+  \brief Implements the recursive step of Cudd_SplitSet.
 
-  Description [Implements the recursive step of Cudd_SplitSet. The
+  \details [Implements the recursive step of Cudd_SplitSet. The
   procedure recursively traverses the BDD and checks to see if any
   node satisfies the minterm requirements as specified by 'n'. At any
   node X, n is compared to the number of minterms in the onset of X's
@@ -236,7 +239,7 @@ Cudd_SplitSet(
   SideEffects [The array 'varSeen' is updated at every recursive call
   to set the variables traversed by the procedure.]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode*
@@ -478,17 +481,18 @@ cuddSplitSetRecur(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [This function prepares an array of variables which have not been
   encountered so far when traversing the procedure cuddSplitSetRecur.]
 
-  Description [This function prepares an array of variables which have not been
+  \details [This function prepares an array of variables which have not been
   encountered so far when traversing the procedure cuddSplitSetRecur. This
   array is then used to extract the required number of minterms from a constant
   1. The algorithm guarantees that the size of BDD will be utmost \log(n).]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *
@@ -545,13 +549,14 @@ selectMintermsFromUniverse(
 } /* end of selectMintermsFromUniverse */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Recursive procedure to extract n mintems from constant 1.]
+  \brief Recursive procedure to extract n mintems from constant 1.
 
-  Description [Recursive procedure to extract n mintems from constant 1.]
+  \details [Recursive procedure to extract n mintems from constant 1.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *
@@ -614,15 +619,16 @@ mintermsFromUniverse(
 } /* end of mintermsFromUniverse */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Annotates every node in the BDD node with its minterm count.]
+  \brief Annotates every node in the BDD node with its minterm count.
 
-  Description [Annotates every node in the BDD node with its minterm count.
+  \details [Annotates every node in the BDD node with its minterm count.
   In this function, every node and the minterm count represented by it are
   stored in a hash table.]
 
-  SideEffects [Fills up 'table' with the pair <node,minterm_count>.]
+  \sideeffects Fills up 'table' with the pair <node,minterm_count>.
 
 ******************************************************************************/
 static double

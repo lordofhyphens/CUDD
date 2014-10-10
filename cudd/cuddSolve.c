@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSolve.c]
+  \file cuddSolve.c
 
   PackageName [cudd]
 
-  Synopsis    [Boolean equation solver and related functions.]
+  \brief Boolean equation solver and related functions.
 
-  Description [External functions included in this modoule:
+  \details [External functions included in this modoule:
 		<ul>
 		<li> Cudd_SolveEqn()
 		<li> Cudd_VerifySol()
@@ -17,9 +18,9 @@
 		<li> cuddVerifySol()
 		</ul> ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Balakrishna Kumthekar]
+  \author Balakrishna Kumthekar
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -101,11 +102,12 @@ static char rcsid[] DD_UNUSED = "$Id: cuddSolve.c,v 1.13 2012/02/05 01:07:19 fab
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the solution of F(x,y) = 0.]
+  \brief Implements the solution of F(x,y) = 0.
 
-  Description [Implements the solution for F(x,y) = 0. The return
+  \details [Implements the solution for F(x,y) = 0. The return
   value is the consistency condition. The y variables are the unknowns
   and the remaining variables are the parameters.  Returns the
   consistency condition if successful; NULL otherwise. Cudd_SolveEqn
@@ -115,7 +117,7 @@ static char rcsid[] DD_UNUSED = "$Id: cuddSolve.c,v 1.13 2012/02/05 01:07:19 fab
   SideEffects [The solution is returned in G; the indices of the y
   variables are returned in yIndex.]
 
-  SeeAlso     [Cudd_VerifySol]
+  \see Cudd_VerifySol
 
 ******************************************************************************/
 DdNode *
@@ -148,17 +150,18 @@ Cudd_SolveEqn(
 } /* end of Cudd_SolveEqn */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks the solution of F(x,y) = 0.]
+  \brief Checks the solution of F(x,y) = 0.
 
-  Description [Checks the solution of F(x,y) = 0. This procedure 
+  \details [Checks the solution of F(x,y) = 0. This procedure 
   substitutes the solution components for the unknowns of F and returns 
   the resulting BDD for F.] 
 
-  SideEffects [Frees the memory pointed by yIndex.]
+  \sideeffects Frees the memory pointed by yIndex.
 
-  SeeAlso     [Cudd_SolveEqn]
+  \see Cudd_SolveEqn
 
 ******************************************************************************/
 DdNode *
@@ -188,18 +191,19 @@ Cudd_VerifySol(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_SolveEqn.]
+  \brief Implements the recursive step of Cudd_SolveEqn.
 
-  Description [Implements the recursive step of Cudd_SolveEqn. 
+  \details [Implements the recursive step of Cudd_SolveEqn. 
   Returns NULL if the intermediate solution blows up
   or reordering occurs. The parametric solutions are
   stored in the array G.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_SolveEqn, Cudd_VerifySol]
+  \see Cudd_SolveEqn, Cudd_VerifySol
 
 ******************************************************************************/
 DdNode *
@@ -317,15 +321,16 @@ cuddSolveEqnRecur(
 } /* end of cuddSolveEqnRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_VerifySol. ]
+  \brief Implements the recursive step of Cudd_VerifySol. 
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_VerifySol]
+  \see Cudd_VerifySol
 
 ******************************************************************************/
 DdNode *

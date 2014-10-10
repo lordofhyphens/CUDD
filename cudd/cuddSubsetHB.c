@@ -1,6 +1,7 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSubsetHB.c]
+  \file cuddSubsetHB.c
 
   PackageName [cudd]
 
@@ -8,7 +9,7 @@
 	       branches.]
 
 
-  Description [External procedures provided by this module:
+  \details [External procedures provided by this module:
 		<ul>
 		<li> Cudd_SubsetHeavyBranch()
 		<li> Cudd_SupersetHeavyBranch()
@@ -30,9 +31,9 @@
 		</ul>
 		]
 
-  SeeAlso     [cuddSubsetSP.c]
+  \see cuddSubsetSP.c
 
-  Author      [Kavita Ravi]
+  \author Kavita Ravi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -176,12 +177,13 @@ static DdNode * BuildSubsetBdd (DdManager *dd, DdNode *node, int *size, st_table
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense subset from a BDD with the heavy branch
   heuristic.]
 
-  Description [Extracts a dense subset from a BDD. This procedure
+  \details [Extracts a dense subset from a BDD. This procedure
   builds a subset by throwing away one of the children of each node,
   starting from the root, until the result is small enough. The child
   that is eliminated from the result is the one that contributes the
@@ -196,9 +198,9 @@ static DdNode * BuildSubsetBdd (DdManager *dd, DdNode *node, int *size, st_table
   procedure will compute a value which will avoid overflow but will
   cause underflow with 2046 variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths Cudd_SupersetHeavyBranch Cudd_ReadSize]
+  \see Cudd_SubsetShortPaths Cudd_SupersetHeavyBranch Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -221,12 +223,13 @@ Cudd_SubsetHeavyBranch(
 } /* end of Cudd_SubsetHeavyBranch */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense superset from a BDD with the heavy branch
   heuristic.]
 
-  Description [Extracts a dense superset from a BDD. The procedure is
+  \details [Extracts a dense superset from a BDD. The procedure is
   identical to the subset procedure except for the fact that it
   receives the complement of the given function. Extracting the subset
   of the complement function is equivalent to extracting the superset
@@ -246,9 +249,9 @@ Cudd_SubsetHeavyBranch(
   the procedure will compute a value which will avoid overflow but
   will cause underflow with 2046 variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize]
+  \see Cudd_SubsetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -277,12 +280,13 @@ Cudd_SupersetHeavyBranch(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [The main procedure that returns a subset by choosing the heavier
   branch in the BDD.]
 
-  Description [Here a subset BDD is built by throwing away one of the
+  \details [Here a subset BDD is built by throwing away one of the
   children. Starting at root, annotate each node with the number of
   minterms (in terms of the total number of variables specified -
   numVars), number of nodes taken by the DAG rooted at this node and
@@ -292,9 +296,9 @@ Cudd_SupersetHeavyBranch(
   threshold is reached the subset is returned to the calling
   procedure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetHeavyBranch]
+  \see Cudd_SubsetHeavyBranch
 
 ******************************************************************************/
 DdNode *
@@ -452,18 +456,19 @@ cuddSubsetHeavyBranch(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resize the number of pages allocated to store the node data.]
+  \brief Resize the number of pages allocated to store the node data.
 
-  Description [Resize the number of pages allocated to store the node data
+  \details [Resize the number of pages allocated to store the node data
   The procedure  moves the counter to the next page when the end of
   the page is reached and allocates new pages when necessary.]
 
   SideEffects [Changes the size of pages, page, page index, maximum
   number of pages freeing stuff in case of memory out. ]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -510,19 +515,20 @@ ResizeNodeDataPages(void)
 } /* end of ResizeNodeDataPages */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Resize the number of pages allocated to store the minterm
   counts. ]
 
-  Description [Resize the number of pages allocated to store the minterm
+  \details [Resize the number of pages allocated to store the minterm
   counts.  The procedure  moves the counter to the next page when the
   end of the page is reached and allocates new pages when necessary.]
 
   SideEffects [Changes the size of minterm pages, page, page index, maximum
   number of pages freeing stuff in case of memory out. ]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -568,18 +574,19 @@ ResizeCountMintermPages(void)
 } /* end of ResizeCountMintermPages */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resize the number of pages allocated to store the node counts.]
+  \brief Resize the number of pages allocated to store the node counts.
 
-  Description [Resize the number of pages allocated to store the node counts.
+  \details [Resize the number of pages allocated to store the node counts.
   The procedure  moves the counter to the next page when the end of
   the page is reached and allocates new pages when necessary.]
 
   SideEffects [Changes the size of pages, page, page index, maximum
   number of pages freeing stuff in case of memory out.]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -656,20 +663,21 @@ ResizeCountNodePages(void)
 } /* end of ResizeCountNodePages */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Recursively counts minterms of each node in the DAG.]
+  \brief Recursively counts minterms of each node in the DAG.
 
-  Description [Recursively counts minterms of each node in the DAG.
+  \details [Recursively counts minterms of each node in the DAG.
   Similar to the cuddCountMintermAux which recursively counts the
   number of minterms for the dag rooted at each node in terms of the
   total number of variables (max). This procedure creates the node
   data structure and stores the minterm count as part of the node
   data structure. ]
 
-  SideEffects [Creates structures of type node quality and fills the st_table]
+  \sideeffects Creates structures of type node quality and fills the st_table
 
-  SeeAlso     [SubsetCountMinterm]
+  \see SubsetCountMinterm
 
 ******************************************************************************/
 static double
@@ -770,17 +778,18 @@ SubsetCountMintermAux(
 } /* end of SubsetCountMintermAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts minterms of each node in the DAG]
+  \brief Counts minterms of each node in the DAG
 
-  Description [Counts minterms of each node in the DAG. Similar to the
+  \details [Counts minterms of each node in the DAG. Similar to the
   Cudd_CountMinterm procedure except this returns the minterm count for
   all the nodes in the bdd in an st_table.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [SubsetCountMintermAux]
+  \see SubsetCountMintermAux
 
 ******************************************************************************/
 static st_table *
@@ -845,13 +854,14 @@ OUT_OF_MEM:
 } /* end of SubsetCountMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Recursively counts the number of nodes under the dag.
   Also counts the number of nodes under the lighter child of
   this node.]
 
-  Description [Recursively counts the number of nodes under the dag.
+  \details [Recursively counts the number of nodes under the dag.
   Also counts the number of nodes under the lighter child of
   this node. . Note that the same dag may be the lighter child of two
   different nodes and have different counts. As with the minterm counts,
@@ -859,9 +869,9 @@ OUT_OF_MEM:
   address for these node counts are stored in an st_table associated
   to each node. ]
 
-  SideEffects [Updates the node data table with node counts]
+  \sideeffects Updates the node data table with node counts
 
-  SeeAlso     [SubsetCountNodes]
+  \see SubsetCountNodes
 
 ******************************************************************************/
 static int
@@ -1014,18 +1024,19 @@ SubsetCountNodesAux(
 } /*end of SubsetCountNodesAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the nodes under the current node and its lighter child]
+  \brief Counts the nodes under the current node and its lighter child
 
-  Description [Counts the nodes under the current node and its lighter
+  \details [Counts the nodes under the current node and its lighter
   child. Calls a recursive procedure to count the number of nodes of
   a DAG rooted at a particular node and the number of nodes taken by its
   lighter child.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [SubsetCountNodesAux]
+  \see SubsetCountNodesAux
 
 ******************************************************************************/
 static int
@@ -1094,15 +1105,16 @@ OUT_OF_MEM:
 } /* end of SubsetCountNodes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Procedure to recursively store nodes that are retained in the subset.]
+  \brief Procedure to recursively store nodes that are retained in the subset.
 
-  Description [rocedure to recursively store nodes that are retained in the subset.]
+  \details [rocedure to recursively store nodes that are retained in the subset.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [StoreNodes]
+  \see StoreNodes
 
 ******************************************************************************/
 static void
@@ -1134,20 +1146,21 @@ StoreNodes(
 }
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the subset BDD using the heavy branch method.]
+  \brief Builds the subset BDD using the heavy branch method.
 
-  Description [The procedure carries out the building of the subset BDD
+  \details [The procedure carries out the building of the subset BDD
   starting at the root. Using the three different counts labelling each node,
   the procedure chooses the heavier branch starting from the root and keeps
   track of the number of nodes it discards at each step, thus keeping count
   of the size of the subset BDD dynamically. Once the threshold is satisfied,
   the procedure then calls ITE to build the BDD.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *

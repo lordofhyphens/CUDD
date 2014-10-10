@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAPI.c]
+  \file cuddAPI.c
 
   PackageName [cudd]
 
-  Synopsis    [Application interface functions.]
+  \brief Application interface functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addNewVar()
 		<li> Cudd_addNewVarAtLevel()
@@ -171,9 +172,9 @@
 		<li> fixVarTree()
 		</ul>]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -253,19 +254,20 @@ static int addMultiplicityGroups (DdManager *dd, MtrNode *treenode, int multipli
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns a new ADD variable.]
+  \brief Returns a new ADD variable.
 
-  Description [Creates a new ADD variable.  The new variable has an
+  \details [Creates a new ADD variable.  The new variable has an
   index equal to the largest previous index plus 1.  Returns a
   pointer to the new variable if successful; NULL otherwise.
   An ADD variable differs from a BDD variable because it points to the
   arithmetic zero, instead of having a complement pointer to 1. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddNewVar Cudd_addIthVar Cudd_addConst
+  \see     [Cudd_bddNewVar Cudd_addIthVar Cudd_addConst
   Cudd_addNewVarAtLevel]
 
 ******************************************************************************/
@@ -286,18 +288,19 @@ Cudd_addNewVar(
 } /* end of Cudd_addNewVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns a new ADD variable at a specified level.]
+  \brief Returns a new ADD variable at a specified level.
 
-  Description [Creates a new ADD variable.  The new variable has an
+  \details [Creates a new ADD variable.  The new variable has an
   index equal to the largest previous index plus 1 and is positioned at
   the specified level in the order.  Returns a pointer to the new
   variable if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNewVar Cudd_addIthVar Cudd_bddNewVarAtLevel]
+  \see Cudd_addNewVar Cudd_addIthVar Cudd_bddNewVarAtLevel
 
 ******************************************************************************/
 DdNode *
@@ -320,17 +323,18 @@ Cudd_addNewVarAtLevel(
 } /* end of Cudd_addNewVarAtLevel */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns a new BDD variable.]
+  \brief Returns a new BDD variable.
 
-  Description [Creates a new BDD variable.  The new variable has an
+  \details [Creates a new BDD variable.  The new variable has an
   index equal to the largest previous index plus 1.  Returns a
   pointer to the new variable if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNewVar Cudd_bddIthVar Cudd_bddNewVarAtLevel]
+  \see Cudd_addNewVar Cudd_bddIthVar Cudd_bddNewVarAtLevel
 
 ******************************************************************************/
 DdNode *
@@ -347,18 +351,19 @@ Cudd_bddNewVar(
 } /* end of Cudd_bddNewVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns a new BDD variable at a specified level.]
+  \brief Returns a new BDD variable at a specified level.
 
-  Description [Creates a new BDD variable.  The new variable has an
+  \details [Creates a new BDD variable.  The new variable has an
   index equal to the largest previous index plus 1 and is positioned at
   the specified level in the order.  Returns a pointer to the new
   variable if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddNewVar Cudd_bddIthVar Cudd_addNewVarAtLevel]
+  \see Cudd_bddNewVar Cudd_bddIthVar Cudd_addNewVarAtLevel
 
 ******************************************************************************/
 DdNode *
@@ -378,19 +383,20 @@ Cudd_bddNewVarAtLevel(
 } /* end of Cudd_bddNewVarAtLevel */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the ADD variable with index i.]
+  \brief Returns the ADD variable with index i.
 
-  Description [Retrieves the ADD variable with index i if it already
+  \details [Retrieves the ADD variable with index i if it already
   exists, or creates a new ADD variable.  Returns a pointer to the
   variable if successful; NULL otherwise.  An ADD variable differs from
   a BDD variable because it points to the arithmetic zero, instead of
   having a complement pointer to 1. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNewVar Cudd_bddIthVar Cudd_addConst
+  \see     [Cudd_addNewVar Cudd_bddIthVar Cudd_addConst
   Cudd_addNewVarAtLevel]
 
 ******************************************************************************/
@@ -412,17 +418,18 @@ Cudd_addIthVar(
 } /* end of Cudd_addIthVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the BDD variable with index i.]
+  \brief Returns the BDD variable with index i.
 
-  Description [Retrieves the BDD variable with index i if it already
+  \details [Retrieves the BDD variable with index i if it already
   exists, or creates a new BDD variable.  Returns a pointer to the
   variable if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddNewVar Cudd_addIthVar Cudd_bddNewVarAtLevel
+  \see     [Cudd_bddNewVar Cudd_addIthVar Cudd_bddNewVarAtLevel
   Cudd_ReadVars]
 
 ******************************************************************************/
@@ -445,17 +452,18 @@ Cudd_bddIthVar(
 } /* end of Cudd_bddIthVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the ZDD variable with index i.]
+  \brief Returns the ZDD variable with index i.
 
-  Description [Retrieves the ZDD variable with index i if it already
+  \details [Retrieves the ZDD variable with index i if it already
   exists, or creates a new ZDD variable.  Returns a pointer to the
   variable if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIthVar Cudd_addIthVar]
+  \see Cudd_bddIthVar Cudd_addIthVar
 
 ******************************************************************************/
 DdNode *
@@ -507,11 +515,12 @@ Cudd_zddIthVar(
 } /* end of Cudd_zddIthVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Creates one or more ZDD variables for each BDD variable.]
+  \brief Creates one or more ZDD variables for each BDD variable.
 
-  Description [Creates one or more ZDD variables for each BDD
+  \details [Creates one or more ZDD variables for each BDD
   variable.  If some ZDD variables already exist, only the missing
   variables are created.  Parameter multiplicity allows the caller to
   control how many variables are created for each BDD variable in
@@ -524,9 +533,9 @@ Cudd_zddIthVar(
   variable are merged in a ZDD variable group. If a ZDD variable group
   tree exists, it is freed. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddNewVar Cudd_bddIthVar Cudd_bddNewVarAtLevel]
+  \see Cudd_bddNewVar Cudd_bddIthVar Cudd_bddNewVarAtLevel
 
 ******************************************************************************/
 int
@@ -617,17 +626,18 @@ Cudd_zddVarsFromBddVars(
 } /* end of Cudd_zddVarsFromBddVars */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the ADD for constant c.]
+  \brief Returns the ADD for constant c.
 
-  Description [Retrieves the ADD for constant c if it already
+  \details [Retrieves the ADD for constant c if it already
   exists, or creates a new ADD.  Returns a pointer to the
   ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNewVar Cudd_addIthVar]
+  \see Cudd_addNewVar Cudd_addIthVar
 
 ******************************************************************************/
 DdNode *
@@ -640,18 +650,19 @@ Cudd_addConst(
 } /* end of Cudd_addConst */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns 1 if a DD node is not constant.]
+  \brief Returns 1 if a DD node is not constant.
 
-  Description [Returns 1 if a DD node is not constant. This function is
+  \details [Returns 1 if a DD node is not constant. This function is
   useful to test the results of Cudd_bddIteConstant, Cudd_addIteConstant,
   Cudd_addEvalConst. These results may be a special value signifying
   non-constant. In the other cases the macro Cudd_IsConstant can be used.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_IsConstant Cudd_bddIteConstant Cudd_addIteConstant
+  \see     [Cudd_IsConstant Cudd_bddIteConstant Cudd_addIteConstant
   Cudd_addEvalConst]
 
 ******************************************************************************/
@@ -664,17 +675,18 @@ Cudd_IsNonConstant(
 } /* end of Cudd_IsNonConstant */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the start time of the manager.]
+  \brief Returns the start time of the manager.
 
-  Description [Returns the start time of the manager.  This is initially set
+  \details [Returns the start time of the manager.  This is initially set
   to the number of milliseconds since the program started, but may be reset by
   the application.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetStartTime Cudd_ResetStartTime Cudd_ReadTimeLimit]
+  \see Cudd_SetStartTime Cudd_ResetStartTime Cudd_ReadTimeLimit
 
 ******************************************************************************/
 unsigned long
@@ -686,15 +698,16 @@ Cudd_ReadStartTime(
 } /* end of Cudd_ReadStartTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the time elapsed since the start time of the manager.]
+  \brief Returns the time elapsed since the start time of the manager.
 
-  Description [Returns the time elapsed since the start time of the manager.]
+  \details [Returns the time elapsed since the start time of the manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadStartTime Cudd_SetStartTime]
+  \see Cudd_ReadStartTime Cudd_SetStartTime
 
 ******************************************************************************/
 unsigned long
@@ -706,15 +719,16 @@ Cudd_ReadElapsedTime(
 } /* end of Cudd_ReadElapsedTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the start time of the manager.]
+  \brief Sets the start time of the manager.
 
-  Description [Sets the start time of the manager.]
+  \details [Sets the start time of the manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadStartTime Cudd_ResetStartTime Cudd_ReadElapsedTime
+  \see     [Cudd_ReadStartTime Cudd_ResetStartTime Cudd_ReadElapsedTime
   Cudd_SetTimeLimit]
 
 ******************************************************************************/
@@ -728,15 +742,16 @@ Cudd_SetStartTime(
 } /* end of Cudd_SetStartTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resets the start time of the manager.]
+  \brief Resets the start time of the manager.
 
-  Description [Resets the start time of the manager.]
+  \details [Resets the start time of the manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadStartTime Cudd_SetStartTime Cudd_SetTimeLimit]
+  \see Cudd_ReadStartTime Cudd_SetStartTime Cudd_SetTimeLimit
 
 ******************************************************************************/
 void
@@ -748,16 +763,17 @@ Cudd_ResetStartTime(
 } /* end of Cudd_ResetStartTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the time limit for the manager.]
+  \brief Returns the time limit for the manager.
 
-  Description [Returns the time limit for the manager.  This is initially set
+  \details [Returns the time limit for the manager.  This is initially set
   to a very large number, but may be reset by the application.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetTimeLimit Cudd_UpdateTimeLimit Cudd_UnsetTimeLimit
+  \see     [Cudd_SetTimeLimit Cudd_UpdateTimeLimit Cudd_UnsetTimeLimit
   Cudd_IncreaseTimeLimit Cudd_TimeLimited Cudd_ReadStartTime]
 
 ******************************************************************************/
@@ -770,15 +786,16 @@ Cudd_ReadTimeLimit(
 } /* end of Cudd_ReadTimeLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the time limit for the manager.]
+  \brief Sets the time limit for the manager.
 
-  Description [Sets the time limit for the manager.]
+  \details [Sets the time limit for the manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadTimeLimit Cudd_UnsetTimeLimit Cudd_UpdateTimeLimit
+  \see     [Cudd_ReadTimeLimit Cudd_UnsetTimeLimit Cudd_UpdateTimeLimit
   Cudd_IncreaseTimeLimit Cudd_TimeLimited Cudd_SetStartTime]
 
 ******************************************************************************/
@@ -792,16 +809,17 @@ Cudd_SetTimeLimit(
 } /* end of Cudd_SetTimeLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Updates the time limit for the manager.]
+  \brief Updates the time limit for the manager.
 
-  Description [Updates the time limit for the manager by subtracting the
+  \details [Updates the time limit for the manager by subtracting the
   elapsed time from it.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UnsetTimeLimit
+  \see     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UnsetTimeLimit
   Cudd_IncreaseTimeLimit Cudd_TimeLimited Cudd_SetStartTime]
 
 ******************************************************************************/
@@ -822,15 +840,16 @@ Cudd_UpdateTimeLimit(
 } /* end of Cudd_UpdateTimeLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Increases the time limit for the manager.]
+  \brief Increases the time limit for the manager.
 
-  Description [Increases the time limit for the manager.]
+  \details [Increases the time limit for the manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UnsetTimeLimit
+  \see     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UnsetTimeLimit
   Cudd_UpdateTimeLimit Cudd_TimeLimited Cudd_SetStartTime]
 
 ******************************************************************************/
@@ -847,16 +866,17 @@ Cudd_IncreaseTimeLimit(
 } /* end of Cudd_IncreaseTimeLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Unsets the time limit for the manager.]
+  \brief Unsets the time limit for the manager.
 
-  Description [Unsets the time limit for the manager.  Actually, sets it to
+  \details [Unsets the time limit for the manager.  Actually, sets it to
   a very large value.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UpdateTimeLimit
+  \see     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UpdateTimeLimit
   Cudd_IncreaseTimeLimit Cudd_TimeLimited Cudd_SetStartTime]
 
 ******************************************************************************/
@@ -869,15 +889,16 @@ Cudd_UnsetTimeLimit(
 } /* end of Cudd_UnsetTimeLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns true if the time limit for the manager is set.]
+  \brief Returns true if the time limit for the manager is set.
 
-  Description [Returns true if the time limit for the manager is set.]
+  \details [Returns true if the time limit for the manager is set.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UpdateTimeLimit
+  \see     [Cudd_ReadTimeLimit Cudd_SetTimeLimit Cudd_UpdateTimeLimit
   Cudd_UnsetTimeLimit Cudd_IncreaseTimeLimit]
 
 ******************************************************************************/
@@ -890,18 +911,19 @@ Cudd_TimeLimited(
 } /* end of Cudd_TimeLimited */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables automatic dynamic reordering of BDDs and ADDs.]
+  \brief Enables automatic dynamic reordering of BDDs and ADDs.
 
-  Description [Enables automatic dynamic reordering of BDDs and
+  \details [Enables automatic dynamic reordering of BDDs and
   ADDs. Parameter method is used to determine the method used for
   reordering. If CUDD_REORDER_SAME is passed, the method is
   unchanged.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AutodynDisable Cudd_ReorderingStatus
+  \see     [Cudd_AutodynDisable Cudd_ReorderingStatus
   Cudd_AutodynEnableZdd]
 
 ******************************************************************************/
@@ -932,15 +954,16 @@ Cudd_AutodynEnable(
 } /* end of Cudd_AutodynEnable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables automatic dynamic reordering.]
+  \brief Disables automatic dynamic reordering.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AutodynEnable Cudd_ReorderingStatus
+  \see     [Cudd_AutodynEnable Cudd_ReorderingStatus
   Cudd_AutodynDisableZdd]
 
 ******************************************************************************/
@@ -954,12 +977,13 @@ Cudd_AutodynDisable(
 } /* end of Cudd_AutodynDisable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reports the status of automatic dynamic reordering of BDDs
   and ADDs.]
 
-  Description [Reports the status of automatic dynamic reordering of
+  \details [Reports the status of automatic dynamic reordering of
   BDDs and ADDs. Parameter method is set to the reordering method
   currently selected. Returns 1 if automatic reordering is enabled; 0
   otherwise.]
@@ -967,7 +991,7 @@ Cudd_AutodynDisable(
   SideEffects [Parameter method is set to the reordering method currently
   selected.]
 
-  SeeAlso     [Cudd_AutodynEnable Cudd_AutodynDisable
+  \see     [Cudd_AutodynEnable Cudd_AutodynDisable
   Cudd_ReorderingStatusZdd]
 
 ******************************************************************************/
@@ -982,17 +1006,18 @@ Cudd_ReorderingStatus(
 } /* end of Cudd_ReorderingStatus */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables automatic dynamic reordering of ZDDs.]
+  \brief Enables automatic dynamic reordering of ZDDs.
 
-  Description [Enables automatic dynamic reordering of ZDDs. Parameter
+  \details [Enables automatic dynamic reordering of ZDDs. Parameter
   method is used to determine the method used for reordering ZDDs. If
   CUDD_REORDER_SAME is passed, the method is unchanged.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AutodynDisableZdd Cudd_ReorderingStatusZdd
+  \see     [Cudd_AutodynDisableZdd Cudd_ReorderingStatusZdd
   Cudd_AutodynEnable]
 
 ******************************************************************************/
@@ -1010,15 +1035,16 @@ Cudd_AutodynEnableZdd(
 } /* end of Cudd_AutodynEnableZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables automatic dynamic reordering of ZDDs.]
+  \brief Disables automatic dynamic reordering of ZDDs.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AutodynEnableZdd Cudd_ReorderingStatusZdd
+  \see     [Cudd_AutodynEnableZdd Cudd_ReorderingStatusZdd
   Cudd_AutodynDisable]
 
 ******************************************************************************/
@@ -1032,11 +1058,12 @@ Cudd_AutodynDisableZdd(
 } /* end of Cudd_AutodynDisableZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports the status of automatic dynamic reordering of ZDDs.]
+  \brief Reports the status of automatic dynamic reordering of ZDDs.
 
-  Description [Reports the status of automatic dynamic reordering of
+  \details [Reports the status of automatic dynamic reordering of
   ZDDs. Parameter method is set to the ZDD reordering method currently
   selected. Returns 1 if automatic reordering is enabled; 0
   otherwise.]
@@ -1044,7 +1071,7 @@ Cudd_AutodynDisableZdd(
   SideEffects [Parameter method is set to the ZDD reordering method currently
   selected.]
 
-  SeeAlso     [Cudd_AutodynEnableZdd Cudd_AutodynDisableZdd
+  \see     [Cudd_AutodynEnableZdd Cudd_AutodynDisableZdd
   Cudd_ReorderingStatus]
 
 ******************************************************************************/
@@ -1059,17 +1086,18 @@ Cudd_ReorderingStatusZdd(
 } /* end of Cudd_ReorderingStatusZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Tells whether the realignment of ZDD order to BDD order is
   enabled.]
 
-  Description [Returns 1 if the realignment of ZDD order to BDD order is
+  \details [Returns 1 if the realignment of ZDD order to BDD order is
   enabled; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddRealignEnable Cudd_zddRealignDisable
+  \see     [Cudd_zddRealignEnable Cudd_zddRealignDisable
   Cudd_bddRealignEnable Cudd_bddRealignDisable]
 
 ******************************************************************************/
@@ -1082,11 +1110,12 @@ Cudd_zddRealignmentEnabled(
 } /* end of Cudd_zddRealignmentEnabled */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables realignment of ZDD order to BDD order.]
+  \brief Enables realignment of ZDD order to BDD order.
 
-  Description [Enables realignment of the ZDD variable order to the
+  \details [Enables realignment of the ZDD variable order to the
   BDD variable order after the BDDs and ADDs have been reordered.  The
   number of ZDD variables must be a multiple of the number of BDD
   variables for realignment to make sense. If this condition is not met,
@@ -1096,9 +1125,9 @@ Cudd_zddRealignmentEnabled(
   reagarded as corresponding to BDD variable <code>i</code>. Realignment
   is initially disabled.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReduceHeap Cudd_zddRealignDisable
+  \see     [Cudd_ReduceHeap Cudd_zddRealignDisable
   Cudd_zddRealignmentEnabled Cudd_bddRealignDisable
   Cudd_bddRealignmentEnabled]
 
@@ -1113,15 +1142,16 @@ Cudd_zddRealignEnable(
 } /* end of Cudd_zddRealignEnable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables realignment of ZDD order to BDD order.]
+  \brief Disables realignment of ZDD order to BDD order.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddRealignEnable Cudd_zddRealignmentEnabled
+  \see     [Cudd_zddRealignEnable Cudd_zddRealignmentEnabled
   Cudd_bddRealignEnable Cudd_bddRealignmentEnabled]
 
 ******************************************************************************/
@@ -1135,17 +1165,18 @@ Cudd_zddRealignDisable(
 } /* end of Cudd_zddRealignDisable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Tells whether the realignment of BDD order to ZDD order is
   enabled.]
 
-  Description [Returns 1 if the realignment of BDD order to ZDD order is
+  \details [Returns 1 if the realignment of BDD order to ZDD order is
   enabled; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRealignEnable Cudd_bddRealignDisable
+  \see     [Cudd_bddRealignEnable Cudd_bddRealignDisable
   Cudd_zddRealignEnable Cudd_zddRealignDisable]
 
 ******************************************************************************/
@@ -1158,11 +1189,12 @@ Cudd_bddRealignmentEnabled(
 } /* end of Cudd_bddRealignmentEnabled */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables realignment of BDD order to ZDD order.]
+  \brief Enables realignment of BDD order to ZDD order.
 
-  Description [Enables realignment of the BDD variable order to the
+  \details [Enables realignment of the BDD variable order to the
   ZDD variable order after the ZDDs have been reordered.  The
   number of ZDD variables must be a multiple of the number of BDD
   variables for realignment to make sense. If this condition is not met,
@@ -1172,9 +1204,9 @@ Cudd_bddRealignmentEnabled(
   reagarded as corresponding to BDD variable <code>i</code>. Realignment
   is initially disabled.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddReduceHeap Cudd_bddRealignDisable
+  \see     [Cudd_zddReduceHeap Cudd_bddRealignDisable
   Cudd_bddRealignmentEnabled Cudd_zddRealignDisable
   Cudd_zddRealignmentEnabled]
 
@@ -1189,15 +1221,16 @@ Cudd_bddRealignEnable(
 } /* end of Cudd_bddRealignEnable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables realignment of ZDD order to BDD order.]
+  \brief Disables realignment of ZDD order to BDD order.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddRealignEnable Cudd_bddRealignmentEnabled
+  \see     [Cudd_bddRealignEnable Cudd_bddRealignmentEnabled
   Cudd_zddRealignEnable Cudd_zddRealignmentEnabled]
 
 ******************************************************************************/
@@ -1211,16 +1244,17 @@ Cudd_bddRealignDisable(
 } /* end of Cudd_bddRealignDisable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the one constant of the manager.]
+  \brief Returns the one constant of the manager.
 
-  Description [Returns the one constant of the manager. The one
+  \details [Returns the one constant of the manager. The one
   constant is common to ADDs and BDDs.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadZero Cudd_ReadLogicZero Cudd_ReadZddOne]
+  \see Cudd_ReadZero Cudd_ReadLogicZero Cudd_ReadZddOne
 
 ******************************************************************************/
 DdNode *
@@ -1232,18 +1266,19 @@ Cudd_ReadOne(
 } /* end of Cudd_ReadOne */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the ZDD for the constant 1 function.]
+  \brief Returns the ZDD for the constant 1 function.
 
-  Description [Returns the ZDD for the constant 1 function.
+  \details [Returns the ZDD for the constant 1 function.
   The representation of the constant 1 function as a ZDD depends on
   how many variables it (nominally) depends on. The index of the
   topmost variable in the support is given as argument <code>i</code>.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadOne]
+  \see Cudd_ReadOne
 
 ******************************************************************************/
 DdNode *
@@ -1259,17 +1294,18 @@ Cudd_ReadZddOne(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the zero constant of the manager.]
+  \brief Returns the zero constant of the manager.
 
-  Description [Returns the zero constant of the manager. The zero
+  \details [Returns the zero constant of the manager. The zero
   constant is the arithmetic zero, rather than the logic zero. The
   latter is the complement of the one constant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadOne Cudd_ReadLogicZero]
+  \see Cudd_ReadOne Cudd_ReadLogicZero
 
 ******************************************************************************/
 DdNode *
@@ -1281,17 +1317,18 @@ Cudd_ReadZero(
 } /* end of Cudd_ReadZero */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the logic zero constant of the manager.]
+  \brief Returns the logic zero constant of the manager.
 
-  Description [Returns the zero constant of the manager. The logic zero
+  \details [Returns the zero constant of the manager. The logic zero
   constant is the complement of the one constant, and is distinct from
   the arithmetic zero.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadOne Cudd_ReadZero]
+  \see Cudd_ReadOne Cudd_ReadZero
 
 ******************************************************************************/
 DdNode *
@@ -1303,13 +1340,14 @@ Cudd_ReadLogicZero(
 } /* end of Cudd_ReadLogicZero */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the plus-infinity constant from the manager.]
+  \brief Reads the plus-infinity constant from the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -1321,13 +1359,14 @@ Cudd_ReadPlusInfinity(
 } /* end of Cudd_ReadPlusInfinity */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the minus-infinity constant from the manager.]
+  \brief Reads the minus-infinity constant from the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -1339,13 +1378,14 @@ Cudd_ReadMinusInfinity(
 } /* end of Cudd_ReadMinusInfinity */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the background constant of the manager.]
+  \brief Reads the background constant of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -1357,14 +1397,15 @@ Cudd_ReadBackground(
 } /* end of Cudd_ReadBackground */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the background constant of the manager.]
+  \brief Sets the background constant of the manager.
 
-  Description [Sets the background constant of the manager. It assumes
+  \details [Sets the background constant of the manager. It assumes
   that the DdNode pointer bck is already referenced.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 void
@@ -1377,15 +1418,16 @@ Cudd_SetBackground(
 } /* end of Cudd_SetBackground */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the number of slots in the cache.]
+  \brief Reads the number of slots in the cache.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadCacheUsedSlots]
+  \see Cudd_ReadCacheUsedSlots
 
 ******************************************************************************/
 unsigned int
@@ -1397,18 +1439,19 @@ Cudd_ReadCacheSlots(
 } /* end of Cudd_ReadCacheSlots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the fraction of used slots in the cache.]
+  \brief Reads the fraction of used slots in the cache.
 
-  Description [Reads the fraction of used slots in the cache. The unused
+  \details [Reads the fraction of used slots in the cache. The unused
   slots are those in which no valid data is stored. Garbage collection,
   variable reordering, and cache resizing may cause used slots to become
   unused.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadCacheSlots]
+  \see Cudd_ReadCacheSlots
 
 ******************************************************************************/
 double
@@ -1429,15 +1472,16 @@ Cudd_ReadCacheUsedSlots(
 } /* end of Cudd_ReadCacheUsedSlots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of cache look-ups.]
+  \brief Returns the number of cache look-ups.
 
-  Description [Returns the number of cache look-ups.]
+  \details [Returns the number of cache look-ups.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadCacheHits]
+  \see Cudd_ReadCacheHits
 
 ******************************************************************************/
 double
@@ -1450,15 +1494,16 @@ Cudd_ReadCacheLookUps(
 } /* end of Cudd_ReadCacheLookUps */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of cache hits.]
+  \brief Returns the number of cache hits.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadCacheLookUps]
+  \see Cudd_ReadCacheLookUps
 
 ******************************************************************************/
 double
@@ -1470,16 +1515,17 @@ Cudd_ReadCacheHits(
 } /* end of Cudd_ReadCacheHits */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of recursive calls.]
+  \brief Returns the number of recursive calls.
 
-  Description [Returns the number of recursive calls if the package is
+  \details [Returns the number of recursive calls if the package is
   compiled with DD_COUNT defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 double
@@ -1496,16 +1542,17 @@ Cudd_ReadRecursiveCalls(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reads the hit rate that causes resizinig of the computed
   table.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetMinHit]
+  \see Cudd_SetMinHit
 
 ******************************************************************************/
 unsigned int
@@ -1519,19 +1566,20 @@ Cudd_ReadMinHit(
 } /* end of Cudd_ReadMinHit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the hit rate that causes resizinig of the computed
   table.]
 
-  Description [Sets the minHit parameter of the manager. This
+  \details [Sets the minHit parameter of the manager. This
   parameter controls the resizing of the computed table. If the hit
   rate is larger than the specified value, and the cache is not
   already too large, then its size is doubled.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMinHit]
+  \see Cudd_ReadMinHit
 
 ******************************************************************************/
 void
@@ -1546,15 +1594,16 @@ Cudd_SetMinHit(
 } /* end of Cudd_SetMinHit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the looseUpTo parameter of the manager.]
+  \brief Reads the looseUpTo parameter of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetLooseUpTo Cudd_ReadMinHit Cudd_ReadMinDead]
+  \see Cudd_SetLooseUpTo Cudd_ReadMinHit Cudd_ReadMinDead
 
 ******************************************************************************/
 unsigned int
@@ -1566,19 +1615,20 @@ Cudd_ReadLooseUpTo(
 } /* end of Cudd_ReadLooseUpTo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the looseUpTo parameter of the manager.]
+  \brief Sets the looseUpTo parameter of the manager.
 
-  Description [Sets the looseUpTo parameter of the manager. This
+  \details [Sets the looseUpTo parameter of the manager. This
   parameter of the manager controls the threshold beyond which no fast
   growth of the unique table is allowed. The threshold is given as a
   number of slots. If the value passed to this function is 0, the
   function determines a suitable value based on the available memory.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadLooseUpTo Cudd_SetMinHit]
+  \see Cudd_ReadLooseUpTo Cudd_SetMinHit
 
 ******************************************************************************/
 void
@@ -1596,15 +1646,16 @@ Cudd_SetLooseUpTo(
 } /* end of Cudd_SetLooseUpTo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the soft limit for the cache size.]
+  \brief Returns the soft limit for the cache size.
 
-  Description [Returns the soft limit for the cache size.]
+  \details [Returns the soft limit for the cache size.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxCacheHard]
+  \see Cudd_ReadMaxCacheHard
 
 ******************************************************************************/
 unsigned int
@@ -1616,15 +1667,16 @@ Cudd_ReadMaxCache(
 } /* end of Cudd_ReadMaxCache */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the maxCacheHard parameter of the manager.]
+  \brief Reads the maxCacheHard parameter of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetMaxCacheHard Cudd_ReadMaxCache]
+  \see Cudd_SetMaxCacheHard Cudd_ReadMaxCache
 
 ******************************************************************************/
 unsigned int
@@ -1636,19 +1688,20 @@ Cudd_ReadMaxCacheHard(
 } /* end of Cudd_ReadMaxCache */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maxCacheHard parameter of the manager.]
+  \brief Sets the maxCacheHard parameter of the manager.
 
-  Description [Sets the maxCacheHard parameter of the manager. The
+  \details [Sets the maxCacheHard parameter of the manager. The
   cache cannot grow larger than maxCacheHard entries. This parameter
   allows an application to control the trade-off of memory versus
   speed. If the value passed to this function is 0, the function
   determines a suitable maximum cache size based on the available memory.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxCacheHard Cudd_SetMaxCache]
+  \see Cudd_ReadMaxCacheHard Cudd_SetMaxCache
 
 ******************************************************************************/
 void
@@ -1666,15 +1719,16 @@ Cudd_SetMaxCacheHard(
 } /* end of Cudd_SetMaxCacheHard */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of BDD variables in existance.]
+  \brief Returns the number of BDD variables in existance.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadZddSize]
+  \see Cudd_ReadZddSize
 
 ******************************************************************************/
 int
@@ -1686,15 +1740,16 @@ Cudd_ReadSize(
 } /* end of Cudd_ReadSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of ZDD variables in existance.]
+  \brief Returns the number of ZDD variables in existance.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadSize]
+  \see Cudd_ReadSize
 
 ******************************************************************************/
 int
@@ -1706,14 +1761,15 @@ Cudd_ReadZddSize(
 } /* end of Cudd_ReadZddSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the total number of slots of the unique table.]
+  \brief Returns the total number of slots of the unique table.
 
-  Description [Returns the total number of slots of the unique table.
+  \details [Returns the total number of slots of the unique table.
   This number ismainly for diagnostic purposes.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 unsigned int
@@ -1725,18 +1781,19 @@ Cudd_ReadSlots(
 } /* end of Cudd_ReadSlots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the fraction of used slots in the unique table.]
+  \brief Reads the fraction of used slots in the unique table.
 
-  Description [Reads the fraction of used slots in the unique
+  \details [Reads the fraction of used slots in the unique
   table. The unused slots are those in which no valid data is
   stored. Garbage collection, variable reordering, and subtable
   resizing may cause used slots to become unused.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadSlots]
+  \see Cudd_ReadSlots
 
 ******************************************************************************/
 double
@@ -1792,20 +1849,21 @@ Cudd_ReadUsedSlots(
 } /* end of Cudd_ReadUsedSlots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the expected fraction of used slots in the unique
   table.]
 
-  Description [Computes the fraction of slots in the unique table that
+  \details [Computes the fraction of slots in the unique table that
   should be in use. This expected value is based on the assumption
   that the hash function distributes the keys randomly; it can be
   compared with the result of Cudd_ReadUsedSlots to monitor the
   performance of the unique table hash function.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadSlots Cudd_ReadUsedSlots]
+  \see Cudd_ReadSlots Cudd_ReadUsedSlots
 
 ******************************************************************************/
 double
@@ -1850,16 +1908,17 @@ Cudd_ExpectedUsedSlots(
 } /* end of Cudd_ExpectedUsedSlots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of nodes in the unique table.]
+  \brief Returns the number of nodes in the unique table.
 
-  Description [Returns the total number of nodes currently in the unique
+  \details [Returns the total number of nodes currently in the unique
   table, including the dead nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadDead]
+  \see Cudd_ReadDead
 
 ******************************************************************************/
 unsigned int
@@ -1871,15 +1930,16 @@ Cudd_ReadKeys(
 } /* end of Cudd_ReadKeys */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of dead nodes in the unique table.]
+  \brief Returns the number of dead nodes in the unique table.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadKeys]
+  \see Cudd_ReadKeys
 
 ******************************************************************************/
 unsigned int
@@ -1891,19 +1951,20 @@ Cudd_ReadDead(
 } /* end of Cudd_ReadDead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the minDead parameter of the manager.]
+  \brief Reads the minDead parameter of the manager.
 
-  Description [Reads the minDead parameter of the manager. The minDead
+  \details [Reads the minDead parameter of the manager. The minDead
   parameter is used by the package to decide whether to collect garbage
   or resize a subtable of the unique table when the subtable becomes
   too full. The application can indirectly control the value of minDead
   by setting the looseUpTo parameter.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadDead Cudd_ReadLooseUpTo Cudd_SetLooseUpTo]
+  \see Cudd_ReadDead Cudd_ReadLooseUpTo Cudd_SetLooseUpTo
 
 ******************************************************************************/
 unsigned int
@@ -1915,11 +1976,12 @@ Cudd_ReadMinDead(
 } /* end of Cudd_ReadMinDead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of times reordering has occurred.]
+  \brief Returns the number of times reordering has occurred.
 
-  Description [Returns the number of times reordering has occurred in the
+  \details [Returns the number of times reordering has occurred in the
   manager. The number includes both the calls to Cudd_ReduceHeap from
   the application program and those automatically performed by the
   package. However, calls that do not even initiate reordering are not
@@ -1927,9 +1989,9 @@ Cudd_ReadMinDead(
   minsize live nodes in the manager, or if CUDD_REORDER_NONE is specified
   as reordering method. The calls to Cudd_ShuffleHeap are not counted.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReduceHeap Cudd_ReadReorderingTime]
+  \see Cudd_ReduceHeap Cudd_ReadReorderingTime
 
 ******************************************************************************/
 unsigned int
@@ -1941,16 +2003,17 @@ Cudd_ReadReorderings(
 } /* end of Cudd_ReadReorderings */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the maximum number of times reordering may be invoked.]
+  \brief Returns the maximum number of times reordering may be invoked.
 
-  Description [Returns the maximum number of times reordering may be invoked in
+  \details [Returns the maximum number of times reordering may be invoked in
   this manager.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadReorderings Cudd_SetMaxReorderings Cudd_ReduceHeap]
+  \see Cudd_ReadReorderings Cudd_SetMaxReorderings Cudd_ReduceHeap
 
 ******************************************************************************/
 unsigned int
@@ -1962,16 +2025,17 @@ Cudd_ReadMaxReorderings(
 } /* end of Cudd_ReadMaxReorderings */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maximum number of times reordering may be invoked.]
+  \brief Sets the maximum number of times reordering may be invoked.
 
-  Description [Sets the maximum number of times reordering may be invoked in
+  \details [Sets the maximum number of times reordering may be invoked in
   this manager.  The default value is (practically) infinite.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadReorderings Cudd_ReadMaxReorderings Cudd_ReduceHeap]
+  \see Cudd_ReadReorderings Cudd_ReadMaxReorderings Cudd_ReduceHeap
 
 ******************************************************************************/
 void
@@ -1983,17 +2047,18 @@ Cudd_SetMaxReorderings(
 } /* end of Cudd_SetMaxReorderings */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the time spent in reordering.]
+  \brief Returns the time spent in reordering.
 
-  Description [Returns the number of milliseconds spent reordering
+  \details [Returns the number of milliseconds spent reordering
   variables since the manager was initialized. The time spent in collecting
   garbage before reordering is included.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadReorderings]
+  \see Cudd_ReadReorderings
 
 ******************************************************************************/
 long
@@ -2005,18 +2070,19 @@ Cudd_ReadReorderingTime(
 } /* end of Cudd_ReadReorderingTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of times garbage collection has occurred.]
+  \brief Returns the number of times garbage collection has occurred.
 
-  Description [Returns the number of times garbage collection has
+  \details [Returns the number of times garbage collection has
   occurred in the manager. The number includes both the calls from
   reordering procedures and those caused by requests to create new
   nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadGarbageCollectionTime]
+  \see Cudd_ReadGarbageCollectionTime
 
 ******************************************************************************/
 int
@@ -2028,16 +2094,17 @@ Cudd_ReadGarbageCollections(
 } /* end of Cudd_ReadGarbageCollections */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the time spent in garbage collection.]
+  \brief Returns the time spent in garbage collection.
 
-  Description [Returns the number of milliseconds spent doing garbage
+  \details [Returns the number of milliseconds spent doing garbage
   collection since the manager was initialized.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadGarbageCollections]
+  \see Cudd_ReadGarbageCollections
 
 ******************************************************************************/
 long
@@ -2049,17 +2116,18 @@ Cudd_ReadGarbageCollectionTime(
 } /* end of Cudd_ReadGarbageCollectionTime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of nodes freed.]
+  \brief Returns the number of nodes freed.
 
-  Description [Returns the number of nodes returned to the free list if the
+  \details [Returns the number of nodes returned to the free list if the
   keeping of this statistic is enabled; -1 otherwise. This statistic is
   enabled only if the package is compiled with DD_STATS defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNodesDropped]
+  \see Cudd_ReadNodesDropped
 
 ******************************************************************************/
 double
@@ -2075,17 +2143,18 @@ Cudd_ReadNodesFreed(
 } /* end of Cudd_ReadNodesFreed */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of nodes dropped.]
+  \brief Returns the number of nodes dropped.
 
-  Description [Returns the number of nodes killed by dereferencing if the
+  \details [Returns the number of nodes killed by dereferencing if the
   keeping of this statistic is enabled; -1 otherwise. This statistic is
   enabled only if the package is compiled with DD_STATS defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNodesFreed]
+  \see Cudd_ReadNodesFreed
 
 ******************************************************************************/
 double
@@ -2101,17 +2170,18 @@ Cudd_ReadNodesDropped(
 } /* end of Cudd_ReadNodesDropped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of look-ups in the unique table.]
+  \brief Returns the number of look-ups in the unique table.
 
-  Description [Returns the number of look-ups in the unique table if the
+  \details [Returns the number of look-ups in the unique table if the
   keeping of this statistic is enabled; -1 otherwise. This statistic is
   enabled only if the package is compiled with DD_UNIQUE_PROFILE defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadUniqueLinks]
+  \see Cudd_ReadUniqueLinks
 
 ******************************************************************************/
 double
@@ -2127,20 +2197,21 @@ Cudd_ReadUniqueLookUps(
 } /* end of Cudd_ReadUniqueLookUps */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of links followed in the unique table.]
+  \brief Returns the number of links followed in the unique table.
 
-  Description [Returns the number of links followed during look-ups in the
+  \details [Returns the number of links followed during look-ups in the
   unique table if the keeping of this statistic is enabled; -1 otherwise.
   If an item is found in the first position of its collision list, the
   number of links followed is taken to be 0. If it is in second position,
   the number of links is 1, and so on. This statistic is enabled only if
   the package is compiled with DD_UNIQUE_PROFILE defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadUniqueLookUps]
+  \see Cudd_ReadUniqueLookUps
 
 ******************************************************************************/
 double
@@ -2156,17 +2227,18 @@ Cudd_ReadUniqueLinks(
 } /* end of Cudd_ReadUniqueLinks */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the siftMaxVar parameter of the manager.]
+  \brief Reads the siftMaxVar parameter of the manager.
 
-  Description [Reads the siftMaxVar parameter of the manager. This
+  \details [Reads the siftMaxVar parameter of the manager. This
   parameter gives the maximum number of variables that will be sifted
   for each invocation of sifting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadSiftMaxSwap Cudd_SetSiftMaxVar]
+  \see Cudd_ReadSiftMaxSwap Cudd_SetSiftMaxVar
 
 ******************************************************************************/
 int
@@ -2178,17 +2250,18 @@ Cudd_ReadSiftMaxVar(
 } /* end of Cudd_ReadSiftMaxVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the siftMaxVar parameter of the manager.]
+  \brief Sets the siftMaxVar parameter of the manager.
 
-  Description [Sets the siftMaxVar parameter of the manager. This
+  \details [Sets the siftMaxVar parameter of the manager. This
   parameter gives the maximum number of variables that will be sifted
   for each invocation of sifting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetSiftMaxSwap Cudd_ReadSiftMaxVar]
+  \see Cudd_SetSiftMaxSwap Cudd_ReadSiftMaxVar
 
 ******************************************************************************/
 void
@@ -2201,19 +2274,20 @@ Cudd_SetSiftMaxVar(
 } /* end of Cudd_SetSiftMaxVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the siftMaxSwap parameter of the manager.]
+  \brief Reads the siftMaxSwap parameter of the manager.
 
-  Description [Reads the siftMaxSwap parameter of the manager. This
+  \details [Reads the siftMaxSwap parameter of the manager. This
   parameter gives the maximum number of swaps that will be attempted
   for each invocation of sifting. The real number of swaps may exceed
   the set limit because the package will always complete the sifting
   of the variable that causes the limit to be reached.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadSiftMaxVar Cudd_SetSiftMaxSwap]
+  \see Cudd_ReadSiftMaxVar Cudd_SetSiftMaxSwap
 
 ******************************************************************************/
 int
@@ -2225,19 +2299,20 @@ Cudd_ReadSiftMaxSwap(
 } /* end of Cudd_ReadSiftMaxSwap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the siftMaxSwap parameter of the manager.]
+  \brief Sets the siftMaxSwap parameter of the manager.
 
-  Description [Sets the siftMaxSwap parameter of the manager. This
+  \details [Sets the siftMaxSwap parameter of the manager. This
   parameter gives the maximum number of swaps that will be attempted
   for each invocation of sifting. The real number of swaps may exceed
   the set limit because the package will always complete the sifting
   of the variable that causes the limit to be reached.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetSiftMaxVar Cudd_ReadSiftMaxSwap]
+  \see Cudd_SetSiftMaxVar Cudd_ReadSiftMaxSwap
 
 ******************************************************************************/
 void
@@ -2250,20 +2325,21 @@ Cudd_SetSiftMaxSwap(
 } /* end of Cudd_SetSiftMaxSwap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the maxGrowth parameter of the manager.]
+  \brief Reads the maxGrowth parameter of the manager.
 
-  Description [Reads the maxGrowth parameter of the manager.  This
+  \details [Reads the maxGrowth parameter of the manager.  This
   parameter determines how much the number of nodes can grow during
   sifting of a variable.  Overall, sifting never increases the size of
   the decision diagrams.  This parameter only refers to intermediate
   results.  A lower value will speed up sifting, possibly at the
   expense of quality.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetMaxGrowth Cudd_ReadMaxGrowthAlternate]
+  \see Cudd_SetMaxGrowth Cudd_ReadMaxGrowthAlternate
 
 ******************************************************************************/
 double
@@ -2275,20 +2351,21 @@ Cudd_ReadMaxGrowth(
 } /* end of Cudd_ReadMaxGrowth */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maxGrowth parameter of the manager.]
+  \brief Sets the maxGrowth parameter of the manager.
 
-  Description [Sets the maxGrowth parameter of the manager.  This
+  \details [Sets the maxGrowth parameter of the manager.  This
   parameter determines how much the number of nodes can grow during
   sifting of a variable.  Overall, sifting never increases the size of
   the decision diagrams.  This parameter only refers to intermediate
   results.  A lower value will speed up sifting, possibly at the
   expense of quality.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxGrowth Cudd_SetMaxGrowthAlternate]
+  \see Cudd_ReadMaxGrowth Cudd_SetMaxGrowthAlternate
 
 ******************************************************************************/
 void
@@ -2301,19 +2378,20 @@ Cudd_SetMaxGrowth(
 } /* end of Cudd_SetMaxGrowth */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the maxGrowthAlt parameter of the manager.]
+  \brief Reads the maxGrowthAlt parameter of the manager.
 
-  Description [Reads the maxGrowthAlt parameter of the manager.  This
+  \details [Reads the maxGrowthAlt parameter of the manager.  This
   parameter is analogous to the maxGrowth paramter, and is used every
   given number of reorderings instead of maxGrowth.  The number of
   reorderings is set with Cudd_SetReorderingCycle.  If the number of
   reorderings is 0 (default) maxGrowthAlt is never used.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxGrowth Cudd_SetMaxGrowthAlternate
+  \see     [Cudd_ReadMaxGrowth Cudd_SetMaxGrowthAlternate
   Cudd_SetReorderingCycle Cudd_ReadReorderingCycle]
 
 ******************************************************************************/
@@ -2326,19 +2404,20 @@ Cudd_ReadMaxGrowthAlternate(
 } /* end of Cudd_ReadMaxGrowthAlternate */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maxGrowthAlt parameter of the manager.]
+  \brief Sets the maxGrowthAlt parameter of the manager.
 
-  Description [Sets the maxGrowthAlt parameter of the manager.  This
+  \details [Sets the maxGrowthAlt parameter of the manager.  This
   parameter is analogous to the maxGrowth paramter, and is used every
   given number of reorderings instead of maxGrowth.  The number of
   reorderings is set with Cudd_SetReorderingCycle.  If the number of
   reorderings is 0 (default) maxGrowthAlt is never used.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowth
+  \see     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowth
   Cudd_SetReorderingCycle Cudd_ReadReorderingCycle]
 
 ******************************************************************************/
@@ -2352,17 +2431,18 @@ Cudd_SetMaxGrowthAlternate(
 } /* end of Cudd_SetMaxGrowthAlternate */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the reordCycle parameter of the manager.]
+  \brief Reads the reordCycle parameter of the manager.
 
-  Description [Reads the reordCycle parameter of the manager.  This
+  \details [Reads the reordCycle parameter of the manager.  This
   parameter determines how often the alternate threshold on maximum
   growth is used in reordering.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowthAlternate
+  \see     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowthAlternate
   Cudd_SetReorderingCycle]
 
 ******************************************************************************/
@@ -2375,17 +2455,18 @@ Cudd_ReadReorderingCycle(
 } /* end of Cudd_ReadReorderingCycle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the reordCycle parameter of the manager.]
+  \brief Sets the reordCycle parameter of the manager.
 
-  Description [Sets the reordCycle parameter of the manager.  This
+  \details [Sets the reordCycle parameter of the manager.  This
   parameter determines how often the alternate threshold on maximum
   growth is used in reordering.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowthAlternate
+  \see     [Cudd_ReadMaxGrowthAlternate Cudd_SetMaxGrowthAlternate
   Cudd_ReadReorderingCycle]
 
 ******************************************************************************/
@@ -2399,15 +2480,16 @@ Cudd_SetReorderingCycle(
 } /* end of Cudd_SetReorderingCycle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the variable group tree of the manager.]
+  \brief Returns the variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetTree Cudd_FreeTree Cudd_ReadZddTree]
+  \see Cudd_SetTree Cudd_FreeTree Cudd_ReadZddTree
 
 ******************************************************************************/
 MtrNode *
@@ -2419,15 +2501,16 @@ Cudd_ReadTree(
 } /* end of Cudd_ReadTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the variable group tree of the manager.]
+  \brief Sets the variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FreeTree Cudd_ReadTree Cudd_SetZddTree]
+  \see Cudd_FreeTree Cudd_ReadTree Cudd_SetZddTree
 
 ******************************************************************************/
 void
@@ -2447,15 +2530,16 @@ Cudd_SetTree(
 } /* end of Cudd_SetTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees the variable group tree of the manager.]
+  \brief Frees the variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetTree Cudd_ReadTree Cudd_FreeZddTree]
+  \see Cudd_SetTree Cudd_ReadTree Cudd_FreeZddTree
 
 ******************************************************************************/
 void
@@ -2471,15 +2555,16 @@ Cudd_FreeTree(
 } /* end of Cudd_FreeTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the variable group tree of the manager.]
+  \brief Returns the variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetZddTree Cudd_FreeZddTree Cudd_ReadTree]
+  \see Cudd_SetZddTree Cudd_FreeZddTree Cudd_ReadTree
 
 ******************************************************************************/
 MtrNode *
@@ -2491,15 +2576,16 @@ Cudd_ReadZddTree(
 } /* end of Cudd_ReadZddTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the ZDD variable group tree of the manager.]
+  \brief Sets the ZDD variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FreeZddTree Cudd_ReadZddTree Cudd_SetTree]
+  \see Cudd_FreeZddTree Cudd_ReadZddTree Cudd_SetTree
 
 ******************************************************************************/
 void
@@ -2519,15 +2605,16 @@ Cudd_SetZddTree(
 } /* end of Cudd_SetZddTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees the variable group tree of the manager.]
+  \brief Frees the variable group tree of the manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetZddTree Cudd_ReadZddTree Cudd_FreeTree]
+  \see Cudd_SetZddTree Cudd_ReadZddTree Cudd_FreeTree
 
 ******************************************************************************/
 void
@@ -2543,16 +2630,17 @@ Cudd_FreeZddTree(
 } /* end of Cudd_FreeZddTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the index of the node.]
+  \brief Returns the index of the node.
 
-  Description [Returns the index of the node. The node pointer can be
+  \details [Returns the index of the node. The node pointer can be
   either regular or complemented.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_ReadIndex]
+  \see Cudd_ReadIndex
 
 ******************************************************************************/
 unsigned int
@@ -2564,19 +2652,20 @@ Cudd_NodeReadIndex(
 } /* end of Cudd_NodeReadIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the current position of the i-th variable in the
   order.]
 
-  Description [Returns the current position of the i-th variable in
+  \details [Returns the current position of the i-th variable in
   the order. If the index is CUDD_CONST_INDEX, returns
   CUDD_CONST_INDEX; otherwise, if the index is out of bounds returns
   -1.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadInvPerm Cudd_ReadPermZdd]
+  \see Cudd_ReadInvPerm Cudd_ReadPermZdd
 
 ******************************************************************************/
 int
@@ -2591,19 +2680,20 @@ Cudd_ReadPerm(
 } /* end of Cudd_ReadPerm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the current position of the i-th ZDD variable in the
   order.]
 
-  Description [Returns the current position of the i-th ZDD variable
+  \details [Returns the current position of the i-th ZDD variable
   in the order. If the index is CUDD_CONST_INDEX, returns
   CUDD_CONST_INDEX; otherwise, if the index is out of bounds returns
   -1.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadInvPermZdd Cudd_ReadPerm]
+  \see Cudd_ReadInvPermZdd Cudd_ReadPerm
 
 ******************************************************************************/
 int
@@ -2618,18 +2708,19 @@ Cudd_ReadPermZdd(
 } /* end of Cudd_ReadPermZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the index of the variable currently in the i-th
   position of the order.]
 
-  Description [Returns the index of the variable currently in the i-th
+  \details [Returns the index of the variable currently in the i-th
   position of the order. If the index is CUDD_CONST_INDEX, returns
   CUDD_CONST_INDEX; otherwise, if the index is out of bounds returns -1.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadPerm Cudd_ReadInvPermZdd]
+  \see Cudd_ReadPerm Cudd_ReadInvPermZdd
 
 ******************************************************************************/
 int
@@ -2644,18 +2735,19 @@ Cudd_ReadInvPerm(
 } /* end of Cudd_ReadInvPerm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the index of the ZDD variable currently in the i-th
   position of the order.]
 
-  Description [Returns the index of the ZDD variable currently in the
+  \details [Returns the index of the ZDD variable currently in the
   i-th position of the order. If the index is CUDD_CONST_INDEX, returns
   CUDD_CONST_INDEX; otherwise, if the index is out of bounds returns -1.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadPerm Cudd_ReadInvPermZdd]
+  \see Cudd_ReadPerm Cudd_ReadInvPermZdd
 
 ******************************************************************************/
 int
@@ -2670,19 +2762,20 @@ Cudd_ReadInvPermZdd(
 } /* end of Cudd_ReadInvPermZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the i-th element of the vars array.]
+  \brief Returns the i-th element of the vars array.
 
-  Description [Returns the i-th element of the vars array if it falls
+  \details [Returns the i-th element of the vars array if it falls
   within the array bounds; NULL otherwise. If i is the index of an
   existing variable, this function produces the same result as
   Cudd_bddIthVar. However, if the i-th var does not exist yet,
   Cudd_bddIthVar will create it, whereas Cudd_ReadVars will not.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIthVar]
+  \see Cudd_bddIthVar
 
 ******************************************************************************/
 DdNode *
@@ -2696,16 +2789,17 @@ Cudd_ReadVars(
 } /* end of Cudd_ReadVars */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the epsilon parameter of the manager.]
+  \brief Reads the epsilon parameter of the manager.
 
-  Description [Reads the epsilon parameter of the manager. The epsilon
+  \details [Reads the epsilon parameter of the manager. The epsilon
   parameter control the comparison between floating point numbers.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetEpsilon]
+  \see Cudd_SetEpsilon
 
 ******************************************************************************/
 CUDD_VALUE_TYPE
@@ -2717,16 +2811,17 @@ Cudd_ReadEpsilon(
 } /* end of Cudd_ReadEpsilon */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the epsilon parameter of the manager to ep.]
+  \brief Sets the epsilon parameter of the manager to ep.
 
-  Description [Sets the epsilon parameter of the manager to ep. The epsilon
+  \details [Sets the epsilon parameter of the manager to ep. The epsilon
   parameter control the comparison between floating point numbers.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadEpsilon]
+  \see Cudd_ReadEpsilon
 
 ******************************************************************************/
 void
@@ -2739,17 +2834,18 @@ Cudd_SetEpsilon(
 } /* end of Cudd_SetEpsilon */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the groupcheck parameter of the manager.]
+  \brief Reads the groupcheck parameter of the manager.
 
-  Description [Reads the groupcheck parameter of the manager. The
+  \details [Reads the groupcheck parameter of the manager. The
   groupcheck parameter determines the aggregation criterion in group
   sifting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetGroupcheck]
+  \see Cudd_SetGroupcheck
 
 ******************************************************************************/
 Cudd_AggregationType
@@ -2761,17 +2857,18 @@ Cudd_ReadGroupcheck(
 } /* end of Cudd_ReadGroupCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the parameter groupcheck of the manager to gc.]
+  \brief Sets the parameter groupcheck of the manager to gc.
 
-  Description [Sets the parameter groupcheck of the manager to gc. The
+  \details [Sets the parameter groupcheck of the manager to gc. The
   groupcheck parameter determines the aggregation criterion in group
   sifting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadGroupCheck]
+  \see Cudd_ReadGroupCheck
 
 ******************************************************************************/
 void
@@ -2784,15 +2881,16 @@ Cudd_SetGroupcheck(
 } /* end of Cudd_SetGroupcheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tells whether garbage collection is enabled.]
+  \brief Tells whether garbage collection is enabled.
 
-  Description [Returns 1 if garbage collection is enabled; 0 otherwise.]
+  \details [Returns 1 if garbage collection is enabled; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_EnableGarbageCollection Cudd_DisableGarbageCollection]
+  \see Cudd_EnableGarbageCollection Cudd_DisableGarbageCollection
 
 ******************************************************************************/
 int
@@ -2804,17 +2902,18 @@ Cudd_GarbageCollectionEnabled(
 } /* end of Cudd_GarbageCollectionEnabled */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables garbage collection.]
+  \brief Enables garbage collection.
 
-  Description [Enables garbage collection. Garbage collection is
+  \details [Enables garbage collection. Garbage collection is
   initially enabled. Therefore it is necessary to call this function
   only if garbage collection has been explicitly disabled.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DisableGarbageCollection Cudd_GarbageCollectionEnabled]
+  \see Cudd_DisableGarbageCollection Cudd_GarbageCollectionEnabled
 
 ******************************************************************************/
 void
@@ -2826,19 +2925,20 @@ Cudd_EnableGarbageCollection(
 } /* end of Cudd_EnableGarbageCollection */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables garbage collection.]
+  \brief Disables garbage collection.
 
-  Description [Disables garbage collection. Garbage collection is
+  \details [Disables garbage collection. Garbage collection is
   initially enabled. This function may be called to disable it.
   However, garbage collection will still occur when a new node must be
   created and no memory is left, or when garbage collection is required
   for correctness. (E.g., before reordering.)]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_EnableGarbageCollection Cudd_GarbageCollectionEnabled]
+  \see Cudd_EnableGarbageCollection Cudd_GarbageCollectionEnabled
 
 ******************************************************************************/
 void
@@ -2850,17 +2950,18 @@ Cudd_DisableGarbageCollection(
 } /* end of Cudd_DisableGarbageCollection */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Tells whether dead nodes are counted towards triggering
   reordering.]
 
-  Description [Tells whether dead nodes are counted towards triggering
+  \details [Tells whether dead nodes are counted towards triggering
   reordering. Returns 1 if dead nodes are counted; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_TurnOnCountDead Cudd_TurnOffCountDead]
+  \see Cudd_TurnOnCountDead Cudd_TurnOffCountDead
 
 ******************************************************************************/
 int
@@ -2872,18 +2973,19 @@ Cudd_DeadAreCounted(
 } /* end of Cudd_DeadAreCounted */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Causes the dead nodes to be counted towards triggering
   reordering.]
 
-  Description [Causes the dead nodes to be counted towards triggering
+  \details [Causes the dead nodes to be counted towards triggering
   reordering. This causes more frequent reorderings. By default dead
   nodes are not counted.]
 
-  SideEffects [Changes the manager.]
+  \sideeffects Changes the manager.
 
-  SeeAlso     [Cudd_TurnOffCountDead Cudd_DeadAreCounted]
+  \see Cudd_TurnOffCountDead Cudd_DeadAreCounted
 
 ******************************************************************************/
 void
@@ -2895,20 +2997,21 @@ Cudd_TurnOnCountDead(
 } /* end of Cudd_TurnOnCountDead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Causes the dead nodes not to be counted towards triggering
   reordering.]
 
-  Description [Causes the dead nodes not to be counted towards
+  \details [Causes the dead nodes not to be counted towards
   triggering reordering. This causes less frequent reorderings. By
   default dead nodes are not counted. Therefore there is no need to
   call this function unless Cudd_TurnOnCountDead has been previously
   called.]
 
-  SideEffects [Changes the manager.]
+  \sideeffects Changes the manager.
 
-  SeeAlso     [Cudd_TurnOnCountDead Cudd_DeadAreCounted]
+  \see Cudd_TurnOnCountDead Cudd_DeadAreCounted
 
 ******************************************************************************/
 void
@@ -2920,19 +3023,20 @@ Cudd_TurnOffCountDead(
 } /* end of Cudd_TurnOffCountDead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the current value of the recombination parameter used
   in group sifting.]
 
-  Description [Returns the current value of the recombination
+  \details [Returns the current value of the recombination
   parameter used in group sifting. A larger (positive) value makes the
   aggregation of variables due to the second difference criterion more
   likely. A smaller (negative) value makes aggregation less likely.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetRecomb]
+  \see Cudd_SetRecomb
 
 ******************************************************************************/
 int
@@ -2944,20 +3048,21 @@ Cudd_ReadRecomb(
 } /* end of Cudd_ReadRecomb */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the value of the recombination parameter used in group
   sifting.]
 
-  Description [Sets the value of the recombination parameter used in
+  \details [Sets the value of the recombination parameter used in
   group sifting. A larger (positive) value makes the aggregation of
   variables due to the second difference criterion more likely. A
   smaller (negative) value makes aggregation less likely. The default
   value is 0.]
 
-  SideEffects [Changes the manager.]
+  \sideeffects Changes the manager.
 
-  SeeAlso     [Cudd_ReadRecomb]
+  \see Cudd_ReadRecomb
 
 ******************************************************************************/
 void
@@ -2970,12 +3075,13 @@ Cudd_SetRecomb(
 } /* end of Cudd_SetRecomb */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the current value of the symmviolation parameter used
   in group sifting.]
 
-  Description [Returns the current value of the symmviolation
+  \details [Returns the current value of the symmviolation
   parameter. This parameter is used in group sifting to decide how
   many violations to the symmetry conditions <code>f10 = f01</code> or
   <code>f11 = f00</code> are tolerable when checking for aggregation
@@ -2983,9 +3089,9 @@ Cudd_SetRecomb(
   small value causes fewer variables to be aggregated. The default
   value is 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetSymmviolation]
+  \see Cudd_SetSymmviolation
 
 ******************************************************************************/
 int
@@ -2997,12 +3103,13 @@ Cudd_ReadSymmviolation(
 } /* end of Cudd_ReadSymmviolation */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the value of the symmviolation parameter used
   in group sifting.]
 
-  Description [Sets the value of the symmviolation
+  \details [Sets the value of the symmviolation
   parameter. This parameter is used in group sifting to decide how
   many violations to the symmetry conditions <code>f10 = f01</code> or
   <code>f11 = f00</code> are tolerable when checking for aggregation
@@ -3010,9 +3117,9 @@ Cudd_ReadSymmviolation(
   small value causes fewer variables to be aggregated. The default
   value is 0.]
 
-  SideEffects [Changes the manager.]
+  \sideeffects Changes the manager.
 
-  SeeAlso     [Cudd_ReadSymmviolation]
+  \see Cudd_ReadSymmviolation
 
 ******************************************************************************/
 void
@@ -3025,21 +3132,22 @@ Cudd_SetSymmviolation(
 } /* end of Cudd_SetSymmviolation */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns the current value of the arcviolation parameter used
   in group sifting.]
 
-  Description [Returns the current value of the arcviolation
+  \details [Returns the current value of the arcviolation
   parameter. This parameter is used in group sifting to decide how
   many arcs into <code>y</code> not coming from <code>x</code> are
   tolerable when checking for aggregation due to extended
   symmetry. The value should be between 0 and 100. A small value
   causes fewer variables to be aggregated. The default value is 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetArcviolation]
+  \see Cudd_SetArcviolation
 
 ******************************************************************************/
 int
@@ -3051,21 +3159,22 @@ Cudd_ReadArcviolation(
 } /* end of Cudd_ReadArcviolation */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the value of the arcviolation parameter used
   in group sifting.]
 
-  Description [Sets the value of the arcviolation
+  \details [Sets the value of the arcviolation
   parameter. This parameter is used in group sifting to decide how
   many arcs into <code>y</code> not coming from <code>x</code> are
   tolerable when checking for aggregation due to extended
   symmetry. The value should be between 0 and 100. A small value
   causes fewer variables to be aggregated. The default value is 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadArcviolation]
+  \see Cudd_ReadArcviolation
 
 ******************************************************************************/
 void
@@ -3078,21 +3187,22 @@ Cudd_SetArcviolation(
 } /* end of Cudd_SetArcviolation */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reads the current size of the population used by the
   genetic algorithm for reordering.]
 
-  Description [Reads the current size of the population used by the
+  \details [Reads the current size of the population used by the
   genetic algorithm for variable reordering. A larger population size will
   cause the genetic algorithm to take more time, but will generally
   produce better results. The default value is 0, in which case the
   package uses three times the number of variables as population size,
   with a maximum of 120.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetPopulationSize]
+  \see Cudd_SetPopulationSize
 
 ******************************************************************************/
 int
@@ -3104,21 +3214,22 @@ Cudd_ReadPopulationSize(
 } /* end of Cudd_ReadPopulationSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the size of the population used by the
   genetic algorithm for reordering.]
 
-  Description [Sets the size of the population used by the
+  \details [Sets the size of the population used by the
   genetic algorithm for variable reordering. A larger population size will
   cause the genetic algorithm to take more time, but will generally
   produce better results. The default value is 0, in which case the
   package uses three times the number of variables as population size,
   with a maximum of 120.]
 
-  SideEffects [Changes the manager.]
+  \sideeffects Changes the manager.
 
-  SeeAlso     [Cudd_ReadPopulationSize]
+  \see Cudd_ReadPopulationSize
 
 ******************************************************************************/
 void
@@ -3131,21 +3242,22 @@ Cudd_SetPopulationSize(
 } /* end of Cudd_SetPopulationSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reads the current number of crossovers used by the
   genetic algorithm for reordering.]
 
-  Description [Reads the current number of crossovers used by the
+  \details [Reads the current number of crossovers used by the
   genetic algorithm for variable reordering. A larger number of crossovers will
   cause the genetic algorithm to take more time, but will generally
   produce better results. The default value is 0, in which case the
   package uses three times the number of variables as number of crossovers,
   with a maximum of 60.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetNumberXovers]
+  \see Cudd_SetNumberXovers
 
 ******************************************************************************/
 int
@@ -3157,21 +3269,22 @@ Cudd_ReadNumberXovers(
 } /* end of Cudd_ReadNumberXovers */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sets the number of crossovers used by the
   genetic algorithm for reordering.]
 
-  Description [Sets the number of crossovers used by the genetic
+  \details [Sets the number of crossovers used by the genetic
   algorithm for variable reordering. A larger number of crossovers
   will cause the genetic algorithm to take more time, but will
   generally produce better results. The default value is 0, in which
   case the package uses three times the number of variables as number
   of crossovers, with a maximum of 60.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNumberXovers]
+  \see Cudd_ReadNumberXovers
 
 ******************************************************************************/
 void
@@ -3184,17 +3297,18 @@ Cudd_SetNumberXovers(
 } /* end of Cudd_SetNumberXovers */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the order randomization factor.]
+  \brief Returns the order randomization factor.
 
-  Description [Returns the order randomization factor.  If non-zero this
+  \details [Returns the order randomization factor.  If non-zero this
   factor is used to determine a perturbation of the next reordering threshold.
   Larger factors cause larger perturbations.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetOrderRandomization]
+  \see Cudd_SetOrderRandomization
 
 ******************************************************************************/
 unsigned int
@@ -3206,15 +3320,16 @@ Cudd_ReadOrderRandomization(
 } /* end of Cudd_ReadOrderRandomization */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the order randomization factor.]
+  \brief Sets the order randomization factor.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadOrderRandomization]
+  \see Cudd_ReadOrderRandomization
 
 ******************************************************************************/
 void
@@ -3227,15 +3342,16 @@ Cudd_SetOrderRandomization(
 } /* end of Cudd_SetOrderRandomization */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the memory in use by the manager measured in bytes.]
+  \brief Returns the memory in use by the manager measured in bytes.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 unsigned long
@@ -3247,16 +3363,17 @@ Cudd_ReadMemoryInUse(
 } /* end of Cudd_ReadMemoryInUse */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints out statistics and settings for a CUDD manager.]
+  \brief Prints out statistics and settings for a CUDD manager.
 
-  Description [Prints out statistics and settings for a CUDD manager.
+  \details [Prints out statistics and settings for a CUDD manager.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -3432,17 +3549,18 @@ Cudd_PrintInfo(
 } /* end of Cudd_PrintInfo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports the peak number of nodes.]
+  \brief Reports the peak number of nodes.
 
-  Description [Reports the peak number of nodes. This number includes
+  \details [Reports the peak number of nodes. This number includes
   node on the free list. At the peak, the number of nodes on the free
   list is guaranteed to be less than DD_MEM_CHUNK.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNodeCount Cudd_PrintInfo]
+  \see Cudd_ReadNodeCount Cudd_PrintInfo
 
 ******************************************************************************/
 long
@@ -3461,15 +3579,16 @@ Cudd_ReadPeakNodeCount(
 } /* end of Cudd_ReadPeakNodeCount */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports the peak number of live nodes.]
+  \brief Reports the peak number of live nodes.
 
-  Description [Reports the peak number of live nodes.]
+  \details [Reports the peak number of live nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNodeCount Cudd_PrintInfo Cudd_ReadPeakNodeCount]
+  \see Cudd_ReadNodeCount Cudd_PrintInfo Cudd_ReadPeakNodeCount
 
 ******************************************************************************/
 int
@@ -3486,18 +3605,19 @@ Cudd_ReadPeakLiveNodeCount(
 } /* end of Cudd_ReadPeakLiveNodeCount */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports the number of nodes in BDDs and ADDs.]
+  \brief Reports the number of nodes in BDDs and ADDs.
 
-  Description [Reports the number of live nodes in BDDs and ADDs. This
+  \details [Reports the number of live nodes in BDDs and ADDs. This
   number does not include the isolated projection functions and the
   unused constants. These nodes that are not counted are not part of
   the DDs manipulated by the application.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadPeakNodeCount Cudd_zddReadNodeCount]
+  \see Cudd_ReadPeakNodeCount Cudd_zddReadNodeCount
 
 ******************************************************************************/
 long
@@ -3530,16 +3650,17 @@ Cudd_ReadNodeCount(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports the number of nodes in ZDDs.]
+  \brief Reports the number of nodes in ZDDs.
 
-  Description [Reports the number of nodes in ZDDs. This
+  \details [Reports the number of nodes in ZDDs. This
   number always includes the two constants 1 and 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadPeakNodeCount Cudd_ReadNodeCount]
+  \see Cudd_ReadPeakNodeCount Cudd_ReadNodeCount
 
 ******************************************************************************/
 long
@@ -3551,18 +3672,19 @@ Cudd_zddReadNodeCount(
 } /* end of Cudd_zddReadNodeCount */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Adds a function to a hook.]
+  \brief Adds a function to a hook.
 
-  Description [Adds a function to a hook. A hook is a list of
+  \details [Adds a function to a hook. A hook is a list of
   application-provided functions called on certain occasions by the
   package. Returns 1 if the function is successfully added; 2 if the
   function was already in the list; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RemoveHook]
+  \see Cudd_RemoveHook
 
 ******************************************************************************/
 int
@@ -3614,17 +3736,18 @@ Cudd_AddHook(
 } /* end of Cudd_AddHook */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Removes a function from a hook.]
+  \brief Removes a function from a hook.
 
-  Description [Removes a function from a hook. A hook is a list of
+  \details [Removes a function from a hook. A hook is a list of
   application-provided functions called on certain occasions by the
   package. Returns 1 if successful; 0 the function was not in the list.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AddHook]
+  \see Cudd_AddHook
 
 ******************************************************************************/
 int
@@ -3667,17 +3790,18 @@ Cudd_RemoveHook(
 } /* end of Cudd_RemoveHook */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a function is in a hook.]
+  \brief Checks whether a function is in a hook.
 
-  Description [Checks whether a function is in a hook. A hook is a list of
+  \details [Checks whether a function is in a hook. A hook is a list of
   application-provided functions called on certain occasions by the
   package. Returns 1 if the function is found; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_AddHook Cudd_RemoveHook]
+  \see Cudd_AddHook Cudd_RemoveHook
 
 ******************************************************************************/
 int
@@ -3716,17 +3840,18 @@ Cudd_IsInHook(
 } /* end of Cudd_IsInHook */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sample hook function to call before reordering.]
+  \brief Sample hook function to call before reordering.
 
-  Description [Sample hook function to call before reordering.
+  \details [Sample hook function to call before reordering.
   Prints on the manager's stdout reordering method and initial size.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_StdPostReordHook]
+  \see Cudd_StdPostReordHook
 
 ******************************************************************************/
 int
@@ -3809,17 +3934,18 @@ Cudd_StdPreReordHook(
 } /* end of Cudd_StdPreReordHook */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sample hook function to call after reordering.]
+  \brief Sample hook function to call after reordering.
 
-  Description [Sample hook function to call after reordering.
+  \details [Sample hook function to call after reordering.
   Prints on the manager's stdout final size and reordering time.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_StdPreReordHook]
+  \see Cudd_StdPreReordHook
 
 ******************************************************************************/
 int
@@ -3844,17 +3970,18 @@ Cudd_StdPostReordHook(
 } /* end of Cudd_StdPostReordHook */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables reporting of reordering stats.]
+  \brief Enables reporting of reordering stats.
 
-  Description [Enables reporting of reordering stats.
+  \details [Enables reporting of reordering stats.
   Returns 1 if successful; 0 otherwise.]
 
   SideEffects [Installs functions in the pre-reordering and post-reordering
   hooks.]
 
-  SeeAlso     [Cudd_DisableReorderingReporting Cudd_ReorderingReporting]
+  \see Cudd_DisableReorderingReporting Cudd_ReorderingReporting
 
 ******************************************************************************/
 int
@@ -3872,17 +3999,18 @@ Cudd_EnableReorderingReporting(
 } /* end of Cudd_EnableReorderingReporting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables reporting of reordering stats.]
+  \brief Disables reporting of reordering stats.
 
-  Description [Disables reporting of reordering stats.
+  \details [Disables reporting of reordering stats.
   Returns 1 if successful; 0 otherwise.]
 
   SideEffects [Removes functions from the pre-reordering and post-reordering
   hooks.]
 
-  SeeAlso     [Cudd_EnableReorderingReporting Cudd_ReorderingReporting]
+  \see Cudd_EnableReorderingReporting Cudd_ReorderingReporting
 
 ******************************************************************************/
 int
@@ -3900,16 +4028,17 @@ Cudd_DisableReorderingReporting(
 } /* end of Cudd_DisableReorderingReporting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns 1 if reporting of reordering stats is enabled.]
+  \brief Returns 1 if reporting of reordering stats is enabled.
 
-  Description [Returns 1 if reporting of reordering stats is enabled;
+  \details [Returns 1 if reporting of reordering stats is enabled;
   0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_EnableReorderingReporting Cudd_DisableReorderingReporting]
+  \see Cudd_EnableReorderingReporting Cudd_DisableReorderingReporting
 
 ******************************************************************************/
 int
@@ -3921,18 +4050,19 @@ Cudd_ReorderingReporting(
 } /* end of Cudd_ReorderingReporting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Hook function to print the current variable order.]
+  \brief Hook function to print the current variable order.
 
-  Description [Hook function to print the current variable order.  It may be
+  \details [Hook function to print the current variable order.  It may be
   called before or after reordering. Prints on the manager's stdout a
   parenthesized list that describes the variable groups.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_StdPreReordHook]
+  \see Cudd_StdPreReordHook
 
 ******************************************************************************/
 int
@@ -3960,17 +4090,18 @@ Cudd_PrintGroupedOrder(
 } /* end of Cudd_PrintGroupedOrder */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Enables monitoring of ordering.]
+  \brief Enables monitoring of ordering.
 
-  Description [Enables monitoring of ordering.
+  \details [Enables monitoring of ordering.
   Returns 1 if successful; 0 otherwise.]
 
   SideEffects [Installs functions in the pre-reordering and post-reordering
   hooks.]
 
-  SeeAlso     [Cudd_EnableReorderingReporting]
+  \see Cudd_EnableReorderingReporting
 
 ******************************************************************************/
 int
@@ -3994,17 +4125,18 @@ Cudd_EnableOrderingMonitoring(
 } /* end of Cudd_EnableOrderingMonitoring */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disables monitoring of ordering.]
+  \brief Disables monitoring of ordering.
 
-  Description [Disables monitoring of ordering.
+  \details [Disables monitoring of ordering.
   Returns 1 if successful; 0 otherwise.]
 
   SideEffects [Removes functions from the pre-reordering and post-reordering
   hooks.]
 
-  SeeAlso     [Cudd_EnableOrderingMonitoring]
+  \see Cudd_EnableOrderingMonitoring
 
 ******************************************************************************/
 int
@@ -4028,16 +4160,17 @@ Cudd_DisableOrderingMonitoring(
 } /* end of Cudd_DisableOrderingMonitoring */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns 1 if monitoring of ordering is enabled.]
+  \brief Returns 1 if monitoring of ordering is enabled.
 
-  Description [Returns 1 if monitoring of ordering is enabled;
+  \details [Returns 1 if monitoring of ordering is enabled;
   0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_EnableOrderingMonitoring Cudd_DisableOrderingMonitoring]
+  \see Cudd_EnableOrderingMonitoring Cudd_DisableOrderingMonitoring
 
 ******************************************************************************/
 int
@@ -4049,16 +4182,17 @@ Cudd_OrderingMonitoring(
 } /* end of Cudd_OrderingMonitoring */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the code of the last error.]
+  \brief Returns the code of the last error.
 
-  Description [Returns the code of the last error. The error codes are
+  \details [Returns the code of the last error. The error codes are
   defined in cudd.h.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ClearErrorCode]
+  \see Cudd_ClearErrorCode
 
 ******************************************************************************/
 Cudd_ErrorType
@@ -4070,15 +4204,16 @@ Cudd_ReadErrorCode(
 } /* end of Cudd_ReadErrorCode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Clear the error code of a manager.]
+  \brief Clear the error code of a manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadErrorCode]
+  \see Cudd_ReadErrorCode
 
 ******************************************************************************/
 void
@@ -4090,17 +4225,18 @@ Cudd_ClearErrorCode(
 } /* end of Cudd_ClearErrorCode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the stdout of a manager.]
+  \brief Reads the stdout of a manager.
 
-  Description [Reads the stdout of a manager. This is the file pointer to
+  \details [Reads the stdout of a manager. This is the file pointer to
   which messages normally going to stdout are written. It is initialized
   to stdout. Cudd_SetStdout allows the application to redirect it.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetStdout Cudd_ReadStderr]
+  \see Cudd_SetStdout Cudd_ReadStderr
 
 ******************************************************************************/
 FILE *
@@ -4112,15 +4248,16 @@ Cudd_ReadStdout(
 } /* end of Cudd_ReadStdout */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the stdout of a manager.]
+  \brief Sets the stdout of a manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadStdout Cudd_SetStderr]
+  \see Cudd_ReadStdout Cudd_SetStderr
 
 ******************************************************************************/
 void
@@ -4133,17 +4270,18 @@ Cudd_SetStdout(
 } /* end of Cudd_SetStdout */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the stderr of a manager.]
+  \brief Reads the stderr of a manager.
 
-  Description [Reads the stderr of a manager. This is the file pointer to
+  \details [Reads the stderr of a manager. This is the file pointer to
   which messages normally going to stderr are written. It is initialized
   to stderr. Cudd_SetStderr allows the application to redirect it.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetStderr Cudd_ReadStdout]
+  \see Cudd_SetStderr Cudd_ReadStdout
 
 ******************************************************************************/
 FILE *
@@ -4155,15 +4293,16 @@ Cudd_ReadStderr(
 } /* end of Cudd_ReadStderr */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the stderr of a manager.]
+  \brief Sets the stderr of a manager.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadStderr Cudd_SetStdout]
+  \see Cudd_ReadStderr Cudd_SetStdout
 
 ******************************************************************************/
 void
@@ -4176,19 +4315,20 @@ Cudd_SetStderr(
 } /* end of Cudd_SetStderr */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the threshold for the next dynamic reordering.]
+  \brief Returns the threshold for the next dynamic reordering.
 
-  Description [Returns the threshold for the next dynamic reordering.
+  \details [Returns the threshold for the next dynamic reordering.
   The threshold is in terms of number of nodes and is in effect only
   if reordering is enabled. The count does not include the dead nodes,
   unless the countDead parameter of the manager has been changed from
   its default setting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SetNextReordering]
+  \see Cudd_SetNextReordering
 
 ******************************************************************************/
 unsigned int
@@ -4200,19 +4340,20 @@ Cudd_ReadNextReordering(
 } /* end of Cudd_ReadNextReordering */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the threshold for the next dynamic reordering.]
+  \brief Sets the threshold for the next dynamic reordering.
 
-  Description [Sets the threshold for the next dynamic reordering.
+  \details [Sets the threshold for the next dynamic reordering.
   The threshold is in terms of number of nodes and is in effect only
   if reordering is enabled. The count does not include the dead nodes,
   unless the countDead parameter of the manager has been changed from
   its default setting.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ReadNextReordering]
+  \see Cudd_ReadNextReordering
 
 ******************************************************************************/
 void
@@ -4225,15 +4366,16 @@ Cudd_SetNextReordering(
 } /* end of Cudd_SetNextReordering */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the number of elementary reordering steps.]
+  \brief Reads the number of elementary reordering steps.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 double
@@ -4249,16 +4391,17 @@ Cudd_ReadSwapSteps(
 } /* end of Cudd_ReadSwapSteps */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the maximum allowed number of live nodes.]
+  \brief Reads the maximum allowed number of live nodes.
 
-  Description [Reads the maximum allowed number of live nodes. When this
+  \details [Reads the maximum allowed number of live nodes. When this
   number is exceeded, the package returns NULL.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_SetMaxLive]
+  \see Cudd_SetMaxLive
 
 ******************************************************************************/
 unsigned int
@@ -4270,16 +4413,17 @@ Cudd_ReadMaxLive(
 } /* end of Cudd_ReadMaxLive */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maximum allowed number of live nodes.]
+  \brief Sets the maximum allowed number of live nodes.
 
-  Description [Sets the maximum allowed number of live nodes. When this
+  \details [Sets the maximum allowed number of live nodes. When this
   number is exceeded, the package returns NULL.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_ReadMaxLive]
+  \see Cudd_ReadMaxLive
 
 ******************************************************************************/
 void
@@ -4292,16 +4436,17 @@ Cudd_SetMaxLive(
 } /* end of Cudd_SetMaxLive */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads the maximum allowed memory.]
+  \brief Reads the maximum allowed memory.
 
-  Description [Reads the maximum allowed memory. When this
+  \details [Reads the maximum allowed memory. When this
   number is exceeded, the package returns NULL.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_SetMaxMemory]
+  \see Cudd_SetMaxMemory
 
 ******************************************************************************/
 unsigned long
@@ -4313,16 +4458,17 @@ Cudd_ReadMaxMemory(
 } /* end of Cudd_ReadMaxMemory */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the maximum allowed memory.]
+  \brief Sets the maximum allowed memory.
 
-  Description [Sets the maximum allowed memory. When this
+  \details [Sets the maximum allowed memory. When this
   number is exceeded, the package returns NULL.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_ReadMaxMemory]
+  \see Cudd_ReadMaxMemory
 
 ******************************************************************************/
 void
@@ -4335,17 +4481,18 @@ Cudd_SetMaxMemory(
 } /* end of Cudd_SetMaxMemory */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prevents sifting of a variable.]
+  \brief Prevents sifting of a variable.
 
-  Description [This function sets a flag to prevent sifting of a
+  \details [This function sets a flag to prevent sifting of a
   variable.  Returns 1 if successful; 0 otherwise (i.e., invalid
   variable index).]
 
-  SideEffects [Changes the "bindVar" flag in DdSubtable.]
+  \sideeffects Changes the "bindVar" flag in DdSubtable.
 
-  SeeAlso     [Cudd_bddUnbindVar]
+  \see Cudd_bddUnbindVar
 
 ******************************************************************************/
 int
@@ -4360,20 +4507,21 @@ Cudd_bddBindVar(
 } /* end of Cudd_bddBindVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Allows the sifting of a variable.]
+  \brief Allows the sifting of a variable.
 
-  Description [This function resets the flag that prevents the sifting
+  \details [This function resets the flag that prevents the sifting
   of a variable. In successive variable reorderings, the variable will
   NOT be skipped, that is, sifted.  Initially all variables can be
   sifted. It is necessary to call this function only to re-enable
   sifting after a call to Cudd_bddBindVar. Returns 1 if successful; 0
   otherwise (i.e., invalid variable index).]
 
-  SideEffects [Changes the "bindVar" flag in DdSubtable.]
+  \sideeffects Changes the "bindVar" flag in DdSubtable.
 
-  SeeAlso     [Cudd_bddBindVar]
+  \see Cudd_bddBindVar
 
 ******************************************************************************/
 int
@@ -4388,19 +4536,20 @@ Cudd_bddUnbindVar(
 } /* end of Cudd_bddUnbindVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tells whether a variable can be sifted.]
+  \brief Tells whether a variable can be sifted.
 
-  Description [This function returns 1 if a variable is enabled for
+  \details [This function returns 1 if a variable is enabled for
   sifting.  Initially all variables can be sifted. This function returns
   0 only if there has been a previous call to Cudd_bddBindVar for that
   variable not followed by a call to Cudd_bddUnbindVar. The function returns
   0 also in the case in which the index of the variable is out of bounds.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddBindVar Cudd_bddUnbindVar]
+  \see Cudd_bddBindVar Cudd_bddUnbindVar
 
 ******************************************************************************/
 int
@@ -4414,16 +4563,17 @@ Cudd_bddVarIsBound(
 } /* end of Cudd_bddVarIsBound */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable type to primary input.]
+  \brief Sets a variable type to primary input.
 
-  Description [Sets a variable type to primary input.  The variable type is
+  \details [Sets a variable type to primary input.  The variable type is
   used by lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetPsVar Cudd_bddSetNsVar Cudd_bddIsPiVar]
+  \see Cudd_bddSetPsVar Cudd_bddSetNsVar Cudd_bddIsPiVar
 
 ******************************************************************************/
 int
@@ -4438,16 +4588,17 @@ Cudd_bddSetPiVar(
 } /* end of Cudd_bddSetPiVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable type to present state.]
+  \brief Sets a variable type to present state.
 
-  Description [Sets a variable type to present state.  The variable type is
+  \details [Sets a variable type to present state.  The variable type is
   used by lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetPiVar Cudd_bddSetNsVar Cudd_bddIsPsVar]
+  \see Cudd_bddSetPiVar Cudd_bddSetNsVar Cudd_bddIsPsVar
 
 ******************************************************************************/
 int
@@ -4462,16 +4613,17 @@ Cudd_bddSetPsVar(
 } /* end of Cudd_bddSetPsVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable type to next state.]
+  \brief Sets a variable type to next state.
 
-  Description [Sets a variable type to next state.  The variable type is
+  \details [Sets a variable type to next state.  The variable type is
   used by lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetPiVar Cudd_bddSetPsVar Cudd_bddIsNsVar]
+  \see Cudd_bddSetPiVar Cudd_bddSetPsVar Cudd_bddIsNsVar
 
 ******************************************************************************/
 int
@@ -4486,17 +4638,18 @@ Cudd_bddSetNsVar(
 } /* end of Cudd_bddSetNsVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is primary input.]
+  \brief Checks whether a variable is primary input.
 
-  Description [Checks whether a variable is primary input.  Returns 1 if
+  \details [Checks whether a variable is primary input.  Returns 1 if
   the variable's type is primary input; 0 if the variable exists but is
   not a primary input; -1 if the variable does not exist.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddSetPiVar Cudd_bddIsPsVar Cudd_bddIsNsVar]
+  \see Cudd_bddSetPiVar Cudd_bddIsPsVar Cudd_bddIsNsVar
 
 ******************************************************************************/
 int
@@ -4510,17 +4663,18 @@ Cudd_bddIsPiVar(
 } /* end of Cudd_bddIsPiVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is present state.]
+  \brief Checks whether a variable is present state.
 
-  Description [Checks whether a variable is present state.  Returns 1 if
+  \details [Checks whether a variable is present state.  Returns 1 if
   the variable's type is present state; 0 if the variable exists but is
   not a present state; -1 if the variable does not exist.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddSetPsVar Cudd_bddIsPiVar Cudd_bddIsNsVar]
+  \see Cudd_bddSetPsVar Cudd_bddIsPiVar Cudd_bddIsNsVar
 
 ******************************************************************************/
 int
@@ -4534,17 +4688,18 @@ Cudd_bddIsPsVar(
 } /* end of Cudd_bddIsPsVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is next state.]
+  \brief Checks whether a variable is next state.
 
-  Description [Checks whether a variable is next state.  Returns 1 if
+  \details [Checks whether a variable is next state.  Returns 1 if
   the variable's type is present state; 0 if the variable exists but is
   not a present state; -1 if the variable does not exist.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddSetNsVar Cudd_bddIsPiVar Cudd_bddIsPsVar]
+  \see Cudd_bddSetNsVar Cudd_bddIsPiVar Cudd_bddIsPsVar
 
 ******************************************************************************/
 int
@@ -4558,17 +4713,18 @@ Cudd_bddIsNsVar(
 } /* end of Cudd_bddIsNsVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a corresponding pair index for a given index.]
+  \brief Sets a corresponding pair index for a given index.
 
-  Description [Sets a corresponding pair index for a given index.
+  \details [Sets a corresponding pair index for a given index.
   These pair indices are present and next state variable.  Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddReadPairIndex]
+  \see Cudd_bddReadPairIndex
 
 ******************************************************************************/
 int
@@ -4584,17 +4740,18 @@ Cudd_bddSetPairIndex(
 } /* end of Cudd_bddSetPairIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads a corresponding pair index for a given index.]
+  \brief Reads a corresponding pair index for a given index.
 
-  Description [Reads a corresponding pair index for a given index.
+  \details [Reads a corresponding pair index for a given index.
   These pair indices are present and next state variable.  Returns the
   corresponding variable index if the variable exists; -1 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetPairIndex]
+  \see Cudd_bddSetPairIndex
 
 ******************************************************************************/
 int
@@ -4608,16 +4765,17 @@ Cudd_bddReadPairIndex(
 } /* end of Cudd_bddReadPairIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable to be grouped.]
+  \brief Sets a variable to be grouped.
 
-  Description [Sets a variable to be grouped. This function is used for
+  \details [Sets a variable to be grouped. This function is used for
   lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetVarHardGroup Cudd_bddResetVarToBeGrouped]
+  \see Cudd_bddSetVarHardGroup Cudd_bddResetVarToBeGrouped
 
 ******************************************************************************/
 int
@@ -4634,16 +4792,17 @@ Cudd_bddSetVarToBeGrouped(
 } /* end of Cudd_bddSetVarToBeGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable to be a hard group.]
+  \brief Sets a variable to be a hard group.
 
-  Description [Sets a variable to be a hard group.  This function is used
+  \details [Sets a variable to be a hard group.  This function is used
   for lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetVarToBeGrouped Cudd_bddResetVarToBeGrouped
+  \see     [Cudd_bddSetVarToBeGrouped Cudd_bddResetVarToBeGrouped
   Cudd_bddIsVarHardGroup]
 
 ******************************************************************************/
@@ -4659,16 +4818,17 @@ Cudd_bddSetVarHardGroup(
 } /* end of Cudd_bddSetVarHardGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resets a variable not to be grouped.]
+  \brief Resets a variable not to be grouped.
 
-  Description [Resets a variable not to be grouped.  This function is
+  \details [Resets a variable not to be grouped.  This function is
   used for lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddSetVarToBeGrouped Cudd_bddSetVarHardGroup]
+  \see Cudd_bddSetVarToBeGrouped Cudd_bddSetVarHardGroup
 
 ******************************************************************************/
 int
@@ -4686,16 +4846,17 @@ Cudd_bddResetVarToBeGrouped(
 } /* end of Cudd_bddResetVarToBeGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is set to be grouped.]
+  \brief Checks whether a variable is set to be grouped.
 
-  Description [Checks whether a variable is set to be grouped. This
+  \details [Checks whether a variable is set to be grouped. This
   function is used for lazy sifting.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -4712,16 +4873,17 @@ Cudd_bddIsVarToBeGrouped(
 } /* end of Cudd_bddIsVarToBeGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable to be ungrouped.]
+  \brief Sets a variable to be ungrouped.
 
-  Description [Sets a variable to be ungrouped. This function is used
+  \details [Sets a variable to be ungrouped. This function is used
   for lazy sifting.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [modifies the manager]
+  \sideeffects modifies the manager
 
-  SeeAlso     [Cudd_bddIsVarToBeUngrouped]
+  \see Cudd_bddIsVarToBeUngrouped
 
 ******************************************************************************/
 int
@@ -4736,18 +4898,19 @@ Cudd_bddSetVarToBeUngrouped(
 } /* end of Cudd_bddSetVarToBeGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is set to be ungrouped.]
+  \brief Checks whether a variable is set to be ungrouped.
 
-  Description [Checks whether a variable is set to be ungrouped. This
+  \details [Checks whether a variable is set to be ungrouped. This
   function is used for lazy sifting.  Returns 1 if the variable is marked
   to be ungrouped; 0 if the variable exists, but it is not marked to be
   ungrouped; -1 if the variable does not exist.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddSetVarToBeUngrouped]
+  \see Cudd_bddSetVarToBeUngrouped
 
 ******************************************************************************/
 int
@@ -4761,18 +4924,19 @@ Cudd_bddIsVarToBeUngrouped(
 } /* end of Cudd_bddIsVarToBeGrouped */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variable is set to be in a hard group.]
+  \brief Checks whether a variable is set to be in a hard group.
 
-  Description [Checks whether a variable is set to be in a hard group.  This
+  \details [Checks whether a variable is set to be in a hard group.  This
   function is used for lazy sifting.  Returns 1 if the variable is marked
   to be in a hard group; 0 if the variable exists, but it is not marked to be
   in a hard group; -1 if the variable does not exist.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_bddSetVarHardGroup]
+  \see Cudd_bddSetVarHardGroup
 
 ******************************************************************************/
 int
@@ -4797,15 +4961,16 @@ Cudd_bddIsVarHardGroup(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Fixes a variable group tree.]
+  \brief Fixes a variable group tree.
 
-  Description []
+  \details []
 
-  SideEffects [Changes the variable group tree.]
+  \sideeffects Changes the variable group tree.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -4826,11 +4991,12 @@ fixVarTree(
 } /* end of fixVarTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Adds multiplicity groups to a ZDD variable group tree.]
+  \brief Adds multiplicity groups to a ZDD variable group tree.
 
-  Description [Adds multiplicity groups to a ZDD variable group tree.
+  \details [Adds multiplicity groups to a ZDD variable group tree.
   Returns 1 if successful; 0 otherwise. This function creates the groups
   for set of ZDD variables (whose cardinality is given by parameter
   multiplicity) that are created for each BDD variable in
@@ -4846,9 +5012,9 @@ fixVarTree(
   attached to the group. We can then place any pair of variables not yet
   grouped in any pair of available positions in the node.]
 
-  SideEffects [Changes the variable group tree.]
+  \sideeffects Changes the variable group tree.
 
-  SeeAlso     [Cudd_zddVarsFromBddVars]
+  \see Cudd_zddVarsFromBddVars
 
 ******************************************************************************/
 static int

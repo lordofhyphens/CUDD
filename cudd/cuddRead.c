@@ -1,20 +1,21 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddRead.c]
+  \file cuddRead.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to read in a matrix]
+  \brief Functions to read in a matrix
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addRead()
 		<li> Cudd_bddRead()
 		</ul>]
 
-  SeeAlso     [cudd_addHarwell.c]
+  \see cudd_addHarwell.c
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -97,11 +98,12 @@ static char rcsid[] DD_UNUSED = "$Id: cuddRead.c,v 1.7 2012/02/05 01:07:19 fabio
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads in a sparse matrix.]
+  \brief Reads in a sparse matrix.
 
-  Description [Reads in a sparse matrix specified in a simple format.
+  \details [Reads in a sparse matrix specified in a simple format.
   The first line of the input contains the numbers of rows and columns.
   The remaining lines contain the elements of the matrix, one per line.
   Given a background value
@@ -135,7 +137,7 @@ static char rcsid[] DD_UNUSED = "$Id: cuddRead.c,v 1.7 2012/02/05 01:07:19 fabio
   variables. Similarly for xn and yn_, which hold on return from
   Cudd_addRead the complements of the row and column variables.]
 
-  SeeAlso     [Cudd_addHarwell Cudd_bddRead]
+  \see Cudd_addHarwell Cudd_bddRead
 
 ******************************************************************************/
 int
@@ -325,11 +327,12 @@ Cudd_addRead(
 } /* end of Cudd_addRead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads in a graph (without labels) given as a list of arcs.]
+  \brief Reads in a graph (without labels) given as a list of arcs.
 
-  Description [Reads in a graph (without labels) given as an adjacency
+  \details [Reads in a graph (without labels) given as an adjacency
   matrix.  The first line of the input contains the numbers of rows and
   columns of the adjacency matrix. The remaining lines contain the arcs
   of the graph, one per line. Each arc is described by two integers,
@@ -358,7 +361,7 @@ Cudd_addRead(
   are possibly extended to represent the array of row and column
   variables.]
 
-  SeeAlso     [Cudd_addHarwell Cudd_addRead]
+  \see Cudd_addHarwell Cudd_addRead
 
 ******************************************************************************/
 int

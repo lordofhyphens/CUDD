@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddTable.c]
+  \file cuddTable.c
 
   PackageName [cudd]
 
-  Synopsis    [Unique table management functions.]
+  \brief Unique table management functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_Prime()
                 <li> Cudd_Reserve()
@@ -43,9 +44,9 @@
 		<li> cuddCheckCollisionOrdering()
 		</ul>]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -172,13 +173,14 @@ static void ddReportRefMess (DdManager *unique, int i, const char *caller);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the next prime &gt;= p.]
+  \brief Returns the next prime &gt;= p.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 unsigned int
@@ -209,11 +211,12 @@ Cudd_Prime(
 } /* end of Cudd_Prime */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Expand manager without creating variables.]
+  \brief Expand manager without creating variables.
 
-  Description [Expand a manager by a specified number of subtables without
+  \details [Expand a manager by a specified number of subtables without
   actually creating new variables.  This function can be used to reduce the
   frequency of resizing when an estimate of the number of variables is
   available.  One would call this function instead of passing the number
@@ -221,9 +224,9 @@ Cudd_Prime(
   of if the estimate on their number became available only after the manager
   has been created.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Init]
+  \see Cudd_Init
 
 ******************************************************************************/
 int
@@ -248,18 +251,19 @@ Cudd_Reserve(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Fast storage allocation for DdNodes in the table.]
+  \brief Fast storage allocation for DdNodes in the table.
 
-  Description [Fast storage allocation for DdNodes in the table. The
+  \details [Fast storage allocation for DdNodes in the table. The
   first 4 bytes of a chunk contain a pointer to the next block; the
   rest contains DD_MEM_CHUNK spaces for DdNodes.  Returns a pointer to
   a new node if successful; NULL is memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddDynamicAllocNode]
+  \see cuddDynamicAllocNode
 
 ******************************************************************************/
 DdNode *
@@ -364,16 +368,17 @@ cuddAllocNode(
 } /* end of cuddAllocNode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Creates and initializes the unique table.]
+  \brief Creates and initializes the unique table.
 
-  Description [Creates and initializes the unique table. Returns a pointer
+  \details [Creates and initializes the unique table. Returns a pointer
   to the table if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Init cuddFreeTable]
+  \see Cudd_Init cuddFreeTable
 
 ******************************************************************************/
 DdManager *
@@ -677,15 +682,16 @@ cuddInitTable(
 } /* end of cuddInitTable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees the resources associated to a unique table.]
+  \brief Frees the resources associated to a unique table.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddInitTable]
+  \see cuddInitTable
 
 ******************************************************************************/
 void
@@ -743,19 +749,20 @@ cuddFreeTable(
 } /* end of cuddFreeTable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs garbage collection on the unique tables.]
+  \brief Performs garbage collection on the unique tables.
 
-  Description [Performs garbage collection on the BDD and ZDD unique tables.
+  \details [Performs garbage collection on the BDD and ZDD unique tables.
   If clearCache is 0, the cache is not cleared. This should only be
   specified if the cache has been cleared right before calling
   cuddGarbageCollect. (As in the case of dynamic reordering.)
   Returns the total number of deleted nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -1033,17 +1040,18 @@ cuddGarbageCollect(
 } /* end of cuddGarbageCollect */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Wrapper for cuddUniqueInterZdd.]
+  \brief Wrapper for cuddUniqueInterZdd.
 
-  Description [Wrapper for cuddUniqueInterZdd, which applies the ZDD
+  \details [Wrapper for cuddUniqueInterZdd, which applies the ZDD
   reduction rule. Returns a pointer to the result node under normal
   conditions; NULL if reordering occurred or memory was exhausted.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUniqueInterZdd]
+  \see cuddUniqueInterZdd
 
 ******************************************************************************/
 DdNode *
@@ -1063,20 +1071,21 @@ cuddZddGetNode(
 } /* end of cuddZddGetNode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Wrapper for cuddUniqueInterZdd that is independent of variable
   ordering.]
 
-  Description [Wrapper for cuddUniqueInterZdd that is independent of
+  \details [Wrapper for cuddUniqueInterZdd that is independent of
   variable ordering (IVO). This function does not require parameter
   index to precede the indices of the top nodes of g and h in the
   variable order.  Returns a pointer to the result node under normal
   conditions; NULL if reordering occurred or memory was exhausted.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddGetNode cuddZddIsop]
+  \see cuddZddGetNode cuddZddIsop
 
 ******************************************************************************/
 DdNode *
@@ -1116,11 +1125,12 @@ cuddZddGetNodeIVO(
 } /* end of cuddZddGetNodeIVO */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks the unique table for the existence of an internal node.]
+  \brief Checks the unique table for the existence of an internal node.
 
-  Description [Checks the unique table for the existence of an internal
+  \details [Checks the unique table for the existence of an internal
   node. If it does not exist, it creates a new one.  Does not
   modify the reference count of whatever is returned.  A newly created
   internal node comes back with a reference count 0.  For a newly
@@ -1128,9 +1138,9 @@ cuddZddGetNodeIVO(
   to.  Returns a pointer to the new node if successful; NULL if memory
   is exhausted or if reordering took place.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUniqueInterZdd]
+  \see cuddUniqueInterZdd
 
 ******************************************************************************/
 DdNode *
@@ -1313,20 +1323,21 @@ cuddUniqueInter(
 } /* end of cuddUniqueInter */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Wrapper for cuddUniqueInter that is independent of variable
   ordering.]
 
-  Description [Wrapper for cuddUniqueInter that is independent of
+  \details [Wrapper for cuddUniqueInter that is independent of
   variable ordering (IVO). This function does not require parameter
   index to precede the indices of the top nodes of T and E in the
   variable order.  Returns a pointer to the result node under normal
   conditions; NULL if reordering occurred or memory was exhausted.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUniqueInter Cudd_MakeBddFromZddCover]
+  \see cuddUniqueInter Cudd_MakeBddFromZddCover
 
 ******************************************************************************/
 DdNode *
@@ -1350,12 +1361,13 @@ cuddUniqueInterIVO(
 } /* end of cuddUniqueInterIVO */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Checks the unique table for the existence of an internal
   ZDD node.]
 
-  Description [Checks the unique table for the existence of an internal
+  \details [Checks the unique table for the existence of an internal
   ZDD node. If it does not exist, it creates a new one.  Does not
   modify the reference count of whatever is returned.  A newly created
   internal node comes back with a reference count 0.  For a newly
@@ -1363,9 +1375,9 @@ cuddUniqueInterIVO(
   to.  Returns a pointer to the new node if successful; NULL if memory
   is exhausted or if reordering took place.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUniqueInter]
+  \see cuddUniqueInter
 
 ******************************************************************************/
 DdNode *
@@ -1462,17 +1474,18 @@ cuddUniqueInterZdd(
 } /* end of cuddUniqueInterZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks the unique table for the existence of a constant node.]
+  \brief Checks the unique table for the existence of a constant node.
 
-  Description [Checks the unique table for the existence of a constant node.
+  \details [Checks the unique table for the existence of a constant node.
   If it does not exist, it creates a new one.  Does not
   modify the reference count of whatever is returned.  A newly created
   internal node comes back with a reference count 0.  Returns a
   pointer to the new node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -1543,16 +1556,17 @@ cuddUniqueConst(
 } /* end of cuddUniqueConst */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Rehashes a unique subtable.]
+  \brief Rehashes a unique subtable.
 
-  Description [Doubles the size of a unique subtable and rehashes its
+  \details [Doubles the size of a unique subtable and rehashes its
   contents.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -1716,15 +1730,16 @@ cuddRehash(
 } /* end of cuddRehash */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Shrinks a subtable.]
+  \brief Shrinks a subtable.
 
-  Description [Shrinks a subtable.]
+  \details [Shrinks a subtable.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRehash]
+  \see cuddRehash
 
 ******************************************************************************/
 void
@@ -1807,17 +1822,18 @@ cuddShrinkSubtable(
 } /* end of cuddShrinkSubtable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Inserts n new subtables in a unique table at level.]
+  \brief Inserts n new subtables in a unique table at level.
 
-  Description [Inserts n new subtables in a unique table at level.
+  \details [Inserts n new subtables in a unique table at level.
   The number n should be positive, and level should be an existing level.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddDestroySubtables]
+  \see cuddDestroySubtables
 
 ******************************************************************************/
 int
@@ -2118,11 +2134,12 @@ cuddInsertSubtables(
 } /* end of cuddInsertSubtables */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Destroys the n most recently created subtables in a unique table.]
+  \brief Destroys the n most recently created subtables in a unique table.
 
-  Description [Destroys the n most recently created subtables in a unique
+  \details [Destroys the n most recently created subtables in a unique
   table.  n should be positive. The subtables should not contain any live
   nodes, except the (isolated) projection function. The projection
   functions are freed.  Returns 1 if successful; 0 otherwise.]
@@ -2130,7 +2147,7 @@ cuddInsertSubtables(
   SideEffects [The variable map used for fast variable substitution is
   destroyed if it exists. In this case the cache is also cleared.]
 
-  SeeAlso     [cuddInsertSubtables Cudd_SetVarMap]
+  \see cuddInsertSubtables Cudd_SetVarMap
 
 ******************************************************************************/
 int
@@ -2250,20 +2267,21 @@ cuddDestroySubtables(
 } /* end of cuddDestroySubtables */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Increases the number of ZDD subtables in a unique table so
   that it meets or exceeds index.]
 
-  Description [Increases the number of ZDD subtables in a unique table so
+  \details [Increases the number of ZDD subtables in a unique table so
   that it meets or exceeds index.  When new ZDD variables are created, it
   is possible to preserve the functions unchanged, or it is possible to
   preserve the covers unchanged, but not both. cuddResizeTableZdd preserves
   the covers.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [ddResizeTable]
+  \see ddResizeTable
 
 ******************************************************************************/
 int
@@ -2399,15 +2417,16 @@ cuddResizeTableZdd(
 } /* end of cuddResizeTableZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Adjusts parameters of a table to slow down its growth.]
+  \brief Adjusts parameters of a table to slow down its growth.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -2436,15 +2455,16 @@ cuddSlowTableGrowth(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Rehashes a ZDD unique subtable.]
+  \brief Rehashes a ZDD unique subtable.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRehash]
+  \see cuddRehash
 
 ******************************************************************************/
 static void
@@ -2535,20 +2555,21 @@ ddRehashZdd(
 } /* end of ddRehashZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Increases the number of subtables in a unique table so
   that it meets or exceeds index.]
 
-  Description [Increases the number of subtables in a unique table so
+  \details [Increases the number of subtables in a unique table so
   that it meets or exceeds index.  The parameter amount determines how
   much spare space is allocated to prevent too frequent resizing.  If
   index is negative, the table is resized, but no new variables are
   created.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Reserve cuddResizeTableZdd]
+  \see Cudd_Reserve cuddResizeTableZdd
 
 ******************************************************************************/
 static int
@@ -2780,16 +2801,17 @@ ddResizeTable(
 } /* end of ddResizeTable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Searches the subtables above node for a parent.]
+  \brief Searches the subtables above node for a parent.
 
-  Description [Searches the subtables above node for a parent. Returns 1
+  \details [Searches the subtables above node for a parent. Returns 1
   as soon as one parent is found. Returns 0 is the search is fruitless.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -2825,17 +2847,18 @@ cuddFindParent(
 } /* end of cuddFindParent */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Adjusts the values of table limits.]
+  \brief Adjusts the values of table limits.
 
-  Description [Adjusts the values of table fields controlling the.
+  \details [Adjusts the values of table fields controlling the.
   sizes of subtables and computed table. If the computed table is too small
   according to the new values, it is resized.]
 
-  SideEffects [Modifies manager fields. May resize computed table.]
+  \sideeffects Modifies manager fields. May resize computed table.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DD_INLINE
@@ -2856,16 +2879,17 @@ ddFixLimits(
 
 #ifndef DD_UNSORTED_FREE_LIST
 #ifdef DD_RED_BLACK_FREE_LIST
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Inserts a DdNode in a red/black search tree.]
+  \brief Inserts a DdNode in a red/black search tree.
 
-  Description [Inserts a DdNode in a red/black search tree. Nodes from
+  \details [Inserts a DdNode in a red/black search tree. Nodes from
   the same "page" (defined by DD_PAGE_MASK) are linked in a LIFO list.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddOrderedThread]
+  \see cuddOrderedThread
 
 ******************************************************************************/
 static void
@@ -2897,11 +2921,12 @@ cuddOrderedInsert(
 } /* end of cuddOrderedInsert */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Threads all the nodes of a search tree into a linear list.]
+  \brief Threads all the nodes of a search tree into a linear list.
 
-  Description [Threads all the nodes of a search tree into a linear
+  \details [Threads all the nodes of a search tree into a linear
   list. For each node of the search tree, the "left" child, if non-null, has
   a lower address than its parent, and the "right" child, if non-null, has a
   higher address than its parent.
@@ -2912,9 +2937,9 @@ cuddOrderedInsert(
   same memory page (as defined in DD_PAGE_MASK). When a node is added to
   the linear list, all the elements of the linked list are added.]
 
-  SideEffects [The search tree is destroyed as a result of this operation.]
+  \sideeffects The search tree is destroyed as a result of this operation.
 
-  SeeAlso     [cuddOrderedInsert]
+  \see cuddOrderedInsert
 
 ******************************************************************************/
 static DdNode *
@@ -2974,15 +2999,16 @@ cuddOrderedThread(
 } /* end of cuddOrderedThread */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the left rotation for red/black trees.]
+  \brief Performs the left rotation for red/black trees.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRotateRight]
+  \see cuddRotateRight
 
 ******************************************************************************/
 DD_INLINE
@@ -3000,15 +3026,16 @@ cuddRotateLeft(
 } /* end of cuddRotateLeft */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the right rotation for red/black trees.]
+  \brief Performs the right rotation for red/black trees.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRotateLeft]
+  \see cuddRotateLeft
 
 ******************************************************************************/
 DD_INLINE
@@ -3026,15 +3053,16 @@ cuddRotateRight(
 } /* end of cuddRotateRight */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Rebalances a red/black tree.]
+  \brief Rebalances a red/black tree.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -3101,17 +3129,18 @@ cuddDoRebalance(
 #endif
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Fixes a variable tree after the insertion of new subtables.]
+  \brief Fixes a variable tree after the insertion of new subtables.
 
-  Description [Fixes a variable tree after the insertion of new subtables.
+  \details [Fixes a variable tree after the insertion of new subtables.
   After such an insertion, the low fields of the tree below the insertion
   point are inconsistent.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -3135,15 +3164,16 @@ ddPatchTree(
 
 
 #ifdef DD_DEBUG
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a collision list is ordered.]
+  \brief Checks whether a collision list is ordered.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -3180,15 +3210,16 @@ cuddCheckCollisionOrdering(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports problem in garbage collection.]
+  \brief Reports problem in garbage collection.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddGarbageCollect cuddGarbageCollectZdd]
+  \see cuddGarbageCollect cuddGarbageCollectZdd
 
 ******************************************************************************/
 static void

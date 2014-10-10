@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddUtil.c]
+  \file cuddZddUtil.c
 
   PackageName [cudd]
 
-  Synopsis    [Utility functions for ZDDs.]
+  \brief Utility functions for ZDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddPrintMinterm()
 		    <li> Cudd_zddPrintCover()
@@ -31,9 +32,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Hyong-Kyoon Shin, In-Ho Moon, Fabio Somenzi]
+  \author Hyong-Kyoon Shin, In-Ho Moon, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -120,16 +121,17 @@ static void zddClearFlag(DdNode * f);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints a disjoint sum of product form for a ZDD.]
+  \brief Prints a disjoint sum of product form for a ZDD.
 
-  Description [Prints a disjoint sum of product form for a ZDD. Returns 1
+  \details [Prints a disjoint sum of product form for a ZDD. Returns 1
   if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddPrintDebug Cudd_zddPrintCover]
+  \see Cudd_zddPrintDebug Cudd_zddPrintCover
 
 ******************************************************************************/
 int
@@ -154,16 +156,17 @@ Cudd_zddPrintMinterm(
 } /* end of Cudd_zddPrintMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints a sum of products from a ZDD representing a cover.]
+  \brief Prints a sum of products from a ZDD representing a cover.
 
-  Description [Prints a sum of products from a ZDD representing a cover.
+  \details [Prints a sum of products from a ZDD representing a cover.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddPrintMinterm]
+  \see Cudd_zddPrintMinterm
 
 ******************************************************************************/
 int
@@ -189,11 +192,12 @@ Cudd_zddPrintCover(
 } /* end of Cudd_zddPrintCover */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Prints to the standard output a ZDD and its statistics.]
+  \brief Prints to the standard output a ZDD and its statistics.
 
-  Description [Prints to the standard output a DD and its statistics.
+  \details [Prints to the standard output a DD and its statistics.
   The statistics include the number of nodes and the number of minterms.
   (The number of minterms is also the number of combinations in the set.)
   The statistics are printed if pr &gt; 0.  Specifically:
@@ -207,9 +211,9 @@ Cudd_zddPrintCover(
   Returns 1 if successful; 0 otherwise.
   ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -251,11 +255,12 @@ Cudd_zddPrintDebug(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the first path of a ZDD.]
+  \brief Finds the first path of a ZDD.
 
-  Description [Defines an iterator on the paths of a ZDD
+  \details [Defines an iterator on the paths of a ZDD
   and finds its first path. Returns a generator that contains the
   information necessary to continue the enumeration if successful; NULL
   otherwise.<p>
@@ -266,9 +271,9 @@ Cudd_zddPrintDebug(
   the time Cudd_zddFirstCube is called.<p>
   The paths that end in the empty terminal are not enumerated.]
 
-  SideEffects [The first path is returned as a side effect.]
+  \sideeffects The first path is returned as a side effect.
 
-  SeeAlso     [Cudd_zddForeachPath Cudd_zddNextPath Cudd_GenFree
+  \see     [Cudd_zddForeachPath Cudd_zddNextPath Cudd_GenFree
   Cudd_IsGenEmpty]
 
 ******************************************************************************/
@@ -369,18 +374,19 @@ done:
 } /* end of Cudd_zddFirstPath */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates the next path of a ZDD.]
+  \brief Generates the next path of a ZDD.
 
-  Description [Generates the next path of a ZDD onset,
+  \details [Generates the next path of a ZDD onset,
   using generator gen. Returns 0 if the enumeration is completed; 1
   otherwise.]
 
   SideEffects [The path is returned as a side effect. The
   generator is modified.]
 
-  SeeAlso     [Cudd_zddForeachPath Cudd_zddFirstPath Cudd_GenFree
+  \see     [Cudd_zddForeachPath Cudd_zddFirstPath Cudd_GenFree
   Cudd_IsGenEmpty]
 
 ******************************************************************************/
@@ -456,20 +462,21 @@ done:
 } /* end of Cudd_zddNextPath */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts a path of a ZDD representing a cover to a string.]
+  \brief Converts a path of a ZDD representing a cover to a string.
 
-  Description [Converts a path of a ZDD representing a cover to a
+  \details [Converts a path of a ZDD representing a cover to a
   string.  The string represents an implicant of the cover.  The path
   is typically produced by Cudd_zddForeachPath.  Returns a pointer to
   the string if successful; NULL otherwise.  If the str input is NULL,
   it allocates a new string.  The string passed to this function must
   have enough room for all variables and for the terminator.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddForeachPath]
+  \see Cudd_zddForeachPath
 
 ******************************************************************************/
 char *
@@ -519,17 +526,18 @@ Cudd_zddCoverPathToString(
 } /* end of Cudd_zddCoverPathToString */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the variables on which a ZDD depends.]
+  \brief Finds the variables on which a ZDD depends.
 
-  Description [Finds the variables on which a ZDD depends.
+  \details [Finds the variables on which a ZDD depends.
   Returns a BDD consisting of the product of the variables if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Support]
+  \see Cudd_Support
 
 ******************************************************************************/
 DdNode *
@@ -592,11 +600,12 @@ Cudd_zddSupport(
 } /* end of Cudd_zddSupport */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Writes a dot file representing the argument ZDDs.]
+  \brief Writes a dot file representing the argument ZDDs.
 
-  Description [Writes a file representing the argument ZDDs in a format
+  \details [Writes a file representing the argument ZDDs in a format
   suitable for the graph drawing program dot.
   It returns 1 in case of success; 0 otherwise (e.g., out-of-memory,
   file system full).
@@ -614,9 +623,9 @@ Cudd_zddSupport(
   sheet.
   ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DumpDot Cudd_zddPrintDebug]
+  \see Cudd_DumpDot Cudd_zddPrintDebug
 
 ******************************************************************************/
 int
@@ -879,17 +888,18 @@ failure:
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Prints a ZDD to the standard output. One line per node is
   printed.]
 
-  Description [Prints a ZDD to the standard output. One line per node is
+  \details [Prints a ZDD to the standard output. One line per node is
   printed. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddPrintDebug]
+  \see Cudd_zddPrintDebug
 
 ******************************************************************************/
 int
@@ -915,16 +925,17 @@ cuddZddP(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of cuddZddP.]
+  \brief Performs the recursive step of cuddZddP.
 
-  Description [Performs the recursive step of cuddZddP. Returns 1 in
+  \details [Performs the recursive step of cuddZddP. Returns 1 in
   case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -997,15 +1008,16 @@ zp2(
 } /* end of zp2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddPrintMinterm.]
+  \brief Performs the recursive step of Cudd_zddPrintMinterm.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -1069,15 +1081,16 @@ zdd_print_minterm_aux(
 } /* end of zdd_print_minterm_aux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddPrintCover.]
+  \brief Performs the recursive step of Cudd_zddPrintCover.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -1141,17 +1154,18 @@ zddPrintCoverAux(
 } /* end of zddPrintCoverAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddSupport.]
+  \brief Performs the recursive step of Cudd_zddSupport.
 
-  Description [Performs the recursive step of Cudd_zddSupport. Performs a
+  \details [Performs the recursive step of Cudd_zddSupport. Performs a
   DFS from f. The support is accumulated in supp as a side effect. Uses
   the LSB of the then pointer as visited flag.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [zddClearFlag]
+  \see zddClearFlag
 
 ******************************************************************************/
 static void
@@ -1173,16 +1187,17 @@ zddSupportStep(
 } /* end of zddSupportStep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Performs a DFS from f, clearing the LSB of the next
   pointers.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [zddSupportStep]
+  \see zddSupportStep
 
 ******************************************************************************/
 static void

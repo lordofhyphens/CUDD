@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddCof.c]
+  \file cuddCof.c
 
   PackageName [cudd]
 
-  Synopsis    [Cofactoring functions.]
+  \brief Cofactoring functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_Cofactor()
 		<li> Cudd_CheckCube()
@@ -18,9 +19,9 @@
 		</ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -102,17 +103,18 @@ static char rcsid[] DD_UNUSED = "$Id: cuddCof.c,v 1.11 2012/02/05 01:07:18 fabio
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the cofactor of f with respect to g.]
+  \brief Computes the cofactor of f with respect to g.
 
-  Description [Computes the cofactor of f with respect to g; g must be
+  \details [Computes the cofactor of f with respect to g; g must be
   the BDD or the ADD of a cube. Returns a pointer to the cofactor if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddConstrain Cudd_bddRestrict]
+  \see Cudd_bddConstrain Cudd_bddRestrict
 
 ******************************************************************************/
 DdNode *
@@ -138,17 +140,18 @@ Cudd_Cofactor(
 } /* end of Cudd_Cofactor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether g is the BDD of a cube.]
+  \brief Checks whether g is the BDD of a cube.
 
-  Description [Checks whether g is the BDD of a cube. Returns 1 in case
+  \details [Checks whether g is the BDD of a cube. Returns 1 in case
   of success; 0 otherwise. The constant 1 is a valid cube, but all other
   constant functions cause cuddCheckCube to return 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -181,15 +184,16 @@ Cudd_CheckCube(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the children of g.]
+  \brief Computes the children of g.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -210,16 +214,17 @@ cuddGetBranches(
 } /* end of cuddGetBranches */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_Cofactor.]
+  \brief Performs the recursive step of Cudd_Cofactor.
 
-  Description [Performs the recursive step of Cudd_Cofactor. Returns a
+  \details [Performs the recursive step of Cudd_Cofactor. Returns a
   pointer to the cofactor if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Cofactor]
+  \see Cudd_Cofactor
 
 ******************************************************************************/
 DdNode *

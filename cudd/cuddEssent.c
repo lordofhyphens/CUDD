@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddEssent.c]
+  \file cuddEssent.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for the detection of essential variables.]
+  \brief Functions for the detection of essential variables.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_FindEssential()
 		<li> Cudd_bddIsVarEssential()
@@ -35,7 +36,7 @@
 		<li> tlcInfoAlloc()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -186,19 +187,20 @@ static DdTlcInfo * tlcInfoAlloc (void);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the essential variables of a DD.]
+  \brief Finds the essential variables of a DD.
 
-  Description [Returns the cube of the essential variables. A positive
+  \details [Returns the cube of the essential variables. A positive
   literal means that the variable must be set to 1 for the function to be
   1. A negative literal means that the variable must be set to 0 for the
   function to be 1. Returns a pointer to the cube BDD if successful;
   NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIsVarEssential]
+  \see Cudd_bddIsVarEssential
 
 ******************************************************************************/
 DdNode *
@@ -217,18 +219,19 @@ Cudd_FindEssential(
 } /* end of Cudd_FindEssential */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Determines whether a given variable is essential with a
   given phase in a BDD.]
 
-  Description [Determines whether a given variable is essential with a
+  \details [Determines whether a given variable is essential with a
   given phase in a BDD. Uses Cudd_bddIteConstant. Returns 1 if phase == 1
   and f-->x_id, or if phase == 0 and f-->x_id'.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FindEssential]
+  \see Cudd_FindEssential
 
 ******************************************************************************/
 int
@@ -252,11 +255,12 @@ Cudd_bddIsVarEssential(
 } /* end of Cudd_bddIsVarEssential */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the two literal clauses of a DD.]
+  \brief Finds the two literal clauses of a DD.
 
-  Description [Returns the one- and two-literal clauses of a DD.
+  \details [Returns the one- and two-literal clauses of a DD.
   Returns a pointer to the structure holding the clauses if
   successful; NULL otherwise.  For a constant DD, the empty set of clauses
   is returned.  This is obviously correct for a non-zero constant.  For the
@@ -264,9 +268,9 @@ Cudd_bddIsVarEssential(
   containing variables in the support of the function are considered.  Since
   the support of a constant function is empty, no clauses are returned.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FindEssential]
+  \see Cudd_FindEssential
 
 ******************************************************************************/
 DdTlcInfo *
@@ -338,17 +342,18 @@ Cudd_FindTwoLiteralClauses(
 } /* end of Cudd_FindTwoLiteralClauses */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Accesses the i-th clause of a DD.]
+  \brief Accesses the i-th clause of a DD.
 
-  Description [Accesses the i-th clause of a DD given the clause set which
+  \details [Accesses the i-th clause of a DD given the clause set which
   must be already computed.  Returns 1 if successful; 0 if i is out of range,
   or in case of error.]
 
-  SideEffects [the four components of a clause are returned as side effects.]
+  \sideeffects the four components of a clause are returned as side effects.
 
-  SeeAlso     [Cudd_FindTwoLiteralClauses]
+  \see Cudd_FindTwoLiteralClauses
 
 ******************************************************************************/
 int
@@ -372,17 +377,18 @@ Cudd_ReadIthClause(
 } /* end of Cudd_ReadIthClause */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints the two literal clauses of a DD.]
+  \brief Prints the two literal clauses of a DD.
 
-  Description [Prints the one- and two-literal clauses. Returns 1 if
+  \details [Prints the one- and two-literal clauses. Returns 1 if
   successful; 0 otherwise.  The argument "names" can be NULL, in which case
   the variable indices are printed.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FindTwoLiteralClauses]
+  \see Cudd_FindTwoLiteralClauses
 
 ******************************************************************************/
 int
@@ -435,16 +441,17 @@ Cudd_PrintTwoLiteralClauses(
 } /* end of Cudd_PrintTwoLiteralClauses */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees a DdTlcInfo Structure.]
+  \brief Frees a DdTlcInfo Structure.
 
-  Description [Frees a DdTlcInfo Structure as well as the memory pointed
+  \details [Frees a DdTlcInfo Structure as well as the memory pointed
   by it.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -468,14 +475,15 @@ Cudd_tlcInfoFree(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_FindEssential.]
+  \brief Implements the recursive step of Cudd_FindEssential.
 
-  Description [Implements the recursive step of Cudd_FindEssential.
+  \details [Implements the recursive step of Cudd_FindEssential.
   Returns a pointer to the cube BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *
@@ -598,18 +606,19 @@ ddFindEssentialRecur(
 } /* end of ddFindEssentialRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_FindTwoLiteralClauses.]
+  \brief Implements the recursive step of Cudd_FindTwoLiteralClauses.
 
-  Description [Implements the recursive step of
+  \details [Implements the recursive step of
   Cudd_FindTwoLiteralClauses.  The DD node is assumed to be not
   constant.  Returns a pointer to a set of clauses if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_FindTwoLiteralClauses]
+  \see Cudd_FindTwoLiteralClauses
 
 ******************************************************************************/
 static DdTlcInfo *
@@ -747,17 +756,18 @@ ddFindTwoLiteralClausesRecur(
 } /* end of ddFindTwoLiteralClausesRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the two-literal clauses for a node.]
+  \brief Computes the two-literal clauses for a node.
 
-  Description [Computes the two-literal clauses for a node given the
+  \details [Computes the two-literal clauses for a node given the
   clauses for its children and the label of the node.  Returns a
   pointer to a TclInfo structure if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [computeClausesWithUniverse]
+  \see computeClausesWithUniverse
 
 ******************************************************************************/
 static DdTlcInfo *
@@ -1046,18 +1056,19 @@ computeClauses(
 } /* end of computeClauses */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the two-literal clauses for a node.]
+  \brief Computes the two-literal clauses for a node.
 
-  Description [Computes the two-literal clauses for a node with a zero
+  \details [Computes the two-literal clauses for a node with a zero
   child, given the clauses for its other child and the label of the
   node.  Returns a pointer to a TclInfo structure if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [computeClauses]
+  \see computeClauses
 
 ******************************************************************************/
 static DdTlcInfo *
@@ -1119,17 +1130,18 @@ computeClausesWithUniverse(
 } /* end of computeClausesWithUniverse */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns an enpty set of clauses.]
+  \brief Returns an enpty set of clauses.
 
-  Description [Returns a pointer to an empty set of clauses if
+  \details [Returns a pointer to an empty set of clauses if
   successful; NULL otherwise.  No bit vector for the phases is
   allocated.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdTlcInfo *
@@ -1154,16 +1166,17 @@ emptyClauseSet(void)
 } /* end of emptyClauseSet */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns true iff the argument is the sentinel clause.]
+  \brief Returns true iff the argument is the sentinel clause.
 
-  Description [Returns true iff the argument is the sentinel clause.
+  \details [Returns true iff the argument is the sentinel clause.
   A sentinel clause has both variables equal to 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1176,17 +1189,18 @@ sentinelp(
 } /* end of sentinelp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns true iff the two arguments are identical clauses.]
+  \brief Returns true iff the two arguments are identical clauses.
 
-  Description [Returns true iff the two arguments are identical
+  \details [Returns true iff the two arguments are identical
   clauses.  Since literals are sorted, we only need to compare
   literals in the same position.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [beforep]
+  \see beforep
 
 ******************************************************************************/
 static int
@@ -1206,12 +1220,13 @@ equalp(
 } /* end of equalp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Returns true iff the first argument precedes the second in
   the clause order.]
 
-  Description [Returns true iff the first argument precedes the second
+  \details [Returns true iff the first argument precedes the second
   in the clause order.  A clause precedes another if its first lieral
   precedes the first literal of the other, or if the first literals
   are the same, and its second literal precedes the second literal of
@@ -1220,9 +1235,9 @@ equalp(
   is the positive phase, and it is lower than Phase 1 (negative
   phase).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [equalp]
+  \see equalp
 
 ******************************************************************************/
 static int
@@ -1243,18 +1258,19 @@ beforep(
 } /* end of beforep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns true iff the argument is a one-literal clause.]
+  \brief Returns true iff the argument is a one-literal clause.
 
-  Description [Returns true iff the argument is a one-literal clause.
+  \details [Returns true iff the argument is a one-literal clause.
   A one-litaral clause has the constant FALSE as second literal.
   Since the constant TRUE is never used, it is sufficient to test for
   a constant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1266,18 +1282,19 @@ oneliteralp(
 } /* end of oneliteralp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Returns true iff either literal of a clause is in a set of
   literals.]
 
-  Description [Returns true iff either literal of a clause is in a set
+  \details [Returns true iff either literal of a clause is in a set
   of literals.  The first four arguments specify the clause.  The
   remaining two arguments specify the literal set.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1297,18 +1314,19 @@ impliedp(
 } /* end of impliedp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Allocates a bit vector.]
+  \brief Allocates a bit vector.
 
-  Description [Allocates a bit vector.  The parameter size gives the
+  \details [Allocates a bit vector.  The parameter size gives the
   number of bits.  This procedure allocates enough long's to hold the
   specified number of bits.  Returns a pointer to the allocated vector
   if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bitVectorClear bitVectorFree]
+  \see bitVectorClear bitVectorFree
 
 ******************************************************************************/
 static BitVector *
@@ -1332,16 +1350,17 @@ bitVectorAlloc(
 } /* end of bitVectorAlloc */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Clears a bit vector.]
+  \brief Clears a bit vector.
 
-  Description [Clears a bit vector.  The parameter size gives the
+  \details [Clears a bit vector.  The parameter size gives the
   number of bits.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bitVectorAlloc]
+  \see bitVectorAlloc
 
 ******************************************************************************/
 DD_INLINE
@@ -1364,15 +1383,16 @@ bitVectorClear(
 } /* end of bitVectorClear */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees a bit vector.]
+  \brief Frees a bit vector.
 
-  Description [Frees a bit vector.]
+  \details [Frees a bit vector.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bitVectorAlloc]
+  \see bitVectorAlloc
 
 ******************************************************************************/
 static void
@@ -1384,15 +1404,16 @@ bitVectorFree(
 } /* end of bitVectorFree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the i-th entry of a bit vector.]
+  \brief Returns the i-th entry of a bit vector.
 
-  Description [Returns the i-th entry of a bit vector.]
+  \details [Returns the i-th entry of a bit vector.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bitVectorSet]
+  \see bitVectorSet
 
 ******************************************************************************/
 DD_INLINE
@@ -1414,15 +1435,16 @@ bitVectorRead(
 } /* end of bitVectorRead */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets the i-th entry of a bit vector to a value.]
+  \brief Sets the i-th entry of a bit vector to a value.
 
-  Description [Sets the i-th entry of a bit vector to a value.]
+  \details [Sets the i-th entry of a bit vector to a value.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bitVectorRead]
+  \see bitVectorRead
 
 ******************************************************************************/
 DD_INLINE
@@ -1442,16 +1464,17 @@ bitVectorSet(
 } /* end of bitVectorSet */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Allocates a DdTlcInfo Structure.]
+  \brief Allocates a DdTlcInfo Structure.
 
-  Description [Returns a pointer to a DdTlcInfo Structure if successful;
+  \details [Returns a pointer to a DdTlcInfo Structure if successful;
   NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_tlcInfoFree]
+  \see Cudd_tlcInfoFree
 
 ******************************************************************************/
 static DdTlcInfo *

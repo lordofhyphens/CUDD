@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddCount.c]
+  \file cuddZddCount.c
 
   PackageName [cudd]
 
-  Synopsis    [Procedures to count the number of minterms of a ZDD.]
+  \brief Procedures to count the number of minterms of a ZDD.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddCount();
 		    <li> Cudd_zddCountDouble();
@@ -23,9 +24,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Hyong-Kyoon Shin, In-Ho Moon]
+  \author Hyong-Kyoon Shin, In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -117,16 +118,17 @@ static enum st_retval st_zdd_count_dbl_free (char *key, char *value, char *arg);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Counts the number of minterms in a ZDD.]
+  \brief Counts the number of minterms in a ZDD.
 
-  Description [Returns an integer representing the number of minterms
+  \details [Returns an integer representing the number of minterms
   in a ZDD.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddCountDouble]
+  \see Cudd_zddCountDouble
 
 ******************************************************************************/
 int
@@ -154,18 +156,19 @@ Cudd_zddCount(
 } /* end of Cudd_zddCount */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Counts the number of minterms of a ZDD.]
+  \brief Counts the number of minterms of a ZDD.
 
-  Description [Counts the number of minterms of a ZDD. The result is
+  \details [Counts the number of minterms of a ZDD. The result is
   returned as a double. If the procedure runs out of memory, it
   returns (double) CUDD_OUT_OF_MEM. This procedure is used in
   Cudd_zddCountMinterm.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddCountMinterm Cudd_zddCount]
+  \see Cudd_zddCountMinterm Cudd_zddCount
 
 ******************************************************************************/
 double
@@ -203,15 +206,16 @@ Cudd_zddCountDouble(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddCount.]
+  \brief Performs the recursive step of Cudd_zddCount.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -253,15 +257,16 @@ cuddZddCountStep(
 } /* end of cuddZddCountStep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddCountDouble.]
+  \brief Performs the recursive step of Cudd_zddCountDouble.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static double
@@ -303,16 +308,17 @@ cuddZddCountDoubleStep(
 } /* end of cuddZddCountDoubleStep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Frees the memory associated with the computed table of
   Cudd_zddCount.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static enum st_retval
@@ -330,16 +336,17 @@ st_zdd_countfree(
 } /* end of st_zdd_countfree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Frees the memory associated with the computed table of
   Cudd_zddCountDouble.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static enum st_retval

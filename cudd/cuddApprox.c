@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddApprox.c]
+  \file cuddApprox.c
 
   PackageName [cudd]
 
-  Synopsis    [Procedures to approximate a given BDD.]
+  \brief Procedures to approximate a given BDD.
 
-  Description [External procedures provided by this module:
+  \details [External procedures provided by this module:
                 <ul>
 		<li> Cudd_UnderApprox()
 		<li> Cudd_OverApprox()
@@ -37,9 +38,9 @@
 		</ul>
 		]
 
-  SeeAlso     [cuddSubsetHB.c cuddSubsetSP.c cuddGenCof.c]
+  \see cuddSubsetHB.c cuddSubsetSP.c cuddGenCof.c
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -192,12 +193,13 @@ static int BAapplyBias (DdManager *dd, DdNode *f, DdNode *b, ApproxInfo *info, D
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Extracts a dense subset from a BDD with Shiple's
   underapproximation method.]
 
-  Description [Extracts a dense subset from a BDD. This procedure uses
+  \details [Extracts a dense subset from a BDD. This procedure uses
   a variant of Tom Shiple's underapproximation method. The main
   difference from the original method is that density is used as cost
   function.  Returns a pointer to the BDD of the subset if
@@ -211,9 +213,9 @@ static int BAapplyBias (DdManager *dd, DdNode *f, DdNode *b, ApproxInfo *info, D
   a value which will avoid overflow but will cause underflow with 2046
   variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_ReadSize]
+  \see Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -237,12 +239,13 @@ Cudd_UnderApprox(
 } /* end of Cudd_UnderApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense superset from a BDD with Shiple's
   underapproximation method.]
 
-  Description [Extracts a dense superset from a BDD. The procedure is
+  \details [Extracts a dense superset from a BDD. The procedure is
   identical to the underapproximation procedure except for the fact that it
   works on the complement of the given function. Extracting the subset
   of the complement function is equivalent to extracting the superset
@@ -258,9 +261,9 @@ Cudd_UnderApprox(
   the procedure will compute a value which will avoid overflow but
   will cause underflow with 2046 variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize]
+  \see Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -285,12 +288,13 @@ Cudd_OverApprox(
 } /* end of Cudd_OverApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Extracts a dense subset from a BDD with the remapping
   underapproximation method.]
 
-  Description [Extracts a dense subset from a BDD. This procedure uses
+  \details [Extracts a dense subset from a BDD. This procedure uses
   a remapping technique and density as the cost function.
   Returns a pointer to the BDD of the subset if
   successful. NULL if the procedure runs out of memory. The parameter
@@ -303,9 +307,9 @@ Cudd_OverApprox(
   a value which will avoid overflow but will cause underflow with 2046
   variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_UnderApprox Cudd_ReadSize]
+  \see Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_UnderApprox Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -328,12 +332,13 @@ Cudd_RemapUnderApprox(
 } /* end of Cudd_RemapUnderApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense superset from a BDD with the remapping
   underapproximation method.]
 
-  Description [Extracts a dense superset from a BDD. The procedure is
+  \details [Extracts a dense superset from a BDD. The procedure is
   identical to the underapproximation procedure except for the fact that it
   works on the complement of the given function. Extracting the subset
   of the complement function is equivalent to extracting the superset
@@ -349,9 +354,9 @@ Cudd_RemapUnderApprox(
   the procedure will compute a value which will avoid overflow but
   will cause underflow with 2046 variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize]
+  \see Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -375,12 +380,13 @@ Cudd_RemapOverApprox(
 } /* end of Cudd_RemapOverApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Extracts a dense subset from a BDD with the biased
   underapproximation method.]
 
-  Description [Extracts a dense subset from a BDD. This procedure uses
+  \details [Extracts a dense subset from a BDD. This procedure uses
   a biased remapping technique and density as the cost function. The bias
   is a function. This procedure tries to approximate where the bias is 0
   and preserve the given function where the bias is 1.
@@ -395,9 +401,9 @@ Cudd_RemapOverApprox(
   a value which will avoid overflow but will cause underflow with 2046
   variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_UnderApprox
+  \see     [Cudd_SubsetShortPaths Cudd_SubsetHeavyBranch Cudd_UnderApprox
   Cudd_RemapUnderApprox Cudd_ReadSize]
 
 ******************************************************************************/
@@ -424,12 +430,13 @@ Cudd_BiasedUnderApprox(
 } /* end of Cudd_BiasedUnderApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense superset from a BDD with the biased
   underapproximation method.]
 
-  Description [Extracts a dense superset from a BDD. The procedure is
+  \details [Extracts a dense superset from a BDD. The procedure is
   identical to the underapproximation procedure except for the fact that it
   works on the complement of the given function. Extracting the subset
   of the complement function is equivalent to extracting the superset
@@ -445,9 +452,9 @@ Cudd_BiasedUnderApprox(
   the procedure will compute a value which will avoid overflow but
   will cause underflow with 2046 variables or more.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths
+  \see     [Cudd_SupersetHeavyBranch Cudd_SupersetShortPaths
   Cudd_RemapOverApprox Cudd_BiasedUnderApprox Cudd_ReadSize]
 
 ******************************************************************************/
@@ -480,11 +487,12 @@ Cudd_BiasedOverApprox(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies Tom Shiple's underappoximation algorithm.]
+  \brief Applies Tom Shiple's underappoximation algorithm.
 
-  Description [Applies Tom Shiple's underappoximation algorithm. Proceeds
+  \details [Applies Tom Shiple's underappoximation algorithm. Proceeds
   in three phases:
   <ul>
   <li> collect information on each node in the BDD; this is done via DFS.
@@ -494,9 +502,9 @@ Cudd_BiasedOverApprox(
   </ul>
   Returns the approximated BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_UnderApprox]
+  \see Cudd_UnderApprox
 
 ******************************************************************************/
 DdNode *
@@ -570,11 +578,12 @@ cuddUnderApprox(
 } /* end of cuddUnderApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies the remapping underappoximation algorithm.]
+  \brief Applies the remapping underappoximation algorithm.
 
-  Description [Applies the remapping underappoximation algorithm.
+  \details [Applies the remapping underappoximation algorithm.
   Proceeds in three phases:
   <ul>
   <li> collect information on each node in the BDD; this is done via DFS.
@@ -584,9 +593,9 @@ cuddUnderApprox(
   </ul>
   Returns the approximated BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RemapUnderApprox]
+  \see Cudd_RemapUnderApprox
 
 ******************************************************************************/
 DdNode *
@@ -660,11 +669,12 @@ cuddRemapUnderApprox(
 } /* end of cuddRemapUnderApprox */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies the biased remapping underappoximation algorithm.]
+  \brief Applies the biased remapping underappoximation algorithm.
 
-  Description [Applies the biased remapping underappoximation algorithm.
+  \details [Applies the biased remapping underappoximation algorithm.
   Proceeds in three phases:
   <ul>
   <li> collect information on each node in the BDD; this is done via DFS.
@@ -674,9 +684,9 @@ cuddRemapUnderApprox(
   </ul>
   Returns the approximated BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_BiasedUnderApprox]
+  \see Cudd_BiasedUnderApprox
 
 ******************************************************************************/
 DdNode *
@@ -771,16 +781,17 @@ cuddBiasedUnderApprox(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Recursively update the parity of the paths reaching a node.]
+  \brief Recursively update the parity of the paths reaching a node.
 
-  Description [Recursively update the parity of the paths reaching a node.
+  \details [Recursively update the parity of the paths reaching a node.
   Assumes that node is regular and propagates the invariant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [gatherInfoAux]
+  \see gatherInfoAux
 
 ******************************************************************************/
 static void
@@ -809,21 +820,22 @@ updateParity(
 } /* end of updateParity */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Recursively counts minterms and computes reference counts
   of each node in the BDD.]
 
-  Description [Recursively counts minterms and computes reference
+  \details [Recursively counts minterms and computes reference
   counts of each node in the BDD.  Similar to the cuddCountMintermAux
   which recursively counts the number of minterms for the dag rooted
   at each node in terms of the total number of variables (max). It assumes
   that the node pointer passed to it is regular and it maintains the
   invariant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [gatherInfo]
+  \see gatherInfo
 
 ******************************************************************************/
 static NodeData *
@@ -881,19 +893,20 @@ gatherInfoAux(
 } /* end of gatherInfoAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Gathers information about each node.]
+  \brief Gathers information about each node.
 
-  Description [Counts minterms and computes reference counts of each
+  \details [Counts minterms and computes reference counts of each
   node in the BDD. The minterm count is separately computed for the
   node and its complement. This is to avoid cancellation
   errors. Returns a pointer to the data structure holding the
   information gathered if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUnderApprox gatherInfoAux]
+  \see cuddUnderApprox gatherInfoAux
 
 ******************************************************************************/
 static ApproxInfo *
@@ -974,20 +987,21 @@ gatherInfo(
 } /* end of gatherInfo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Counts the nodes that would be eliminated if a given node
   were replaced by zero.]
 
-  Description [Counts the nodes that would be eliminated if a given
+  \details [Counts the nodes that would be eliminated if a given
   node were replaced by zero. This procedure uses a queue passed by
   the caller for efficiency: since the queue is left empty at the
   endof the search, it can be reused as is by the next search. Returns
   the count (always striclty positive) if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [UAmarkNodes RAmarkNodes BAmarkNodes]
+  \see UAmarkNodes RAmarkNodes BAmarkNodes
 
 ******************************************************************************/
 static int
@@ -1052,16 +1066,17 @@ computeSavings(
 } /* end of computeSavings */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Update function reference counts.]
+  \brief Update function reference counts.
 
-  Description [Update function reference counts to account for replacement.
+  \details [Update function reference counts to account for replacement.
   Returns the number of nodes saved if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [UAmarkNodes RAmarkNodes BAmarkNodes]
+  \see UAmarkNodes RAmarkNodes BAmarkNodes
 
 ******************************************************************************/
 static int
@@ -1132,16 +1147,17 @@ updateRefs(
 } /* end of updateRefs */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Marks nodes for replacement by zero.]
+  \brief Marks nodes for replacement by zero.
 
-  Description [Marks nodes for replacement by zero. Returns 1 if successful;
+  \details [Marks nodes for replacement by zero. Returns 1 if successful;
   0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUnderApprox]
+  \see cuddUnderApprox
 
 ******************************************************************************/
 static int
@@ -1255,17 +1271,18 @@ UAmarkNodes(
 } /* end of UAmarkNodes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the subset BDD.] 
+  \brief Builds the subset BDD. 
 
-  Description [Builds the subset BDD. Based on the info table,
+  \details [Builds the subset BDD. Based on the info table,
   replaces selected nodes by zero. Returns a pointer to the result if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddUnderApprox]
+  \see cuddUnderApprox
 
 ******************************************************************************/
 static DdNode *
@@ -1351,16 +1368,17 @@ UAbuildSubset(
 } /* end of UAbuildSubset */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Marks nodes for remapping.]
+  \brief Marks nodes for remapping.
 
-  Description [Marks nodes for remapping. Returns 1 if successful; 0
+  \details [Marks nodes for remapping. Returns 1 if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRemapUnderApprox]
+  \see cuddRemapUnderApprox
 
 ******************************************************************************/
 static int
@@ -1652,16 +1670,17 @@ RAmarkNodes(
 } /* end of RAmarkNodes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Marks nodes for remapping.]
+  \brief Marks nodes for remapping.
 
-  Description [Marks nodes for remapping. Returns 1 if successful; 0
+  \details [Marks nodes for remapping. Returns 1 if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddBiasedUnderApprox]
+  \see cuddBiasedUnderApprox
 
 ******************************************************************************/
 static int
@@ -1967,18 +1986,19 @@ BAmarkNodes(
 } /* end of BAmarkNodes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Builds the subset BDD for cuddRemapUnderApprox.]
+  \brief Builds the subset BDD for cuddRemapUnderApprox.
 
-  Description [Builds the subset BDDfor cuddRemapUnderApprox.  Based
+  \details [Builds the subset BDDfor cuddRemapUnderApprox.  Based
   on the info table, performs remapping or replacement at selected
   nodes. Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddRemapUnderApprox]
+  \see cuddRemapUnderApprox
 
 ******************************************************************************/
 static DdNode *
@@ -2116,17 +2136,18 @@ RAbuildSubset(
 } /* end of RAbuildSubset */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds don't care nodes.]
+  \brief Finds don't care nodes.
 
-  Description [Finds don't care nodes by traversing f and b in parallel.
+  \details [Finds don't care nodes by traversing f and b in parallel.
   Returns the care status of the visited f node if successful; CARE_ERROR
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddBiasedUnderApprox]
+  \see cuddBiasedUnderApprox
 
 ******************************************************************************/
 static int

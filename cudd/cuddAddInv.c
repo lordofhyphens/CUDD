@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddInv.c]
+  \file cuddAddInv.c
 
   PackageName [cudd]
 
-  Synopsis    [Function to compute the scalar inverse of an ADD.]
+  \brief Function to compute the scalar inverse of an ADD.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addScalarInverse()
 		</ul>
@@ -15,7 +16,7 @@
 		<li> cuddAddScalarInverseRecur()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -99,17 +100,18 @@ static char rcsid[] DD_UNUSED = "$Id: cuddAddInv.c,v 1.10 2012/02/05 01:07:18 fa
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the scalar inverse of an ADD.]
+  \brief Computes the scalar inverse of an ADD.
   
-  Description [Computes an n ADD where the discriminants are the
+  \details [Computes an n ADD where the discriminants are the
   multiplicative inverses of the corresponding discriminants of the
   argument ADD.  Returns a pointer to the resulting ADD in case of
   success. Returns NULL if any discriminants smaller than epsilon is
   encountered.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -137,15 +139,16 @@ Cudd_addScalarInverse(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of addScalarInverse.]
+  \brief Performs the recursive step of addScalarInverse.
 
-  Description [Returns a pointer to the resulting ADD in case of
+  \details [Returns a pointer to the resulting ADD in case of
   success. Returns NULL if any discriminants smaller than epsilon is
   encountered.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *

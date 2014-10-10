@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddCompose.c]
+  \file cuddCompose.c
 
   PackageName [cudd]
 
-  Synopsis    [Functional composition and variable permutation of DDs.]
+  \brief Functional composition and variable permutation of DDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddCompose()
 		<li> Cudd_addCompose()
@@ -46,7 +47,7 @@
   because bddPermuteRecur uses cuddBddIteRecur. If this were changed,
   the procedures could be merged.]
 
-  Author      [Fabio Somenzi and Kavita Ravi]
+  \author Fabio Somenzi and Kavita Ravi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -145,18 +146,19 @@ DD_INLINE static int ddIsIthAddVarPair (DdManager *dd, DdNode *f, DdNode *g, uns
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Substitutes g for x_v in the BDD for f.]
+  \brief Substitutes g for x_v in the BDD for f.
 
-  Description [Substitutes g for x_v in the BDD for f. v is the index of the
+  \details [Substitutes g for x_v in the BDD for f. v is the index of the
   variable to be substituted. Cudd_bddCompose passes the corresponding
   projection function to the recursive procedure, so that the cache may
   be used.  Returns the composed BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addCompose]
+  \see Cudd_addCompose
 
 ******************************************************************************/
 DdNode *
@@ -181,19 +183,20 @@ Cudd_bddCompose(
 } /* end of Cudd_bddCompose */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Substitutes g for x_v in the ADD for f.]
+  \brief Substitutes g for x_v in the ADD for f.
 
-  Description [Substitutes g for x_v in the ADD for f. v is the index of the
+  \details [Substitutes g for x_v in the ADD for f. v is the index of the
   variable to be substituted. g must be a 0-1 ADD. Cudd_bddCompose passes
   the corresponding projection function to the recursive procedure, so
   that the cache may be used.  Returns the composed ADD if successful;
   NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddCompose]
+  \see Cudd_bddCompose
 
 ******************************************************************************/
 DdNode *
@@ -218,20 +221,21 @@ Cudd_addCompose(
 } /* end of Cudd_addCompose */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Permutes the variables of an ADD.]
+  \brief Permutes the variables of an ADD.
 
-  Description [Given a permutation in array permut, creates a new ADD
+  \details [Given a permutation in array permut, creates a new ADD
   with permuted variables. There should be an entry in array permut
   for each variable in the manager. The i-th entry of permut holds the
   index of the variable that is to substitute the i-th
   variable. Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute Cudd_addSwapVariables]
+  \see Cudd_bddPermute Cudd_addSwapVariables
 
 ******************************************************************************/
 DdNode *
@@ -260,19 +264,20 @@ Cudd_addPermute(
 } /* end of Cudd_addPermute */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Swaps two sets of variables of the same size (x and y) in
   the ADD f.]
 
-  Description [Swaps two sets of variables of the same size (x and y) in
+  \details [Swaps two sets of variables of the same size (x and y) in
   the ADD f.  The size is given by n. The two sets of variables are
   assumed to be disjoint. Returns a pointer to the resulting ADD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addPermute Cudd_bddSwapVariables]
+  \see Cudd_addPermute Cudd_bddSwapVariables
 
 ******************************************************************************/
 DdNode *
@@ -308,20 +313,21 @@ Cudd_addSwapVariables(
 } /* end of Cudd_addSwapVariables */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Permutes the variables of a BDD.]
+  \brief Permutes the variables of a BDD.
 
-  Description [Given a permutation in array permut, creates a new BDD
+  \details [Given a permutation in array permut, creates a new BDD
   with permuted variables. There should be an entry in array permut
   for each variable in the manager. The i-th entry of permut holds the
   index of the variable that is to substitute the i-th variable.
   Returns a pointer to the resulting BDD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addPermute Cudd_bddSwapVariables]
+  \see Cudd_addPermute Cudd_bddSwapVariables
 
 ******************************************************************************/
 DdNode *
@@ -350,19 +356,20 @@ Cudd_bddPermute(
 } /* end of Cudd_bddPermute */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Remaps the variables of a BDD using the default variable map.]
+  \brief Remaps the variables of a BDD using the default variable map.
 
-  Description [Remaps the variables of a BDD using the default
+  \details [Remaps the variables of a BDD using the default
   variable map.  A typical use of this function is to swap two sets of
   variables.  The variable map must be registered with Cudd_SetVarMap.
   Returns a pointer to the resulting BDD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute Cudd_bddSwapVariables Cudd_SetVarMap]
+  \see Cudd_bddPermute Cudd_bddSwapVariables Cudd_SetVarMap
 
 ******************************************************************************/
 DdNode *
@@ -383,11 +390,12 @@ Cudd_bddVarMap(
 } /* end of Cudd_bddVarMap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Registers a variable mapping with the manager.]
+  \brief Registers a variable mapping with the manager.
 
-  Description [Registers with the manager a variable mapping described
+  \details [Registers with the manager a variable mapping described
   by two sets of variables.  This variable mapping is then used by
   functions like Cudd_bddVarMap.  This function is convenient for
   those applications that perform the same mapping several times.
@@ -403,9 +411,9 @@ Cudd_bddVarMap(
   are created, and then create the map.  Returns 1 if the mapping is
   successfully registered with the manager; 0 otherwise.]
 
-  SideEffects [Modifies the manager. May clear the cache.]
+  \sideeffects Modifies the manager. May clear the cache.
 
-  SeeAlso     [Cudd_bddVarMap Cudd_bddPermute Cudd_bddSwapVariables]
+  \see Cudd_bddVarMap Cudd_bddPermute Cudd_bddSwapVariables
 
 ******************************************************************************/
 int
@@ -441,19 +449,20 @@ Cudd_SetVarMap (
 } /* end of Cudd_SetVarMap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Swaps two sets of variables of the same size (x and y) in
   the BDD f.]
 
-  Description [Swaps two sets of variables of the same size (x and y)
+  \details [Swaps two sets of variables of the same size (x and y)
   in the BDD f. The size is given by n. The two sets of variables are
   assumed to be disjoint.  Returns a pointer to the resulting BDD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute Cudd_addSwapVariables]
+  \see Cudd_bddPermute Cudd_addSwapVariables
 
 ******************************************************************************/
 DdNode *
@@ -489,18 +498,19 @@ Cudd_bddSwapVariables(
 } /* end of Cudd_bddSwapVariables */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Rearranges a set of variables in the BDD B.]
+  \brief Rearranges a set of variables in the BDD B.
 
-  Description [Rearranges a set of variables in the BDD B. The size of
+  \details [Rearranges a set of variables in the BDD B. The size of
   the set is given by n. This procedure is intended for the
   `randomization' of the priority functions. Returns a pointer to the
   BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute Cudd_bddSwapVariables
+  \see     [Cudd_bddPermute Cudd_bddSwapVariables
   Cudd_Dxygtdxz Cudd_Dxygtdyz Cudd_PrioritySelect]
 
 ******************************************************************************/
@@ -536,11 +546,12 @@ Cudd_bddAdjPermuteX(
 } /* end of Cudd_bddAdjPermuteX */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Composes an ADD with a vector of 0-1 ADDs.]
+  \brief Composes an ADD with a vector of 0-1 ADDs.
 
-  Description [Given a vector of 0-1 ADDs, creates a new ADD by
+  \details [Given a vector of 0-1 ADDs, creates a new ADD by
   substituting the 0-1 ADDs for the variables of the ADD f.  There
   should be an entry in vector for each variable in the manager.
   If no substitution is sought for a given variable, the corresponding
@@ -549,9 +560,9 @@ Cudd_bddAdjPermuteX(
   Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNonSimCompose Cudd_addPermute Cudd_addCompose
+  \see     [Cudd_addNonSimCompose Cudd_addPermute Cudd_addCompose
   Cudd_bddVectorCompose]
 
 ******************************************************************************/
@@ -594,11 +605,12 @@ Cudd_addVectorCompose(
 } /* end of Cudd_addVectorCompose */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Composes an ADD with a vector of ADDs.]
+  \brief Composes an ADD with a vector of ADDs.
 
-  Description [Given a vector of ADDs, creates a new ADD by substituting the
+  \details [Given a vector of ADDs, creates a new ADD by substituting the
   ADDs for the variables of the ADD f. vectorOn contains ADDs to be substituted
   for the x_v and vectorOff the ADDs to be substituted for x_v'. There should
   be an entry in vector for each variable in the manager.  If no substitution
@@ -607,9 +619,9 @@ Cudd_addVectorCompose(
   composition.  Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso [Cudd_addVectorCompose Cudd_addNonSimCompose Cudd_addPermute
+  \see [Cudd_addVectorCompose Cudd_addNonSimCompose Cudd_addPermute
   Cudd_addCompose Cudd_bddVectorCompose]
 
 ******************************************************************************/
@@ -654,11 +666,12 @@ Cudd_addGeneralVectorCompose(
 } /* end of Cudd_addGeneralVectorCompose */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Composes an ADD with a vector of 0-1 ADDs.]
+  \brief Composes an ADD with a vector of 0-1 ADDs.
 
-  Description [Given a vector of 0-1 ADDs, creates a new ADD by
+  \details [Given a vector of 0-1 ADDs, creates a new ADD by
   substituting the 0-1 ADDs for the variables of the ADD f.  There
   should be an entry in vector for each variable in the manager.
   This function implements non-simultaneous composition. If any of the
@@ -669,9 +682,9 @@ Cudd_addGeneralVectorCompose(
   Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addVectorCompose Cudd_addPermute Cudd_addCompose]
+  \see Cudd_addVectorCompose Cudd_addPermute Cudd_addCompose
 
 ******************************************************************************/
 DdNode *
@@ -765,11 +778,12 @@ Cudd_addNonSimCompose(
 } /* end of Cudd_addNonSimCompose */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Composes a BDD with a vector of BDDs.]
+  \brief Composes a BDD with a vector of BDDs.
 
-  Description [Given a vector of BDDs, creates a new BDD by
+  \details [Given a vector of BDDs, creates a new BDD by
   substituting the BDDs for the variables of the BDD f.  There
   should be an entry in vector for each variable in the manager.
   If no substitution is sought for a given variable, the corresponding
@@ -778,9 +792,9 @@ Cudd_addNonSimCompose(
   Returns a pointer to the resulting BDD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute Cudd_bddCompose Cudd_addVectorCompose]
+  \see Cudd_bddPermute Cudd_bddCompose Cudd_addVectorCompose
 
 ******************************************************************************/
 DdNode *
@@ -827,19 +841,20 @@ Cudd_bddVectorCompose(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddCompose.]
+  \brief Performs the recursive step of Cudd_bddCompose.
 
-  Description [Performs the recursive step of Cudd_bddCompose.
+  \details [Performs the recursive step of Cudd_bddCompose.
   Exploits the fact that the composition of f' with g
   produces the complement of the composition of f with g to better
   utilize the cache.  Returns the composed BDD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddCompose]
+  \see Cudd_bddCompose
 
 ******************************************************************************/
 DdNode *
@@ -932,16 +947,17 @@ cuddBddComposeRecur(
 } /* end of cuddBddComposeRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addCompose.]
+  \brief Performs the recursive step of Cudd_addCompose.
 
-  Description [Performs the recursive step of Cudd_addCompose.
+  \details [Performs the recursive step of Cudd_addCompose.
   Returns the composed BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addCompose]
+  \see Cudd_addCompose
 
 ******************************************************************************/
 DdNode *
@@ -1029,11 +1045,12 @@ cuddAddComposeRecur(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_addPermute.]
+  \brief Implements the recursive step of Cudd_addPermute.
 
-  Description [ Recursively puts the ADD in the order given in the
+  \details [ Recursively puts the ADD in the order given in the
   array permut. Checks for trivial cases to terminate recursion, then
   splits on the children of this node.  Once the solutions for the
   children are obtained, it puts into the current position the node
@@ -1044,9 +1061,9 @@ cuddAddComposeRecur(
   The DdNode * that is returned is the same ADD as passed in as node,
   but in the new order.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addPermute cuddBddPermuteRecur]
+  \see Cudd_addPermute cuddBddPermuteRecur
 
 ******************************************************************************/
 static DdNode *
@@ -1122,11 +1139,12 @@ cuddAddPermuteRecur(
 } /* end of cuddAddPermuteRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_bddPermute.]
+  \brief Implements the recursive step of Cudd_bddPermute.
 
-  Description [ Recursively puts the BDD in the order given in the array permut.
+  \details [ Recursively puts the BDD in the order given in the array permut.
   Checks for trivial cases to terminate recursion, then splits on the
   children of this node.  Once the solutions for the children are
   obtained, it puts into the current position the node from the rest of
@@ -1137,9 +1155,9 @@ cuddAddPermuteRecur(
   The DdNode * that is returned is the same BDD as passed in as node,
   but in the new order.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddPermute cuddAddPermuteRecur]
+  \see Cudd_bddPermute cuddAddPermuteRecur
 
 ******************************************************************************/
 static DdNode *
@@ -1212,16 +1230,17 @@ cuddBddPermuteRecur(
 } /* end of cuddBddPermuteRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_bddVarMap.]
+  \brief Implements the recursive step of Cudd_bddVarMap.
 
-  Description [Implements the recursive step of Cudd_bddVarMap.
+  \details [Implements the recursive step of Cudd_bddVarMap.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddVarMap]
+  \see Cudd_bddVarMap
 
 ******************************************************************************/
 static DdNode *
@@ -1285,15 +1304,16 @@ cuddBddVarMapRecur(
 } /* end of cuddBddVarMapRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addVectorCompose.]
+  \brief Performs the recursive step of Cudd_addVectorCompose.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1361,15 +1381,16 @@ cuddAddVectorComposeRecur(
 } /* end of cuddAddVectorComposeRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addGeneralVectorCompose.]
+  \brief Performs the recursive step of Cudd_addGeneralVectorCompose.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1458,15 +1479,16 @@ cuddAddGeneralVectorComposeRecur(
 } /* end of cuddAddGeneralVectorComposeRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addNonSimCompose.]
+  \brief Performs the recursive step of Cudd_addNonSimCompose.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1618,15 +1640,16 @@ cuddAddNonSimComposeRecur(
 } /* end of cuddAddNonSimComposeRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddVectorCompose.]
+  \brief Performs the recursive step of Cudd_bddVectorCompose.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1697,16 +1720,17 @@ cuddBddVectorComposeRecur(
 } /* end of cuddBddVectorComposeRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison of a function to the i-th ADD variable.]
+  \brief Comparison of a function to the i-th ADD variable.
 
-  Description [Comparison of a function to the i-th ADD variable. Returns 1 if
+  \details [Comparison of a function to the i-th ADD variable. Returns 1 if
   the function is the i-th ADD variable; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DD_INLINE
@@ -1721,17 +1745,18 @@ ddIsIthAddVar(
 } /* end of ddIsIthAddVar */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison of a pair of functions to the i-th ADD variable.]
+  \brief Comparison of a pair of functions to the i-th ADD variable.
 
-  Description [Comparison of a pair of functions to the i-th ADD
+  \details [Comparison of a pair of functions to the i-th ADD
   variable. Returns 1 if the functions are the i-th ADD variable and its
   complement; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DD_INLINE

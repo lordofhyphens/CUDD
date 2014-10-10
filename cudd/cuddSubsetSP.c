@@ -1,6 +1,7 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSubsetSP.c]
+  \file cuddSubsetSP.c
 
   PackageName [cudd]
 
@@ -8,7 +9,7 @@
 	    (largest cubes) in the BDD.]
 
 
-  Description  [External procedures included in this module:
+  \details  [External procedures included in this module:
 		<ul>
 		<li> Cudd_SubsetShortPaths()
 		<li> Cudd_SupersetShortPaths()
@@ -30,9 +31,9 @@
 		</ul>
 		]
 
-  SeeAlso     [cuddSubsetHB.c]
+  \see cuddSubsetHB.c
 
-  Author      [Kavita Ravi]
+  \author Kavita Ravi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -180,12 +181,13 @@ static enum st_retval stPathTableDdFree (char *key, char *value, char *arg);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense subset from a BDD with the shortest paths
   heuristic.]
 
-  Description [Extracts a dense subset from a BDD.  This procedure
+  \details [Extracts a dense subset from a BDD.  This procedure
   tries to preserve the shortest paths of the input BDD, because they
   give many minterms and contribute few nodes.  This procedure may
   increase the number of nodes in trying to create the subset or
@@ -203,9 +205,9 @@ static enum st_retval stPathTableDdFree (char *key, char *value, char *arg);
   Cudd_ReadSize for numVars. If 0 is passed, then the value returned
   by Cudd_ReadSize is used.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SupersetShortPaths Cudd_SubsetHeavyBranch Cudd_ReadSize]
+  \see Cudd_SupersetShortPaths Cudd_SubsetHeavyBranch Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -228,12 +230,13 @@ Cudd_SubsetShortPaths(
 } /* end of Cudd_SubsetShortPaths */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Extracts a dense superset from a BDD with the shortest paths
   heuristic.]
 
-  Description [Extracts a dense superset from a BDD.  The procedure is
+  \details [Extracts a dense superset from a BDD.  The procedure is
   identical to the subset procedure except for the fact that it
   receives the complement of the given function. Extracting the subset
   of the complement function is equivalent to extracting the superset
@@ -254,9 +257,9 @@ Cudd_SubsetShortPaths(
   safe to pass the value returned by Cudd_ReadSize for numVar.  If 0
   is passed, then the value returned by Cudd_ReadSize is used.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths Cudd_SupersetHeavyBranch Cudd_ReadSize]
+  \see Cudd_SubsetShortPaths Cudd_SupersetHeavyBranch Cudd_ReadSize
 
 ******************************************************************************/
 DdNode *
@@ -285,21 +288,22 @@ Cudd_SupersetShortPaths(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [The outermost procedure to return a subset of the given BDD
   with the shortest path lengths.]
 
-  Description [The outermost procedure to return a subset of the given
+  \details [The outermost procedure to return a subset of the given
   BDD with the largest cubes. The path lengths are calculated, the maximum
   allowable path length is determined and the number of nodes of this
   path length that can be used to build a subset. If the threshold is
   larger than the size of the original BDD, the original BDD is
   returned. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_SubsetShortPaths]
+  \see Cudd_SubsetShortPaths
 
 ******************************************************************************/
 DdNode *
@@ -481,12 +485,13 @@ cuddSubsetShortPaths(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Resize the number of pages allocated to store the distances
   related to each node.]
 
-  Description [Resize the number of pages allocated to store the distances
+  \details [Resize the number of pages allocated to store the distances
   related to each node. The procedure  moves the counter to the
   next page when the end of the page is reached and allocates new
   pages when necessary. ]
@@ -494,7 +499,7 @@ cuddSubsetShortPaths(
   SideEffects [Changes the size of  pages, page, page index, maximum
   number of pages freeing stuff in case of memory out. ]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -545,12 +550,13 @@ ResizeNodeDistPages(
 } /* end of ResizeNodeDistPages */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Resize the number of pages allocated to store nodes in the BFS
   traversal of the Bdd  .]
 
-  Description [Resize the number of pages allocated to store nodes in the BFS
+  \details [Resize the number of pages allocated to store nodes in the BFS
   traversal of the Bdd. The procedure  moves the counter to the
   next page when the end of the page is reached and allocates new
   pages when necessary.]
@@ -558,7 +564,7 @@ ResizeNodeDistPages(
   SideEffects [Changes the size of pages, page, page index, maximum
   number of pages freeing stuff in case of memory out. ]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -607,11 +613,12 @@ ResizeQueuePages(
 } /* end of ResizeQueuePages */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [ Labels each node with its shortest distance from the root]
+  \brief  Labels each node with its shortest distance from the root
 
-  Description [ Labels each node with its shortest distance from the root.
+  \details [ Labels each node with its shortest distance from the root.
   This is done in a BFS search of the BDD. The nodes are processed
   in a queue implemented as pages(array) to reduce memory fragmentation.
   An entry is created for each node visited. The distance from the root
@@ -620,9 +627,9 @@ ResizeQueuePages(
   level from the root.]
 
 
-  SideEffects [Creates entries in the pathTable]
+  \sideeffects Creates entries in the pathTable
 
-  SeeAlso     [CreatePathTable CreateBotDist]
+  \see CreatePathTable CreateBotDist
 
 ******************************************************************************/
 static void
@@ -809,11 +816,12 @@ CreateTopDist(
 } /* end of CreateTopDist */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [ Labels each node with the shortest distance from the constant.]
+  \brief  Labels each node with the shortest distance from the constant.
 
-  Description [Labels each node with the shortest distance from the constant.
+  \details [Labels each node with the shortest distance from the constant.
   This is done in a DFS search of the BDD. Each node has an odd
   and even parity distance from the sink (since there exists paths to both
   zero and one) which is less than MAXSHORTINT. At each node these distances
@@ -823,9 +831,9 @@ CreateTopDist(
   this node lies on) of this node can be calculated and used to update the
   pathLengthArray]
 
-  SideEffects [Updates Path Table and path length array]
+  \sideeffects Updates Path Table and path length array
 
-  SeeAlso     [CreatePathTable CreateTopDist AssessPathLength]
+  \see CreatePathTable CreateTopDist AssessPathLength
 
 ******************************************************************************/
 static int
@@ -993,12 +1001,13 @@ CreateBotDist(
 } /*end of CreateBotDist */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [ The outer procedure to label each node with its shortest
   distance from the root and constant]
 
-  Description [ The outer procedure to label each node with its shortest
+  \details [ The outer procedure to label each node with its shortest
   distance from the root and constant. Calls CreateTopDist and CreateBotDist.
   The basis for computing the distance between root and constant is that
   the distance may be the sum of even distances from the node to the root
@@ -1006,9 +1015,9 @@ CreateBotDist(
   constant.  Both CreateTopDist and CreateBotDist create the odd and
   even parity distances from the root and constant respectively.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [CreateTopDist CreateBotDist]
+  \see CreateTopDist CreateBotDist
 
 ******************************************************************************/
 static st_table *
@@ -1150,20 +1159,21 @@ OUT_OF_MEM:
 } /*end of CreatePathTable */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Chooses the maximum allowable path length of nodes under the
   threshold.]
 
-  Description [Chooses the maximum allowable path length under each node.
+  \details [Chooses the maximum allowable path length under each node.
   The corner cases are when the threshold is larger than the number
   of nodes in the BDD iself, in which case 'numVars + 1' is returned.
   If all nodes of a particular path length are needed, then the
   maxpath returned is the next one with excess nodes = 0;]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static unsigned int
@@ -1208,11 +1218,12 @@ AssessPathLength(
 } /* end of AssessPathLength */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds the BDD with nodes labeled with path length less than or equal to maxpath]
+  \brief Builds the BDD with nodes labeled with path length less than or equal to maxpath
 
-  Description [Builds the BDD with nodes labeled with path length
+  \details [Builds the BDD with nodes labeled with path length
   under maxpath and as many nodes labeled maxpath as determined by the
   threshold. The procedure uses the path table to determine which nodes
   in the original bdd need to be retained. This procedure picks a
@@ -1245,9 +1256,9 @@ AssessPathLength(
   threshold number were abandoned in favour of keeping the procedure
   simple and fast.]
 
-  SideEffects [SubsetNodeTable is changed if it is not NIL.]
+  \sideeffects SubsetNodeTable is changed if it is not NIL.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -1627,15 +1638,16 @@ BuildSubsetBdd(
 } /* end of BuildSubsetBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis     [Procedure to free te result dds stored in the NodeDist pages.]
+  \brief Procedure to free te result dds stored in the NodeDist pages.
 
-  Description [None]
+  \details [None]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static enum st_retval

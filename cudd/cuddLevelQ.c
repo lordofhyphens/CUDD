@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddLevelQ.c]
+  \file cuddLevelQ.c
 
   PackageName [cudd]
 
-  Synopsis    [Procedure to manage level queues.]
+  \brief Procedure to manage level queues.
 
-  Description [The functions in this file allow an application to
+  \details [The functions in this file allow an application to
   easily manipulate a queue where nodes are prioritized by level. The
   emphasis is on efficiency. Therefore, the queue items can have
   variable size.  If the application does not need to attach
@@ -39,9 +40,9 @@
 		</ul>
 		]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -108,15 +109,16 @@ static char rcsid[] DD_UNUSED = "$Id: cuddLevelQ.c,v 1.16 2012/02/05 01:07:19 fa
 /*---------------------------------------------------------------------------*/
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Hash function for the table of a level queue.]
+  \brief Hash function for the table of a level queue.
 
-  Description [Hash function for the table of a level queue.]
+  \details [Hash function for the table of a level queue.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [hashInsert hashLookup hashDelete]
+  \see hashInsert hashLookup hashDelete
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -147,20 +149,21 @@ static int hashResize(DdLevelQueue *queue);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializes a level queue.]
+  \brief Initializes a level queue.
 
-  Description [Initializes a level queue. A level queue is a queue
+  \details [Initializes a level queue. A level queue is a queue
   where inserts are based on the levels of the nodes. Within each
   level the policy is FIFO. Level queues are useful in traversing a
   BDD top-down. Queue items are kept in a free list when dequeued for
   efficiency. Returns a pointer to the new queue if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueQuit cuddLevelQueueEnqueue cuddLevelQueueDequeue]
+  \see cuddLevelQueueQuit cuddLevelQueueEnqueue cuddLevelQueueDequeue
 
 ******************************************************************************/
 DdLevelQueue *
@@ -205,16 +208,17 @@ cuddLevelQueueInit(
 } /* end of cuddLevelQueueInit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Shuts down a level queue.]
+  \brief Shuts down a level queue.
 
-  Description [Shuts down a level queue and releases all the
+  \details [Shuts down a level queue and releases all the
   associated memory.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueInit]
+  \see cuddLevelQueueInit
 
 ******************************************************************************/
 void
@@ -241,18 +245,19 @@ cuddLevelQueueQuit(
 } /* end of cuddLevelQueueQuit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Inserts a new key in a level queue.]
+  \brief Inserts a new key in a level queue.
 
-  Description [Inserts a new key in a level queue. A new entry is
+  \details [Inserts a new key in a level queue. A new entry is
   created in the queue only if the node is not already
   enqueued. Returns a pointer to the queue item if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueInit cuddLevelQueueDequeue]
+  \see cuddLevelQueueInit cuddLevelQueueDequeue
 
 ******************************************************************************/
 void *
@@ -315,16 +320,17 @@ cuddLevelQueueEnqueue(
 } /* end of cuddLevelQueueEnqueue */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Inserts the first key in a level queue.]
+  \brief Inserts the first key in a level queue.
 
-  Description [Inserts the first key in a level queue. Returns a
+  \details [Inserts the first key in a level queue. Returns a
   pointer to the queue item if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueEnqueue]
+  \see cuddLevelQueueEnqueue
 
 ******************************************************************************/
 void *
@@ -370,15 +376,16 @@ cuddLevelQueueFirst(
 } /* end of cuddLevelQueueFirst */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Remove an item from the front of a level queue.]
+  \brief Remove an item from the front of a level queue.
 
-  Description [Remove an item from the front of a level queue.]
+  \details [Remove an item from the front of a level queue.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueEnqueue]
+  \see cuddLevelQueueEnqueue
 
 ******************************************************************************/
 void
@@ -413,17 +420,18 @@ cuddLevelQueueDequeue(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Looks up a key in the hash table of a level queue.]
+  \brief Looks up a key in the hash table of a level queue.
 
-  Description [Looks up a key in the hash table of a level queue. Returns
+  \details [Looks up a key in the hash table of a level queue. Returns
   a pointer to the item with the given key if the key is found; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueEnqueue hashInsert]
+  \see cuddLevelQueueEnqueue hashInsert
 
 ******************************************************************************/
 static DdQueueItem *
@@ -448,17 +456,18 @@ hashLookup(
 } /* end of hashLookup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Inserts an item in the hash table of a level queue.]
+  \brief Inserts an item in the hash table of a level queue.
 
-  Description [Inserts an item in the hash table of a level queue. Returns
+  \details [Inserts an item in the hash table of a level queue. Returns
   1 if successful; 0 otherwise. No check is performed to see if an item with
   the same key is already in the hash table.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueEnqueue]
+  \see cuddLevelQueueEnqueue
 
 ******************************************************************************/
 static int
@@ -483,16 +492,17 @@ hashInsert(
 } /* end of hashInsert */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Removes an item from the hash table of a level queue.]
+  \brief Removes an item from the hash table of a level queue.
 
-  Description [Removes an item from the hash table of a level queue.
+  \details [Removes an item from the hash table of a level queue.
   Nothing is done if the item is not in the table.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddLevelQueueDequeue hashInsert]
+  \see cuddLevelQueueDequeue hashInsert
 
 ******************************************************************************/
 static void
@@ -524,16 +534,17 @@ hashDelete(
 } /* end of hashDelete */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resizes the hash table of a level queue.]
+  \brief Resizes the hash table of a level queue.
 
-  Description [Resizes the hash table of a level queue. Returns 1 if
+  \details [Resizes the hash table of a level queue. Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [hashInsert]
+  \see hashInsert
 
 ******************************************************************************/
 static int

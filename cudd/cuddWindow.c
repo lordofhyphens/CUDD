@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddWindow.c]
+  \file cuddWindow.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for variable reordering by window permutation.]
+  \brief Functions for variable reordering by window permutation.
 
-  Description [Internal procedures included in this module:
+  \details [Internal procedures included in this module:
 		<ul>
 		<li> cuddWindowReorder()
 		</ul>
@@ -22,7 +23,7 @@
 		<li> ddWindowConv4()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -121,17 +122,18 @@ static int ddWindowConv4 (DdManager *table, int low, int high);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by applying the method of the sliding window.]
+  \brief Reorders by applying the method of the sliding window.
 
-  Description [Reorders by applying the method of the sliding window.
+  \details [Reorders by applying the method of the sliding window.
   Tries all possible permutations to the variables in a window that
   slides from low to high. The size of the window is determined by
   submethod.  Assumes that no dead nodes are present.  Returns 1 in
   case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -194,16 +196,17 @@ cuddWindowReorder(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by applying a sliding window of width 2.]
+  \brief Reorders by applying a sliding window of width 2.
 
-  Description [Reorders by applying a sliding window of width 2.
+  \details [Reorders by applying a sliding window of width 2.
   Tries both permutations of the variables in a window
   that slides from low to high.  Assumes that no dead nodes are
   present.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -247,17 +250,18 @@ ddWindow2(
 } /* end of ddWindow2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by repeatedly applying a sliding window of width 2.]
+  \brief Reorders by repeatedly applying a sliding window of width 2.
 
-  Description [Reorders by repeatedly applying a sliding window of width
+  \details [Reorders by repeatedly applying a sliding window of width
   2. Tries both permutations of the variables in a window
   that slides from low to high.  Assumes that no dead nodes are
   present.  Uses an event-driven approach to determine convergence.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -338,19 +342,20 @@ ddWindowConv2(
 } /* end of ddWindowConv3 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Tries all the permutations of the three variables between
   x and x+2 and retains the best.]
 
-  Description [Tries all the permutations of the three variables between
+  \details [Tries all the permutations of the three variables between
   x and x+2 and retains the best. Assumes that no dead nodes are
   present.  Returns the index of the best permutation (1-6) in case of
   success; 0 otherwise.Assumes that no dead nodes are present.  Returns
   the index of the best permutation (1-6) in case of success; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -436,16 +441,17 @@ ddPermuteWindow3(
 } /* end of ddPermuteWindow3 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by applying a sliding window of width 3.]
+  \brief Reorders by applying a sliding window of width 3.
 
-  Description [Reorders by applying a sliding window of width 3.
+  \details [Reorders by applying a sliding window of width 3.
   Tries all possible permutations to the variables in a
   window that slides from low to high.  Assumes that no dead nodes are
   present.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -482,17 +488,18 @@ ddWindow3(
 } /* end of ddWindow3 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by repeatedly applying a sliding window of width 3.]
+  \brief Reorders by repeatedly applying a sliding window of width 3.
 
-  Description [Reorders by repeatedly applying a sliding window of width
+  \details [Reorders by repeatedly applying a sliding window of width
   3. Tries all possible permutations to the variables in a
   window that slides from low to high.  Assumes that no dead nodes are
   present.  Uses an event-driven approach to determine convergence.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -580,17 +587,18 @@ ddWindowConv3(
 } /* end of ddWindowConv3 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Tries all the permutations of the four variables between w
   and w+3 and retains the best.]
 
-  Description [Tries all the permutations of the four variables between
+  \details [Tries all the permutations of the four variables between
   w and w+3 and retains the best. Assumes that no dead nodes are
   present.  Returns the index of the best permutation (1-24) in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -837,16 +845,17 @@ ddPermuteWindow4(
 } /* end of ddPermuteWindow4 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by applying a sliding window of width 4.]
+  \brief Reorders by applying a sliding window of width 4.
 
-  Description [Reorders by applying a sliding window of width 4.
+  \details [Reorders by applying a sliding window of width 4.
   Tries all possible permutations to the variables in a
   window that slides from low to high.  Assumes that no dead nodes are
   present.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -883,17 +892,18 @@ ddWindow4(
 } /* end of ddWindow4 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders by repeatedly applying a sliding window of width 4.]
+  \brief Reorders by repeatedly applying a sliding window of width 4.
 
-  Description [Reorders by repeatedly applying a sliding window of width
+  \details [Reorders by repeatedly applying a sliding window of width
   4. Tries all possible permutations to the variables in a
   window that slides from low to high.  Assumes that no dead nodes are
   present.  Uses an event-driven approach to determine convergence.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int

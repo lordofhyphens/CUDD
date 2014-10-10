@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddInit.c]
+  \file cuddInit.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to initialize and shut down the DD manager.]
+  \brief Functions to initialize and shut down the DD manager.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_Init()
 		<li> Cudd_Quit()
@@ -18,9 +19,9 @@
 		</ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -101,20 +102,21 @@ static char rcsid[] DD_UNUSED = "$Id: cuddInit.c,v 1.34 2012/02/05 01:07:19 fabi
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Creates a new DD manager.]
+  \brief Creates a new DD manager.
 
-  Description [Creates a new DD manager, initializes the table, the
+  \details [Creates a new DD manager, initializes the table, the
   basic constants and the projection functions. If maxMemory is 0,
   Cudd_Init decides suitable values for the maximum size of the cache
   and for the limit for fast unique table growth based on the available
   memory. Returns a pointer to the manager if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Quit]
+  \see Cudd_Quit
 
 ******************************************************************************/
 DdManager *
@@ -201,17 +203,18 @@ Cudd_Init(
 } /* end of Cudd_Init */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Deletes resources associated with a DD manager.]
+  \brief Deletes resources associated with a DD manager.
 
-  Description [Deletes resources associated with a DD manager and
+  \details [Deletes resources associated with a DD manager and
   resets the global statistical counters. (Otherwise, another manaqger
   subsequently created would inherit the stats of this one.)]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Init]
+  \see Cudd_Init
 
 ******************************************************************************/
 void
@@ -229,16 +232,17 @@ Cudd_Quit(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializes the ZDD universe.]
+  \brief Initializes the ZDD universe.
 
-  Description [Initializes the ZDD universe. Returns 1 if successful; 0
+  \details [Initializes the ZDD universe. Returns 1 if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddFreeUniv]
+  \see cuddZddFreeUniv
 
 ******************************************************************************/
 int
@@ -279,15 +283,16 @@ cuddZddInitUniv(
 } /* end of cuddZddInitUniv */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees the ZDD universe.]
+  \brief Frees the ZDD universe.
 
-  Description [Frees the ZDD universe.]
+  \details [Frees the ZDD universe.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddInitUniv]
+  \see cuddZddInitUniv
 
 ******************************************************************************/
 void

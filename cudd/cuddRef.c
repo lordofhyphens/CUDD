@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddRef.c]
+  \file cuddRef.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions that manipulate the reference counts.]
+  \brief Functions that manipulate the reference counts.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_Ref()
 		    <li> Cudd_RecursiveDeref()
@@ -27,9 +28,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -109,16 +110,17 @@ static char rcsid[] DD_UNUSED = "$Id: cuddRef.c,v 1.29 2012/02/05 01:07:19 fabio
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Increases the reference count of a node, if it is not
   saturated.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RecursiveDeref Cudd_Deref]
+  \see Cudd_RecursiveDeref Cudd_Deref
 
 ******************************************************************************/
 void
@@ -133,17 +135,18 @@ Cudd_Ref(
 } /* end of Cudd_Ref */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Decreases the reference count of node n.]
+  \brief Decreases the reference count of node n.
 
-  Description [Decreases the reference count of node n. If n dies,
+  \details [Decreases the reference count of node n. If n dies,
   recursively decreases the reference counts of its children.  It is
   used to dispose of a DD that is no longer needed.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Deref Cudd_Ref Cudd_RecursiveDerefZdd]
+  \see Cudd_Deref Cudd_Ref Cudd_RecursiveDerefZdd
 
 ******************************************************************************/
 void
@@ -192,11 +195,12 @@ Cudd_RecursiveDeref(
 } /* end of Cudd_RecursiveDeref */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Decreases the reference count of BDD node n.]
+  \brief Decreases the reference count of BDD node n.
 
-  Description [Decreases the reference count of node n. If n dies,
+  \details [Decreases the reference count of node n. If n dies,
   recursively decreases the reference counts of its children.  It is
   used to dispose of a BDD that is no longer needed. It is more
   efficient than Cudd_RecursiveDeref, but it cannot be used on
@@ -204,9 +208,9 @@ Cudd_RecursiveDeref(
   constant node will ever die as a result of a call to this
   procedure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RecursiveDeref Cudd_DelayedDerefBdd]
+  \see Cudd_RecursiveDeref Cudd_DelayedDerefBdd
 
 ******************************************************************************/
 void
@@ -250,20 +254,21 @@ Cudd_IterDerefBdd(
 } /* end of Cudd_IterDerefBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Decreases the reference count of BDD node n.]
+  \brief Decreases the reference count of BDD node n.
 
-  Description [Enqueues node n for later dereferencing. If the queue
+  \details [Enqueues node n for later dereferencing. If the queue
   is full decreases the reference count of the oldest node N to make
   room for n. If N dies, recursively decreases the reference counts of
   its children.  It is used to dispose of a BDD that is currently not
   needed, but may be useful again in the near future. The dereferencing
   proper is done as in Cudd_IterDerefBdd.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RecursiveDeref Cudd_IterDerefBdd]
+  \see Cudd_RecursiveDeref Cudd_IterDerefBdd
 
 ******************************************************************************/
 void
@@ -364,17 +369,18 @@ Cudd_DelayedDerefBdd(
 } /* end of Cudd_DelayedDerefBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Decreases the reference count of ZDD node n.]
+  \brief Decreases the reference count of ZDD node n.
 
-  Description [Decreases the reference count of ZDD node n. If n dies,
+  \details [Decreases the reference count of ZDD node n. If n dies,
   recursively decreases the reference counts of its children.  It is
   used to dispose of a ZDD that is no longer needed.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Deref Cudd_Ref Cudd_RecursiveDeref]
+  \see Cudd_Deref Cudd_Ref Cudd_RecursiveDeref
 
 ******************************************************************************/
 void
@@ -416,18 +422,19 @@ Cudd_RecursiveDerefZdd(
 } /* end of Cudd_RecursiveDerefZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Decreases the reference count of node.]
+  \brief Decreases the reference count of node.
 
-  Description [Decreases the reference count of node. It is primarily
+  \details [Decreases the reference count of node. It is primarily
   used in recursive procedures to decrease the ref count of a result
   node before returning it. This accomplishes the goal of removing the
   protection applied by a previous Cudd_Ref.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_RecursiveDeref Cudd_RecursiveDerefZdd Cudd_Ref]
+  \see Cudd_RecursiveDeref Cudd_RecursiveDerefZdd Cudd_Ref
 
 ******************************************************************************/
 void
@@ -440,12 +447,13 @@ Cudd_Deref(
 } /* end of Cudd_Deref */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Checks the unique table for nodes with non-zero reference
   counts.]
 
-  Description [Checks the unique table for nodes with non-zero
+  \details [Checks the unique table for nodes with non-zero
   reference counts. It is normally called before Cudd_Quit to make sure
   that there are no memory leaks due to missing Cudd_RecursiveDeref's.
   Takes into account that reference counts may saturate and that the
@@ -453,9 +461,9 @@ Cudd_Deref(
   manager.  Returns the number of nodes with non-zero reference count.
   (Except for the cases mentioned above.)]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -565,15 +573,16 @@ Cudd_CheckZeroRef(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Brings children of a dead node back.]
+  \brief Brings children of a dead node back.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddReclaimZdd]
+  \see cuddReclaimZdd
 
 ******************************************************************************/
 void
@@ -619,15 +628,16 @@ cuddReclaim(
 } /* end of cuddReclaim */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Brings children of a dead ZDD node back.]
+  \brief Brings children of a dead ZDD node back.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddReclaim]
+  \see cuddReclaim
 
 ******************************************************************************/
 void
@@ -669,15 +679,16 @@ cuddReclaimZdd(
 } /* end of cuddReclaimZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Shrinks the death row.]
+  \brief Shrinks the death row.
 
-  Description [Shrinks the death row by a factor of four.]
+  \details [Shrinks the death row by a factor of four.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddClearDeathRow]
+  \see cuddClearDeathRow
 
 ******************************************************************************/
 void
@@ -706,15 +717,16 @@ cuddShrinkDeathRow(
 } /* end of cuddShrinkDeathRow */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Clears the death row.]
+  \brief Clears the death row.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DelayedDerefBdd Cudd_IterDerefBdd Cudd_CheckZeroRef
+  \see     [Cudd_DelayedDerefBdd Cudd_IterDerefBdd Cudd_CheckZeroRef
   cuddGarbageCollect]
 
 ******************************************************************************/
@@ -741,17 +753,18 @@ cuddClearDeathRow(
 } /* end of cuddClearDeathRow */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a node is in the death row.]
+  \brief Checks whether a node is in the death row.
 
-  Description [Checks whether a node is in the death row. Returns the
+  \details [Checks whether a node is in the death row. Returns the
   position of the first occurrence if the node is present; -1
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DelayedDerefBdd cuddClearDeathRow]
+  \see Cudd_DelayedDerefBdd cuddClearDeathRow
 
 ******************************************************************************/
 int
@@ -774,15 +787,16 @@ cuddIsInDeathRow(
 } /* end of cuddIsInDeathRow */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts how many times a node is in the death row.]
+  \brief Counts how many times a node is in the death row.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DelayedDerefBdd cuddClearDeathRow cuddIsInDeathRow]
+  \see Cudd_DelayedDerefBdd cuddClearDeathRow cuddIsInDeathRow
 
 ******************************************************************************/
 int

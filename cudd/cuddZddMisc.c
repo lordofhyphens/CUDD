@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddMisc.c]
+  \file cuddZddMisc.c
 
   PackageName [cudd]
 
-  Synopsis    [Miscellaneous utility functions for ZDDs.]
+  \brief Miscellaneous utility functions for ZDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddDagSize()
 		    <li> Cudd_zddCountMinterm()
@@ -21,9 +22,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Hyong-Kyoon Shin, In-Ho Moon]
+  \author Hyong-Kyoon Shin, In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -107,16 +108,17 @@ static int cuddZddDagInt (DdNode *n, st_table *tab);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of nodes in a ZDD.]
+  \brief Counts the number of nodes in a ZDD.
 
-  Description [Counts the number of nodes in a ZDD. This function
+  \details [Counts the number of nodes in a ZDD. This function
   duplicates Cudd_DagSize and is only retained for compatibility.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DagSize]
+  \see Cudd_DagSize
 
 ******************************************************************************/
 int
@@ -135,19 +137,20 @@ Cudd_zddDagSize(
 } /* end of Cudd_zddDagSize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of minterms of a ZDD.]
+  \brief Counts the number of minterms of a ZDD.
 
-  Description [Counts the number of minterms of the ZDD rooted at
+  \details [Counts the number of minterms of the ZDD rooted at
   <code>node</code>. This procedure takes a parameter
   <code>path</code> that specifies how many variables are in the
   support of the function. If the procedure runs out of memory, it
   returns (double) CUDD_OUT_OF_MEM.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddCountDouble]
+  \see Cudd_zddCountDouble
 
 ******************************************************************************/
 double
@@ -165,15 +168,16 @@ Cudd_zddCountMinterm(
 } /* end of Cudd_zddCountMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints the ZDD table.]
+  \brief Prints the ZDD table.
 
-  Description [Prints the ZDD table for debugging purposes.]
+  \details [Prints the ZDD table for debugging purposes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -245,16 +249,17 @@ Cudd_zddPrintSubtable(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddDagSize.]
+  \brief Performs the recursive step of Cudd_zddDagSize.
 
-  Description [Performs the recursive step of Cudd_zddDagSize. Does
+  \details [Performs the recursive step of Cudd_zddDagSize. Does
   not check for out-of-memory conditions.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

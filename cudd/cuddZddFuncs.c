@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddFuncs.c]
+  \file cuddZddFuncs.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to manipulate covers represented as ZDDs.]
+  \brief Functions to manipulate covers represented as ZDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddProduct();
 		    <li> Cudd_zddUnateProduct();
@@ -37,9 +38,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [In-Ho Moon]
+  \author In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -121,20 +122,21 @@ static char rcsid[] DD_UNUSED = "$Id: cuddZddFuncs.c,v 1.17 2012/02/05 01:07:19 
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the product of two covers represented by ZDDs.]
+  \brief Computes the product of two covers represented by ZDDs.
 
-  Description [Computes the product of two covers represented by
+  \details [Computes the product of two covers represented by
   ZDDs. The result is also a ZDD. Returns a pointer to the result if
   successful; NULL otherwise.  The covers on which Cudd_zddProduct
   operates use two ZDD variables for each function variable (one ZDD
   variable for each literal of the variable). Those two ZDD variables
   should be adjacent in the order.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddUnateProduct]
+  \see Cudd_zddUnateProduct
 
 ******************************************************************************/
 DdNode	*
@@ -154,18 +156,19 @@ Cudd_zddProduct(
 } /* end of Cudd_zddProduct */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Computes the product of two unate covers.]
+  \brief Computes the product of two unate covers.
 
-  Description [Computes the product of two unate covers represented as
+  \details [Computes the product of two unate covers represented as
   ZDDs. Unate covers use one ZDD variable for each BDD
   variable. Returns a pointer to the result if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddProduct]
+  \see Cudd_zddProduct
 
 ******************************************************************************/
 DdNode	*
@@ -185,11 +188,12 @@ Cudd_zddUnateProduct(
 } /* end of Cudd_zddUnateProduct */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies weak division to two covers.]
+  \brief Applies weak division to two covers.
 
-  Description [Applies weak division to two ZDDs representing two
+  \details [Applies weak division to two ZDDs representing two
   covers. Returns a pointer to the ZDD representing the result if
   successful; NULL otherwise. The result of weak division depends on
   the variable order. The covers on which Cudd_zddWeakDiv operates use
@@ -197,9 +201,9 @@ Cudd_zddUnateProduct(
   each literal of the variable). Those two ZDD variables should be
   adjacent in the order.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddDivide]
+  \see Cudd_zddDivide
 
 ******************************************************************************/
 DdNode	*
@@ -219,18 +223,19 @@ Cudd_zddWeakDiv(
 } /* end of Cudd_zddWeakDiv */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the quotient of two unate covers.]
+  \brief Computes the quotient of two unate covers.
 
-  Description [Computes the quotient of two unate covers represented
+  \details [Computes the quotient of two unate covers represented
   by ZDDs.  Unate covers use one ZDD variable for each BDD
   variable. Returns a pointer to the resulting ZDD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddWeakDiv]
+  \see Cudd_zddWeakDiv
 
 ******************************************************************************/
 DdNode	*
@@ -250,16 +255,17 @@ Cudd_zddDivide(
 } /* end of Cudd_zddDivide */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Modified version of Cudd_zddWeakDiv.]
+  \brief Modified version of Cudd_zddWeakDiv.
 
-  Description [Modified version of Cudd_zddWeakDiv. This function may
+  \details [Modified version of Cudd_zddWeakDiv. This function may
   disappear in future releases.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddWeakDiv]
+  \see Cudd_zddWeakDiv
 
 ******************************************************************************/
 DdNode	*
@@ -279,16 +285,17 @@ Cudd_zddWeakDivF(
 } /* end of Cudd_zddWeakDivF */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Modified version of Cudd_zddDivide.]
+  \brief Modified version of Cudd_zddDivide.
 
-  Description [Modified version of Cudd_zddDivide. This function may
+  \details [Modified version of Cudd_zddDivide. This function may
   disappear in future releases.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode	*
@@ -308,20 +315,21 @@ Cudd_zddDivideF(
 } /* end of Cudd_zddDivideF */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes a complement cover for a ZDD node.]
+  \brief Computes a complement cover for a ZDD node.
 
-  Description [Computes a complement cover for a ZDD node. For lack of a
+  \details [Computes a complement cover for a ZDD node. For lack of a
   better method, we first extract the function BDD from the ZDD cover,
   then make the complement of the ZDD cover from the complement of the
   BDD node by using ISOP. Returns a pointer to the resulting cover if
   successful; NULL otherwise. The result depends on current variable
   order.]
 
-  SideEffects [The result depends on current variable order.]
+  \sideeffects The result depends on current variable order.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode	*
@@ -361,15 +369,16 @@ Cudd_zddComplement(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddProduct.]
+  \brief Performs the recursive step of Cudd_zddProduct.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddProduct]
+  \see Cudd_zddProduct
 
 ******************************************************************************/
 DdNode	*
@@ -598,15 +607,16 @@ cuddZddProduct(
 } /* end of cuddZddProduct */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddUnateProduct.]
+  \brief Performs the recursive step of Cudd_zddUnateProduct.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddUnateProduct]
+  \see Cudd_zddUnateProduct
 
 ******************************************************************************/
 DdNode	*
@@ -742,15 +752,16 @@ cuddZddUnateProduct(
 } /* end of cuddZddUnateProduct */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddWeakDiv.]
+  \brief Performs the recursive step of Cudd_zddWeakDiv.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddWeakDiv]
+  \see Cudd_zddWeakDiv
 
 ******************************************************************************/
 DdNode	*
@@ -903,15 +914,16 @@ cuddZddWeakDiv(
 } /* end of cuddZddWeakDiv */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddWeakDivF.]
+  \brief Performs the recursive step of Cudd_zddWeakDivF.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddWeakDivF]
+  \see Cudd_zddWeakDivF
 
 ******************************************************************************/
 DdNode	*
@@ -1140,15 +1152,16 @@ cuddZddWeakDivF(
 } /* end of cuddZddWeakDivF */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddDivide.]
+  \brief Performs the recursive step of Cudd_zddDivide.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddDivide]
+  \see Cudd_zddDivide
 
 ******************************************************************************/
 DdNode	*
@@ -1240,15 +1253,16 @@ cuddZddDivide(
 } /* end of cuddZddDivide */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_zddDivideF.]
+  \brief Performs the recursive step of Cudd_zddDivideF.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddDivideF]
+  \see Cudd_zddDivideF
 
 ******************************************************************************/
 DdNode	*
@@ -1340,16 +1354,17 @@ cuddZddDivideF(
 } /* end of cuddZddDivideF */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the three-way decomposition of f w.r.t. v.]
+  \brief Computes the three-way decomposition of f w.r.t. v.
 
-  Description [Computes the three-way decomposition of function f (represented
+  \details [Computes the three-way decomposition of function f (represented
   by a ZDD) wit respect to variable v.  Returns 0 if successful; 1 otherwise.]
 
-  SideEffects [The results are returned in f1, f0, and fd.]
+  \sideeffects The results are returned in f1, f0, and fd.
 
-  SeeAlso     [cuddZddGetCofactors2]
+  \see cuddZddGetCofactors2
 
 ******************************************************************************/
 int
@@ -1468,15 +1483,16 @@ cuddZddGetCofactors3(
 } /* end of cuddZddGetCofactors3 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the two-way decomposition of f w.r.t. v.]
+  \brief Computes the two-way decomposition of f w.r.t. v.
 
-  Description []
+  \details []
 
-  SideEffects [The results are returned in f1 and f0.]
+  \sideeffects The results are returned in f1 and f0.
 
-  SeeAlso     [cuddZddGetCofactors3]
+  \see cuddZddGetCofactors3
 
 ******************************************************************************/
 int
@@ -1500,18 +1516,19 @@ cuddZddGetCofactors2(
 } /* end of cuddZddGetCofactors2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes a complement of a ZDD node.]
+  \brief Computes a complement of a ZDD node.
 
-  Description [Computes the complement of a ZDD node. So far, since we
+  \details [Computes the complement of a ZDD node. So far, since we
   couldn't find a direct way to get the complement of a ZDD cover, we first
   convert a ZDD cover to a BDD, then make the complement of the ZDD cover
   from the complement of the BDD node by using ISOP.]
 
-  SideEffects [The result depends on current variable order.]
+  \sideeffects The result depends on current variable order.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode	*
@@ -1546,15 +1563,16 @@ cuddZddComplement(
 } /* end of cuddZddComplement */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the index of positive ZDD variable.]
+  \brief Returns the index of positive ZDD variable.
 
-  Description [Returns the index of positive ZDD variable.]
+  \details [Returns the index of positive ZDD variable.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -1567,15 +1585,16 @@ cuddZddGetPosVarIndex(
 } /* end of cuddZddGetPosVarIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the index of negative ZDD variable.]
+  \brief Returns the index of negative ZDD variable.
 
-  Description [Returns the index of negative ZDD variable.]
+  \details [Returns the index of negative ZDD variable.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -1588,15 +1607,16 @@ cuddZddGetNegVarIndex(
 } /* end of cuddZddGetPosVarIndex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the level of positive ZDD variable.]
+  \brief Returns the level of positive ZDD variable.
 
-  Description [Returns the level of positive ZDD variable.]
+  \details [Returns the level of positive ZDD variable.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -1609,15 +1629,16 @@ cuddZddGetPosVarLevel(
 } /* end of cuddZddGetPosVarLevel */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the level of negative ZDD variable.]
+  \brief Returns the level of negative ZDD variable.
 
-  Description [Returns the level of negative ZDD variable.]
+  \details [Returns the level of negative ZDD variable.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int

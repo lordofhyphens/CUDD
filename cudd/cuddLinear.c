@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddLinear.c]
+  \file cuddLinear.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for DD reduction by linear transformations.]
+  \brief Functions for DD reduction by linear transformations.
 
-  Description [ Internal procedures included in this module:
+  \details [ Internal procedures included in this module:
 		<ul>
 		<li> cuddLinearAndSifting()
 		<li> cuddLinearInPlace()
@@ -25,7 +26,7 @@
 		<li> cuddXorLinear()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -133,16 +134,17 @@ static void cuddXorLinear (DdManager *table, int x, int y);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints the linear transform matrix.]
+  \brief Prints the linear transform matrix.
 
-  Description [Prints the linear transform matrix. Returns 1 in case of
+  \details [Prints the linear transform matrix. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -172,15 +174,16 @@ Cudd_PrintLinear(
 } /* end of Cudd_PrintLinear */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reads an entry of the linear transform matrix.]
+  \brief Reads an entry of the linear transform matrix.
 
-  Description [Reads an entry of the linear transform matrix.]
+  \details [Reads an entry of the linear transform matrix.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -210,12 +213,13 @@ Cudd_ReadLinear(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [BDD reduction based on combination of sifting and linear
   transformations.]
 
-  Description [BDD reduction based on combination of sifting and linear
+  \details [BDD reduction based on combination of sifting and linear
   transformations.  Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries
@@ -229,7 +233,7 @@ Cudd_ReadLinear(
     </ol>
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -338,11 +342,12 @@ cuddLinearAndSiftingOutOfMem:
 } /* end of cuddLinearAndSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Linearly combines two adjacent variables.]
+  \brief Linearly combines two adjacent variables.
 
-  Description [Linearly combines two adjacent variables. Specifically,
+  \details [Linearly combines two adjacent variables. Specifically,
   replaces the top variable with the exclusive nor of the two variables.
   It assumes that no dead nodes are present on entry to this
   procedure.  The procedure then guarantees that no dead nodes will be
@@ -353,7 +358,7 @@ cuddLinearAndSiftingOutOfMem:
   SideEffects [The two subtables corrresponding to variables x and y are
   modified. The global counters of the unique table are also affected.]
 
-  SeeAlso     [cuddSwapInPlace]
+  \see cuddSwapInPlace
 
 ******************************************************************************/
 int
@@ -699,15 +704,16 @@ cuddLinearOutOfMem:
 } /* end of cuddLinearInPlace */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Updates the interaction matrix.]
+  \brief Updates the interaction matrix.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -739,16 +745,17 @@ cuddUpdateInteractionMatrix(
 } /* end of cuddUpdateInteractionMatrix */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializes the linear transform matrix.]
+  \brief Initializes the linear transform matrix.
 
-  Description [Initializes the linear transform matrix.  Returns 1 if
+  \details [Initializes the linear transform matrix.  Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -784,16 +791,17 @@ cuddInitLinear(
 } /* end of cuddInitLinear */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resizes the linear transform matrix.]
+  \brief Resizes the linear transform matrix.
 
-  Description [Resizes the linear transform matrix.  Returns 1 if
+  \details [Resizes the linear transform matrix.  Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -852,16 +860,17 @@ cuddResizeLinear(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the
+  \details [Comparison function used by qsort to order the
   variables according to the number of keys in the subtables.
   Returns the difference in number of keys between the two
   variables being compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -879,17 +888,18 @@ ddLinearUniqueCompare(
 } /* end of ddLinearUniqueCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. At each step a linear transformation is tried, and, if it
   decreases the size of the DD, it is accepted. Finds the best position
   and does the required changes.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -986,16 +996,17 @@ ddLinearAndSiftingAuxOutOfMem:
 } /* end of ddLinearAndSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable up and applies linear transformations.]
+  \brief Sifts a variable up and applies linear transformations.
 
-  Description [Sifts a variable up and applies linear transformations.
+  \details [Sifts a variable up and applies linear transformations.
   Moves y up until either it reaches the bound (xLow) or the size of
   the DD heap increases too much.  Returns the set of moves in case of
   success; NULL if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1109,16 +1120,17 @@ ddLinearAndSiftingUpOutOfMem:
 } /* end of ddLinearAndSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable down and applies linear transformations.]
+  \brief Sifts a variable down and applies linear transformations.
 
-  Description [Sifts a variable down and applies linear
+  \details [Sifts a variable down and applies linear
   transformations. Moves x down until either it reaches the bound
   (xHigh) or the size of the DD heap increases too much. Returns the
   set of moves in case of success; NULL if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1221,17 +1233,18 @@ ddLinearAndSiftingDownOutOfMem:
 } /* end of ddLinearAndSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the DD heap to the order
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the DD heap to the
+  \details [Given a set of moves, returns the DD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1268,16 +1281,17 @@ ddLinearAndSiftingBackward(
 } /* end of ddLinearAndSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the DD heap to the order
   in effect before the moves.]
 
-  Description [Given a set of moves, returns the DD heap to the
+  \details [Given a set of moves, returns the DD heap to the
   order in effect before the moves.  Returns 1 in case of success;
   0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move*
@@ -1333,16 +1347,17 @@ ddUndoMovesOutOfMem:
 } /* end of ddUndoMoves */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [XORs two rows of the linear transform matrix.]
+  \brief XORs two rows of the linear transform matrix.
 
-  Description [XORs two rows of the linear transform matrix and replaces
+  \details [XORs two rows of the linear transform matrix and replaces
   the first row with the result.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void

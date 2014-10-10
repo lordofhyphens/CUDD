@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddPort.c]
+  \file cuddZddPort.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions that translate BDDs to ZDDs.]
+  \brief Functions that translate BDDs to ZDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddPortFromBdd()
 		    <li> Cudd_zddPortToBdd()
@@ -21,9 +22,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Hyong-kyoon Shin, In-Ho Moon]
+  \author Hyong-kyoon Shin, In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -107,20 +108,21 @@ static DdNode * zddPortToBddStep (DdManager *dd, DdNode *f, int depth);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Converts a BDD into a ZDD.]
+  \brief Converts a BDD into a ZDD.
 
-  Description [Converts a BDD into a ZDD. This function assumes that
+  \details [Converts a BDD into a ZDD. This function assumes that
   there is a one-to-one correspondence between the BDD variables and the
   ZDD variables, and that the variable order is the same for both types
   of variables. These conditions are established if the ZDD variables
   are created by one call to Cudd_zddVarsFromBddVars with multiplicity =
   1. Returns a pointer to the resulting ZDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddVarsFromBddVars]
+  \see Cudd_zddVarsFromBddVars
 
 ******************************************************************************/
 DdNode *
@@ -140,16 +142,17 @@ Cudd_zddPortFromBdd(
 } /* end of Cudd_zddPortFromBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Converts a ZDD into a BDD.]
+  \brief Converts a ZDD into a BDD.
 
-  Description [Converts a ZDD into a BDD. Returns a pointer to the resulting
+  \details [Converts a ZDD into a BDD. Returns a pointer to the resulting
   ZDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddPortFromBdd]
+  \see Cudd_zddPortFromBdd
 
 ******************************************************************************/
 DdNode *
@@ -178,15 +181,16 @@ Cudd_zddPortToBdd(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddPortFromBdd.]
+  \brief Performs the recursive step of Cudd_zddPortFromBdd.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -286,15 +290,16 @@ zddPortFromBddStep(
 } /* end of zddPortFromBddStep */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddPortToBdd.]
+  \brief Performs the recursive step of Cudd_zddPortToBdd.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *

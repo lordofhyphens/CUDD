@@ -1,13 +1,14 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddBridge.c]
+  \file cuddBridge.c
 
   PackageName [cudd]
 
   Synopsis    [Translation from BDD to ADD and vice versa and transfer between
   different managers.]
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 	    <ul>
 	    <li> Cudd_addBddThreshold()
 	    <li> Cudd_addBddStrictThreshold()
@@ -33,9 +34,9 @@
 	    </ul>
 	    ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -131,18 +132,19 @@ static DdNode * cuddBddTransferRecur (DdManager *ddS, DdManager *ddD, DdNode *f,
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts an ADD to a BDD.]
+  \brief Converts an ADD to a BDD.
 
-  Description [Converts an ADD to a BDD by replacing all
+  \details [Converts an ADD to a BDD by replacing all
   discriminants greater than or equal to value with 1, and all other
   discriminants with 0. Returns a pointer to the resulting BDD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd
+  \see     [Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd
   Cudd_addBddStrictThreshold]
 
 ******************************************************************************/
@@ -176,18 +178,19 @@ Cudd_addBddThreshold(
 } /* end of Cudd_addBddThreshold */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts an ADD to a BDD.]
+  \brief Converts an ADD to a BDD.
 
-  Description [Converts an ADD to a BDD by replacing all
+  \details [Converts an ADD to a BDD by replacing all
   discriminants STRICTLY greater than value with 1, and all other
   discriminants with 0. Returns a pointer to the resulting BDD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd 
+  \see     [Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd 
   Cudd_addBddThreshold]
 
 ******************************************************************************/
@@ -221,18 +224,19 @@ Cudd_addBddStrictThreshold(
 } /* end of Cudd_addBddStrictThreshold */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts an ADD to a BDD.]
+  \brief Converts an ADD to a BDD.
 
-  Description [Converts an ADD to a BDD by replacing all
+  \details [Converts an ADD to a BDD by replacing all
   discriminants greater than or equal to lower and less than or equal to
   upper with 1, and all other discriminants with 0. Returns a pointer to
   the resulting BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddThreshold Cudd_addBddStrictThreshold 
+  \see     [Cudd_addBddThreshold Cudd_addBddStrictThreshold 
   Cudd_addBddPattern Cudd_BddToAdd]
 
 ******************************************************************************/
@@ -279,12 +283,13 @@ Cudd_addBddInterval(
 } /* end of Cudd_addBddInterval */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Converts an ADD to a BDD by extracting the i-th bit from
   the leaves.]
 
-  Description [Converts an ADD to a BDD by replacing all
+  \details [Converts an ADD to a BDD by replacing all
   discriminants whose i-th bit is equal to 1 with 1, and all other
   discriminants with 0. The i-th bit refers to the integer
   representation of the leaf value. If the value is has a fractional
@@ -293,9 +298,9 @@ Cudd_addBddInterval(
   bit of the leaf values. Returns a pointer to the resulting BDD if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd]
+  \see Cudd_addBddInterval Cudd_addBddPattern Cudd_BddToAdd
 
 ******************************************************************************/
 DdNode *
@@ -328,16 +333,17 @@ Cudd_addBddIthBit(
 } /* end of Cudd_addBddIthBit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts a BDD to a 0-1 ADD.]
+  \brief Converts a BDD to a 0-1 ADD.
 
-  Description [Converts a BDD to a 0-1 ADD. Returns a pointer to the
+  \details [Converts a BDD to a 0-1 ADD. Returns a pointer to the
   resulting ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addBddPattern Cudd_addBddThreshold Cudd_addBddInterval
+  \see     [Cudd_addBddPattern Cudd_addBddThreshold Cudd_addBddInterval
   Cudd_addBddStrictThreshold]
 
 ******************************************************************************/
@@ -357,17 +363,18 @@ Cudd_BddToAdd(
 } /* end of Cudd_BddToAdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Converts an ADD to a BDD.]
+  \brief Converts an ADD to a BDD.
 
-  Description [Converts an ADD to a BDD by replacing all
+  \details [Converts an ADD to a BDD by replacing all
   discriminants different from 0 with 1. Returns a pointer to the
   resulting BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_BddToAdd Cudd_addBddThreshold Cudd_addBddInterval
+  \see     [Cudd_BddToAdd Cudd_addBddThreshold Cudd_addBddInterval
   Cudd_addBddStrictThreshold]
 
 ******************************************************************************/
@@ -387,18 +394,19 @@ Cudd_addBddPattern(
 } /* end of Cudd_addBddPattern */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Convert a BDD from a manager to another one.]
+  \brief Convert a BDD from a manager to another one.
 
-  Description [Convert a BDD from a manager to another one. The orders of the
+  \details [Convert a BDD from a manager to another one. The orders of the
   variables in the two managers may be different. Returns a
   pointer to the BDD in the destination manager if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -422,17 +430,18 @@ Cudd_bddTransfer(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Convert a BDD from a manager to another one.]
+  \brief Convert a BDD from a manager to another one.
 
-  Description [Convert a BDD from a manager to another one. Returns a
+  \details [Convert a BDD from a manager to another one. Returns a
   pointer to the BDD in the destination manager if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddTransfer]
+  \see Cudd_bddTransfer
 
 ******************************************************************************/
 DdNode *
@@ -473,16 +482,17 @@ failure:
 } /* end of cuddBddTransfer */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addBddPattern.]
+  \brief Performs the recursive step for Cudd_addBddPattern.
 
-  Description [Performs the recursive step for Cudd_addBddPattern. Returns a
+  \details [Performs the recursive step for Cudd_addBddPattern. Returns a
   pointer to the resulting BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -550,16 +560,17 @@ cuddAddBddDoPattern(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addBddThreshold.]
+  \brief Performs the recursive step for Cudd_addBddThreshold.
 
-  Description [Performs the recursive step for Cudd_addBddThreshold.
+  \details [Performs the recursive step for Cudd_addBddThreshold.
   Returns a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [addBddDoStrictThreshold]
+  \see addBddDoStrictThreshold
 
 ******************************************************************************/
 static DdNode *
@@ -623,16 +634,17 @@ addBddDoThreshold(
 } /* end of addBddDoThreshold */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addBddStrictThreshold.]
+  \brief Performs the recursive step for Cudd_addBddStrictThreshold.
 
-  Description [Performs the recursive step for Cudd_addBddStrictThreshold.
+  \details [Performs the recursive step for Cudd_addBddStrictThreshold.
   Returns a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [addBddDoThreshold]
+  \see addBddDoThreshold
 
 ******************************************************************************/
 static DdNode *
@@ -696,16 +708,17 @@ addBddDoStrictThreshold(
 } /* end of addBddDoStrictThreshold */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addBddInterval.]
+  \brief Performs the recursive step for Cudd_addBddInterval.
 
-  Description [Performs the recursive step for Cudd_addBddInterval.
+  \details [Performs the recursive step for Cudd_addBddInterval.
   Returns a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [addBddDoThreshold addBddDoStrictThreshold]
+  \see addBddDoThreshold addBddDoStrictThreshold
 
 ******************************************************************************/
 static DdNode *
@@ -770,16 +783,17 @@ addBddDoInterval(
 } /* end of addBddDoInterval */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_addBddIthBit.]
+  \brief Performs the recursive step for Cudd_addBddIthBit.
 
-  Description [Performs the recursive step for Cudd_addBddIthBit.
+  \details [Performs the recursive step for Cudd_addBddIthBit.
   Returns a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -846,16 +860,17 @@ addBddDoIthBit(
 } /* end of addBddDoIthBit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step for Cudd_BddToAdd.]
+  \brief Performs the recursive step for Cudd_BddToAdd.
 
-  Description [Performs the recursive step for Cudd_BddToAdd. Returns a
+  \details [Performs the recursive step for Cudd_BddToAdd. Returns a
   pointer to the resulting ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static DdNode *
@@ -933,16 +948,17 @@ ddBddToAddRecur(
 } /* end of ddBddToAddRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddTransfer.]
+  \brief Performs the recursive step of Cudd_bddTransfer.
 
-  Description [Performs the recursive step of Cudd_bddTransfer.
+  \details [Performs the recursive step of Cudd_bddTransfer.
   Returns a pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddBddTransfer]
+  \see cuddBddTransfer
 
 ******************************************************************************/
 static DdNode *

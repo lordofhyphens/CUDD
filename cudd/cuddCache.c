@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddCache.c]
+  \file cuddCache.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for cache insertion and lookup.]
+  \brief Functions for cache insertion and lookup.
 
-  Description [Internal procedures included in this module:
+  \details [Internal procedures included in this module:
 		<ul>
 		<li> cuddInitCache()
 		<li> cuddCacheInsert()
@@ -25,9 +26,9 @@
 		<ul>
 		</ul> ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -116,16 +117,17 @@ static char rcsid[] DD_UNUSED = "$Id: cuddCache.c,v 1.36 2012/02/05 01:07:18 fab
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializes the computed table.]
+  \brief Initializes the computed table.
 
-  Description [Initializes the computed table. It is called by
+  \details [Initializes the computed table. It is called by
   Cudd_Init. Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Init]
+  \see Cudd_Init
 
 ******************************************************************************/
 int
@@ -199,18 +201,19 @@ cuddInitCache(
 } /* end of cuddInitCache */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Inserts a result in the cache for a function with three
   operands.]
 
-  Description [Inserts a result in the cache for a function with three
+  \details [Inserts a result in the cache for a function with three
   operands.  The operator tag (see cuddInt.h for details) is split and stored
   into unused bits of the first two pointers.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheInsert2 cuddCacheInsert1]
+  \see cuddCacheInsert2 cuddCacheInsert1
 
 ******************************************************************************/
 void
@@ -247,16 +250,17 @@ cuddCacheInsert(
 } /* end of cuddCacheInsert */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Inserts a result in the cache for a function with two
   operands.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheInsert cuddCacheInsert1]
+  \see cuddCacheInsert cuddCacheInsert1
 
 ******************************************************************************/
 void
@@ -289,16 +293,17 @@ cuddCacheInsert2(
 } /* end of cuddCacheInsert2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Inserts a result in the cache for a function with two
   operands.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheInsert cuddCacheInsert2]
+  \see cuddCacheInsert cuddCacheInsert2
 
 ******************************************************************************/
 void
@@ -330,17 +335,18 @@ cuddCacheInsert1(
 } /* end of cuddCacheInsert1 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Looks up in the cache for the result of op applied to f,
   g, and h.]
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookup2 cuddCacheLookup1]
+  \see cuddCacheLookup2 cuddCacheLookup1
 
 ******************************************************************************/
 DdNode *
@@ -392,17 +398,18 @@ cuddCacheLookup(
 } /* end of cuddCacheLookup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Looks up in the cache for the result of op applied to f,
   g, and h.]
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookup2Zdd cuddCacheLookup1Zdd]
+  \see cuddCacheLookup2Zdd cuddCacheLookup1Zdd
 
 ******************************************************************************/
 DdNode *
@@ -454,17 +461,18 @@ cuddCacheLookupZdd(
 } /* end of cuddCacheLookupZdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Looks up in the cache for the result of op applied to f
   and g.]
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookup cuddCacheLookup1]
+  \see cuddCacheLookup cuddCacheLookup1
 
 ******************************************************************************/
 DdNode *
@@ -509,16 +517,17 @@ cuddCacheLookup2(
 } /* end of cuddCacheLookup2 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Looks up in the cache for the result of op applied to f.]
+  \brief Looks up in the cache for the result of op applied to f.
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookup cuddCacheLookup2]
+  \see cuddCacheLookup cuddCacheLookup2
 
 ******************************************************************************/
 DdNode *
@@ -562,17 +571,18 @@ cuddCacheLookup1(
 } /* end of cuddCacheLookup1 */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Looks up in the cache for the result of op applied to f
   and g.]
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookupZdd cuddCacheLookup1Zdd]
+  \see cuddCacheLookupZdd cuddCacheLookup1Zdd
 
 ******************************************************************************/
 DdNode *
@@ -617,16 +627,17 @@ cuddCacheLookup2Zdd(
 } /* end of cuddCacheLookup2Zdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Looks up in the cache for the result of op applied to f.]
+  \brief Looks up in the cache for the result of op applied to f.
 
-  Description [Returns the result if found; it returns NULL if no
+  \details [Returns the result if found; it returns NULL if no
   result is found.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookupZdd cuddCacheLookup2Zdd]
+  \see cuddCacheLookupZdd cuddCacheLookup2Zdd
 
 ******************************************************************************/
 DdNode *
@@ -670,20 +681,21 @@ cuddCacheLookup1Zdd(
 } /* end of cuddCacheLookup1Zdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Looks up in the cache for the result of op applied to f,
   g, and h.]
 
-  Description [Looks up in the cache for the result of op applied to f,
+  \details [Looks up in the cache for the result of op applied to f,
   g, and h. Assumes that the calling procedure (e.g.,
   Cudd_bddIteConstant) is only interested in whether the result is
   constant or not. Returns the result if found (possibly
   DD_NON_CONSTANT); otherwise it returns NULL.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddCacheLookup]
+  \see cuddCacheLookup
 
 ******************************************************************************/
 DdNode *
@@ -733,16 +745,17 @@ cuddConstantLookup(
 } /* end of cuddConstantLookup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes and prints a profile of the cache usage.]
+  \brief Computes and prints a profile of the cache usage.
 
-  Description [Computes and prints a profile of the cache usage.
+  \details [Computes and prints a profile of the cache usage.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -874,15 +887,16 @@ cuddCacheProfile(
 } /* end of cuddCacheProfile */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resizes the cache.]
+  \brief Resizes the cache.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -989,15 +1003,16 @@ cuddCacheResize(
 } /* end of cuddCacheResize */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Flushes the cache.]
+  \brief Flushes the cache.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -1020,16 +1035,17 @@ cuddCacheFlush(
 } /* end of cuddCacheFlush */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the floor of the logarithm to the base 2.]
+  \brief Returns the floor of the logarithm to the base 2.
 
-  Description [Returns the floor of the logarithm to the base 2.
+  \details [Returns the floor of the logarithm to the base 2.
   The input value is assumed to be greater than 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int

@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddGroup.c]
+  \file cuddGroup.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for group sifting.]
+  \brief Functions for group sifting.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_MakeTreeNode()
 		</ul>
@@ -41,7 +42,7 @@
                 <li> ddFixTree()
 		</ul>]
 
-  Author      [Shipra Panda, Fabio Somenzi]
+  \author Shipra Panda, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -182,11 +183,12 @@ static int ddIsVarHandled (DdManager *dd, int index);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Creates a new variable group.]
+  \brief Creates a new variable group.
 
-  Description [Creates a new variable group. The group starts at
+  \details [Creates a new variable group. The group starts at
   variable low and contains size variables. The parameter low is the index
   of the first variable. If the variable already exists, its current
   position in the order is known to the manager. If the variable does
@@ -194,9 +196,9 @@ static int ddIsVarHandled (DdManager *dd, int index);
   The group tree is created if it does not exist yet.
   Returns a pointer to the group if successful; NULL otherwise.]
 
-  SideEffects [The variable tree is changed.]
+  \sideeffects The variable tree is changed.
 
-  SeeAlso     [Cudd_MakeZddTreeNode]
+  \see Cudd_MakeZddTreeNode
 
 ******************************************************************************/
 MtrNode *
@@ -255,16 +257,17 @@ Cudd_MakeTreeNode(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tree sifting algorithm.]
+  \brief Tree sifting algorithm.
 
-  Description [Tree sifting algorithm. Assumes that a tree representing
+  \details [Tree sifting algorithm. Assumes that a tree representing
   a group hierarchy is passed as a parameter. It then reorders each
   group in postorder fashion by calling ddTreeSiftingAux.  Assumes that
   no dead nodes are present.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -347,14 +350,15 @@ cuddTreeSifting(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Visits the group tree and reorders each group.]
+  \brief Visits the group tree and reorders each group.
 
-  Description [Recursively visits the group tree and reorders each
+  \details [Recursively visits the group tree and reorders each
   group in postorder fashion.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -399,14 +403,15 @@ ddTreeSiftingAux(
 
 
 #ifdef DD_STATS
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of internal nodes of the group tree.]
+  \brief Counts the number of internal nodes of the group tree.
 
-  Description [Counts the number of internal nodes of the group tree.
+  \details [Counts the number of internal nodes of the group tree.
   Returns the count.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -435,18 +440,19 @@ ddCountInternalMtrNodes(
 #endif
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reorders the children of a group tree node according to
   the options.]
 
-  Description [Reorders the children of a group tree node according to
+  \details [Reorders the children of a group tree node according to
   the options. After reordering puts all the variables in the group
   and/or its descendents in a single group. This allows hierarchical
   reordering.  If the variables in the group do not exist yet, simply
   does nothing. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -599,18 +605,19 @@ ddReorderChildren(
 } /* end of ddReorderChildren */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Finds the lower and upper bounds of the group represented
   by treenode.]
 
-  Description [Finds the lower and upper bounds of the group
+  \details [Finds the lower and upper bounds of the group
   represented by treenode.  From the index and size fields we need to
   derive the current positions, and find maximum and minimum.]
 
-  SideEffects [The bounds are returned as side effects.]
+  \sideeffects The bounds are returned as side effects.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -676,16 +683,17 @@ ddFindNodeHiLo(
 } /* end of ddFindNodeHiLo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the variables
+  \details [Comparison function used by qsort to order the variables
   according to the number of keys in the subtables.  Returns the
   difference in number of keys between the two variables being
   compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -703,17 +711,18 @@ ddUniqueCompareGroup(
 } /* end of ddUniqueCompareGroup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts from treenode->low to treenode->high.]
+  \brief Sifts from treenode->low to treenode->high.
 
-  Description [Sifts from treenode->low to treenode->high. If
+  \details [Sifts from treenode->low to treenode->high. If
   croupcheck == CUDD_GROUP_CHECK7, it checks for group creation at the
   end of the initial sifting. If a group is created, it is then sifted
   again. After sifting one variable, the group that contains it is
   dissolved.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -904,16 +913,17 @@ ddGroupSiftingOutOfMem:
 } /* end of ddGroupSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Creates a group encompassing variables from x to y in the
   DD table.]
 
-  Description [Creates a group encompassing variables from x to y in the
+  \details [Creates a group encompassing variables from x to y in the
   DD table. In the current implementation it must be y == x+1.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -942,19 +952,20 @@ ddCreateGroup(
 } /* ddCreateGroup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sifts one variable up and down until it has taken all
   positions. Checks for aggregation.]
 
-  Description [Sifts one variable up and down until it has taken all
+  \details [Sifts one variable up and down until it has taken all
   positions. Checks for aggregation. There may be at most two sweeps,
   even if the group grows.  Assumes that x is either an isolated
   variable, or it is the bottom of a group. All groups may not have
   been found. The variable being moved is returned to the best position
   seen during sifting.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1140,19 +1151,20 @@ ddGroupSiftingAuxOutOfMem:
 } /* end of ddGroupSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sifts up a variable until either it reaches position xLow
   or the size of the DD heap increases too much.]
 
-  Description [Sifts up a variable until either it reaches position
+  \details [Sifts up a variable until either it reaches position
   xLow or the size of the DD heap increases too much. Assumes that y is
   the top of a group (or a singleton).  Checks y for aggregation to the
   adjacent variables. Records all the moves that are appended to the
   list of moves received as input and returned as a side effect.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1302,15 +1314,16 @@ ddGroupSiftingUpOutOfMem:
 } /* end of ddGroupSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts down a variable until it reaches position xHigh.]
+  \brief Sifts down a variable until it reaches position xHigh.
 
-  Description [Sifts down a variable until it reaches position xHigh.
+  \details [Sifts down a variable until it reaches position xHigh.
   Assumes that x is the bottom of a group (or a singleton).  Records
   all the moves.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1479,14 +1492,15 @@ ddGroupSiftingDownOutOfMem:
 } /* end of ddGroupSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps two groups and records the move.]
+  \brief Swaps two groups and records the move.
 
-  Description [Swaps two groups and records the move. Returns the
+  \details [Swaps two groups and records the move. Returns the
   number of keys in the DD table in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1585,14 +1599,15 @@ ddGroupMoveOutOfMem:
 } /* end of ddGroupMove */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Undoes the swap two groups.]
+  \brief Undoes the swap two groups.
 
-  Description [Undoes the swap two groups.  Returns 1 in case of
+  \details [Undoes the swap two groups.  Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1658,15 +1673,16 @@ ddGroupMoveBackward(
 } /* end of ddGroupMoveBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Determines the best position for a variables and returns
   it there.]
 
-  Description [Determines the best position for a variables and returns
+  \details [Determines the best position for a variables and returns
   it there.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1766,14 +1782,15 @@ ddGroupSiftingBackward(
 } /* end of ddGroupSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Merges groups in the DD table.]
+  \brief Merges groups in the DD table.
 
-  Description [Creates a single group from low to high and adjusts the
+  \details [Creates a single group from low to high and adjusts the
   index field of the tree node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -1814,14 +1831,15 @@ ddMergeGroups(
 } /* end of ddMergeGroups */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Dissolves a group in the DD table.]
+  \brief Dissolves a group in the DD table.
 
-  Description [x and y are variables in a group to be cut in two. The cut
+  \details [x and y are variables in a group to be cut in two. The cut
   is to pass between x and y.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -1848,14 +1866,15 @@ ddDissolveGroup(
 } /* end of ddDissolveGroup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Pretends to check two variables for aggregation.]
+  \brief Pretends to check two variables for aggregation.
 
-  Description [Pretends to check two variables for aggregation. Always
+  \details [Pretends to check two variables for aggregation. Always
   returns 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1869,17 +1888,18 @@ ddNoCheck(
 } /* end of ddNoCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks two variables for aggregation.]
+  \brief Checks two variables for aggregation.
 
-  Description [Checks two variables for aggregation. The check is based
+  \details [Checks two variables for aggregation. The check is based
   on the second difference of the number of nodes as a function of the
   layer. If the second difference is lower than a given threshold
   (typically negative) then the two variables should be aggregated.
   Returns 1 if the two variables pass the test; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1929,14 +1949,15 @@ ddSecDiffCheck(
 } /* end of ddSecDiffCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks for extended symmetry of x and y.]
+  \brief Checks for extended symmetry of x and y.
 
-  Description [Checks for extended symmetry of x and y. Returns 1 in
+  \details [Checks for extended symmetry of x and y. Returns 1 in
   case of extended symmetry; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -2079,14 +2100,15 @@ ddExtSymmCheck(
 } /* end ddExtSymmCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks for grouping of x and y.]
+  \brief Checks for grouping of x and y.
 
-  Description [Checks for grouping of x and y. Returns 1 in
+  \details [Checks for grouping of x and y. Returns 1 in
   case of grouping; 0 otherwise. This function is used for lazy sifting.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -2117,16 +2139,17 @@ ddVarGroupCheck(
 } /* end of ddVarGroupCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets a variable to already handled.]
+  \brief Sets a variable to already handled.
 
-  Description [Sets a variable to already handled. This function is used
+  \details [Sets a variable to already handled. This function is used
   for lazy sifting.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -2141,16 +2164,17 @@ ddSetVarHandled(
 } /* end of ddSetVarHandled */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Resets a variable to be processed.]
+  \brief Resets a variable to be processed.
 
-  Description [Resets a variable to be processed. This function is used
+  \details [Resets a variable to be processed. This function is used
   for lazy sifting.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -2165,16 +2189,17 @@ ddResetVarHandled(
 } /* end of ddResetVarHandled */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether a variables is already handled.]
+  \brief Checks whether a variables is already handled.
 
-  Description [Checks whether a variables is already handled. This
+  \details [Checks whether a variables is already handled. This
   function is used for lazy sifting.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

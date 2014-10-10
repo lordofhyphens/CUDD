@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddReord.c]
+  \file cuddZddReord.c
 
   PackageName [cudd]
 
-  Synopsis    [Procedures for dynamic variable ordering of ZDDs.]
+  \brief Procedures for dynamic variable ordering of ZDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddReduceHeap()
 		    <li> Cudd_zddShuffleHeap()
@@ -35,9 +36,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Hyong-Kyoon Shin, In-Ho Moon]
+  \author Hyong-Kyoon Shin, In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -138,11 +139,12 @@ static void zddFixTree (DdManager *table, MtrNode *treenode);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Main dynamic reordering routine for ZDDs.]
+  \brief Main dynamic reordering routine for ZDDs.
 
-  Description [Main dynamic reordering routine for ZDDs.
+  \details [Main dynamic reordering routine for ZDDs.
   Calls one of the possible reordering procedures:
   <ul>
   <li>Swapping
@@ -280,11 +282,12 @@ Cudd_zddReduceHeap(
 } /* end of Cudd_zddReduceHeap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders ZDD variables according to given permutation.]
+  \brief Reorders ZDD variables according to given permutation.
 
-  Description [Reorders ZDD variables according to given permutation.
+  \details [Reorders ZDD variables according to given permutation.
   The i-th entry of the permutation array contains the index of the variable
   that should be brought to the i-th level.  The size of the array should be
   equal or greater to the number of variables currently in use.
@@ -293,7 +296,7 @@ Cudd_zddReduceHeap(
   SideEffects [Changes the ZDD variable order for all diagrams and clears
   the cache.]
 
-  SeeAlso [Cudd_zddReduceHeap]
+  \see Cudd_zddReduceHeap
 
 ******************************************************************************/
 int
@@ -321,12 +324,13 @@ Cudd_zddShuffleHeap(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reorders ZDD variables according to the order of the BDD
   variables.]
 
-  Description [Reorders ZDD variables according to the order of the
+  \details [Reorders ZDD variables according to the order of the
   BDD variables. This function can be called at the end of BDD
   reordering to insure that the order of the ZDD variables is
   consistent with the order of the BDD variables. The number of ZDD
@@ -341,7 +345,7 @@ Cudd_zddShuffleHeap(
   SideEffects [Changes the ZDD variable order for all diagrams and performs
   garbage collection of the ZDD unique table.]
 
-  SeeAlso [Cudd_zddShuffleHeap Cudd_ReduceHeap]
+  \see Cudd_zddShuffleHeap Cudd_ReduceHeap
 
 ******************************************************************************/
 int
@@ -393,16 +397,17 @@ cuddZddAlignToBdd(
 } /* end of cuddZddAlignToBdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the next subtable with a larger index.]
+  \brief Finds the next subtable with a larger index.
 
-  Description [Finds the next subtable with a larger index. Returns the
+  \details [Finds the next subtable with a larger index. Returns the
   index.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -415,16 +420,17 @@ cuddZddNextHigh(
 } /* end of cuddZddNextHigh */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the next subtable with a smaller index.]
+  \brief Finds the next subtable with a smaller index.
 
-  Description [Finds the next subtable with a smaller index. Returns the
+  \details [Finds the next subtable with a smaller index. Returns the
   index.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -437,18 +443,19 @@ cuddZddNextLow(
 } /* end of cuddZddNextLow */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the
+  \details [Comparison function used by qsort to order the
   variables according to the number of keys in the subtables.
   Returns the difference in number of keys between the two
   variables being compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -461,19 +468,20 @@ cuddZddUniqueCompare(
 } /* end of cuddZddUniqueCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps two adjacent variables.]
+  \brief Swaps two adjacent variables.
 
-  Description [Swaps two adjacent variables. It assumes that no dead
+  \details [Swaps two adjacent variables. It assumes that no dead
   nodes are present on entry to this procedure.  The procedure then
   guarantees that no dead nodes will be present when it terminates.
   cuddZddSwapInPlace assumes that x &lt; y.  Returns the number of keys in
   the table if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -718,11 +726,12 @@ zddSwapOutOfMem:
 } /* end of cuddZddSwapInPlace */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders variables by a sequence of (non-adjacent) swaps.]
+  \brief Reorders variables by a sequence of (non-adjacent) swaps.
 
-  Description [Implementation of Plessier's algorithm that reorders
+  \details [Implementation of Plessier's algorithm that reorders
   variables by a sequence of (non-adjacent) swaps.
     <ol>
     <li> Select two variables (RANDOM or HEURISTIC).
@@ -733,9 +742,9 @@ zddSwapOutOfMem:
     </ol>
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -838,11 +847,12 @@ cuddZddSwappingOutOfMem:
 } /* end of cuddZddSwapping */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implementation of Rudell's sifting algorithm.]
+  \brief Implementation of Rudell's sifting algorithm.
 
-  Description [Implementation of Rudell's sifting algorithm.
+  \details [Implementation of Rudell's sifting algorithm.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries
@@ -854,9 +864,9 @@ cuddZddSwappingOutOfMem:
     </ol>
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -946,15 +956,16 @@ cuddZddSiftingOutOfMem:
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps any two variables.]
+  \brief Swaps any two variables.
 
-  Description [Swaps any two variables. Returns the set of moves.]
+  \details [Swaps any two variables. Returns the set of moves.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -1099,18 +1110,19 @@ zddSwapAnyOutOfMem:
 } /* end of zddSwapAny */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1220,17 +1232,18 @@ cuddZddSiftingAuxOutOfMem:
 } /* end of cuddZddSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable up.]
+  \brief Sifts a variable up.
 
-  Description [Sifts a variable up. Moves y up until either it reaches
+  \details [Sifts a variable up. Moves y up until either it reaches
   the bound (x_low) or the size of the ZDD heap increases too much.
   Returns the set of moves in case of success; NULL if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -1282,18 +1295,19 @@ cuddZddSiftingUpOutOfMem:
 } /* end of cuddZddSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable down.]
+  \brief Sifts a variable down.
 
-  Description [Sifts a variable down. Moves x down until either it
+  \details [Sifts a variable down. Moves x down until either it
   reaches the bound (x_high) or the size of the ZDD heap increases too
   much. Returns the set of moves in case of success; NULL if memory is
   full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -1345,19 +1359,20 @@ cuddZddSiftingDownOutOfMem:
 } /* end of cuddZddSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the ZDD heap to the position
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the ZDD heap to the
+  \details [Given a set of moves, returns the ZDD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1395,15 +1410,16 @@ cuddZddSiftingBackward(
 } /* end of cuddZddSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prepares the ZDD heap for dynamic reordering.]
+  \brief Prepares the ZDD heap for dynamic reordering.
 
-  Description [Prepares the ZDD heap for dynamic reordering. Does
+  \details [Prepares the ZDD heap for dynamic reordering. Does
   garbage collection, to guarantee that there are no dead nodes;
   and clears the cache, which is invalidated by dynamic reordering.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
@@ -1422,17 +1438,18 @@ zddReorderPreprocess(
 } /* end of ddReorderPreprocess */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Shrinks almost empty ZDD subtables at the end of reordering
   to guarantee that they have a reasonable load factor.]
 
-  Description [Shrinks almost empty subtables at the end of reordering to
+  \details [Shrinks almost empty subtables at the end of reordering to
   guarantee that they have a reasonable load factor. However, if there many
   nodes are being reclaimed, then no resizing occurs. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1515,19 +1532,20 @@ zddReorderPostprocess(
 } /* end of zddReorderPostprocess */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders ZDD variables according to a given permutation.]
+  \brief Reorders ZDD variables according to a given permutation.
 
-  Description [Reorders ZDD variables according to a given permutation.
+  \details [Reorders ZDD variables according to a given permutation.
   The i-th permutation array contains the index of the variable that
   should be brought to the i-th level. zddShuffle assumes that no
   dead nodes are present.  The reordering is achieved by a series of
   upward sifts.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1592,17 +1610,18 @@ zddShuffle(
 } /* end of zddShuffle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Moves one ZDD variable up.]
+  \brief Moves one ZDD variable up.
 
-  Description [Takes a ZDD variable from position x and sifts it up to
+  \details [Takes a ZDD variable from position x and sifts it up to
   position xLow;  xLow should be less than or equal to x.
   Returns 1 if successful; 0 otherwise]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1628,17 +1647,18 @@ zddSiftUp(
 } /* end of zddSiftUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Fixes the ZDD variable group tree after a shuffle.]
+  \brief Fixes the ZDD variable group tree after a shuffle.
 
-  Description [Fixes the ZDD variable group tree after a
+  \details [Fixes the ZDD variable group tree after a
   shuffle. Assumes that the order of the variables in a terminal node
   has not been changed.]
 
-  SideEffects [Changes the ZDD variable group tree.]
+  \sideeffects Changes the ZDD variable group tree.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void

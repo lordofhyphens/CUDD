@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddApply.c]
+  \file cuddAddApply.c
 
   PackageName [cudd]
 
-  Synopsis    [Apply functions for ADDs and their operators.]
+  \brief Apply functions for ADDs and their operators.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addApply()
 		<li> Cudd_addMonadicApply()
@@ -33,7 +34,7 @@
 		<li> cuddAddMonadicApplyRecur()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -115,16 +116,17 @@ static char rcsid[] DD_UNUSED = "$Id: cuddAddApply.c,v 1.19 2012/02/05 01:07:18 
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies op to the corresponding discriminants of f and g.]
+  \brief Applies op to the corresponding discriminants of f and g.
 
-  Description [Applies op to the corresponding discriminants of f and g.
+  \details [Applies op to the corresponding discriminants of f and g.
   Returns a pointer to the result if succssful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addMonadicApply Cudd_addPlus Cudd_addTimes
+  \see     [Cudd_addMonadicApply Cudd_addPlus Cudd_addTimes
   Cudd_addThreshold Cudd_addSetNZ Cudd_addDivide Cudd_addMinus Cudd_addMinimum
   Cudd_addMaximum Cudd_addOneZeroMaximum Cudd_addDiff Cudd_addAgreement
   Cudd_addOr Cudd_addNand Cudd_addNor Cudd_addXor Cudd_addXnor]
@@ -148,16 +150,17 @@ Cudd_addApply(
 } /* end of Cudd_addApply */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point addition.]
+  \brief Integer and floating point addition.
 
-  Description [Integer and floating point addition. Returns NULL if not
+  \details [Integer and floating point addition. Returns NULL if not
   a terminal case; f+g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -187,17 +190,18 @@ Cudd_addPlus(
 } /* end of Cudd_addPlus */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point multiplication.]
+  \brief Integer and floating point multiplication.
 
-  Description [Integer and floating point multiplication. Returns NULL
+  \details [Integer and floating point multiplication. Returns NULL
   if not a terminal case; f * g otherwise.  This function can be used also
   to take the AND of two 0-1 ADDs.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -228,16 +232,17 @@ Cudd_addTimes(
 } /* end of Cudd_addTimes */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [f if f&gt;=g; 0 if f&lt;g.]
+  \brief f if f&gt;=g; 0 if f&lt;g.
 
-  Description [Threshold operator for Apply (f if f &gt;=g; 0 if f&lt;g).
+  \details [Threshold operator for Apply (f if f &gt;=g; 0 if f&lt;g).
   Returns NULL if not a terminal case; f op g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -262,16 +267,17 @@ Cudd_addThreshold(
 } /* end of Cudd_addThreshold */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [This operator sets f to the value of g wherever g != 0.]
+  \brief This operator sets f to the value of g wherever g != 0.
 
-  Description [This operator sets f to the value of g wherever g != 0.
+  \details [This operator sets f to the value of g wherever g != 0.
   Returns NULL if not a terminal case; f op g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -292,16 +298,17 @@ Cudd_addSetNZ(
 } /* end of Cudd_addSetNZ */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point division.]
+  \brief Integer and floating point division.
 
-  Description [Integer and floating point division. Returns NULL if not
+  \details [Integer and floating point division. Returns NULL if not
   a terminal case; f / g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -329,16 +336,17 @@ Cudd_addDivide(
 } /* end of Cudd_addDivide */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point subtraction.]
+  \brief Integer and floating point subtraction.
 
-  Description [Integer and floating point subtraction. Returns NULL if
+  \details [Integer and floating point subtraction. Returns NULL if
   not a terminal case; f - g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -365,16 +373,17 @@ Cudd_addMinus(
 } /* end of Cudd_addMinus */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point min.]
+  \brief Integer and floating point min.
 
-  Description [Integer and floating point min for Cudd_addApply.
+  \details [Integer and floating point min for Cudd_addApply.
   Returns NULL if not a terminal case; min(f,g) otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -410,16 +419,17 @@ Cudd_addMinimum(
 } /* end of Cudd_addMinimum */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Integer and floating point max.]
+  \brief Integer and floating point max.
 
-  Description [Integer and floating point max for Cudd_addApply.
+  \details [Integer and floating point max for Cudd_addApply.
   Returns NULL if not a terminal case; max(f,g) otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -455,17 +465,18 @@ Cudd_addMaximum(
 } /* end of Cudd_addMaximum */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns 1 if f &gt; g and 0 otherwise.]
+  \brief Returns 1 if f &gt; g and 0 otherwise.
 
-  Description [Returns 1 if f &gt; g and 0 otherwise. Used in
+  \details [Returns 1 if f &gt; g and 0 otherwise. Used in
   conjunction with Cudd_addApply. Returns NULL if not a terminal
   case.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -491,16 +502,17 @@ Cudd_addOneZeroMaximum(
 } /* end of Cudd_addOneZeroMaximum */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns plusinfinity if f=g; returns min(f,g) if f!=g.]
+  \brief Returns plusinfinity if f=g; returns min(f,g) if f!=g.
 
-  Description [Returns NULL if not a terminal case; f op g otherwise,
+  \details [Returns NULL if not a terminal case; f op g otherwise,
   where f op g is plusinfinity if f=g; min(f,g) if f!=g.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -531,16 +543,17 @@ Cudd_addDiff(
 } /* end of Cudd_addDiff */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [f if f==g; background if f!=g.]
+  \brief f if f==g; background if f!=g.
 
-  Description [Returns NULL if not a terminal case; f op g otherwise,
+  \details [Returns NULL if not a terminal case; f op g otherwise,
   where f op g is f if f==g; background if f!=g.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -561,16 +574,17 @@ Cudd_addAgreement(
 } /* end of Cudd_addAgreement */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Disjunction of two 0-1 ADDs.]
+  \brief Disjunction of two 0-1 ADDs.
 
-  Description [Disjunction of two 0-1 ADDs. Returns NULL
+  \details [Disjunction of two 0-1 ADDs. Returns NULL
   if not a terminal case; f OR g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -595,16 +609,17 @@ Cudd_addOr(
 } /* end of Cudd_addOr */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [NAND of two 0-1 ADDs.]
+  \brief NAND of two 0-1 ADDs.
 
-  Description [NAND of two 0-1 ADDs. Returns NULL
+  \details [NAND of two 0-1 ADDs. Returns NULL
   if not a terminal case; f NAND g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -627,16 +642,17 @@ Cudd_addNand(
 } /* end of Cudd_addNand */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [NOR of two 0-1 ADDs.]
+  \brief NOR of two 0-1 ADDs.
 
-  Description [NOR of two 0-1 ADDs. Returns NULL
+  \details [NOR of two 0-1 ADDs. Returns NULL
   if not a terminal case; f NOR g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -659,16 +675,17 @@ Cudd_addNor(
 } /* end of Cudd_addNor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [XOR of two 0-1 ADDs.]
+  \brief XOR of two 0-1 ADDs.
 
-  Description [XOR of two 0-1 ADDs. Returns NULL
+  \details [XOR of two 0-1 ADDs. Returns NULL
   if not a terminal case; f XOR g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -693,16 +710,17 @@ Cudd_addXor(
 } /* end of Cudd_addXor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [XNOR of two 0-1 ADDs.]
+  \brief XNOR of two 0-1 ADDs.
 
-  Description [XNOR of two 0-1 ADDs. Returns NULL
+  \details [XNOR of two 0-1 ADDs. Returns NULL
   if not a terminal case; f XNOR g otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply]
+  \see Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -727,16 +745,17 @@ Cudd_addXnor(
 } /* end of Cudd_addXnor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Applies op to the discriminants of f.]
+  \brief Applies op to the discriminants of f.
 
-  Description [Applies op to the discriminants of f.
+  \details [Applies op to the discriminants of f.
   Returns a pointer to the result if succssful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addApply Cudd_addLog]
+  \see Cudd_addApply Cudd_addLog
 
 ******************************************************************************/
 DdNode *
@@ -756,17 +775,18 @@ Cudd_addMonadicApply(
 } /* end of Cudd_addMonadicApply */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Natural logarithm of an ADD.]
+  \brief Natural logarithm of an ADD.
 
-  Description [Natural logarithm of an ADDs. Returns NULL
+  \details [Natural logarithm of an ADDs. Returns NULL
   if not a terminal case; log(f) otherwise.  The discriminants of f must
   be positive double's.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addMonadicApply]
+  \see Cudd_addMonadicApply
 
 ******************************************************************************/
 DdNode *
@@ -789,16 +809,17 @@ Cudd_addLog(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addApply.]
+  \brief Performs the recursive step of Cudd_addApply.
 
-  Description [Performs the recursive step of Cudd_addApply. Returns a
+  \details [Performs the recursive step of Cudd_addApply. Returns a
   pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddAddMonadicApplyRecur]
+  \see cuddAddMonadicApplyRecur
 
 ******************************************************************************/
 DdNode *
@@ -873,16 +894,17 @@ cuddAddApplyRecur(
 } /* end of cuddAddApplyRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addMonadicApply.]
+  \brief Performs the recursive step of Cudd_addMonadicApply.
 
-  Description [Performs the recursive step of Cudd_addMonadicApply. Returns a
+  \details [Performs the recursive step of Cudd_addMonadicApply. Returns a
   pointer to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddAddApplyRecur]
+  \see cuddAddApplyRecur
 
 ******************************************************************************/
 DdNode *

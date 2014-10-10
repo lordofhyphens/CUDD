@@ -1,12 +1,12 @@
-/**CHeaderFile*****************************************************************
+/*!***************************************************************
 
-  FileName    [cudd.h]
+  \file cudd.h
 
   PackageName [cudd]
 
-  Synopsis    [The University of Colorado decision diagram package.]
+  \brief The University of Colorado decision diagram package.
 
-  Description [External functions and data strucures of the CUDD package.
+  \details [External functions and data strucures of the CUDD package.
   <ul>
   <li> To turn on the gathering of statistics, define DD_STATS.
   <li> To link with mis, define DD_MIS.
@@ -14,9 +14,9 @@
   Modified by Abelardo Pardo to interface it to VIS.
   ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -137,11 +137,11 @@ extern "C" {
 /* Type declarations                                                         */
 /*---------------------------------------------------------------------------*/
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Type of reordering algorithm.]
+  \brief Type of reordering algorithm.
 
-  Description [Type of reordering algorithm.]
+  \details [Type of reordering algorithm.]
 
 ******************************************************************************/
 typedef enum {
@@ -170,11 +170,11 @@ typedef enum {
 } Cudd_ReorderingType;
 
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Type of aggregation methods.]
+  \brief Type of aggregation methods.
 
-  Description [Type of aggregation methods.]
+  \details [Type of aggregation methods.]
 
 ******************************************************************************/
 typedef enum {
@@ -191,11 +191,11 @@ typedef enum {
 } Cudd_AggregationType;
 
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Type of hooks.]
+  \brief Type of hooks.
 
-  Description [Type of hooks.]
+  \details [Type of hooks.]
 
 ******************************************************************************/
 typedef enum {
@@ -206,11 +206,11 @@ typedef enum {
 } Cudd_HookType;
 
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Type of error codes.]
+  \brief Type of error codes.
 
-  Description [Type of  error codes.]
+  \details [Type of  error codes.]
 
 ******************************************************************************/
 typedef enum {
@@ -224,11 +224,11 @@ typedef enum {
 } Cudd_ErrorType;
 
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Group type for lazy sifting.]
+  \brief Group type for lazy sifting.
 
-  Description [Group type for lazy sifting.]
+  \details [Group type for lazy sifting.]
 
 ******************************************************************************/
 typedef enum {
@@ -239,11 +239,11 @@ typedef enum {
 } Cudd_LazyGroupType;
 
 
-/**Enum************************************************************************
+/*!**********************************************************************
 
-  Synopsis    [Variable type.]
+  \brief Variable type.
 
-  Description [Variable type. Currently used only in lazy sifting.]
+  \details [Variable type. Currently used only in lazy sifting.]
 
 ******************************************************************************/
 typedef enum {
@@ -322,163 +322,163 @@ typedef int (*DD_QSFP)(const void *, const void *);
 /*---------------------------------------------------------------------------*/
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns 1 if the node is a constant node.]
+  \brief Returns 1 if the node is a constant node.
 
-  Description  [Returns 1 if the node is a constant node (rather than an
+  \details  [Returns 1 if the node is a constant node (rather than an
   internal node). All constant nodes have the same index
   (CUDD_CONST_INDEX). The pointer passed to Cudd_IsConstant may be either
   regular or complemented.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      []
+  \see 
 
 ******************************************************************************/
 #define Cudd_IsConstant(node) ((Cudd_Regular(node))->index == CUDD_CONST_INDEX)
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Complements a DD.]
+  \brief Complements a DD.
 
-  Description  [Complements a DD by flipping the complement attribute of
+  \details  [Complements a DD by flipping the complement attribute of
   the pointer (the least significant bit).]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_NotCond]
+  \see Cudd_NotCond
 
 ******************************************************************************/
 #define Cudd_Not(node) ((DdNode *)((long)(node) ^ 01))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Complements a DD if a condition is true.]
+  \brief Complements a DD if a condition is true.
 
-  Description  [Complements a DD if condition c is true; c should be
+  \details  [Complements a DD if condition c is true; c should be
   either 0 or 1, because it is used directly (for efficiency). If in
   doubt on the values c may take, use "(c) ? Cudd_Not(node) : node".]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Not]
+  \see Cudd_Not
 
 ******************************************************************************/
 #define Cudd_NotCond(node,c) ((DdNode *)((long)(node) ^ (c)))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns the regular version of a pointer.]
+  \brief Returns the regular version of a pointer.
 
-  Description  []
+  \details  []
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Complement Cudd_IsComplement]
+  \see Cudd_Complement Cudd_IsComplement
 
 ******************************************************************************/
 #define Cudd_Regular(node) ((DdNode *)((unsigned long)(node) & ~01))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns the complemented version of a pointer.]
+  \brief Returns the complemented version of a pointer.
 
-  Description  []
+  \details  []
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Regular Cudd_IsComplement]
+  \see Cudd_Regular Cudd_IsComplement
 
 ******************************************************************************/
 #define Cudd_Complement(node) ((DdNode *)((unsigned long)(node) | 01))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns 1 if a pointer is complemented.]
+  \brief Returns 1 if a pointer is complemented.
 
-  Description  []
+  \details  []
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Regular Cudd_Complement]
+  \see Cudd_Regular Cudd_Complement
 
 ******************************************************************************/
 #define Cudd_IsComplement(node)	((int) ((long) (node) & 01))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns the then child of an internal node.]
+  \brief Returns the then child of an internal node.
 
-  Description  [Returns the then child of an internal node. If
+  \details  [Returns the then child of an internal node. If
   <code>node</code> is a constant node, the result is unpredictable.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_E Cudd_V]
+  \see Cudd_E Cudd_V
 
 ******************************************************************************/
 #define Cudd_T(node) ((Cudd_Regular(node))->type.kids.T)
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns the else child of an internal node.]
+  \brief Returns the else child of an internal node.
 
-  Description  [Returns the else child of an internal node. If
+  \details  [Returns the else child of an internal node. If
   <code>node</code> is a constant node, the result is unpredictable.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_T Cudd_V]
+  \see Cudd_T Cudd_V
 
 ******************************************************************************/
 #define Cudd_E(node) ((Cudd_Regular(node))->type.kids.E)
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Returns the value of a constant node.]
+  \brief Returns the value of a constant node.
 
-  Description  [Returns the value of a constant node. If
+  \details  [Returns the value of a constant node. If
   <code>node</code> is an internal node, the result is unpredictable.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_T Cudd_E]
+  \see Cudd_T Cudd_E
 
 ******************************************************************************/
 #define Cudd_V(node) ((Cudd_Regular(node))->type.value)
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
   Synopsis     [Returns the current position in the order of variable
   index.]
 
-  Description [Returns the current position in the order of variable
+  \details [Returns the current position in the order of variable
   index. This macro is obsolete and is kept for compatibility. New
   applications should use Cudd_ReadPerm instead.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_ReadPerm]
+  \see Cudd_ReadPerm
 
 ******************************************************************************/
 #define Cudd_ReadIndex(dd,index) (Cudd_ReadPerm(dd,index))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Iterates over the cubes of a decision diagram.]
+  \brief Iterates over the cubes of a decision diagram.
 
-  Description  [Iterates over the cubes of a decision diagram f.
+  \details  [Iterates over the cubes of a decision diagram f.
   <ul>
   <li> DdManager *manager;
   <li> DdNode *f;
@@ -497,9 +497,9 @@ typedef int (*DD_QSFP)(const void *, const void *);
   disable dynamic reordering. It is a mistake to dispose of a diagram
   on which generation is ongoing.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube Cudd_GenFree
+  \see      [Cudd_ForeachNode Cudd_FirstCube Cudd_NextCube Cudd_GenFree
   Cudd_IsGenEmpty Cudd_AutodynDisable]
 
 ******************************************************************************/
@@ -509,11 +509,11 @@ typedef int (*DD_QSFP)(const void *, const void *);
 	(void) Cudd_NextCube(gen, &cube, &value))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Iterates over the primes of a Boolean function.]
+  \brief Iterates over the primes of a Boolean function.
 
-  Description  [Iterates over the primes of a Boolean function producing
+  \details  [Iterates over the primes of a Boolean function producing
   a prime and irredundant cover.
   <ul>
   <li> DdManager *manager;
@@ -529,9 +529,9 @@ typedef int (*DD_QSFP)(const void *, const void *);
   end of Cudd_ForeachPrime and hence is not available outside of the loop.<p>
   CAUTION: It is a mistake to change a diagram on which generation is ongoing.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_ForeachCube Cudd_FirstPrime Cudd_NextPrime Cudd_GenFree
+  \see      [Cudd_ForeachCube Cudd_FirstPrime Cudd_NextPrime Cudd_GenFree
   Cudd_IsGenEmpty]
 
 ******************************************************************************/
@@ -541,11 +541,11 @@ typedef int (*DD_QSFP)(const void *, const void *);
 	(void) Cudd_NextPrime(gen, &cube))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Iterates over the nodes of a decision diagram.]
+  \brief Iterates over the nodes of a decision diagram.
 
-  Description  [Iterates over the nodes of a decision diagram f.
+  \details  [Iterates over the nodes of a decision diagram f.
   <ul>
   <li> DdManager *manager;
   <li> DdNode *f;
@@ -563,9 +563,9 @@ typedef int (*DD_QSFP)(const void *, const void *);
   disable dynamic reordering. It is a mistake to dispose of a diagram
   on which generation is ongoing.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_ForeachCube Cudd_FirstNode Cudd_NextNode Cudd_GenFree
+  \see      [Cudd_ForeachCube Cudd_FirstNode Cudd_NextNode Cudd_GenFree
   Cudd_IsGenEmpty Cudd_AutodynDisable]
 
 ******************************************************************************/
@@ -575,11 +575,11 @@ typedef int (*DD_QSFP)(const void *, const void *);
 	(void) Cudd_NextNode(gen, &node))
 
 
-/**Macro***********************************************************************
+/*!*********************************************************************
 
-  Synopsis     [Iterates over the paths of a ZDD.]
+  \brief Iterates over the paths of a ZDD.
 
-  Description  [Iterates over the paths of a ZDD f.
+  \details  [Iterates over the paths of a ZDD f.
   <ul>
   <li> DdManager *manager;
   <li> DdNode *f;
@@ -597,9 +597,9 @@ typedef int (*DD_QSFP)(const void *, const void *);
   disable dynamic reordering.  It is a mistake to dispose of a diagram
   on which generation is ongoing.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_zddFirstPath Cudd_zddNextPath Cudd_GenFree
+  \see      [Cudd_zddFirstPath Cudd_zddNextPath Cudd_GenFree
   Cudd_IsGenEmpty Cudd_AutodynDisable]
 
 ******************************************************************************/

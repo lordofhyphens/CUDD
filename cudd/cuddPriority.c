@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddPriority.c]
+  \file cuddPriority.c
 
   PackageName [cudd]
 
-  Synopsis    [Priority functions.]
+  \brief Priority functions.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 	    <ul>
 	    <li> Cudd_PrioritySelect()
 	    <li> Cudd_Xgty()
@@ -35,9 +36,9 @@
 	    </ul>
 	    ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -123,11 +124,12 @@ static DdNode * createResult (DdManager *dd, unsigned int index, unsigned int ph
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Selects pairs from R using a priority function.]
+  \brief Selects pairs from R using a priority function.
 
-  Description [Selects pairs from a relation R(x,y) (given as a BDD)
+  \details [Selects pairs from a relation R(x,y) (given as a BDD)
   in such a way that a given x appears in one pair only. Uses a
   priority function to determine which y should be paired to a given x.
   Cudd_PrioritySelect returns a pointer to
@@ -163,7 +165,7 @@ static DdNode * createResult (DdManager *dd, unsigned int index, unsigned int ph
   SideEffects [If called with z == NULL, will create new variables in
   the manager.]
 
-  SeeAlso     [Cudd_Dxygtdxz Cudd_Dxygtdyz Cudd_Xgty
+  \see     [Cudd_Dxygtdxz Cudd_Dxygtdyz Cudd_Xgty
   Cudd_bddAdjPermuteX Cudd_CProjection]
 
 ******************************************************************************/
@@ -254,11 +256,12 @@ endgame:
 } /* Cudd_PrioritySelect */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function x &gt; y.]
+  \brief Generates a BDD for the function x &gt; y.
 
-  Description [This function generates a BDD for the function x &gt; y.
+  \details [This function generates a BDD for the function x &gt; y.
   Both x and y are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\] and
   y\[0\] y\[1\] ...  y\[N-1\], with 0 the most significant bit.
   The BDD is built bottom-up.
@@ -267,9 +270,9 @@ endgame:
   Argument z is not used by Cudd_Xgty: it is included to make it
   call-compatible to Cudd_Dxygtdxz and Cudd_Dxygtdyz.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrioritySelect Cudd_Dxygtdxz Cudd_Dxygtdyz]
+  \see Cudd_PrioritySelect Cudd_Dxygtdxz Cudd_Dxygtdyz
 
 ******************************************************************************/
 DdNode *
@@ -321,20 +324,21 @@ Cudd_Xgty(
 } /* end of Cudd_Xgty */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function x==y.]
+  \brief Generates a BDD for the function x==y.
 
-  Description [This function generates a BDD for the function x==y.
+  \details [This function generates a BDD for the function x==y.
   Both x and y are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\] and
   y\[0\] y\[1\] ...  y\[N-1\], with 0 the most significant bit.
   The BDD is built bottom-up.
   It has 3*N-1 internal nodes, if the variables are ordered as follows:
   x\[0\] y\[0\] x\[1\] y\[1\] ... x\[N-1\] y\[N-1\]. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addXeqy]
+  \see Cudd_addXeqy
 
 ******************************************************************************/
 DdNode *
@@ -384,20 +388,21 @@ Cudd_Xeqy(
 } /* end of Cudd_Xeqy */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates an ADD for the function x==y.]
+  \brief Generates an ADD for the function x==y.
 
-  Description [This function generates an ADD for the function x==y.
+  \details [This function generates an ADD for the function x==y.
   Both x and y are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\] and
   y\[0\] y\[1\] ...  y\[N-1\], with 0 the most significant bit.
   The ADD is built bottom-up.
   It has 3*N-1 internal nodes, if the variables are ordered as follows:
   x\[0\] y\[0\] x\[1\] y\[1\] ... x\[N-1\] y\[N-1\]. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Xeqy]
+  \see Cudd_Xeqy
 
 ******************************************************************************/
 DdNode *
@@ -466,11 +471,12 @@ Cudd_addXeqy(
 } /* end of Cudd_addXeqy */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function d(x,y) &gt; d(x,z).]
+  \brief Generates a BDD for the function d(x,y) &gt; d(x,z).
 
-  Description [This function generates a BDD for the function d(x,y)
+  \details [This function generates a BDD for the function d(x,y)
   &gt; d(x,z);
   x, y, and z are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\],
   y\[0\] y\[1\] ...  y\[N-1\], and z\[0\] z\[1\] ...  z\[N-1\],
@@ -481,9 +487,9 @@ Cudd_addXeqy(
   It has 7*N-3 internal nodes, if the variables are ordered as follows:
   x\[0\] y\[0\] z\[0\] x\[1\] y\[1\] z\[1\] ... x\[N-1\] y\[N-1\] z\[N-1\]. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrioritySelect Cudd_Dxygtdyz Cudd_Xgty Cudd_bddAdjPermuteX]
+  \see Cudd_PrioritySelect Cudd_Dxygtdyz Cudd_Xgty Cudd_bddAdjPermuteX
 
 ******************************************************************************/
 DdNode *
@@ -593,11 +599,12 @@ Cudd_Dxygtdxz(
 } /* end of Cudd_Dxygtdxz */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function d(x,y) &gt; d(y,z).]
+  \brief Generates a BDD for the function d(x,y) &gt; d(y,z).
 
-  Description [This function generates a BDD for the function d(x,y)
+  \details [This function generates a BDD for the function d(x,y)
   &gt; d(y,z);
   x, y, and z are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\],
   y\[0\] y\[1\] ...  y\[N-1\], and z\[0\] z\[1\] ...  z\[N-1\],
@@ -608,9 +615,9 @@ Cudd_Dxygtdxz(
   It has 7*N-3 internal nodes, if the variables are ordered as follows:
   x\[0\] y\[0\] z\[0\] x\[1\] y\[1\] z\[1\] ... x\[N-1\] y\[N-1\] z\[N-1\]. ]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrioritySelect Cudd_Dxygtdxz Cudd_Xgty Cudd_bddAdjPermuteX]
+  \see Cudd_PrioritySelect Cudd_Dxygtdxz Cudd_Xgty Cudd_bddAdjPermuteX
 
 ******************************************************************************/
 DdNode *
@@ -720,20 +727,21 @@ Cudd_Dxygtdyz(
 } /* end of Cudd_Dxygtdyz */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function x - y &ge; c.]
+  \brief Generates a BDD for the function x - y &ge; c.
 
-  Description [This function generates a BDD for the function x -y &ge; c.
+  \details [This function generates a BDD for the function x -y &ge; c.
   Both x and y are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\] and
   y\[0\] y\[1\] ...  y\[N-1\], with 0 the most significant bit.
   The BDD is built bottom-up.
   It has a linear number of nodes if the variables are ordered as follows:
   x\[0\] y\[0\] x\[1\] y\[1\] ... x\[N-1\] y\[N-1\].]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Xgty]
+  \see Cudd_Xgty
 
 ******************************************************************************/
 DdNode *
@@ -908,20 +916,21 @@ Cudd_Inequality(
 } /* end of Cudd_Inequality */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function x - y != c.]
+  \brief Generates a BDD for the function x - y != c.
 
-  Description [This function generates a BDD for the function x -y != c.
+  \details [This function generates a BDD for the function x -y != c.
   Both x and y are N-bit numbers, x\[0\] x\[1\] ... x\[N-1\] and
   y\[0\] y\[1\] ...  y\[N-1\], with 0 the most significant bit.
   The BDD is built bottom-up.
   It has a linear number of nodes if the variables are ordered as follows:
   x\[0\] y\[0\] x\[1\] y\[1\] ... x\[N-1\] y\[N-1\].]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Xgty]
+  \see Cudd_Xgty
 
 ******************************************************************************/
 DdNode *
@@ -1096,11 +1105,12 @@ Cudd_Disequality(
 } /* end of Cudd_Disequality */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a BDD for the function lowerB &le; x &le; upperB.]
+  \brief Generates a BDD for the function lowerB &le; x &le; upperB.
 
-  Description [This function generates a BDD for the function
+  \details [This function generates a BDD for the function
   lowerB &le; x &le; upperB, where x is an N-bit number,
   x\[0\] x\[1\] ... x\[N-1\], with 0 the most significant bit (important!).
   The number of variables N should be sufficient to represent the bounds;
@@ -1108,9 +1118,9 @@ Cudd_Disequality(
   Two BDDs are built bottom-up for lowerB &le; x and x &le; upperB, and they
   are finally conjoined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_Xgty]
+  \see Cudd_Xgty
 
 ******************************************************************************/
 DdNode *
@@ -1178,18 +1188,19 @@ Cudd_bddInterval(
 } /* end of Cudd_bddInterval */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the compatible projection of R w.r.t. cube Y.]
+  \brief Computes the compatible projection of R w.r.t. cube Y.
 
-  Description [Computes the compatible projection of relation R with
+  \details [Computes the compatible projection of relation R with
   respect to cube Y. Returns a pointer to the c-projection if
   successful; NULL otherwise. For a comparison between Cudd_CProjection
   and Cudd_PrioritySelect, see the documentation of the latter.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_PrioritySelect]
+  \see Cudd_PrioritySelect
 
 ******************************************************************************/
 DdNode *
@@ -1233,18 +1244,19 @@ Cudd_CProjection(
 } /* end of Cudd_CProjection */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the Hamming distance ADD.]
+  \brief Computes the Hamming distance ADD.
 
-  Description [Computes the Hamming distance ADD. Returns an ADD that
+  \details [Computes the Hamming distance ADD. Returns an ADD that
   gives the Hamming distance between its two arguments if successful;
   NULL otherwise. The two vectors xVars and yVars identify the variables
   that form the two arguments.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -1294,20 +1306,21 @@ Cudd_addHamming(
 } /* end of Cudd_addHamming */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the minimum Hamming distance between f and minterm.]
+  \brief Returns the minimum Hamming distance between f and minterm.
 
-  Description [Returns the minimum Hamming distance between the
+  \details [Returns the minimum Hamming distance between the
   minterms of a function f and a reference minterm. The function is
   given as a BDD; the minterm is given as an array of integers, one
   for each variable in the manager.  Returns the minimum distance if
   it is less than the upper bound; the upper bound if the minimum
   distance is at least as large; CUDD_OUT_OF_MEM in case of failure.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addHamming Cudd_bddClosestCube]
+  \see Cudd_addHamming Cudd_bddClosestCube
 
 ******************************************************************************/
 int
@@ -1336,19 +1349,20 @@ Cudd_MinHammingDist(
 } /* end of Cudd_MinHammingDist */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds a cube of f at minimum Hamming distance from g.]
+  \brief Finds a cube of f at minimum Hamming distance from g.
 
-  Description [Finds a cube of f at minimum Hamming distance from the
+  \details [Finds a cube of f at minimum Hamming distance from the
   minterms of g.  All the minterms of the cube are at the minimum
   distance.  If the distance is 0, the cube belongs to the
   intersection of f and g.  Returns the cube if successful; NULL
   otherwise.]
 
-  SideEffects [The distance is returned as a side effect.]
+  \sideeffects The distance is returned as a side effect.
 
-  SeeAlso     [Cudd_MinHammingDist]
+  \see Cudd_MinHammingDist
 
 ******************************************************************************/
 DdNode *
@@ -1405,16 +1419,17 @@ Cudd_bddClosestCube(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_CProjection.]
+  \brief Performs the recursive step of Cudd_CProjection.
 
-  Description [Performs the recursive step of Cudd_CProjection. Returns
+  \details [Performs the recursive step of Cudd_CProjection. Returns
   the projection if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CProjection]
+  \see Cudd_CProjection
 
 ******************************************************************************/
 DdNode *
@@ -1567,11 +1582,12 @@ cuddCProjectionRecur(
 } /* end of cuddCProjectionRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddClosestCube.]
+  \brief Performs the recursive step of Cudd_bddClosestCube.
 
-  Description [Performs the recursive step of Cudd_bddClosestCube.
+  \details [Performs the recursive step of Cudd_bddClosestCube.
   Returns the cube if succesful; NULL otherwise.  The procedure uses a
   four-way recursion to examine all four combinations of cofactors of
   <code>f</code> and <code>g</code> according to the following formula.
@@ -1633,9 +1649,9 @@ cuddCProjectionRecur(
   specially because the distance is known (0 for one, and infinity for
   zero).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddClosestCube]
+  \see Cudd_bddClosestCube
 
 ******************************************************************************/
 DdNode *
@@ -1826,11 +1842,12 @@ cuddBddClosestCube(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_MinHammingDist.]
+  \brief Performs the recursive step of Cudd_MinHammingDist.
 
-  Description [Performs the recursive step of Cudd_MinHammingDist.
+  \details [Performs the recursive step of Cudd_MinHammingDist.
   It is based on the following identity. Let H(f) be the
   minimum Hamming distance of the minterms of f from the reference
   minterm. Then:
@@ -1845,9 +1862,9 @@ cuddBddClosestCube(
   Returns the minimum distance unless it exceeds the upper bound or
   computation fails.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_MinHammingDist]
+  \see Cudd_MinHammingDist
 
 ******************************************************************************/
 static int
@@ -1918,16 +1935,17 @@ cuddMinHammingDistRecur(
 } /* end of cuddMinHammingDistRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Separates cube from distance.]
+  \brief Separates cube from distance.
 
-  Description [Separates cube from distance.  Returns the cube if
+  \details [Separates cube from distance.  Returns the cube if
   successful; NULL otherwise.]
 
-  SideEffects [The distance is returned as a side effect.]
+  \sideeffects The distance is returned as a side effect.
 
-  SeeAlso     [cuddBddClosestCube createResult]
+  \see cuddBddClosestCube createResult
 
 ******************************************************************************/
 static DdNode *
@@ -1967,16 +1985,17 @@ separateCube(
 } /* end of separateCube */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Builds a result for cache storage.]
+  \brief Builds a result for cache storage.
 
-  Description [Builds a result for cache storage.  Returns a pointer
+  \details [Builds a result for cache storage.  Returns a pointer
   to the resulting ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddBddClosestCube separateCube]
+  \see cuddBddClosestCube separateCube
 
 ******************************************************************************/
 static DdNode *

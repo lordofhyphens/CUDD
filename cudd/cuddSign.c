@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddSign.c]
+  \file cuddSign.c
 
   PackageName [cudd]
 
-  Synopsis    [Computation of signatures.]
+  \brief Computation of signatures.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_CofMinterm();
 		    </ul>
@@ -16,7 +17,7 @@
 		    </ul>
 		    ]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -107,12 +108,13 @@ static double * ddCofMintermAux (DdManager *dd, DdNode *node, st_table *table);
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Computes the fraction of minterms in the on-set of all the
   positive cofactors of a BDD or ADD.]
 
-  Description [Computes the fraction of minterms in the on-set of all
+  \details [Computes the fraction of minterms in the on-set of all
   the positive cofactors of DD. Returns the pointer to an array of
   doubles if successful; NULL otherwise. The array has as many
   positions as there are BDD variables in the manager plus one. The
@@ -120,7 +122,7 @@ static double * ddCofMintermAux (DdManager *dd, DdNode *node, st_table *table);
   the ON-set of the function represented by the BDD or ADD. The other
   positions of the array hold the variable signatures.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 double *
@@ -204,11 +206,12 @@ Cudd_CofMinterm(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Recursive Step for Cudd_CofMinterm function.]
+  \brief Recursive Step for Cudd_CofMinterm function.
 
-  Description [Traverses the DD node and computes the fraction of
+  \details [Traverses the DD node and computes the fraction of
   minterms in the on-set of all positive cofactors simultaneously.
   It allocates an array with two more entries than there are
   variables below the one labeling the node.  One extra entry (the
@@ -219,9 +222,9 @@ Cudd_CofMinterm(
   computation, and its address is returned by the procedure, for use
   by the caller.  Returns a pointer to the array of cofactor measures.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static double *

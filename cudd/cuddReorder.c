@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddReorder.c]
+  \file cuddReorder.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for dynamic variable reordering.]
+  \brief Functions for dynamic variable reordering.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_ReduceHeap()
 		<li> Cudd_ShuffleHeap()
@@ -36,7 +37,7 @@
 		<li> bddFixTree()
 		</ul>]
 
-  Author      [Shipra Panda, Bernard Plessier, Fabio Somenzi]
+  \author Shipra Panda, Bernard Plessier, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -137,11 +138,12 @@ static int ddCheckPermuation (DdManager *table, MtrNode *treenode, int *perm, in
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Main dynamic reordering routine.]
+  \brief Main dynamic reordering routine.
 
-  Description [Main dynamic reordering routine.
+  \details [Main dynamic reordering routine.
   Calls one of the possible reordering procedures:
   <ul>
   <li>Swapping
@@ -317,11 +319,12 @@ Cudd_ReduceHeap(
 } /* end of Cudd_ReduceHeap */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders variables according to given permutation.]
+  \brief Reorders variables according to given permutation.
 
-  Description [Reorders variables according to given permutation.
+  \details [Reorders variables according to given permutation.
   The i-th entry of the permutation array contains the index of the variable
   that should be brought to the i-th level.  The size of the array should be
   equal or greater to the number of variables currently in use.
@@ -330,7 +333,7 @@ Cudd_ReduceHeap(
   SideEffects [Changes the variable order for all diagrams and clears
   the cache.]
 
-  SeeAlso [Cudd_ReduceHeap]
+  \see Cudd_ReduceHeap
 
 ******************************************************************************/
 int
@@ -386,19 +389,20 @@ Cudd_ShuffleHeap(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Dynamically allocates a Node.]
+  \brief Dynamically allocates a Node.
 
-  Description [Dynamically allocates a Node. This procedure is similar
+  \details [Dynamically allocates a Node. This procedure is similar
   to cuddAllocNode in Cudd_Table.c, but it does not attempt garbage
   collection, because during reordering there are no dead nodes.
   Returns a pointer to a new node if successful; NULL is memory is
   full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddAllocNode]
+  \see cuddAllocNode
 
 ******************************************************************************/
 DdNode *
@@ -479,11 +483,12 @@ cuddDynamicAllocNode(
 } /* end of cuddDynamicAllocNode */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implementation of Rudell's sifting algorithm.]
+  \brief Implementation of Rudell's sifting algorithm.
 
-  Description [Implementation of Rudell's sifting algorithm.
+  \details [Implementation of Rudell's sifting algorithm.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries
@@ -495,7 +500,7 @@ cuddDynamicAllocNode(
     </ol>
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -582,11 +587,12 @@ cuddSiftingOutOfMem:
 } /* end of cuddSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders variables by a sequence of (non-adjacent) swaps.]
+  \brief Reorders variables by a sequence of (non-adjacent) swaps.
 
-  Description [Implementation of Plessier's algorithm that reorders
+  \details [Implementation of Plessier's algorithm that reorders
   variables by a sequence of (non-adjacent) swaps.
     <ol>
     <li> Select two variables (RANDOM or HEURISTIC).
@@ -597,7 +603,7 @@ cuddSiftingOutOfMem:
     </ol>
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -699,16 +705,17 @@ cuddSwappingOutOfMem:
 } /* end of cuddSwapping */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the next subtable with a larger index.]
+  \brief Finds the next subtable with a larger index.
 
-  Description [Finds the next subtable with a larger index. Returns the
+  \details [Finds the next subtable with a larger index. Returns the
   index.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddNextLow]
+  \see cuddNextLow
 
 ******************************************************************************/
 int
@@ -721,16 +728,17 @@ cuddNextHigh(
 } /* end of cuddNextHigh */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Finds the next subtable with a smaller index.]
+  \brief Finds the next subtable with a smaller index.
 
-  Description [Finds the next subtable with a smaller index. Returns the
+  \details [Finds the next subtable with a smaller index. Returns the
   index.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddNextHigh]
+  \see cuddNextHigh
 
 ******************************************************************************/
 int
@@ -743,17 +751,18 @@ cuddNextLow(
 } /* end of cuddNextLow */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps two adjacent variables.]
+  \brief Swaps two adjacent variables.
 
-  Description [Swaps two adjacent variables. It assumes that no dead
+  \details [Swaps two adjacent variables. It assumes that no dead
   nodes are present on entry to this procedure.  The procedure then
   guarantees that no dead nodes will be present when it terminates.
   cuddSwapInPlace assumes that x &lt; y.  Returns the number of keys in
   the table if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -1223,12 +1232,13 @@ cuddSwapOutOfMem:
 } /* end of cuddSwapInPlace */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reorders BDD variables according to the order of the ZDD
   variables.]
 
-  Description [Reorders BDD variables according to the order of the
+  \details [Reorders BDD variables according to the order of the
   ZDD variables. This function can be called at the end of ZDD
   reordering to insure that the order of the BDD variables is
   consistent with the order of the ZDD variables. The number of ZDD
@@ -1243,7 +1253,7 @@ cuddSwapOutOfMem:
   SideEffects [Changes the BDD variable order for all diagrams and performs
   garbage collection of the BDD unique table.]
 
-  SeeAlso [Cudd_ShuffleHeap Cudd_zddReduceHeap]
+  \see Cudd_ShuffleHeap Cudd_zddReduceHeap
 
 ******************************************************************************/
 int
@@ -1306,16 +1316,17 @@ cuddBddAlignToZdd(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the
+  \details [Comparison function used by qsort to order the
   variables according to the number of keys in the subtables.
   Returns the difference in number of keys between the two
   variables being compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1333,13 +1344,14 @@ ddUniqueCompare(
 } /* end of ddUniqueCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps any two variables.]
+  \brief Swaps any two variables.
 
-  Description [Swaps any two variables. Returns the set of moves.]
+  \details [Swaps any two variables. Returns the set of moves.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1471,16 +1483,17 @@ ddSwapAnyOutOfMem:
 } /* end of ddSwapAny */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1579,15 +1592,16 @@ ddSiftingAuxOutOfMem:
 } /* end of ddSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable up.]
+  \brief Sifts a variable up.
 
-  Description [Sifts a variable up. Moves y up until either it reaches
+  \details [Sifts a variable up. Moves y up until either it reaches
   the bound (xLow) or the size of the DD heap increases too much.
   Returns the set of moves in case of success; NULL if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1678,16 +1692,17 @@ ddSiftingUpOutOfMem:
 } /* end of ddSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable down.]
+  \brief Sifts a variable down.
 
-  Description [Sifts a variable down. Moves x down until either it
+  \details [Sifts a variable down. Moves x down until either it
   reaches the bound (xHigh) or the size of the DD heap increases too
   much. Returns the set of moves in case of success; NULL if memory is
   full.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move *
@@ -1769,17 +1784,18 @@ ddSiftingDownOutOfMem:
 } /* end of ddSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the DD heap to the position
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the DD heap to the
+  \details [Given a set of moves, returns the DD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1808,17 +1824,18 @@ ddSiftingBackward(
 } /* end of ddSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prepares the DD heap for dynamic reordering.]
+  \brief Prepares the DD heap for dynamic reordering.
 
-  Description [Prepares the DD heap for dynamic reordering. Does
+  \details [Prepares the DD heap for dynamic reordering. Does
   garbage collection, to guarantee that there are no dead nodes;
   clears the cache, which is invalidated by dynamic reordering; initializes
   the number of isolated projection functions; and initializes the
   interaction matrix.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1850,13 +1867,14 @@ ddReorderPreprocess(
 } /* end of ddReorderPreprocess */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Cleans up at the end of reordering.]
+  \brief Cleans up at the end of reordering.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1876,20 +1894,21 @@ ddReorderPostprocess(
 } /* end of ddReorderPostprocess */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders variables according to a given permutation.]
+  \brief Reorders variables according to a given permutation.
 
-  Description [Reorders variables according to a given permutation.
+  \details [Reorders variables according to a given permutation.
   The i-th permutation array contains the index of the variable that
   should be brought to the i-th level. ddShuffle assumes that no
   dead nodes are present and that the interaction matrix is properly
   initialized.  The reordering is achieved by a series of upward sifts.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1956,17 +1975,18 @@ ddShuffle(
 } /* end of ddShuffle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Moves one variable up.]
+  \brief Moves one variable up.
 
-  Description [Takes a variable from position x and sifts it up to
+  \details [Takes a variable from position x and sifts it up to
   position xLow;  xLow should be less than or equal to x.
   Returns 1 if successful; 0 otherwise]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1992,17 +2012,18 @@ ddSiftUp(
 } /* end of ddSiftUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Fixes the BDD variable group tree after a shuffle.]
+  \brief Fixes the BDD variable group tree after a shuffle.
 
-  Description [Fixes the BDD variable group tree after a
+  \details [Fixes the BDD variable group tree after a
   shuffle. Assumes that the order of the variables in a terminal node
   has not been changed.]
 
-  SideEffects [Changes the BDD variable group tree.]
+  \sideeffects Changes the BDD variable group tree.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -2027,16 +2048,17 @@ bddFixTree(
 } /* end of bddFixTree */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Updates the BDD variable group tree before a shuffle.]
+  \brief Updates the BDD variable group tree before a shuffle.
 
-  Description [Updates the BDD variable group tree before a shuffle.
+  \details [Updates the BDD variable group tree before a shuffle.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [Changes the BDD variable group tree.]
+  \sideeffects Changes the BDD variable group tree.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -2086,16 +2108,17 @@ ddUpdateMtrTree(
 }
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks the BDD variable group tree before a shuffle.]
+  \brief Checks the BDD variable group tree before a shuffle.
 
-  Description [Checks the BDD variable group tree before a shuffle.
+  \details [Checks the BDD variable group tree before a shuffle.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [Changes the BDD variable group tree.]
+  \sideeffects Changes the BDD variable group tree.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddInteract.c]
+  \file cuddInteract.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to manipulate the variable interaction matrix.]
+  \brief Functions to manipulate the variable interaction matrix.
 
-  Description [Internal procedures included in this file:
+  \details [Internal procedures included in this file:
 	<ul>
 	<li> cuddSetInteract()
 	<li> cuddTestInteract()
@@ -37,9 +38,9 @@
   their layers when they are adjacent.  For instance, in ite(a,b,c) with
   the order a<b<c, b and c interact, but are not connected.]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -137,16 +138,17 @@ static void ddClearGlobal (DdManager *table);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Set interaction matrix entries.]
+  \brief Set interaction matrix entries.
 
-  Description [Given a pair of variables 0 <= x < y < table->size,
+  \details [Given a pair of variables 0 <= x < y < table->size,
   sets the corresponding bit of the interaction matrix to 1.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -171,17 +173,18 @@ cuddSetInteract(
 } /* end of cuddSetInteract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Test interaction matrix entries.]
+  \brief Test interaction matrix entries.
 
-  Description [Given a pair of variables 0 <= x < y < table->size,
+  \details [Given a pair of variables 0 <= x < y < table->size,
   tests whether the corresponding bit of the interaction matrix is 1.
   Returns the value of the bit.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -212,11 +215,12 @@ cuddTestInteract(
 } /* end of cuddTestInteract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Initializes the interaction matrix.]
+  \brief Initializes the interaction matrix.
 
-  Description [Initializes the interaction matrix. The interaction
+  \details [Initializes the interaction matrix. The interaction
   matrix is implemented as a bit vector storing the upper triangle of
   the symmetric interaction matrix. The bit vector is kept in an array
   of long integers. The computation is based on a series of depth-first
@@ -225,9 +229,9 @@ cuddTestInteract(
   visited flag uses the LSB of the next pointer.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -298,16 +302,17 @@ cuddInitInteract(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Find the support of f.]
+  \brief Find the support of f.
 
-  Description [Performs a DFS from f. Uses the LSB of the then pointer
+  \details [Performs a DFS from f. Uses the LSB of the then pointer
   as visited flag.]
 
-  SideEffects [Accumulates in support the variables on which f depends.]
+  \sideeffects Accumulates in support the variables on which f depends.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -330,15 +335,16 @@ ddSuppInteract(
 } /* end of ddSuppInteract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs a DFS from f, clearing the LSB of the then pointers.]
+  \brief Performs a DFS from f, clearing the LSB of the then pointers.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -357,17 +363,18 @@ ddClearLocal(
 } /* end of ddClearLocal */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Marks as interacting all pairs of variables that appear in
   support.]
 
-  Description [If support[i] == support[j] == 1, sets the (i,j) entry
+  \details [If support[i] == support[j] == 1, sets the (i,j) entry
   of the interaction matrix to 1.]
 
-  SideEffects [Clears support.]
+  \sideeffects Clears support.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -393,17 +400,18 @@ ddUpdateInteract(
 } /* end of ddUpdateInteract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Scans the DD and clears the LSB of the next pointers.]
+  \brief Scans the DD and clears the LSB of the next pointers.
 
-  Description [The LSB of the next pointers are used as markers to tell
+  \details [The LSB of the next pointers are used as markers to tell
   whether a node was reached by at least one DFS. Once the interaction
   matrix is built, these flags are reset.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void

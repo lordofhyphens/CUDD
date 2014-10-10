@@ -1,20 +1,21 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [testcudd.c]
+  \file testcudd.c
 
   PackageName [cudd]
 
-  Synopsis    [Sanity check tests for some CUDD functions.]
+  \brief Sanity check tests for some CUDD functions.
 
-  Description [testcudd reads a matrix with real coefficients and
+  \details [testcudd reads a matrix with real coefficients and
   transforms it into an ADD. It then performs various operations on
   the ADD and on the BDD corresponding to the ADD pattern. Finally,
   testcudd tests functions relate to Walsh matrices and matrix
   multiplication.]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -87,15 +88,16 @@ static int testSupport(DdManager *dd, DdNode *f, DdNode *g, int pr);
 /**AutomaticEnd***************************************************************/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Main function for testcudd.]
+  \brief Main function for testcudd.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -654,15 +656,16 @@ main(int argc, char * const *argv)
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints usage info for testcudd.]
+  \brief Prints usage info for testcudd.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -706,16 +709,17 @@ usage(char *prog)
 } /* end of usage */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Opens a file.]
+  \brief Opens a file.
 
-  Description [Opens a file, or fails with an error message and exits.
+  \details [Opens a file, or fails with an error message and exits.
   Allows '-' as a synonym for standard input.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static FILE *
@@ -734,16 +738,17 @@ open_file(char *filename, const char *mode)
 } /* end of open_file */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tests Walsh matrix multiplication.]
+  \brief Tests Walsh matrix multiplication.
 
-  Description [Tests Walsh matrix multiplication.  Return 1 if successful;
+  \details [Tests Walsh matrix multiplication.  Return 1 if successful;
   0 otherwise.]
 
-  SideEffects [May create new variables in the manager.]
+  \sideeffects May create new variables in the manager.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -822,15 +827,16 @@ testWalsh(
 
 } /* end of testWalsh */
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tests iterators.]
+  \brief Tests iterators.
 
-  Description [Tests iterators on cubes and nodes.]
+  \details [Tests iterators on cubes and nodes.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -935,18 +941,19 @@ testIterators(
 } /* end of testIterators */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tests the functions related to the exclusive OR.]
+  \brief Tests the functions related to the exclusive OR.
 
-  Description [Tests the functions related to the exclusive OR. It
+  \details [Tests the functions related to the exclusive OR. It
   builds the boolean difference of the given function in three
   different ways and checks that the results is the same. Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1014,16 +1021,17 @@ testXor(DdManager *dd, DdNode *f, int pr, int nvars)
 } /* end of testXor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tests the Hamming distance functions.]
+  \brief Tests the Hamming distance functions.
 
-  Description [Tests the Hammming distance functions. Returns
+  \details [Tests the Hammming distance functions. Returns
   1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1089,16 +1097,17 @@ testHamming(
 } /* end of testHamming */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tests the support functions.]
+  \brief Tests the support functions.
 
-  Description [Tests the support functions. Returns
+  \details [Tests the support functions. Returns
   1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

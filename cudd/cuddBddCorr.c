@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddBddCorr.c]
+  \file cuddBddCorr.c
 
   PackageName [cudd]
 
-  Synopsis    [Correlation between BDDs.]
+  \brief Correlation between BDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddCorrelation()
 		<li> Cudd_bddCorrelationWeights()
@@ -21,7 +22,7 @@
 		</ul>
 		]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -125,18 +126,19 @@ static enum st_retval CorrelCleanUp (char *key, char *value, char *arg);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the correlation of f and g.]
+  \brief Computes the correlation of f and g.
 
-  Description [Computes the correlation of f and g. If f == g, their
+  \details [Computes the correlation of f and g. If f == g, their
   correlation is 1. If f == g', their correlation is 0.  Returns the
   fraction of minterms in the ON-set of the EXNOR of f and g.  If it
   runs out of memory, returns (double)CUDD_OUT_OF_MEM.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddCorrelationWeights]
+  \see Cudd_bddCorrelationWeights
 
 ******************************************************************************/
 double
@@ -163,12 +165,13 @@ Cudd_bddCorrelation(
 } /* end of Cudd_bddCorrelation */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the correlation of f and g for given input
   probabilities.]
 
-  Description [Computes the correlation of f and g for given input
+  \details [Computes the correlation of f and g for given input
   probabilities. On input, prob\[i\] is supposed to contain the
   probability of the i-th input variable to be 1.
   If f == g, their correlation is 1. If f == g', their
@@ -176,9 +179,9 @@ Cudd_bddCorrelation(
   value. If it runs out of memory, returns (double)CUDD_OUT_OF_MEM. The
   correlation of f and the constant one gives the probability of f.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddCorrelation]
+  \see Cudd_bddCorrelation
 
 ******************************************************************************/
 double
@@ -216,17 +219,18 @@ Cudd_bddCorrelationWeights(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddCorrelation.]
+  \brief Performs the recursive step of Cudd_bddCorrelation.
 
-  Description [Performs the recursive step of Cudd_bddCorrelation.
+  \details [Performs the recursive step of Cudd_bddCorrelation.
   Returns the fraction of minterms in the ON-set of the EXNOR of f and
   g.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bddCorrelationWeightsAux]
+  \see bddCorrelationWeightsAux
 
 ******************************************************************************/
 static double
@@ -320,15 +324,16 @@ bddCorrelationAux(
 } /* end of bddCorrelationAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_bddCorrelationWeigths.]
+  \brief Performs the recursive step of Cudd_bddCorrelationWeigths.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bddCorrelationAux]
+  \see bddCorrelationAux
 
 ******************************************************************************/
 static double
@@ -429,14 +434,15 @@ bddCorrelationWeightsAux(
 } /* end of bddCorrelationWeightsAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Compares two hash table entries.]
+  \brief Compares two hash table entries.
 
-  Description [Compares two hash table entries. Returns 0 if they are
+  \details [Compares two hash table entries. Returns 0 if they are
   identical; 1 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -456,14 +462,15 @@ CorrelCompare(
 } /* end of CorrelCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Hashes a hash table entry.]
+  \brief Hashes a hash table entry.
 
-  Description [Hashes a hash table entry. It is patterned after
+  \details [Hashes a hash table entry. It is patterned after
   st_strhash. Returns a value between 0 and modulus.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -486,14 +493,15 @@ CorrelHash(
 } /* end of CorrelHash */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees memory associated with hash table.]
+  \brief Frees memory associated with hash table.
 
-  Description [Frees memory associated with hash table. Returns
+  \details [Frees memory associated with hash table. Returns
   ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static enum st_retval

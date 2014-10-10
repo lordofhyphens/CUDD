@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddSymm.c]
+  \file cuddZddSymm.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for symmetry-based ZDD variable reordering.]
+  \brief Functions for symmetry-based ZDD variable reordering.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_zddSymmProfile()
 		    </ul>
@@ -29,9 +30,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     [cuddSymmetry.c]
+  \see cuddSymmetry.c
 
-  Author      [Hyong-Kyoon Shin, In-Ho Moon]
+  \author Hyong-Kyoon Shin, In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -126,15 +127,16 @@ static void cuddZddSymmSummary (DdManager *table, int lower, int upper, int *sym
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Prints statistics on symmetric ZDD variables.]
+  \brief Prints statistics on symmetric ZDD variables.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -176,17 +178,18 @@ Cudd_zddSymmProfile(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Checks for symmetry of x and y.]
+  \brief Checks for symmetry of x and y.
 
-  Description [Checks for symmetry of x and y. Ignores projection
+  \details [Checks for symmetry of x and y. Ignores projection
   functions, unless they are isolated. Returns 1 in case of
   symmetry; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -272,11 +275,12 @@ cuddZddSymmCheck(
 } /* end cuddZddSymmCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Symmetric sifting algorithm for ZDDs.]
+  \brief Symmetric sifting algorithm for ZDDs.
 
-  Description [Symmetric sifting algorithm.
+  \details [Symmetric sifting algorithm.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries in
@@ -289,9 +293,9 @@ cuddZddSymmCheck(
   Returns 1 plus the number of symmetric variables if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddSymmSiftingConv]
+  \see cuddZddSymmSiftingConv
 
 ******************************************************************************/
 int
@@ -396,11 +400,12 @@ cuddZddSymmSiftingOutOfMem:
 } /* end of cuddZddSymmSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Symmetric sifting to convergence algorithm for ZDDs.]
+  \brief Symmetric sifting to convergence algorithm for ZDDs.
 
-  Description [Symmetric sifting to convergence algorithm for ZDDs.
+  \details [Symmetric sifting to convergence algorithm for ZDDs.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries in
@@ -414,9 +419,9 @@ cuddZddSymmSiftingOutOfMem:
   Returns 1 plus the number of symmetric variables if successful; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddSymmSifting]
+  \see cuddZddSymmSifting
 
 ******************************************************************************/
 int
@@ -590,19 +595,20 @@ cuddZddSymmSiftingConvOutOfMem:
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Given x_low <= x <= x_high moves x up and down between the
   boundaries.]
 
-  Description [Given x_low <= x <= x_high moves x up and down between the
+  \details [Given x_low <= x <= x_high moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Assumes that x is not part of a symmetry group. Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -929,20 +935,21 @@ cuddZddSymmSiftingAuxOutOfMem:
 } /* end of cuddZddSymmSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Given x_low <= x <= x_high moves x up and down between the
   boundaries.]
 
-  Description [Given x_low <= x <= x_high moves x up and down between the
+  \details [Given x_low <= x <= x_high moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Assumes that x is either an isolated variable, or it is the bottom of
   a symmetry group. All symmetries may not have been found, because of
   exceeded growth limit. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1237,21 +1244,22 @@ cuddZddSymmSiftingConvAuxOutOfMem:
 } /* end of cuddZddSymmSiftingConvAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Moves x up until either it reaches the bound (x_low) or
   the size of the ZDD heap increases too much.]
 
-  Description [Moves x up until either it reaches the bound (x_low) or
+  \details [Moves x up until either it reaches the bound (x_low) or
   the size of the ZDD heap increases too much. Assumes that x is the top
   of a symmetry group.  Checks x for symmetry to the adjacent
   variables. If symmetry is found, the symmetry group of x is merged
   with the symmetry group of the other variable. Returns the set of
   moves in case of success; ZDD_MV_OOM if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -1325,21 +1333,22 @@ cuddZddSymmSifting_upOutOfMem:
 } /* end of cuddZddSymmSifting_up */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Moves x down until either it reaches the bound (x_high) or
   the size of the ZDD heap increases too much.]
 
-  Description [Moves x down until either it reaches the bound (x_high)
+  \details [Moves x down until either it reaches the bound (x_high)
   or the size of the ZDD heap increases too much. Assumes that x is the
   bottom of a symmetry group. Checks x for symmetry to the adjacent
   variables. If symmetry is found, the symmetry group of x is merged
   with the symmetry group of the other variable. Returns the set of
   moves in case of success; ZDD_MV_OOM if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -1418,19 +1427,20 @@ cuddZddSymmSifting_downOutOfMem:
 } /* end of cuddZddSymmSifting_down */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Given a set of moves, returns the ZDD heap to the position
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the ZDD heap to the
+  \details [Given a set of moves, returns the ZDD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1471,18 +1481,19 @@ cuddZddSymmSiftingBackward(
 } /* end of cuddZddSymmSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Swaps two groups.]
+  \brief Swaps two groups.
 
-  Description [Swaps two groups. x is assumed to be the bottom variable
+  \details [Swaps two groups. x is assumed to be the bottom variable
   of the first group. y is assumed to be the top variable of the second
   group.  Updates the list of moves. Returns the number of keys in the
   table if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1579,17 +1590,18 @@ zdd_group_moveOutOfMem:
 } /* end of zdd_group_move */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Undoes the swap of two groups.]
+  \brief Undoes the swap of two groups.
 
-  Description [Undoes the swap of two groups. x is assumed to be the
+  \details [Undoes the swap of two groups. x is assumed to be the
   bottom variable of the first group. y is assumed to be the top
   variable of the second group.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -1665,14 +1677,15 @@ zdd_group_move_backward(
 } /* end of zdd_group_move_backward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Counts numbers of symmetric variables and symmetry
   groups.]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void

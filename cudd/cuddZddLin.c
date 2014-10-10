@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddLin.c]
+  \file cuddZddLin.c
 
   PackageName [cudd]
 
-  Synopsis    [Procedures for dynamic variable ordering of ZDDs.]
+  \brief Procedures for dynamic variable ordering of ZDDs.
 
-  Description [Internal procedures included in this module:
+  \details [Internal procedures included in this module:
 		    <ul>
 		    <li> cuddZddLinearSifting()
 		    </ul>
@@ -21,9 +22,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     [cuddLinear.c cuddZddReord.c]
+  \see cuddLinear.c cuddZddReord.c
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -127,11 +128,12 @@ static Move* cuddZddUndoMoves (DdManager *table, Move *moves);
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implementation of the linear sifting algorithm for ZDDs.]
+  \brief Implementation of the linear sifting algorithm for ZDDs.
 
-  Description [Implementation of the linear sifting algorithm for ZDDs.
+  \details [Implementation of the linear sifting algorithm for ZDDs.
   Assumes that no dead nodes are present.
     <ol>
     <li> Order all the variables according to the number of entries
@@ -143,9 +145,9 @@ static Move* cuddZddUndoMoves (DdManager *table, Move *moves);
     </ol>
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -236,19 +238,20 @@ cuddZddSiftingOutOfMem:
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Linearly combines two adjacent variables.]
+  \brief Linearly combines two adjacent variables.
 
-  Description [Linearly combines two adjacent variables. It assumes
+  \details [Linearly combines two adjacent variables. It assumes
   that no dead nodes are present on entry to this procedure.  The
   procedure then guarantees that no dead nodes will be present when it
   terminates.  cuddZddLinearInPlace assumes that x &lt; y.  Returns the
   number of keys in the table if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddZddSwapInPlace cuddLinearInPlace]
+  \see cuddZddSwapInPlace cuddLinearInPlace
 
 ******************************************************************************/
 static int
@@ -559,18 +562,19 @@ zddSwapOutOfMem:
 } /* end of cuddZddLinearInPlace */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given xLow <= x <= xHigh moves x up and down between the
   boundaries.]
 
-  Description [Given xLow <= x <= xHigh moves x up and down between the
+  \details [Given xLow <= x <= xHigh moves x up and down between the
   boundaries. Finds the best position and does the required changes.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -686,18 +690,19 @@ cuddZddLinearAuxOutOfMem:
 } /* end of cuddZddLinearAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable up applying the XOR transformation.]
+  \brief Sifts a variable up applying the XOR transformation.
 
-  Description [Sifts a variable up applying the XOR
+  \details [Sifts a variable up applying the XOR
   transformation. Moves y up until either it reaches the bound (xLow)
   or the size of the ZDD heap increases too much.  Returns the set of
   moves in case of success; NULL if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -771,18 +776,19 @@ cuddZddLinearUpOutOfMem:
 } /* end of cuddZddLinearUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts a variable down and applies the XOR transformation.]
+  \brief Sifts a variable down and applies the XOR transformation.
 
-  Description [Sifts a variable down. Moves x down until either it
+  \details [Sifts a variable down. Moves x down until either it
   reaches the bound (xHigh) or the size of the ZDD heap increases too
   much. Returns the set of moves in case of success; NULL if memory is
   full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -854,19 +860,20 @@ cuddZddLinearDownOutOfMem:
 } /* end of cuddZddLinearDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the ZDD heap to the position
   giving the minimum size.]
 
-  Description [Given a set of moves, returns the ZDD heap to the
+  \details [Given a set of moves, returns the ZDD heap to the
   position giving the minimum size. In case of ties, returns to the
   closest position giving the minimum size. Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -905,16 +912,17 @@ cuddZddLinearBackward(
 } /* end of cuddZddLinearBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Given a set of moves, returns the ZDD heap to the order
   in effect before the moves.]
 
-  Description [Given a set of moves, returns the ZDD heap to the
+  \details [Given a set of moves, returns the ZDD heap to the
   order in effect before the moves.  Returns 1 in case of success;
   0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static Move*

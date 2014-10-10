@@ -1,13 +1,14 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddLiteral.c]
+  \file cuddLiteral.c
 
   PackageName [cudd]
 
   Synopsis    [Functions for manipulation of literal sets represented by
   BDDs.]
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_bddLiteralSetIntersection()
 		</ul>
@@ -16,7 +17,7 @@
 		<li> cuddBddLiteralSetIntersectionRecur()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -95,19 +96,20 @@ static char rcsid[] DD_UNUSED = "$Id: cuddLiteral.c,v 1.9 2012/02/05 01:07:19 fa
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the intesection of two sets of literals
   represented as BDDs.]
 
-  Description [Computes the intesection of two sets of literals
+  \details [Computes the intesection of two sets of literals
   represented as BDDs. Each set is represented as a cube of the
   literals in the set. The empty set is represented by the constant 1.
   No variable can be simultaneously present in both phases in a set.
   Returns a pointer to the BDD representing the intersected sets, if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -132,17 +134,18 @@ Cudd_bddLiteralSetIntersection(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Performs the recursive step of
   Cudd_bddLiteralSetIntersection.]
 
-  Description [Performs the recursive step of
+  \details [Performs the recursive step of
   Cudd_bddLiteralSetIntersection. Scans the cubes for common variables,
   and checks whether they agree in phase.  Returns a pointer to the
   resulting cube if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *

@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddBddIte.c]
+  \file cuddBddIte.c
 
   PackageName [cudd]
 
-  Synopsis    [BDD ITE function and satellites.]
+  \brief BDD ITE function and satellites.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
                 <li> Cudd_bddIte()
                 <li> Cudd_bddIteLimit()
@@ -37,9 +38,9 @@
        	        <li> bddVarToCanonicalSimple()
 		</ul>]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -125,17 +126,18 @@ static int bddVarToCanonicalSimple (DdManager *dd, DdNode **fp, DdNode **gp, DdN
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements ITE(f,g,h).]
+  \brief Implements ITE(f,g,h).
 
-  Description [Implements ITE(f,g,h). Returns a pointer to the
+  \details [Implements ITE(f,g,h). Returns a pointer to the
   resulting BDD if successful; NULL if the intermediate result blows
   up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addIte Cudd_bddIteConstant Cudd_bddIntersect]
+  \see Cudd_addIte Cudd_bddIteConstant Cudd_bddIntersect
 
 ******************************************************************************/
 DdNode *
@@ -156,19 +158,20 @@ Cudd_bddIte(
 } /* end of Cudd_bddIte */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Implements ITE(f,g,h).  Returns
   NULL if too many nodes are required.]
 
-  Description [Implements ITE(f,g,h).  Returns a
+  \details [Implements ITE(f,g,h).  Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up or more new nodes than <code>limit</code> are
   required.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte]
+  \see Cudd_bddIte
 
 ******************************************************************************/
 DdNode *
@@ -193,17 +196,18 @@ Cudd_bddIteLimit(
 } /* end of Cudd_bddIteLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements ITEconstant(f,g,h).]
+  \brief Implements ITEconstant(f,g,h).
 
-  Description [Implements ITEconstant(f,g,h). Returns a pointer to the
+  \details [Implements ITEconstant(f,g,h). Returns a pointer to the
   resulting BDD (which may or may not be constant) or DD_NON_CONSTANT.
   No new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_bddIntersect Cudd_bddLeq Cudd_addIteConstant]
+  \see Cudd_bddIte Cudd_bddIntersect Cudd_bddLeq Cudd_addIteConstant
 
 ******************************************************************************/
 DdNode *
@@ -299,19 +303,20 @@ Cudd_bddIteConstant(
 } /* end of Cudd_bddIteConstant */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns a function included in the intersection of f and g.]
+  \brief Returns a function included in the intersection of f and g.
 
-  Description [Computes a function included in the intersection of f and
+  \details [Computes a function included in the intersection of f and
   g. (That is, a witness that the intersection is not empty.)
   Cudd_bddIntersect tries to build as few new nodes as possible. If the
   only result of interest is whether f and g intersect,
   Cudd_bddLeq should be used instead.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddLeq Cudd_bddIteConstant]
+  \see Cudd_bddLeq Cudd_bddIteConstant
 
 ******************************************************************************/
 DdNode *
@@ -332,17 +337,18 @@ Cudd_bddIntersect(
 } /* end of Cudd_bddIntersect */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the conjunction of two BDDs f and g.]
+  \brief Computes the conjunction of two BDDs f and g.
 
-  Description [Computes the conjunction of two BDDs f and g. Returns a
+  \details [Computes the conjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAndAbstract Cudd_bddIntersect
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAndAbstract Cudd_bddIntersect
   Cudd_bddOr Cudd_bddNand Cudd_bddNor Cudd_bddXor Cudd_bddXnor]
 
 ******************************************************************************/
@@ -363,19 +369,20 @@ Cudd_bddAnd(
 } /* end of Cudd_bddAnd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the conjunction of two BDDs f and g.  Returns
   NULL if too many nodes are required.]
 
-  Description [Computes the conjunction of two BDDs f and g. Returns a
+  \details [Computes the conjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up or more new nodes than <code>limit</code> are
   required.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAnd]
+  \see Cudd_bddAnd
 
 ******************************************************************************/
 DdNode *
@@ -399,17 +406,18 @@ Cudd_bddAndLimit(
 } /* end of Cudd_bddAndLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the disjunction of two BDDs f and g.]
+  \brief Computes the disjunction of two BDDs f and g.
 
-  Description [Computes the disjunction of two BDDs f and g. Returns a
+  \details [Computes the disjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddNand Cudd_bddNor
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddNand Cudd_bddNor
   Cudd_bddXor Cudd_bddXnor]
 
 ******************************************************************************/
@@ -431,19 +439,20 @@ Cudd_bddOr(
 } /* end of Cudd_bddOr */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the disjunction of two BDDs f and g.  Returns
   NULL if too many nodes are required.]
 
-  Description [Computes the disjunction of two BDDs f and g. Returns a
+  \details [Computes the disjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up or more new nodes than <code>limit</code> are
   required.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddOr]
+  \see Cudd_bddOr
 
 ******************************************************************************/
 DdNode *
@@ -468,17 +477,18 @@ Cudd_bddOrLimit(
 } /* end of Cudd_bddOrLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the NAND of two BDDs f and g.]
+  \brief Computes the NAND of two BDDs f and g.
 
-  Description [Computes the NAND of two BDDs f and g. Returns a
+  \details [Computes the NAND of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr Cudd_bddNor
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr Cudd_bddNor
   Cudd_bddXor Cudd_bddXnor]
 
 ******************************************************************************/
@@ -500,17 +510,18 @@ Cudd_bddNand(
 } /* end of Cudd_bddNand */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the NOR of two BDDs f and g.]
+  \brief Computes the NOR of two BDDs f and g.
 
-  Description [Computes the NOR of two BDDs f and g. Returns a
+  \details [Computes the NOR of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr Cudd_bddNand
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr Cudd_bddNand
   Cudd_bddXor Cudd_bddXnor]
 
 ******************************************************************************/
@@ -531,17 +542,18 @@ Cudd_bddNor(
 } /* end of Cudd_bddNor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the exclusive OR of two BDDs f and g.]
+  \brief Computes the exclusive OR of two BDDs f and g.
 
-  Description [Computes the exclusive OR of two BDDs f and g. Returns a
+  \details [Computes the exclusive OR of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr
   Cudd_bddNand Cudd_bddNor Cudd_bddXnor]
 
 ******************************************************************************/
@@ -562,17 +574,18 @@ Cudd_bddXor(
 } /* end of Cudd_bddXor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the exclusive NOR of two BDDs f and g.]
+  \brief Computes the exclusive NOR of two BDDs f and g.
 
-  Description [Computes the exclusive NOR of two BDDs f and g. Returns a
+  \details [Computes the exclusive NOR of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr
+  \see     [Cudd_bddIte Cudd_addApply Cudd_bddAnd Cudd_bddOr
   Cudd_bddNand Cudd_bddNor Cudd_bddXor]
 
 ******************************************************************************/
@@ -593,19 +606,20 @@ Cudd_bddXnor(
 } /* end of Cudd_bddXnor */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes the exclusive NOR of two BDDs f and g.  Returns
   NULL if too many nodes are required.]
 
-  Description [Computes the exclusive NOR of two BDDs f and g. Returns a
+  \details [Computes the exclusive NOR of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up or more new nodes than <code>limit</code> are
   required.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddXnor]
+  \see Cudd_bddXnor
 
 ******************************************************************************/
 DdNode *
@@ -629,16 +643,17 @@ Cudd_bddXnorLimit(
 } /* end of Cudd_bddXnorLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Determines whether f is less than or equal to g.]
+  \brief Determines whether f is less than or equal to g.
 
-  Description [Returns 1 if f is less than or equal to g; 0 otherwise.
+  \details [Returns 1 if f is less than or equal to g; 0 otherwise.
   No new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIteConstant Cudd_addEvalConst]
+  \see Cudd_bddIteConstant Cudd_addEvalConst
 
 ******************************************************************************/
 int
@@ -725,17 +740,18 @@ Cudd_bddLeq(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_bddIte.]
+  \brief Implements the recursive step of Cudd_bddIte.
 
-  Description [Implements the recursive step of Cudd_bddIte. Returns a
+  \details [Implements the recursive step of Cudd_bddIte. Returns a
   pointer to the resulting BDD. NULL if the intermediate result blows
   up or if reordering occurs.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -865,15 +881,16 @@ cuddBddIteRecur(
 } /* end of cuddBddIteRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_bddIntersect.]
+  \brief Implements the recursive step of Cudd_bddIntersect.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIntersect]
+  \see Cudd_bddIntersect
 
 ******************************************************************************/
 DdNode *
@@ -978,17 +995,18 @@ cuddBddIntersectRecur(
 } /* end of cuddBddIntersectRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Implements the recursive step of Cudd_bddAnd.]
+  \brief Implements the recursive step of Cudd_bddAnd.
 
-  Description [Implements the recursive step of Cudd_bddAnd by taking
+  \details [Implements the recursive step of Cudd_bddAnd by taking
   the conjunction of two BDDs.  Returns a pointer to the result is
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAnd]
+  \see Cudd_bddAnd
 
 ******************************************************************************/
 DdNode *
@@ -1106,17 +1124,18 @@ cuddBddAndRecur(
 } /* end of cuddBddAndRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Implements the recursive step of Cudd_bddXor.]
+  \brief Implements the recursive step of Cudd_bddXor.
 
-  Description [Implements the recursive step of Cudd_bddXor by taking
+  \details [Implements the recursive step of Cudd_bddXor by taking
   the exclusive OR of two BDDs.  Returns a pointer to the result is
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddXor]
+  \see Cudd_bddXor
 
 ******************************************************************************/
 DdNode *
@@ -1228,16 +1247,17 @@ cuddBddXorRecur(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Replaces variables with constants if possible.]
+  \brief Replaces variables with constants if possible.
 
-  Description [This function performs part of the transformation to
+  \details [This function performs part of the transformation to
   standard form by replacing variables with constants if possible.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bddVarToCanonical bddVarToCanonicalSimple]
+  \see bddVarToCanonical bddVarToCanonicalSimple
 
 ******************************************************************************/
 static void
@@ -1264,15 +1284,16 @@ bddVarToConst(
 } /* end of bddVarToConst */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Picks unique member from equiv expressions.]
+  \brief Picks unique member from equiv expressions.
 
-  Description [Reduces 2 variable expressions to canonical form.]
+  \details [Reduces 2 variable expressions to canonical form.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bddVarToConst bddVarToCanonicalSimple]
+  \see bddVarToConst bddVarToCanonicalSimple
 
 ******************************************************************************/
 static int
@@ -1362,19 +1383,20 @@ bddVarToCanonical(
 } /* end of bddVarToCanonical */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Picks unique member from equiv expressions.]
+  \brief Picks unique member from equiv expressions.
 
-  Description [Makes sure the first two pointers are regular.  This
+  \details [Makes sure the first two pointers are regular.  This
   mat require the complementation of the result, which is signaled by
   returning 1 instead of 0.  This function is simpler than the general
   case because it assumes that no two arguments are the same or
   complementary, and no argument is constant.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [bddVarToConst bddVarToCanonical]
+  \see bddVarToConst bddVarToCanonical
 
 ******************************************************************************/
 static int

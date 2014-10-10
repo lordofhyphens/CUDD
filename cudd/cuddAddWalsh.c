@@ -1,13 +1,14 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddWalsh.c]
+  \file cuddAddWalsh.c
 
   PackageName [cudd]
 
   Synopsis    [Functions that generate Walsh matrices and residue
   functions in ADD form.]
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 	    <ul>
 	    <li> Cudd_addWalsh()
 	    <li> Cudd_addResidue()
@@ -17,7 +18,7 @@
 	    <li> addWalshInt()
 	    </ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -102,14 +103,15 @@ static DdNode * addWalshInt (DdManager *dd, DdNode **x, DdNode **y, int n);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Generates a Walsh matrix in ADD form.]
+  \brief Generates a Walsh matrix in ADD form.
 
-  Description [Generates a Walsh matrix in ADD form. Returns a pointer
+  \details [Generates a Walsh matrix in ADD form. Returns a pointer
   to the matrixi if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -130,12 +132,13 @@ Cudd_addWalsh(
 } /* end of Cudd_addWalsh */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Builds an ADD for the residue modulo m of an n-bit
   number.]
 
-  Description [Builds an ADD for the residue modulo m of an n-bit
+  \details [Builds an ADD for the residue modulo m of an n-bit
   number. The modulus must be at least 2, and the number of bits at
   least 1. Parameter options specifies whether the MSB should be on top
   or the LSB; and whther the number whose residue is computed is in
@@ -148,9 +151,9 @@ Cudd_addWalsh(
   Cudd_addResidue returns a pointer to the resulting ADD if successful;
   NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -280,14 +283,15 @@ Cudd_addResidue(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_addWalsh.]
+  \brief Implements the recursive step of Cudd_addWalsh.
 
-  Description [Generates a Walsh matrix in ADD form. Returns a pointer
+  \details [Generates a Walsh matrix in ADD form. Returns a pointer
   to the matrixi if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdNode *

@@ -1,18 +1,19 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddHarwell.c]
+  \file cuddHarwell.c
 
   PackageName [cudd]
 
-  Synopsis    [Function to read a matrix in Harwell format.]
+  \brief Function to read a matrix in Harwell format.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addHarwell()
 		</ul>
 	]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -93,12 +94,13 @@ static char rcsid[] DD_UNUSED = "$Id: cuddHarwell.c,v 1.10 2012/02/05 01:07:19 f
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reads in a matrix in the format of the Harwell-Boeing
   benchmark suite.]
 
-  Description [Reads in a matrix in the format of the Harwell-Boeing
+  \details [Reads in a matrix in the format of the Harwell-Boeing
   benchmark suite. The variables are ordered as follows:
   <blockquote>
   x\[0\] y\[0\] x\[1\] y\[1\] ...
@@ -111,9 +113,9 @@ static char rcsid[] DD_UNUSED = "$Id: cuddHarwell.c,v 1.10 2012/02/05 01:07:19 f
   success; 0 otherwise. The ADD for the sparse matrix is returned in
   E, and its reference count is > 0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addRead Cudd_bddRead]
+  \see Cudd_addRead Cudd_bddRead
 
 ******************************************************************************/
 int

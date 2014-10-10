@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddNeg.c]
+  \file cuddAddNeg.c
 
   PackageName [cudd]
 
-  Synopsis    [Function to compute the negation of an ADD.]
+  \brief Function to compute the negation of an ADD.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addNegate()
 		<li> Cudd_addRoundOff()
@@ -17,7 +18,7 @@
 		<li> cuddAddRoundOffRecur()
 		</ul> ]
 
-  Author      [Fabio Somenzi, Balakrishna Kumthekar]
+  \author Fabio Somenzi, Balakrishna Kumthekar
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -100,16 +101,17 @@ static char rcsid[] DD_UNUSED = "$Id: cuddAddNeg.c,v 1.14 2012/02/05 01:07:18 fa
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the additive inverse of an ADD.]
+  \brief Computes the additive inverse of an ADD.
 
-  Description [Computes the additive inverse of an ADD. Returns a pointer
+  \details [Computes the additive inverse of an ADD. Returns a pointer
   to the result if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addCmpl]
+  \see Cudd_addCmpl
 
 ******************************************************************************/
 DdNode *
@@ -128,17 +130,18 @@ Cudd_addNegate(
 } /* end of Cudd_addNegate */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Rounds off the discriminants of an ADD.]
+  \brief Rounds off the discriminants of an ADD.
 
-  Description [Rounds off the discriminants of an ADD. The discriminants are
+  \details [Rounds off the discriminants of an ADD. The discriminants are
   rounded off to N digits after the decimal. Returns a pointer to the result
   ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -164,14 +167,15 @@ Cudd_addRoundOff(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_addNegate.]
+  \brief Implements the recursive step of Cudd_addNegate.
 
-  Description [Implements the recursive step of Cudd_addNegate.
+  \details [Implements the recursive step of Cudd_addNegate.
   Returns a pointer to the result.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *
@@ -224,14 +228,15 @@ cuddAddNegateRecur(
 } /* end of cuddAddNegateRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_addRoundOff.]
+  \brief Implements the recursive step of Cudd_addRoundOff.
 
-  Description [Implements the recursive step of Cudd_addRoundOff.
+  \details [Implements the recursive step of Cudd_addRoundOff.
   Returns a pointer to the result.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 DdNode *

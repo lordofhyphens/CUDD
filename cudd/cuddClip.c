@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddClip.c]
+  \file cuddClip.c
 
   PackageName [cudd]
 
-  Synopsis    [Clipping functions.]
+  \brief Clipping functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddClippingAnd()
 		<li> Cudd_bddClippingAndAbstract()
@@ -22,9 +23,9 @@
 		<li> cuddBddClipAndAbsRecur()
 		</ul>
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -108,17 +109,18 @@ static DdNode * cuddBddClipAndAbsRecur (DdManager *manager, DdNode *f, DdNode *g
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Approximates the conjunction of two BDDs f and g.]
+  \brief Approximates the conjunction of two BDDs f and g.
 
-  Description [Approximates the conjunction of two BDDs f and g. Returns a
+  \details [Approximates the conjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAnd]
+  \see Cudd_bddAnd
 
 ******************************************************************************/
 DdNode *
@@ -140,19 +142,20 @@ Cudd_bddClippingAnd(
 } /* end of Cudd_bddClippingAnd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Approximates the conjunction of two BDDs f and g and
   simultaneously abstracts the variables in cube.]
 
-  Description [Approximates the conjunction of two BDDs f and g and
+  \details [Approximates the conjunction of two BDDs f and g and
   simultaneously abstracts the variables in cube. The variables are
   existentially abstracted. Returns a pointer to the resulting BDD if
   successful; NULL if the intermediate result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAndAbstract Cudd_bddClippingAnd]
+  \see Cudd_bddAndAbstract Cudd_bddClippingAnd
 
 ******************************************************************************/
 DdNode *
@@ -180,17 +183,18 @@ Cudd_bddClippingAndAbstract(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Approximates the conjunction of two BDDs f and g.]
+  \brief Approximates the conjunction of two BDDs f and g.
 
-  Description [Approximates the conjunction of two BDDs f and g. Returns a
+  \details [Approximates the conjunction of two BDDs f and g. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddClippingAnd]
+  \see Cudd_bddClippingAnd
 
 ******************************************************************************/
 DdNode *
@@ -210,19 +214,20 @@ cuddBddClippingAnd(
 } /* end of cuddBddClippingAnd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Approximates the conjunction of two BDDs f and g and
   simultaneously abstracts the variables in cube.]
 
-  Description [Approximates the conjunction of two BDDs f and g and
+  \details [Approximates the conjunction of two BDDs f and g and
   simultaneously abstracts the variables in cube. Returns a
   pointer to the resulting BDD if successful; NULL if the intermediate
   result blows up.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddClippingAndAbstract]
+  \see Cudd_bddClippingAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -248,17 +253,18 @@ cuddBddClippingAndAbstract(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Implements the recursive step of Cudd_bddClippingAnd.]
+  \brief Implements the recursive step of Cudd_bddClippingAnd.
 
-  Description [Implements the recursive step of Cudd_bddClippingAnd by taking
+  \details [Implements the recursive step of Cudd_bddClippingAnd by taking
   the conjunction of two BDDs.  Returns a pointer to the result is
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddBddClippingAnd]
+  \see cuddBddClippingAnd
 
 ******************************************************************************/
 static DdNode *
@@ -382,19 +388,20 @@ cuddBddClippingAndRecur(
 } /* end of cuddBddClippingAndRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Approximates the AND of two BDDs and simultaneously abstracts the
   variables in cube.]
 
-  Description [Approximates the AND of two BDDs and simultaneously
+  \details [Approximates the AND of two BDDs and simultaneously
   abstracts the variables in cube. The variables are existentially
   abstracted.  Returns a pointer to the result is successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddClippingAndAbstract]
+  \see Cudd_bddClippingAndAbstract
 
 ******************************************************************************/
 static DdNode *

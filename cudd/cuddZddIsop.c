@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddIsop.c]
+  \file cuddZddIsop.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to find irredundant SOP covers as ZDDs from BDDs.]
+  \brief Functions to find irredundant SOP covers as ZDDs from BDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		    <ul>
 		    <li> Cudd_bddIsop()
 		    <li> Cudd_zddIsop()
@@ -23,9 +24,9 @@
 		    </ul>
 	      ]
 
-  SeeAlso     []
+  \see 
 
-  Author      [In-Ho Moon]
+  \author In-Ho Moon
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -105,11 +106,12 @@ static char rcsid[] DD_UNUSED = "$Id: cuddZddIsop.c,v 1.22 2012/02/05 01:07:19 f
 /* Definition of exported functions                                          */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes an ISOP in ZDD form from BDDs.]
+  \brief Computes an ISOP in ZDD form from BDDs.
 
-  Description [Computes an irredundant sum of products (ISOP) in ZDD
+  \details [Computes an irredundant sum of products (ISOP) in ZDD
   form from BDDs. The two BDDs L and U represent the lower bound and
   the upper bound, respectively, of the function. The ISOP uses two
   ZDD variables for each BDD variable: One for the positive literal,
@@ -125,7 +127,7 @@ static char rcsid[] DD_UNUSED = "$Id: cuddZddIsop.c,v 1.22 2012/02/05 01:07:19 f
   SideEffects [zdd_I holds the pointer to the ZDD for the ISOP on
   successful return.]
 
-  SeeAlso     [Cudd_bddIsop Cudd_zddVarsFromBddVars]
+  \see Cudd_bddIsop Cudd_zddVarsFromBddVars
 
 ******************************************************************************/
 DdNode	*
@@ -151,19 +153,20 @@ Cudd_zddIsop(
 } /* end of Cudd_zddIsop */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Computes a BDD in the interval between L and U with a
   simple sum-of-product cover.]
 
-  Description [Computes a BDD in the interval between L and U with a
+  \details [Computes a BDD in the interval between L and U with a
   simple sum-of-product cover. This procedure is similar to
   Cudd_zddIsop, but it does not return the ZDD for the cover. Returns
   a pointer to the BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddIsop]
+  \see Cudd_zddIsop
 
 ******************************************************************************/
 DdNode	*
@@ -183,17 +186,18 @@ Cudd_bddIsop(
 } /* end of Cudd_bddIsop */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Converts a ZDD cover to a BDD.]
+  \brief Converts a ZDD cover to a BDD.
 
-  Description [Converts a ZDD cover to a BDD for the function represented
+  \details [Converts a ZDD cover to a BDD for the function represented
   by the cover. If successful, it returns a BDD node, otherwise it returns
   NULL.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [Cudd_zddIsop]
+  \see Cudd_zddIsop
 
 ******************************************************************************/
 DdNode	*
@@ -216,15 +220,16 @@ Cudd_MakeBddFromZddCover(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_zddIsop.]
+  \brief Performs the recursive step of Cudd_zddIsop.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_zddIsop]
+  \see Cudd_zddIsop
 
 ******************************************************************************/
 DdNode	*
@@ -557,15 +562,16 @@ cuddZddIsop(
 } /* end of cuddZddIsop */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Performs the recursive step of Cudd_bddIsop.]
+  \brief Performs the recursive step of Cudd_bddIsop.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIsop]
+  \see Cudd_bddIsop
 
 ******************************************************************************/
 DdNode	*
@@ -774,11 +780,12 @@ cuddBddIsop(
 } /* end of cuddBddIsop */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Converts a ZDD cover to a BDD.]
+  \brief Converts a ZDD cover to a BDD.
 
-  Description [Converts a ZDD cover to a BDD. If successful, it returns
+  \details [Converts a ZDD cover to a BDD. If successful, it returns
   a BDD node, otherwise it returns NULL. It is a recursive algorithm
   that works as follows. First it computes 3 cofactors of a ZDD cover:
   f1, f0 and fd. Second, it compute BDDs (b1, b0 and bd) of f1, f0 and fd.
@@ -788,9 +795,9 @@ cuddBddIsop(
   or the one of E, cuddUniqueInterIVO is called, where IVO stands for
   independent from variable ordering.]
 
-  SideEffects []
+  \sideeffects 
 
-  SeeAlso     [Cudd_MakeBddFromZddCover]
+  \see Cudd_MakeBddFromZddCover
 
 ******************************************************************************/
 DdNode	*

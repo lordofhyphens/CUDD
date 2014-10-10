@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddBddAbs.c]
+  \file cuddBddAbs.c
 
   PackageName [cudd]
 
-  Synopsis    [Quantification functions for BDDs.]
+  \brief Quantification functions for BDDs.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_bddExistAbstract()
                 <li> Cudd_bddExistAbstractLimit()
@@ -27,7 +28,7 @@
 		</ul>
 		]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -111,16 +112,17 @@ static int bddCheckPositiveCube (DdManager *manager, DdNode *cube);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Existentially abstracts all the variables in cube from f.]
+  \brief Existentially abstracts all the variables in cube from f.
 
-  Description [Existentially abstracts all the variables in cube from f.
+  \details [Existentially abstracts all the variables in cube from f.
   Returns the abstracted BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddUnivAbstract Cudd_addExistAbstract]
+  \see Cudd_bddUnivAbstract Cudd_addExistAbstract
 
 ******************************************************************************/
 DdNode *
@@ -148,18 +150,19 @@ Cudd_bddExistAbstract(
 } /* end of Cudd_bddExistAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis [Existentially abstracts all the variables in cube from f.]
+  \brief Existentially abstracts all the variables in cube from f.
 
-  Description [Existentially abstracts all the variables in cube from f.
+  \details [Existentially abstracts all the variables in cube from f.
   Returns the abstracted BDD if successful; NULL if the intermediate
   result blows up or more new nodes than <code>limit</code> are
   required.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddExistAbstract]
+  \see Cudd_bddExistAbstract
 
 ******************************************************************************/
 DdNode *
@@ -192,18 +195,19 @@ Cudd_bddExistAbstractLimit(
 } /* end of Cudd_bddExistAbstractLimit */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Takes the exclusive OR of two BDDs and simultaneously abstracts the
   variables in cube.]
 
-  Description [Takes the exclusive OR of two BDDs and simultaneously abstracts
+  \details [Takes the exclusive OR of two BDDs and simultaneously abstracts
   the variables in cube. The variables are existentially abstracted.  Returns a
   pointer to the result is successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddUnivAbstract Cudd_bddExistAbstract Cudd_bddAndAbstract]
+  \see Cudd_bddUnivAbstract Cudd_bddExistAbstract Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -232,16 +236,17 @@ Cudd_bddXorExistAbstract(
 } /* end of Cudd_bddXorExistAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Universally abstracts all the variables in cube from f.]
+  \brief Universally abstracts all the variables in cube from f.
 
-  Description [Universally abstracts all the variables in cube from f.
+  \details [Universally abstracts all the variables in cube from f.
   Returns the abstracted BDD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddExistAbstract Cudd_addUnivAbstract]
+  \see Cudd_bddExistAbstract Cudd_addUnivAbstract
 
 ******************************************************************************/
 DdNode *
@@ -270,17 +275,18 @@ Cudd_bddUnivAbstract(
 } /* end of Cudd_bddUnivAbstract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the boolean difference of f with respect to x.]
+  \brief Computes the boolean difference of f with respect to x.
 
-  Description [Computes the boolean difference of f with respect to the
+  \details [Computes the boolean difference of f with respect to the
   variable with index x.  Returns the BDD of the boolean difference if
   successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -307,18 +313,19 @@ Cudd_bddBooleanDiff(
 } /* end of Cudd_bddBooleanDiff */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Checks whether a variable is dependent on others in a
   function.]
 
-  Description [Checks whether a variable is dependent on others in a
+  \details [Checks whether a variable is dependent on others in a
   function.  Returns 1 if the variable is dependent; 0 otherwise. No
   new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -375,18 +382,19 @@ Cudd_bddVarIsDependent(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive steps of Cudd_bddExistAbstract.]
+  \brief Performs the recursive steps of Cudd_bddExistAbstract.
 
-  Description [Performs the recursive steps of Cudd_bddExistAbstract.
+  \details [Performs the recursive steps of Cudd_bddExistAbstract.
   Returns the BDD obtained by abstracting the variables
   of cube from f if successful; NULL otherwise. It is also used by
   Cudd_bddUnivAbstract.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddExistAbstract Cudd_bddUnivAbstract]
+  \see Cudd_bddExistAbstract Cudd_bddUnivAbstract
 
 ******************************************************************************/
 DdNode *
@@ -485,18 +493,19 @@ cuddBddExistAbstractRecur(
 } /* end of cuddBddExistAbstractRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Takes the exclusive OR of two BDDs and simultaneously abstracts the
   variables in cube.]
 
-  Description [Takes the exclusive OR of two BDDs and simultaneously abstracts
+  \details [Takes the exclusive OR of two BDDs and simultaneously abstracts
   the variables in cube. The variables are existentially abstracted.  Returns a
   pointer to the result is successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddAndAbstract]
+  \see Cudd_bddAndAbstract
 
 ******************************************************************************/
 DdNode *
@@ -657,18 +666,19 @@ cuddBddXorExistAbstractRecur(
 } /* end of cuddBddXorExistAbstractRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive steps of Cudd_bddBoleanDiff.]
+  \brief Performs the recursive steps of Cudd_bddBoleanDiff.
 
-  Description [Performs the recursive steps of Cudd_bddBoleanDiff.
+  \details [Performs the recursive steps of Cudd_bddBoleanDiff.
   Returns the BDD obtained by XORing the cofactors of f with respect to
   var if successful; NULL otherwise. Exploits the fact that dF/dx =
   dF'/dx.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdNode *
@@ -733,14 +743,15 @@ cuddBddBooleanDiffRecur(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Checks whether cube is an BDD representing the product of
   positive literals.]
 
-  Description [Returns 1 in case of success; 0 otherwise.]
+  \details [Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int

@@ -1,16 +1,17 @@
-/**CHeaderFile*****************************************************************
+/**!
+***************************************************************
 
-  FileName    [cuddInt.h]
+  \file cuddInt.h
 
   PackageName [cudd]
 
-  Synopsis    [Internal data structures of the CUDD package.]
+  \brief Internal data structures of the CUDD package.
 
-  Description []
+  \details []
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -504,34 +505,36 @@ typedef struct DdLevelQueue {
 /* Macro declarations                                                        */
 /*---------------------------------------------------------------------------*/
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Adds node to the head of the free list.]
+  \brief Adds node to the head of the free list.
 
-  Description [Adds node to the head of the free list.  Does not
+  \details [Adds node to the head of the free list.  Does not
   deallocate memory chunks that become free.  This function is also
   used by the dynamic reordering functions.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddAllocNode cuddDynamicAllocNode cuddDeallocMove]
+  \see cuddAllocNode cuddDynamicAllocNode cuddDeallocMove
 
 ******************************************************************************/
 #define cuddDeallocNode(unique,node) \
     (node)->next = (unique)->nextFree; \
     (unique)->nextFree = node;
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Adds node to the head of the free list.]
+  \brief Adds node to the head of the free list.
 
-  Description [Adds node to the head of the free list.  Does not
+  \details [Adds node to the head of the free list.  Does not
   deallocate memory chunks that become free.  This function is also
   used by the dynamic reordering functions.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [cuddDeallocNode cuddDynamicAllocNode]
+  \see cuddDeallocNode cuddDynamicAllocNode
 
 ******************************************************************************/
 #define cuddDeallocMove(unique,node) \
@@ -540,152 +543,161 @@ typedef struct DdLevelQueue {
     (unique)->nextFree = (DdNode *)(node);
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis     [Increases the reference count of a node, if it is not
   saturated.]
 
-  Description  [Increases the reference count of a node, if it is not
+  \details  [Increases the reference count of a node, if it is not
   saturated. This being a macro, it is faster than Cudd_Ref, but it
   cannot be used in constructs like cuddRef(a = b()).]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Ref]
+  \see Cudd_Ref
 
 ******************************************************************************/
 #define cuddRef(n) cuddSatInc(Cudd_Regular(n)->ref)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis     [Decreases the reference count of a node, if it is not
   saturated.]
 
-  Description  [Decreases the reference count of node. It is primarily
+  \details  [Decreases the reference count of node. It is primarily
   used in recursive procedures to decrease the ref count of a result
   node before returning it. This accomplishes the goal of removing the
   protection applied by a previous cuddRef. This being a macro, it is
   faster than Cudd_Deref, but it cannot be used in constructs like
   cuddDeref(a = b()).]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_Deref]
+  \see Cudd_Deref
 
 ******************************************************************************/
 #define cuddDeref(n) cuddSatDec(Cudd_Regular(n)->ref)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis     [Returns 1 if the node is a constant node.]
+  \brief Returns 1 if the node is a constant node.
 
-  Description  [Returns 1 if the node is a constant node (rather than an
+  \details  [Returns 1 if the node is a constant node (rather than an
   internal node). All constant nodes have the same index
   (CUDD_CONST_INDEX). The pointer passed to cuddIsConstant must be regular.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_IsConstant]
+  \see Cudd_IsConstant
 
 ******************************************************************************/
 #define cuddIsConstant(node) ((node)->index == CUDD_CONST_INDEX)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis     [Returns the then child of an internal node.]
+  \brief Returns the then child of an internal node.
 
-  Description  [Returns the then child of an internal node. If
+  \details  [Returns the then child of an internal node. If
   <code>node</code> is a constant node, the result is unpredictable.
   The pointer passed to cuddT must be regular.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_T]
+  \see Cudd_T
 
 ******************************************************************************/
 #define cuddT(node) ((node)->type.kids.T)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis     [Returns the else child of an internal node.]
+  \brief Returns the else child of an internal node.
 
-  Description  [Returns the else child of an internal node. If
+  \details  [Returns the else child of an internal node. If
   <code>node</code> is a constant node, the result is unpredictable.
   The pointer passed to cuddE must be regular.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_E]
+  \see Cudd_E
 
 ******************************************************************************/
 #define cuddE(node) ((node)->type.kids.E)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis     [Returns the value of a constant node.]
+  \brief Returns the value of a constant node.
 
-  Description  [Returns the value of a constant node. If
+  \details  [Returns the value of a constant node. If
   <code>node</code> is an internal node, the result is unpredictable.
   The pointer passed to cuddV must be regular.]
 
-  SideEffects  [none]
+  \sideeffects none
 
-  SeeAlso      [Cudd_V]
+  \see Cudd_V
 
 ******************************************************************************/
 #define cuddV(node) ((node)->type.value)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis    [Finds the current position of variable index in the
   order.]
 
-  Description [Finds the current position of variable index in the
+  \details [Finds the current position of variable index in the
   order.  This macro duplicates the functionality of Cudd_ReadPerm,
   but it does not check for out-of-bounds indices and it is more
   efficient.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_ReadPerm]
+  \see Cudd_ReadPerm
 
 ******************************************************************************/
 #define	cuddI(dd,index) (((index)==CUDD_CONST_INDEX)?(int)(index):(dd)->perm[(index)])
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis    [Finds the current position of ZDD variable index in the
   order.]
 
-  Description [Finds the current position of ZDD variable index in the
+  \details [Finds the current position of ZDD variable index in the
   order.  This macro duplicates the functionality of Cudd_ReadPermZdd,
   but it does not check for out-of-bounds indices and it is more
   efficient.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [Cudd_ReadPermZdd]
+  \see Cudd_ReadPermZdd
 
 ******************************************************************************/
 #define	cuddIZ(dd,index) (((index)==CUDD_CONST_INDEX)?(int)(index):(dd)->permZ[(index)])
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Hash function for the unique table.]
+  \brief Hash function for the unique table.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [ddCHash ddCHash2]
+  \see ddCHash ddCHash2
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -698,15 +710,16 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Hash function for the cache.]
+  \brief Hash function for the cache.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [ddHash ddCHash2]
+  \see ddHash ddCHash2
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -721,16 +734,17 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis    [Hash function for the cache for functions with two
   operands.]
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [ddHash ddCHash]
+  \see ddHash ddCHash
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -743,86 +757,92 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Clears the 4 least significant bits of a pointer.]
+  \brief Clears the 4 least significant bits of a pointer.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #define cuddClean(p) ((DdNode *)((ptruint)(p) & ~0xf))
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Computes the minimum of two numbers.]
+  \brief Computes the minimum of two numbers.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [ddMax]
+  \see ddMax
 
 ******************************************************************************/
 #define ddMin(x,y) (((y) < (x)) ? (y) : (x))
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Computes the maximum of two numbers.]
+  \brief Computes the maximum of two numbers.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [ddMin]
+  \see ddMin
 
 ******************************************************************************/
 #define ddMax(x,y) (((y) > (x)) ? (y) : (x))
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Computes the absolute value of a number.]
+  \brief Computes the absolute value of a number.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #define ddAbs(x) (((x)<0) ? -(x) : (x))
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
   Synopsis    [Returns 1 if the absolute value of the difference of the two
   arguments x and y is less than e.]
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #define ddEqualVal(x,y,e) (ddAbs((x)-(y))<(e))
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Saturating increment operator.]
+  \brief Saturating increment operator.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [cuddSatDec]
+  \see cuddSatDec
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -832,15 +852,16 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Saturating decrement operator.]
+  \brief Saturating decrement operator.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [cuddSatInc]
+  \see cuddSatInc
 
 ******************************************************************************/
 #if SIZEOF_VOID_P == 8 && SIZEOF_INT == 4
@@ -850,69 +871,74 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Returns the constant 1 node.]
+  \brief Returns the constant 1 node.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [DD_ZERO DD_PLUS_INFINITY DD_MINUS_INFINITY]
+  \see DD_ZERO DD_PLUS_INFINITY DD_MINUS_INFINITY
 
 ******************************************************************************/
 #define DD_ONE(dd)		((dd)->one)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Returns the arithmetic 0 constant node.]
+  \brief Returns the arithmetic 0 constant node.
 
-  Description [Returns the arithmetic 0 constant node. This is different
+  \details [Returns the arithmetic 0 constant node. This is different
   from the logical zero. The latter is obtained by
   Cudd_Not(DD_ONE(dd)).]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [DD_ONE Cudd_Not DD_PLUS_INFINITY DD_MINUS_INFINITY]
+  \see DD_ONE Cudd_Not DD_PLUS_INFINITY DD_MINUS_INFINITY
 
 ******************************************************************************/
 #define DD_ZERO(dd) ((dd)->zero)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Returns the plus infinity constant node.]
+  \brief Returns the plus infinity constant node.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [DD_ONE DD_ZERO DD_MINUS_INFINITY]
+  \see DD_ONE DD_ZERO DD_MINUS_INFINITY
 
 ******************************************************************************/
 #define DD_PLUS_INFINITY(dd) ((dd)->plusinfinity)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Returns the minus infinity constant node.]
+  \brief Returns the minus infinity constant node.
 
-  Description []
+  \details []
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     [DD_ONE DD_ZERO DD_PLUS_INFINITY]
+  \see DD_ONE DD_ZERO DD_PLUS_INFINITY
 
 ******************************************************************************/
 #define DD_MINUS_INFINITY(dd) ((dd)->minusinfinity)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Enforces DD_MINUS_INF_VAL <= x <= DD_PLUS_INF_VAL.]
+  \brief Enforces DD_MINUS_INF_VAL <= x <= DD_PLUS_INF_VAL.
 
-  Description [Enforces DD_MINUS_INF_VAL <= x <= DD_PLUS_INF_VAL.
+  \details [Enforces DD_MINUS_INF_VAL <= x <= DD_PLUS_INF_VAL.
   Furthermore, if x <= DD_MINUS_INF_VAL/2, x is set to
   DD_MINUS_INF_VAL. Similarly, if DD_PLUS_INF_VAL/2 <= x, x is set to
   DD_PLUS_INF_VAL.  Normally this macro is a NOOP. However, if
@@ -921,9 +947,9 @@ typedef struct DdLevelQueue {
   infinity, stays there.  If the value overflows before this macro is
   applied, no recovery is possible.]
 
-  SideEffects [none]
+  \sideeffects none
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #ifdef HAVE_IEEE_754
@@ -933,47 +959,50 @@ typedef struct DdLevelQueue {
 #endif
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Extract the least significant digit of a double digit.]
+  \brief Extract the least significant digit of a double digit.
 
-  Description [Extract the least significant digit of a double digit. Used
+  \details [Extract the least significant digit of a double digit. Used
   in the manipulation of arbitrary precision integers.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [DD_MSDIGIT]
+  \see DD_MSDIGIT
 
 ******************************************************************************/
 #define DD_LSDIGIT(x)	((x) & DD_APA_MASK)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Extract the most significant digit of a double digit.]
+  \brief Extract the most significant digit of a double digit.
 
-  Description [Extract the most significant digit of a double digit. Used
+  \details [Extract the most significant digit of a double digit. Used
   in the manipulation of arbitrary precision integers.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [DD_LSDIGIT]
+  \see DD_LSDIGIT
 
 ******************************************************************************/
 #define DD_MSDIGIT(x)	((x) >> DD_APA_BITS)
 
 
-/**Macro***********************************************************************
+/**!
+*********************************************************************
 
-  Synopsis    [Outputs a line of stats.]
+  \brief Outputs a line of stats.
 
-  Description [Outputs a line of stats if DD_COUNT and DD_STATS are
+  \details [Outputs a line of stats if DD_COUNT and DD_STATS are
   defined. Increments the number of recursive calls if DD_COUNT is
   defined.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 #ifdef DD_COUNT

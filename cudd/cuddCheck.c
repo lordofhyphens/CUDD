@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddCheck.c]
+  \file cuddCheck.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions to check consistency of data structures.]
+  \brief Functions to check consistency of data structures.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_DebugCheck()
 		<li> Cudd_CheckKeys()
@@ -23,9 +24,9 @@
 		</ul>
 		]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -111,11 +112,12 @@ static void debugCheckParent (DdManager *table, DdNode *node);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks for inconsistencies in the DD heap.]
+  \brief Checks for inconsistencies in the DD heap.
 
-  Description [Checks for inconsistencies in the DD heap:
+  \details [Checks for inconsistencies in the DD heap:
   <ul>
   <li> node has illegal index
   <li> live node has dead children
@@ -129,9 +131,9 @@ static void debugCheckParent (DdManager *table, DdNode *node);
   Returns 0 if no inconsistencies are found; DD_OUT_OF_MEM if there is
   not enough memory; 1 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_CheckKeys]
+  \see Cudd_CheckKeys
 
 ******************************************************************************/
 int
@@ -433,11 +435,12 @@ Cudd_DebugCheck(
 } /* end of Cudd_DebugCheck */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks for several conditions that should not occur.]
+  \brief Checks for several conditions that should not occur.
 
-  Description [Checks for the following conditions:
+  \details [Checks for the following conditions:
   <ul>
   <li>Wrong sizes of subtables.
   <li>Wrong number of keys found in unique subtable.
@@ -451,9 +454,9 @@ Cudd_DebugCheck(
   Reports the average length of non-empty lists. Returns the number of
   subtables for which the number of keys is wrong.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_DebugCheck]
+  \see Cudd_DebugCheck
 
 ******************************************************************************/
 int
@@ -615,11 +618,12 @@ in the constant table (difference=%d)\n", dead);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints information about the heap.]
+  \brief Prints information about the heap.
 
-  Description [Prints to the manager's stdout the number of live nodes for each
+  \details [Prints to the manager's stdout the number of live nodes for each
   level of the DD heap that contains at least one live node.  It also
   prints a summary containing:
   <ul>
@@ -632,9 +636,9 @@ in the constant table (difference=%d)\n", dead);
   only the one of lowest index is reported. Returns 1 in case of success
   and 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -697,15 +701,16 @@ cuddHeapProfile(
 } /* end of cuddHeapProfile */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints out information on a node.]
+  \brief Prints out information on a node.
 
-  Description [Prints out information on a node.]
+  \details [Prints out information on a node.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -724,11 +729,12 @@ cuddPrintNode(
 
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints the variable groups as a parenthesized list.]
+  \brief Prints the variable groups as a parenthesized list.
 
-  Description [Prints the variable groups as a parenthesized list.
+  \details [Prints the variable groups as a parenthesized list.
   For each group the level range that it represents is printed. After
   each group, the group's flags are printed, preceded by a `|'.  For
   each flag (except MTR_TERMINAL) a character is printed.
@@ -740,9 +746,9 @@ cuddPrintNode(
   The second argument, silent, if different from 0, causes
   Cudd_PrintVarGroups to only check the syntax of the group tree.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -797,15 +803,16 @@ cuddPrintVarGroups(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Searches the subtables above node for its parents.]
+  \brief Searches the subtables above node for its parents.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -843,16 +850,17 @@ debugFindParent(
 
 
 #if 0
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reports an error if a (dead) node has a non-dead parent.]
+  \brief Reports an error if a (dead) node has a non-dead parent.
 
-  Description [Searches all the subtables above node. Very expensive.
+  \details [Searches all the subtables above node. Very expensive.
   The same check is now implemented more efficiently in ddDebugCheck.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [debugFindParent]
+  \see debugFindParent
 
 ******************************************************************************/
 static void

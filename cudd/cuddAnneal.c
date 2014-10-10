@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAnneal.c]
+  \file cuddAnneal.c
 
   PackageName [cudd]
 
-  Synopsis    [Reordering of DDs based on simulated annealing]
+  \brief Reordering of DDs based on simulated annealing
 
-  Description [Internal procedures included in this file:
+  \details [Internal procedures included in this file:
 		<ul>
 		<li> cuddAnnealing()
 		</ul>
@@ -24,9 +25,9 @@
 		</ul>
 		]
 
-  SeeAlso     []
+  \see 
 
-  Author      [Jae-Young Jang, Jorgen Sivesind]
+  \author Jae-Young Jang, Jorgen Sivesind
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -135,19 +136,20 @@ static int restoreOrder (DdManager *table, int *array, int lower, int upper);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Get new variable-order by simulated annealing algorithm.]
+  \brief Get new variable-order by simulated annealing algorithm.
 
-  Description [Get x, y by random selection. Choose either
+  \details [Get x, y by random selection. Choose either
   exchange or jump randomly. In case of jump, choose between jump_up
   and jump_down randomly. Do exchange or jump and get optimal case.
   Loop until there is no improvement or temperature reaches
   minimum. Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -288,17 +290,18 @@ cuddAnnealing(
 /* Definition of static functions                                            */
 /*---------------------------------------------------------------------------*/
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks termination condition.]
+  \brief Checks termination condition.
 
-  Description [If temperature is STOP_TEMP or there is no improvement
+  \details [If temperature is STOP_TEMP or there is no improvement
   then terminates. Returns 1 if the termination criterion is met; 0
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -320,15 +323,16 @@ stopping_criterion(
 } /* end of stopping_criterion */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Random number generator.]
+  \brief Random number generator.
 
-  Description [Returns a double precision value between 0.0 and 1.0.]
+  \details [Returns a double precision value between 0.0 and 1.0.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static double
@@ -339,16 +343,17 @@ random_generator(void)
 } /* end of random_generator */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [This function is for exchanging two variables, x and y.]
+  \brief This function is for exchanging two variables, x and y.
 
-  Description [This is the same funcion as ddSwapping except for
+  \details [This is the same funcion as ddSwapping except for
   comparison expression.  Use probability function, exp(-size_change/temp).]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -487,17 +492,18 @@ ddExchangeOutOfMem:
 } /* end of ddExchange */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Moves a variable to a specified position.]
+  \brief Moves a variable to a specified position.
 
-  Description [If x==x_low, it executes jumping_down. If x==x_high, it
+  \details [If x==x_low, it executes jumping_down. If x==x_high, it
   executes jumping_up. This funcion is similar to ddSiftingAux. Returns
   1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -558,17 +564,18 @@ ddJumpingAuxOutOfMem:
 } /* end of ddJumpingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [This function is for jumping up.]
+  \brief This function is for jumping up.
 
-  Description [This is a simplified version of ddSiftingUp. It does not
+  \details [This is a simplified version of ddSiftingUp. It does not
   use lower bounding. Returns the set of moves in case of success; NULL
   if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -617,17 +624,18 @@ ddJumpingUpOutOfMem:
 } /* end of ddJumpingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [This function is for jumping down.]
+  \brief This function is for jumping down.
 
-  Description [This is a simplified version of ddSiftingDown. It does not
+  \details [This is a simplified version of ddSiftingDown. It does not
   use lower bounding. Returns the set of moves in case of success; NULL
   if memory is full.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static Move *
@@ -676,18 +684,19 @@ ddJumpingDownOutOfMem:
 } /* end of ddJumpingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Returns the DD to the best position encountered during
   sifting if there was improvement.]
 
-  Description [Otherwise, "tosses a coin" to decide whether to keep
+  \details [Otherwise, "tosses a coin" to decide whether to keep
   the current configuration or return the DD to the original
   one. Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -742,16 +751,17 @@ siftBackwardProb(
 } /* end of sift_backward_prob */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Copies the current variable order to array.]
+  \brief Copies the current variable order to array.
 
-  Description [Copies the current variable order to array.
+  \details [Copies the current variable order to array.
   At the same time inverts the permutation.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -772,16 +782,17 @@ copyOrder(
 } /* end of copyOrder */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Restores the variable order in array by a series of sifts up.]
+  \brief Restores the variable order in array by a series of sifts up.
 
-  Description [Restores the variable order in array by a series of sifts up.
+  \details [Restores the variable order in array by a series of sifts up.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int

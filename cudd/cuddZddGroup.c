@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddZddGroup.c]
+  \file cuddZddGroup.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for ZDD group sifting.]
+  \brief Functions for ZDD group sifting.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		<li> Cudd_MakeZddTreeNode()
 		</ul>
@@ -31,7 +32,7 @@
 		<li> zddMergeGroups()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -138,11 +139,12 @@ static void zddMergeGroups (DdManager *table, MtrNode *treenode, int low, int hi
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Creates a new ZDD variable group.]
+  \brief Creates a new ZDD variable group.
 
-  Description [Creates a new ZDD variable group. The group starts at
+  \details [Creates a new ZDD variable group. The group starts at
   variable and contains size variables. The parameter low is the index
   of the first variable. If the variable already exists, its current
   position in the order is known to the manager. If the variable does
@@ -150,9 +152,9 @@ static void zddMergeGroups (DdManager *table, MtrNode *treenode, int low, int hi
   The group tree is created if it does not exist yet.
   Returns a pointer to the group if successful; NULL otherwise.]
 
-  SideEffects [The ZDD variable tree is changed.]
+  \sideeffects The ZDD variable tree is changed.
 
-  SeeAlso     [Cudd_MakeTreeNode]
+  \see Cudd_MakeTreeNode
 
 ******************************************************************************/
 MtrNode *
@@ -211,17 +213,18 @@ Cudd_MakeZddTreeNode(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Tree sifting algorithm for ZDDs.]
+  \brief Tree sifting algorithm for ZDDs.
 
-  Description [Tree sifting algorithm for ZDDs. Assumes that a tree
+  \details [Tree sifting algorithm for ZDDs. Assumes that a tree
   representing a group hierarchy is passed as a parameter. It then
   reorders each group in postorder fashion by calling
   zddTreeSiftingAux.  Assumes that no dead nodes are present.  Returns
   1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 int
@@ -331,14 +334,15 @@ cuddZddTreeSifting(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Visits the group tree and reorders each group.]
+  \brief Visits the group tree and reorders each group.
 
-  Description [Recursively visits the group tree and reorders each
+  \details [Recursively visits the group tree and reorders each
   group in postorder fashion.  Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -375,14 +379,15 @@ zddTreeSiftingAux(
 
 
 #ifdef DD_STATS
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of internal nodes of the group tree.]
+  \brief Counts the number of internal nodes of the group tree.
 
-  Description [Counts the number of internal nodes of the group tree.
+  \details [Counts the number of internal nodes of the group tree.
   Returns the count.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -411,18 +416,19 @@ zddCountInternalMtrNodes(
 #endif
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Reorders the children of a group tree node according to
   the options.]
 
-  Description [Reorders the children of a group tree node according to
+  \details [Reorders the children of a group tree node according to
   the options. After reordering puts all the variables in the group
   and/or its descendents in a single group. This allows hierarchical
   reordering.  If the variables in the group do not exist yet, simply
   does nothing. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -511,19 +517,20 @@ zddReorderChildren(
 } /* end of zddReorderChildren */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Finds the lower and upper bounds of the group represented
   by treenode.]
 
-  Description [Finds the lower and upper bounds of the group represented
+  \details [Finds the lower and upper bounds of the group represented
   by treenode.  The high and low fields of treenode are indices.  From
   those we need to derive the current positions, and find maximum and
   minimum.]
 
-  SideEffects [The bounds are returned as side effects.]
+  \sideeffects The bounds are returned as side effects.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -589,16 +596,17 @@ zddFindNodeHiLo(
 } /* end of zddFindNodeHiLo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Comparison function used by qsort.]
+  \brief Comparison function used by qsort.
 
-  Description [Comparison function used by qsort to order the variables
+  \details [Comparison function used by qsort to order the variables
   according to the number of keys in the subtables.  Returns the
   difference in number of keys between the two variables being
   compared.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -616,17 +624,18 @@ zddUniqueCompareGroup(
 } /* end of zddUniqueCompareGroup */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts from treenode->low to treenode->high.]
+  \brief Sifts from treenode->low to treenode->high.
 
-  Description [Sifts from treenode->low to treenode->high. If
+  \details [Sifts from treenode->low to treenode->high. If
   croupcheck == CUDD_GROUP_CHECK7, it checks for group creation at the
   end of the initial sifting. If a group is created, it is then sifted
   again. After sifting one variable, the group that contains it is
   dissolved.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -747,19 +756,20 @@ zddGroupSiftingOutOfMem:
 } /* end of zddGroupSifting */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sifts one variable up and down until it has taken all
   positions. Checks for aggregation.]
 
-  Description [Sifts one variable up and down until it has taken all
+  \details [Sifts one variable up and down until it has taken all
   positions. Checks for aggregation. There may be at most two sweeps,
   even if the group grows.  Assumes that x is either an isolated
   variable, or it is the bottom of a group. All groups may not have
   been found. The variable being moved is returned to the best position
   seen during sifting.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -896,19 +906,20 @@ zddGroupSiftingAuxOutOfMem:
 } /* end of zddGroupSiftingAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Sifts up a variable until either it reaches position xLow
   or the size of the DD heap increases too much.]
 
-  Description [Sifts up a variable until either it reaches position
+  \details [Sifts up a variable until either it reaches position
   xLow or the size of the DD heap increases too much. Assumes that y is
   the top of a group (or a singleton).  Checks y for aggregation to the
   adjacent variables. Records all the moves that are appended to the
   list of moves received as input and returned as a side effect.
   Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -977,15 +988,16 @@ zddGroupSiftingUpOutOfMem:
 } /* end of zddGroupSiftingUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sifts down a variable until it reaches position xHigh.]
+  \brief Sifts down a variable until it reaches position xHigh.
 
-  Description [Sifts down a variable until it reaches position xHigh.
+  \details [Sifts down a variable until it reaches position xHigh.
   Assumes that x is the bottom of a group (or a singleton).  Records
   all the moves.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1064,14 +1076,15 @@ zddGroupSiftingDownOutOfMem:
 } /* end of zddGroupSiftingDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Swaps two groups and records the move.]
+  \brief Swaps two groups and records the move.
 
-  Description [Swaps two groups and records the move. Returns the
+  \details [Swaps two groups and records the move. Returns the
   number of keys in the DD table in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1170,14 +1183,15 @@ zddGroupMoveOutOfMem:
 } /* end of zddGroupMove */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Undoes the swap two groups.]
+  \brief Undoes the swap two groups.
 
-  Description [Undoes the swap two groups.  Returns 1 in case of
+  \details [Undoes the swap two groups.  Returns 1 in case of
   success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1243,15 +1257,16 @@ zddGroupMoveBackward(
 } /* end of zddGroupMoveBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Determines the best position for a variables and returns
   it there.]
 
-  Description [Determines the best position for a variables and returns
+  \details [Determines the best position for a variables and returns
   it there.  Returns 1 in case of success; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static int
@@ -1292,14 +1307,15 @@ zddGroupSiftingBackward(
 } /* end of zddGroupSiftingBackward */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Merges groups in the DD table.]
+  \brief Merges groups in the DD table.
 
-  Description [Creates a single group from low to high and adjusts the
+  \details [Creates a single group from low to high and adjusts the
   idex field of the tree node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void

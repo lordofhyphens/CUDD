@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddApa.c]
+  \file cuddApa.c
 
   PackageName [cudd]
 
-  Synopsis    [Arbitrary precision arithmetic functions.]
+  \brief Arbitrary precision arithmetic functions.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_ApaNumberOfDigits()
 		<li> Cudd_NewApaNumber()
@@ -34,7 +35,7 @@
 		<li> cuddApaStCountfree()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -124,19 +125,20 @@ static enum st_retval cuddApaStCountfree (char * key, char * value, char * arg);
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Finds the number of digits for an arbitrary precision
   integer.]
 
-  Description [Finds the number of digits for an arbitrary precision
+  \details [Finds the number of digits for an arbitrary precision
   integer given the maximum number of binary digits.  The number of
   binary digits should be positive. Returns the number of digits if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -153,17 +155,18 @@ Cudd_ApaNumberOfDigits(
 } /* end of Cudd_ApaNumberOfDigits */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Allocates memory for an arbitrary precision integer.]
+  \brief Allocates memory for an arbitrary precision integer.
 
-  Description [Allocates memory for an arbitrary precision
+  \details [Allocates memory for an arbitrary precision
   integer. Returns a pointer to the allocated memory if successful;
   NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdApaNumber
@@ -175,15 +178,16 @@ Cudd_NewApaNumber(
 } /* end of Cudd_NewApaNumber */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Makes a copy of an arbitrary precision integer.]
+  \brief Makes a copy of an arbitrary precision integer.
 
-  Description [Makes a copy of an arbitrary precision integer.]
+  \details [Makes a copy of an arbitrary precision integer.]
 
-  SideEffects [Changes parameter <code>dest</code>.]
+  \sideeffects Changes parameter <code>dest</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -201,16 +205,17 @@ Cudd_ApaCopy(
 } /* end of Cudd_ApaCopy */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Adds two arbitrary precision integers.]
+  \brief Adds two arbitrary precision integers.
 
-  Description [Adds two arbitrary precision integers.  Returns the
+  \details [Adds two arbitrary precision integers.  Returns the
   carry out of the most significant digit.]
 
-  SideEffects [The result of the sum is stored in parameter <code>sum</code>.]
+  \sideeffects The result of the sum is stored in parameter <code>sum</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdApaDigit
@@ -232,17 +237,18 @@ Cudd_ApaAdd(
 } /* end of Cudd_ApaAdd */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Subtracts two arbitrary precision integers.]
+  \brief Subtracts two arbitrary precision integers.
 
-  Description [Subtracts two arbitrary precision integers.  Returns the
+  \details [Subtracts two arbitrary precision integers.  Returns the
   borrow out of the most significant digit.]
 
   SideEffects [The result of the subtraction is stored in parameter
   <code>diff</code>.]
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdApaDigit
@@ -264,15 +270,16 @@ Cudd_ApaSubtract(
 } /* end of Cudd_ApaSubtract */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Divides an arbitrary precision integer by a digit.]
+  \brief Divides an arbitrary precision integer by a digit.
 
-  Description [Divides an arbitrary precision integer by a digit.]
+  \details [Divides an arbitrary precision integer by a digit.]
 
-  SideEffects [The quotient is returned in parameter <code>quotient</code>.]
+  \sideeffects The quotient is returned in parameter <code>quotient</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 DdApaDigit
@@ -298,11 +305,12 @@ Cudd_ApaShortDivision(
 } /* end of Cudd_ApaShortDivision */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Divides an arbitrary precision integer by an integer.]
+  \brief Divides an arbitrary precision integer by an integer.
 
-  Description [Divides an arbitrary precision integer by a 32-bit
+  \details [Divides an arbitrary precision integer by a 32-bit
   unsigned integer. Returns the remainder of the division. This
   procedure relies on the assumption that the number of bits of a
   DdApaDigit plus the number of bits of an unsigned int is less the
@@ -311,9 +319,9 @@ Cudd_ApaShortDivision(
   without loss of precision by a double. On machines where this
   assumption is not satisfied, this procedure will malfunction.]
 
-  SideEffects [The quotient is returned in parameter <code>quotient</code>.]
+  \sideeffects The quotient is returned in parameter <code>quotient</code>.
 
-  SeeAlso     [Cudd_ApaShortDivision]
+  \see Cudd_ApaShortDivision
 
 ******************************************************************************/
 unsigned int
@@ -339,18 +347,19 @@ Cudd_ApaIntDivision(
 } /* end of Cudd_ApaIntDivision */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Shifts right an arbitrary precision integer by one binary
   place.]
 
-  Description [Shifts right an arbitrary precision integer by one
+  \details [Shifts right an arbitrary precision integer by one
   binary place. The most significant binary digit of the result is
   taken from parameter <code>in</code>.]
 
-  SideEffects [The result is returned in parameter <code>b</code>.]
+  \sideeffects The result is returned in parameter <code>b</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -370,15 +379,16 @@ Cudd_ApaShiftRight(
 } /* end of Cudd_ApaShiftRight */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets an arbitrary precision integer to a one-digit literal.]
+  \brief Sets an arbitrary precision integer to a one-digit literal.
 
-  Description [Sets an arbitrary precision integer to a one-digit literal.]
+  \details [Sets an arbitrary precision integer to a one-digit literal.]
 
-  SideEffects [The result is returned in parameter <code>number</code>.]
+  \sideeffects The result is returned in parameter <code>number</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -396,17 +406,18 @@ Cudd_ApaSetToLiteral(
 } /* end of Cudd_ApaSetToLiteral */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Sets an arbitrary precision integer to a power of two.]
+  \brief Sets an arbitrary precision integer to a power of two.
 
-  Description [Sets an arbitrary precision integer to a power of
+  \details [Sets an arbitrary precision integer to a power of
   two. If the power of two is too large to be represented, the number
   is set to 0.]
 
-  SideEffects [The result is returned in parameter <code>number</code>.]
+  \sideeffects The result is returned in parameter <code>number</code>.
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 void
@@ -428,17 +439,18 @@ Cudd_ApaPowerOfTwo(
 } /* end of Cudd_ApaPowerOfTwo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Compares two arbitrary precision integers.]
+  \brief Compares two arbitrary precision integers.
 
-  Description [Compares two arbitrary precision integers. Returns 1 if
+  \details [Compares two arbitrary precision integers. Returns 1 if
   the first number is larger; 0 if they are equal; -1 if the second
   number is larger.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -467,18 +479,19 @@ Cudd_ApaCompare(
 } /* end of Cudd_ApaCompare */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Compares the ratios of two arbitrary precision integers to two
   unsigned ints.]
 
-  Description [Compares the ratios of two arbitrary precision integers
+  \details [Compares the ratios of two arbitrary precision integers
   to two unsigned ints. Returns 1 if the first number is larger; 0 if
   they are equal; -1 if the second number is larger.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -512,16 +525,17 @@ Cudd_ApaCompareRatios(
 } /* end of Cudd_ApaCompareRatios */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints an arbitrary precision integer in hexadecimal format.]
+  \brief Prints an arbitrary precision integer in hexadecimal format.
 
-  Description [Prints an arbitrary precision integer in hexadecimal format.
+  \details [Prints an arbitrary precision integer in hexadecimal format.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ApaPrintDecimal Cudd_ApaPrintExponential]
+  \see Cudd_ApaPrintDecimal Cudd_ApaPrintExponential
 
 ******************************************************************************/
 int
@@ -542,16 +556,17 @@ Cudd_ApaPrintHex(
 } /* end of Cudd_ApaPrintHex */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints an arbitrary precision integer in decimal format.]
+  \brief Prints an arbitrary precision integer in decimal format.
 
-  Description [Prints an arbitrary precision integer in decimal format.
+  \details [Prints an arbitrary precision integer in decimal format.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ApaPrintHex Cudd_ApaPrintExponential]
+  \see Cudd_ApaPrintHex Cudd_ApaPrintExponential
 
 ******************************************************************************/
 int
@@ -599,16 +614,17 @@ Cudd_ApaPrintDecimal(
 } /* end of Cudd_ApaPrintDecimal */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Prints an arbitrary precision integer in exponential format.]
+  \brief Prints an arbitrary precision integer in exponential format.
 
-  Description [Prints an arbitrary precision integer in exponential format.
+  \details [Prints an arbitrary precision integer in exponential format.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ApaPrintHex Cudd_ApaPrintDecimal]
+  \see Cudd_ApaPrintHex Cudd_ApaPrintDecimal
 
 ******************************************************************************/
 int
@@ -659,11 +675,12 @@ Cudd_ApaPrintExponential(
 } /* end of Cudd_ApaPrintExponential */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of minterms of a DD.]
+  \brief Counts the number of minterms of a DD.
 
-  Description [Counts the number of minterms of a DD. The function is
+  \details [Counts the number of minterms of a DD. The function is
   assumed to depend on nvars variables. The minterm count is
   represented as an arbitrary precision unsigned integer, to allow for
   any number of variables CUDD supports.  Returns a pointer to the
@@ -673,7 +690,7 @@ Cudd_ApaPrintExponential(
   SideEffects [The number of digits of the result is returned in
   parameter <code>digits</code>.]
 
-  SeeAlso     [Cudd_CountMinterm]
+  \see Cudd_CountMinterm
 
 ******************************************************************************/
 DdApaNumber
@@ -740,17 +757,18 @@ Cudd_ApaCountMinterm(
 } /* end of Cudd_ApaCountMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Prints the number of minterms of a BDD or ADD using
   arbitrary precision arithmetic.]
 
-  Description [Prints the number of minterms of a BDD or ADD using
+  \details [Prints the number of minterms of a BDD or ADD using
   arbitrary precision arithmetic. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ApaPrintMintermExp]
+  \see Cudd_ApaPrintMintermExp
 
 ******************************************************************************/
 int
@@ -777,19 +795,20 @@ Cudd_ApaPrintMinterm(
 } /* end of Cudd_ApaPrintMinterm */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Prints the number of minterms of a BDD or ADD in exponential
   format using arbitrary precision arithmetic.]
 
-  Description [Prints the number of minterms of a BDD or ADD in
+  \details [Prints the number of minterms of a BDD or ADD in
   exponential format using arbitrary precision arithmetic. Parameter
   precision controls the number of signficant digits printed. Returns
   1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_ApaPrintMinterm]
+  \see Cudd_ApaPrintMinterm
 
 ******************************************************************************/
 int
@@ -817,17 +836,18 @@ Cudd_ApaPrintMintermExp(
 } /* end of Cudd_ApaPrintMintermExp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis    [Prints the density of a BDD or ADD using
   arbitrary precision arithmetic.]
 
-  Description [Prints the density of a BDD or ADD using
+  \details [Prints the density of a BDD or ADD using
   arbitrary precision arithmetic. Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -870,11 +890,12 @@ Cudd_ApaPrintDensity(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_ApaCountMinterm.]
+  \brief Performs the recursive step of Cudd_ApaCountMinterm.
 
-  Description [Performs the recursive step of Cudd_ApaCountMinterm.
+  \details [Performs the recursive step of Cudd_ApaCountMinterm.
   It is based on the following identity. Let |f| be the
   number of minterms of f. Then:
   <xmp>
@@ -888,7 +909,7 @@ Cudd_ApaPrintDensity(
   a reference count greater than 1.
   Returns the number of minterms of the function rooted at node.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static DdApaNumber
@@ -953,15 +974,16 @@ cuddApaCountMintermAux(
 } /* end of cuddApaCountMintermAux */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Frees the memory used to store the minterm counts recorded
   in the visited table.]
 
-  Description [Frees the memory used to store the minterm counts
+  \details [Frees the memory used to store the minterm counts
   recorded in the visited table. Returns ST_CONTINUE.]
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static enum st_retval

@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddExact.c]
+  \file cuddExact.c
 
   PackageName [cudd]
 
-  Synopsis    [Functions for exact variable reordering.]
+  \brief Functions for exact variable reordering.
 
-  Description [External procedures included in this file:
+  \details [External procedures included in this file:
 		<ul>
 		</ul>
 	Internal procedures included in this module:
@@ -31,7 +32,7 @@
 		<li> initSymmInfo()
 		</ul>]
 
-  Author      [Cheng Hua, Fabio Somenzi]
+  \author Cheng Hua, Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -132,17 +133,18 @@ static int checkSymmInfo (DdManager *table, DdHalfWord *symmInfo, int index, int
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Exact variable ordering algorithm.]
+  \brief Exact variable ordering algorithm.
 
-  Description [Exact variable ordering algorithm. Finds an optimum
+  \details [Exact variable ordering algorithm. Finds an optimum
   order for the variables between lower and upper.  Returns 1 if
   successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 int
@@ -337,11 +339,12 @@ cuddExactOutOfMem:
 } /* end of cuddExact */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the maximum value of (n choose k) for a given n.]
+  \brief Returns the maximum value of (n choose k) for a given n.
 
-  Description [Computes the maximum value of (n choose k) for a given
+  \details [Computes the maximum value of (n choose k) for a given
   n.  The maximum value occurs for k = n/2 when n is even, or k =
   (n-1)/2 when n is odd.  The algorithm used in this procedure avoids
   intermediate overflow problems.  It is based on the identity
@@ -350,9 +353,9 @@ cuddExactOutOfMem:
   </pre>
   Returns the computed value if successful; -1 if out of range.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -375,16 +378,17 @@ getMaxBinomial(
 
 
 #if 0
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the gcd of two integers.]
+  \brief Returns the gcd of two integers.
 
-  Description [Returns the gcd of two integers. Uses the binary GCD
+  \details [Returns the gcd of two integers. Uses the binary GCD
   algorithm described in Cormen, Leiserson, and Rivest.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -431,16 +435,17 @@ gcd(
 #endif
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Allocates a two-dimensional matrix of ints.]
+  \brief Allocates a two-dimensional matrix of ints.
 
-  Description [Allocates a two-dimensional matrix of ints.
+  \details [Allocates a two-dimensional matrix of ints.
   Returns the pointer to the matrix if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [freeMatrix]
+  \see freeMatrix
 
 ******************************************************************************/
 static DdHalfWord **
@@ -467,15 +472,16 @@ getMatrix(
 } /* end of getMatrix */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Frees a two-dimensional matrix allocated by getMatrix.]
+  \brief Frees a two-dimensional matrix allocated by getMatrix.
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [getMatrix]
+  \see getMatrix
 
 ******************************************************************************/
 static void
@@ -489,16 +495,17 @@ freeMatrix(
 } /* end of freeMatrix */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Returns the number of nodes at one level of a unique table.]
+  \brief Returns the number of nodes at one level of a unique table.
 
-  Description [Returns the number of nodes at one level of a unique table.
+  \details [Returns the number of nodes at one level of a unique table.
   The projection function, if isolated, is not counted.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso []
+  \see 
 
 ******************************************************************************/
 static int
@@ -517,20 +524,21 @@ getLevelKeys(
 } /* end of getLevelKeys */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Reorders variables according to a given permutation.]
+  \brief Reorders variables according to a given permutation.
 
-  Description [Reorders variables according to a given permutation.
+  \details [Reorders variables according to a given permutation.
   The i-th permutation array contains the index of the variable that
   should be brought to the i-th level. ddShuffle assumes that no
   dead nodes are present and that the interaction matrix is properly
   initialized.  The reordering is achieved by a series of upward sifts.
   Returns 1 if successful; 0 otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso []
+  \see 
 
 ******************************************************************************/
 static int
@@ -602,17 +610,18 @@ ddShuffle(
 } /* end of ddShuffle */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Moves one variable up.]
+  \brief Moves one variable up.
 
-  Description [Takes a variable from position x and sifts it up to
+  \details [Takes a variable from position x and sifts it up to
   position xLow;  xLow should be less than or equal to x.
   Returns 1 if successful; 0 otherwise]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -638,16 +647,17 @@ ddSiftUp(
 } /* end of ddSiftUp */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Updates the upper bound and saves the best order seen so far.]
+  \brief Updates the upper bound and saves the best order seen so far.
 
-  Description [Updates the upper bound and saves the best order seen so far.
+  \details [Updates the upper bound and saves the best order seen so far.
   Returns the current value of the upper bound.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -676,20 +686,21 @@ updateUB(
 } /* end of updateUB */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Counts the number of roots.]
+  \brief Counts the number of roots.
 
-  Description [Counts the number of roots at the levels between lower and
+  \details [Counts the number of roots at the levels between lower and
   upper.  The computation is based on breadth-first search.
   A node is a root if it is not reachable from any previously visited node.
   (All the nodes at level lower are therefore considered roots.)
   The visited flag uses the LSB of the next pointer.  Returns the root
   count. The roots that are constant nodes are always ignored.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [ddClearGlobal]
+  \see ddClearGlobal
 
 ******************************************************************************/
 static int
@@ -745,18 +756,19 @@ ddCountRoots(
 } /* end of ddCountRoots */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Scans the DD and clears the LSB of the next pointers.]
+  \brief Scans the DD and clears the LSB of the next pointers.
 
-  Description [Scans the DD and clears the LSB of the next pointers.
+  \details [Scans the DD and clears the LSB of the next pointers.
   The LSB of the next pointers are used as markers to tell whether a
   node was reached. Once the roots are counted, these flags are
   reset.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [ddCountRoots]
+  \see ddCountRoots
 
 ******************************************************************************/
 static void
@@ -786,11 +798,12 @@ ddClearGlobal(
 } /* end of ddClearGlobal */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes a lower bound on the size of a BDD.]
+  \brief Computes a lower bound on the size of a BDD.
 
-  Description [Computes a lower bound on the size of a BDD from the
+  \details [Computes a lower bound on the size of a BDD from the
   following factors:
   <ul>
   <li> size of the lower part of it;
@@ -800,9 +813,9 @@ ddClearGlobal(
        BDD subjected to reordering.
   <ul/>]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -858,18 +871,19 @@ computeLB(
 } /* end of computeLB */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Updates entry for a subset.]
+  \brief Updates entry for a subset.
 
-  Description [Updates entry for a subset. Finds the subset, if it exists.
+  \details [Updates entry for a subset. Finds the subset, if it exists.
   If the new order for the subset has lower cost, or if the subset did not
   exist, it stores the new order and cost. Returns the number of subsets
   currently in the table.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static int
@@ -915,15 +929,16 @@ updateEntry(
 } /* end of updateEntry */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Pushes a variable in the order down to position "level."]
+  \brief Pushes a variable in the order down to position "level."
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     []
+  \see 
 
 ******************************************************************************/
 static void
@@ -945,11 +960,12 @@ pushDown(
 } /* end of pushDown */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Gathers symmetry information.]
+  \brief Gathers symmetry information.
 
-  Description [Translates the symmetry information stored in the next
+  \details [Translates the symmetry information stored in the next
   field of each subtable from level to indices. This procedure is called
   immediately after symmetric sifting, so that the next fields are correct.
   By translating this informaton in terms of indices, we make it independent
@@ -959,9 +975,9 @@ pushDown(
   considered.  The procedure returns a pointer to an array
   holding the symmetry information if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [checkSymmInfo]
+  \see checkSymmInfo
 
 ******************************************************************************/
 static DdHalfWord *
@@ -987,17 +1003,18 @@ initSymmInfo(
 } /* end of initSymmInfo */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Check symmetry condition.]
+  \brief Check symmetry condition.
 
-  Description [Returns 1 if a variable is the one with the highest index
+  \details [Returns 1 if a variable is the one with the highest index
   among those belonging to a symmetry group that are in the top part of
   the BDD.  The top part is given by level.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [initSymmInfo]
+  \see initSymmInfo
 
 ******************************************************************************/
 static int

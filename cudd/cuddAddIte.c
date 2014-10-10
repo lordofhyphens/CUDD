@@ -1,12 +1,13 @@
-/**CFile***********************************************************************
+/**!
+*********************************************************************
 
-  FileName    [cuddAddIte.c]
+  \file cuddAddIte.c
 
   PackageName [cudd]
 
-  Synopsis    [ADD ITE function and satellites.]
+  \brief ADD ITE function and satellites.
 
-  Description [External procedures included in this module:
+  \details [External procedures included in this module:
 		<ul>
 		<li> Cudd_addIte()
 		<li> Cudd_addIteConstant()
@@ -24,7 +25,7 @@
 		<li> addVarToConst()
 		</ul>]
 
-  Author      [Fabio Somenzi]
+  \author Fabio Somenzi
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -108,17 +109,18 @@ static void addVarToConst (DdNode *f, DdNode **gp, DdNode **hp, DdNode *one, DdN
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements ITE(f,g,h).]
+  \brief Implements ITE(f,g,h).
 
-  Description [Implements ITE(f,g,h). This procedure assumes that f is
+  \details [Implements ITE(f,g,h). This procedure assumes that f is
   a 0-1 ADD.  Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_bddIte Cudd_addIteConstant Cudd_addApply]
+  \see Cudd_bddIte Cudd_addIteConstant Cudd_addApply
 
 ******************************************************************************/
 DdNode *
@@ -139,20 +141,21 @@ Cudd_addIte(
 } /* end of Cudd_addIte */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements ITEconstant for ADDs.]
+  \brief Implements ITEconstant for ADDs.
 
-  Description [Implements ITEconstant for ADDs.  f must be a 0-1 ADD.
+  \details [Implements ITEconstant for ADDs.  f must be a 0-1 ADD.
   Returns a pointer to the resulting ADD (which may or may not be
   constant) or DD_NON_CONSTANT. No new nodes are created. This function
   can be used, for instance, to check that g has a constant value
   (specified by h) whenever f is 1. If the constant value is unknown,
   then one should use Cudd_addEvalConst.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addIte Cudd_addEvalConst Cudd_bddIteConstant]
+  \see Cudd_addIte Cudd_addEvalConst Cudd_bddIteConstant
 
 ******************************************************************************/
 DdNode *
@@ -237,19 +240,20 @@ Cudd_addIteConstant(
 } /* end of Cudd_addIteConstant */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Checks whether ADD g is constant whenever ADD f is 1.]
+  \brief Checks whether ADD g is constant whenever ADD f is 1.
 
-  Description [Checks whether ADD g is constant whenever ADD f is 1.  f
+  \details [Checks whether ADD g is constant whenever ADD f is 1.  f
   must be a 0-1 ADD.  Returns a pointer to the resulting ADD (which may
   or may not be constant) or DD_NON_CONSTANT. If f is identically 0,
   the check is assumed to be successful, and the background value is
   returned. No new nodes are created.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addIteConstant Cudd_addLeq]
+  \see Cudd_addIteConstant Cudd_addLeq
 
 ******************************************************************************/
 DdNode *
@@ -326,17 +330,18 @@ Cudd_addEvalConst(
 } /* end of Cudd_addEvalConst */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Computes the complement of an ADD a la C language.]
+  \brief Computes the complement of an ADD a la C language.
 
-  Description [Computes the complement of an ADD a la C language: The
+  \details [Computes the complement of an ADD a la C language: The
   complement of 0 is 1 and the complement of everything else is 0.
   Returns a pointer to the resulting ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addNegate]
+  \see Cudd_addNegate
 
 ******************************************************************************/
 DdNode *
@@ -355,17 +360,18 @@ Cudd_addCmpl(
 } /* end of Cudd_addCmpl */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Determines whether f is less than or equal to g.]
+  \brief Determines whether f is less than or equal to g.
 
-  Description [Returns 1 if f is less than or equal to g; 0 otherwise.
+  \details [Returns 1 if f is less than or equal to g; 0 otherwise.
   No new nodes are created. This procedure works for arbitrary ADDs.
   For 0-1 ADDs Cudd_addEvalConst is more efficient.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addIteConstant Cudd_addEvalConst Cudd_bddLeq]
+  \see Cudd_addIteConstant Cudd_addEvalConst Cudd_bddLeq
 
 ******************************************************************************/
 int
@@ -424,17 +430,18 @@ Cudd_addLeq(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Implements the recursive step of Cudd_addIte(f,g,h).]
+  \brief Implements the recursive step of Cudd_addIte(f,g,h).
 
-  Description [Implements the recursive step of Cudd_addIte(f,g,h).
+  \details [Implements the recursive step of Cudd_addIte(f,g,h).
   Returns a pointer to the resulting ADD if successful; NULL
   otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addIte]
+  \see Cudd_addIte
 
 ******************************************************************************/
 DdNode *
@@ -542,16 +549,17 @@ cuddAddIteRecur(
 } /* end of cuddAddIteRecur */
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
-  Synopsis    [Performs the recursive step of Cudd_addCmpl.]
+  \brief Performs the recursive step of Cudd_addCmpl.
 
-  Description [Performs the recursive step of Cudd_addCmpl. Returns a
+  \details [Performs the recursive step of Cudd_addCmpl. Returns a
   pointer to the resulting ADD if successful; NULL otherwise.]
 
-  SideEffects [None]
+  \sideeffects None
 
-  SeeAlso     [Cudd_addCmpl]
+  \see Cudd_addCmpl
 
 ******************************************************************************/
 DdNode *
@@ -607,14 +615,15 @@ cuddAddCmplRecur(
 /*---------------------------------------------------------------------------*/
 
 
-/**Function********************************************************************
+/**!
+******************************************************************
 
   Synopsis [Replaces variables with constants if possible (part of
   canonical form).]
 
-  Description []
+  \details []
 
-  SideEffects [None]
+  \sideeffects None
 
 ******************************************************************************/
 static void
