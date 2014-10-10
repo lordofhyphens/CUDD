@@ -198,7 +198,7 @@ DDWDIR	= .
 IDIR	= $(DDWDIR)/include
 INCLUDE = -I$(IDIR)
 
-BDIRS	= cudd dddmp mtr st util epd
+BDIRS	= cudd dddmp mtr st util epd obj
 DIRS	= $(BDIRS) nanotrav
 
 #------------------------------------------------------------------------
