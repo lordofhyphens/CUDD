@@ -204,6 +204,7 @@ DIRS	= $(BDIRS) nanotrav
 #------------------------------------------------------------------------
 
 .PHONY : build
+.PHONY : doc
 .PHONY : nanotrav
 .PHONY : check_leaks
 .PHONY : optimize_dec
