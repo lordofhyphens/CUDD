@@ -829,7 +829,10 @@ ADD::operator~() const
 
 } // ADD::operator~
 
-
+/*!  
+ * \brief Synonym of ADD::operator*
+ * \see Cudd_addApply Cudd_addTimes ADD::operator*
+ */
 ADD
 ADD::operator&(
   const ADD& other) const
@@ -841,7 +844,10 @@ ADD::operator&(
 
 } // ADD::operator&
 
-
+/*! 
+ * \brief Synonym of ADD::operator*=
+ * \see Cudd_addApply Cudd_addTimes ADD::operator*=
+ */
 ADD
 ADD::operator&=(
   const ADD& other)
@@ -856,7 +862,9 @@ ADD::operator&=(
 
 } // ADD::operator&=
 
-
+/*! 
+ * \see Cudd_addApply Cudd_addOr
+ */
 ADD
 ADD::operator|(
   const ADD& other) const
@@ -868,7 +876,9 @@ ADD::operator|(
 
 } // ADD::operator|
 
-
+/*! 
+ * \see Cudd_addApply Cudd_addOr
+ */
 ADD
 ADD::operator|=(
   const ADD& other)
@@ -883,7 +893,9 @@ ADD::operator|=(
 
 } // ADD::operator|=
 
-
+/*!
+ * \see Cudd_ReadZero
+ */
 bool
 ADD::IsZero() const
 {
@@ -913,7 +925,9 @@ ZDD::~ZDD() {
 
 } // ZDD::~ZDD
 
-
+/*!
+ * \brief ZDD assignment operator.
+ */
 ZDD
 ZDD::operator=(
   const ZDD& right)
@@ -957,7 +971,9 @@ ZDD::operator!=(
 
 } // ZDD::operator!=
 
-
+/*!
+ * \see Cudd_zddDiffConst
+ */
 bool
 ZDD::operator<=(
   const ZDD& other) const
@@ -968,6 +984,9 @@ ZDD::operator<=(
 } // ZDD::operator<=
 
 
+/*!
+ * \see Cudd_zddDiffConst
+ */
 bool
 ZDD::operator>=(
   const ZDD& other) const
@@ -978,6 +997,9 @@ ZDD::operator>=(
 } // ZDD::operator>=
 
 
+/*!
+ * \see Cudd_zddDiffConst
+ */
 bool
 ZDD::operator<(
   const ZDD& other) const
@@ -989,6 +1011,9 @@ ZDD::operator<(
 } // ZDD::operator<
 
 
+/*!
+ * \see Cudd_zddDiffConst
+ */
 bool
 ZDD::operator>(
   const ZDD& other) const
@@ -1000,6 +1025,9 @@ ZDD::operator>(
 } // ZDD::operator>
 
 
+/*!
+ * \see Cudd_zddPrintDebug
+ */
 void
 ZDD::print(
   int nvars,
@@ -1011,7 +1039,10 @@ ZDD::print(
 
 } // ZDD::print
 
-
+/*!
+ * \brief Computes intersection of two ZDDs.
+ * \see Cudd_zddIntersect ZDD::operator&
+ */
 ZDD
 ZDD::operator*(
   const ZDD& other) const
@@ -1024,6 +1055,10 @@ ZDD::operator*(
 } // ZDD::operator*
 
 
+/*!
+ * \brief Computes intersection of two ZDDs.
+ * \see Cudd_zddIntersect ZDD::operator&=
+ */
 ZDD
 ZDD::operator*=(
   const ZDD& other)
@@ -1038,7 +1073,10 @@ ZDD::operator*=(
 
 } // ZDD::operator*=
 
-
+/*!
+ * \brief Computes intersection of two ZDDs.
+ * \see Cudd_zddIntersect ZDD::operator*
+ */
 ZDD
 ZDD::operator&(
   const ZDD& other) const
@@ -1050,7 +1088,10 @@ ZDD::operator&(
 
 } // ZDD::operator&
 
-
+/*!
+ * \brief Computes intersection of two ZDDs.
+ * \see Cudd_zddIntersect ZDD::operator*=
+ */
 ZDD
 ZDD::operator&=(
   const ZDD& other)
@@ -1065,7 +1106,10 @@ ZDD::operator&=(
 
 } // ZDD::operator&=
 
-
+/*!
+ * \brief Computes union of two ZDDs.
+ * \see Cudd_zddUnion ZDD::operator|
+ */
 ZDD
 ZDD::operator+(
   const ZDD& other) const
@@ -1077,7 +1121,10 @@ ZDD::operator+(
 
 } // ZDD::operator+
 
-
+/*!
+ * \brief Computes union of two ZDDs.
+ * \see Cudd_zddUnion ZDD::operator|=
+ */
 ZDD
 ZDD::operator+=(
   const ZDD& other)
@@ -1092,7 +1139,10 @@ ZDD::operator+=(
 
 } // ZDD::operator+=
 
-
+/*!
+ * \brief Computes union of two ZDDs.
+ * \see Cudd_zddUnion ZDD::operator+
+ */
 ZDD
 ZDD::operator|(
   const ZDD& other) const
@@ -1104,7 +1154,10 @@ ZDD::operator|(
 
 } // ZDD::operator|
 
-
+/*!
+ * \brief Computes union of two ZDDs.
+ * \see Cudd_zddUnion ZDD::operator+=
+ */
 ZDD
 ZDD::operator|=(
   const ZDD& other)
@@ -1119,7 +1172,10 @@ ZDD::operator|=(
 
 } // ZDD::operator|=
 
-
+/*!
+ * \brief Computes set difference of two ZDDs.
+ * \see Cudd_zddDiff
+ */
 ZDD
 ZDD::operator-(
   const ZDD& other) const
@@ -1131,7 +1187,10 @@ ZDD::operator-(
 
 } // ZDD::operator-
 
-
+/*!
+ * \brief Computes set difference of two ZDDs.
+ * \see Cudd_zddDiff
+ */
 ZDD
 ZDD::operator-=(
   const ZDD& other)
@@ -1256,7 +1315,10 @@ Cudd::getTimeoutHandler() const
 
 } // Cudd::getTimeourHandler
 
-
+/*!
+ * \brief Check the manager error codes.
+ * \see Cudd_ReadErrorCode
+ */
 inline void
 Cudd::checkReturnValue(
   const DdNode *result) const
@@ -1286,7 +1348,10 @@ Cudd::checkReturnValue(
 
 } // Cudd::checkReturnValue
 
-
+/*!
+ * \brief Check the manager error codes.
+ * \see Cudd_ReadErrorCode
+ */
 inline void
 Cudd::checkReturnValue(
   const int result) const
@@ -1316,7 +1381,9 @@ Cudd::checkReturnValue(
 
 } // Cudd::checkReturnValue
 
-
+/*!
+ * \see Cudd_PrintInfo
+ */
 void
 Cudd::info() const
 {
@@ -1326,7 +1393,10 @@ Cudd::info() const
 
 } // Cudd::info
 
-
+/*!
+ * \brief Creates a new BDD variable, using the next index available.
+ * \see Cudd_bddNewVar
+ */
 BDD
 Cudd::bddVar() const
 {
@@ -1336,7 +1406,10 @@ Cudd::bddVar() const
 
 } // Cudd::bddVar
 
-
+/*!
+ * \brief Creates a new BDD variable, using the chosen index.
+ * \see Cudd_bddIthVar
+ */
 BDD
 Cudd::bddVar(
   int index) const
@@ -1347,7 +1420,9 @@ Cudd::bddVar(
 
 } // Cudd::bddVar
 
-
+/*!
+ * \see Cudd_ReadOne
+ */
 BDD
 Cudd::bddOne() const
 {
@@ -1358,6 +1433,9 @@ Cudd::bddOne() const
 } // Cudd::bddOne
 
 
+/*!
+ * \see Cudd_ReadLogicZero
+ */
 BDD
 Cudd::bddZero() const
 {
@@ -1368,6 +1446,9 @@ Cudd::bddZero() const
 } // Cudd::bddZero
 
 
+/*!
+ * \see Cudd_addNewVar
+ */
 ADD
 Cudd::addVar() const
 {
@@ -1378,6 +1459,9 @@ Cudd::addVar() const
 } // Cudd::addVar
 
 
+/*!
+ * \see Cudd_addIthVar
+ */
 ADD
 Cudd::addVar(
   int index) const
@@ -1409,6 +1493,9 @@ Cudd::addZero() const
 } // Cudd::addZero
 
 
+/*!
+ * \see Cudd_addConst
+ */
 ADD
 Cudd::constant(
   CUDD_VALUE_TYPE c) const
@@ -1420,6 +1507,9 @@ Cudd::constant(
 } // Cudd::constant
 
 
+/*!
+ * \see Cudd_ReadPlusInfinity
+ */
 ADD
 Cudd::plusInfinity() const
 {
@@ -1430,6 +1520,9 @@ Cudd::plusInfinity() const
 } // Cudd::plusInfinity
 
 
+/*!
+ * \see Cudd_ReadMinusInfinity
+ */
 ADD
 Cudd::minusInfinity() const
 {
@@ -1440,6 +1533,9 @@ Cudd::minusInfinity() const
 } // Cudd::minusInfinity
 
 
+/*!
+ * \see Cudd_zddIthVar
+ */
 ZDD
 Cudd::zddVar(
   int index) const
@@ -1451,6 +1547,9 @@ Cudd::zddVar(
 } // Cudd::zddVar
 
 
+/*!
+ * \see Cudd_ReadZddOne
+ */
 ZDD
 Cudd::zddOne(
   int i) const
@@ -1462,6 +1561,9 @@ Cudd::zddOne(
 } // Cudd::zddOne
 
 
+/*!
+ * \see Cudd_ReadZero
+ */
 ZDD
 Cudd::zddZero() const
 {
@@ -1487,7 +1589,9 @@ defaultError(
 // ---------------------------------------------------------------------------
 
 
-
+/*!
+ * \see Cudd_addNewVarAtLevel
+ */
 ADD
 Cudd::addNewVarAtLevel(
   int level) const
@@ -1499,6 +1603,9 @@ Cudd::addNewVarAtLevel(
 } // Cudd::addNewVarAtLevel
 
 
+/*!
+ * \see Cudd_bddNewVarAtLevel
+ */
 BDD
 Cudd::bddNewVarAtLevel(
   int level) const
@@ -1510,6 +1617,9 @@ Cudd::bddNewVarAtLevel(
 } // Cudd::bddNewVarAtLevel
 
 
+/*!
+ * \see Cudd_zddVarsFromBddVars
+ */
 void
 Cudd::zddVarsFromBddVars(
   int multiplicity) const
@@ -1520,6 +1630,9 @@ Cudd::zddVarsFromBddVars(
 } // Cudd::zddVarsFromBddVars
 
 
+/*!
+ * \see Cudd_ReadStartTime
+ */
 unsigned long
 Cudd::ReadStartTime() const
 {
@@ -1528,6 +1641,9 @@ Cudd::ReadStartTime() const
 } // Cudd::ReadStartTime
 
 
+/*!
+ * \see Cudd_ReadElapsedTime
+ */
 unsigned long
 Cudd::ReadElapsedTime() const
 {
@@ -1536,6 +1652,9 @@ Cudd::ReadElapsedTime() const
 } // Cudd::ReadElapsedTime
 
 
+/*!
+ * \see Cudd_SetStartTime
+ */
 void 
 Cudd::SetStartTime(
   unsigned long st) const
@@ -1545,6 +1664,9 @@ Cudd::SetStartTime(
 } // Cudd::SetStartTime
 
 
+/*!
+ * \see Cudd_ResetStartTime
+ */
 void 
 Cudd::ResetStartTime() const
 {
@@ -1553,6 +1675,9 @@ Cudd::ResetStartTime() const
 } // Cudd::ResetStartTime
 
 
+/*!
+ * \see Cudd_ReadTimeLimit
+ */
 unsigned long
 Cudd::ReadTimeLimit() const
 {
@@ -1561,6 +1686,9 @@ Cudd::ReadTimeLimit() const
 } // Cudd::ReadTimeLimit
 
 
+/*!
+ * \see Cudd_SetTimeLimit
+ */
 void 
 Cudd::SetTimeLimit(
   unsigned long tl) const
@@ -1570,6 +1698,9 @@ Cudd::SetTimeLimit(
 } // Cudd::SetTimeLimit
 
 
+/*!
+ * \see Cudd_UpdateTimeLimit
+ */
 void
 Cudd::UpdateTimeLimit() const
 {
@@ -1578,6 +1709,9 @@ Cudd::UpdateTimeLimit() const
 } // Cudd::UpdateTimeLimit
 
 
+/*!
+ * \see Cudd_IncreaseTimeLimit
+ */
 void
 Cudd::IncreaseTimeLimit(
   unsigned long increase) const
@@ -1587,6 +1721,9 @@ Cudd::IncreaseTimeLimit(
 } // Cudd::IncreaseTimeLimit
 
 
+/*!
+ * \see Cudd_UnsetTimeLimit
+ */
 void 
 Cudd::UnsetTimeLimit() const
 {
@@ -1595,6 +1732,9 @@ Cudd::UnsetTimeLimit() const
 } // Cudd::UnsetTimeLimit
 
 
+/*!
+ * \see Cudd_TimeLimited
+ */
 bool
 Cudd::TimeLimited() const
 {
@@ -1603,6 +1743,9 @@ Cudd::TimeLimited() const
 } // Cudd::TimeLimited
 
 
+/*!
+ * \see Cudd_AutodynEnable
+ */
 void
 Cudd::AutodynEnable(
   Cudd_ReorderingType method) const
@@ -1612,6 +1755,9 @@ Cudd::AutodynEnable(
 } // Cudd::AutodynEnable
 
 
+/*!
+ * \see Cudd_AutodynDisable
+ */
 void
 Cudd::AutodynDisable() const
 {
@@ -1620,6 +1766,9 @@ Cudd::AutodynDisable() const
 } // Cudd::AutodynDisable
 
 
+/*!
+ * \see Cudd_ReorderingStatus
+ */
 bool
 Cudd::ReorderingStatus(
   Cudd_ReorderingType * method) const
@@ -1629,6 +1778,9 @@ Cudd::ReorderingStatus(
 } // Cudd::ReorderingStatus
 
 
+/*!
+ * \see Cudd_AutoDynEnableZdd
+ */
 void
 Cudd::AutodynEnableZdd(
   Cudd_ReorderingType method) const
@@ -1638,6 +1790,9 @@ Cudd::AutodynEnableZdd(
 } // Cudd::AutodynEnableZdd
 
 
+/*!
+ * \see Cudd_AutodynDisableZdd
+ */
 void
 Cudd::AutodynDisableZdd() const
 {
@@ -1646,6 +1801,9 @@ Cudd::AutodynDisableZdd() const
 } // Cudd::AutodynDisableZdd
 
 
+/*!
+ * \see Cudd_ReorderingStatusZdd
+ */
 bool
 Cudd::ReorderingStatusZdd(
   Cudd_ReorderingType * method) const
@@ -1655,6 +1813,9 @@ Cudd::ReorderingStatusZdd(
 } // Cudd::ReorderingStatusZdd
 
 
+/*!
+ * \see Cudd_zddRealignmentEnabled
+ */
 bool
 Cudd::zddRealignmentEnabled() const
 {
@@ -1663,6 +1824,9 @@ Cudd::zddRealignmentEnabled() const
 } // Cudd::zddRealignmentEnabled
 
 
+/*!
+ * \see Cudd_zddRealignEnable
+ */
 void
 Cudd::zddRealignEnable() const
 {
@@ -1671,6 +1835,9 @@ Cudd::zddRealignEnable() const
 } // Cudd::zddRealignEnable
 
 
+/*!
+ * \see Cudd_zddRealignDisable
+ */
 void
 Cudd::zddRealignDisable() const
 {
@@ -1679,6 +1846,9 @@ Cudd::zddRealignDisable() const
 } // Cudd::zddRealignDisable
 
 
+/*!
+ * \see Cudd_bddRealignmentEnabled
+ */
 bool
 Cudd::bddRealignmentEnabled() const
 {
@@ -1687,6 +1857,9 @@ Cudd::bddRealignmentEnabled() const
 } // Cudd::bddRealignmentEnabled
 
 
+/*!
+ * \see Cudd_bddRealignEnable
+ */
 void
 Cudd::bddRealignEnable() const
 {
@@ -1695,6 +1868,9 @@ Cudd::bddRealignEnable() const
 } // Cudd::bddRealignEnable
 
 
+/*!
+ * \see Cudd_bddRealignDisable
+ */
 void
 Cudd::bddRealignDisable() const
 {
@@ -1703,6 +1879,9 @@ Cudd::bddRealignDisable() const
 } // Cudd::bddRealignDisable
 
 
+/*!
+ * \see Cudd_ReadBackground
+ */
 ADD
 Cudd::background() const
 {
@@ -1713,6 +1892,9 @@ Cudd::background() const
 } // Cudd::background
 
 
+/*!
+ * \see Cudd_SetBackground
+ */
 void
 Cudd::SetBackground(
   ADD bg) const
