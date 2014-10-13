@@ -319,3 +319,6 @@ distclean:
 	     make -s EXE="$(EXE)" distclean	) \
 	done
 	sh ./shutdown.sh
+
+doc:
+		doxygen cudd-doc.conf

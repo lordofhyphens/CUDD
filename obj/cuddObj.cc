@@ -346,7 +346,10 @@ BDD::operator=(
 
 } // BDD::operator=
 
-
+/*! 
+ * \brief Compares two BDDs in the same manager using Cudd_bddLeq.
+ * \see Cudd_bddLeq
+ */
 bool
 BDD::operator<=(
   const BDD& other) const
@@ -357,6 +360,10 @@ BDD::operator<=(
 } // BDD::operator<=
 
 
+/*! 
+ * \brief Compares two BDDs in the same manager using Cudd_bddLeq.
+ * \see Cudd_bddLeq
+ */
 bool
 BDD::operator>=(
   const BDD& other) const
@@ -366,6 +373,10 @@ BDD::operator>=(
 
 } // BDD::operator>=
 
+/*!  
+ * \brief Compares two BDDs in the same manager using Cudd_bddLeq.
+ * \see Cudd_bddLeq
+ */
 
 bool
 BDD::operator<(
@@ -376,7 +387,10 @@ BDD::operator<(
 
 } // BDD::operator<
 
-
+/*!  
+ * \brief Compares two BDDs in the same manager using Cudd_bddLeq.
+ * \see Cudd_bddLeq
+ */
 bool
 BDD::operator>(
   const BDD& other) const
@@ -386,7 +400,10 @@ BDD::operator>(
 
 } // BDD::operator>
 
-
+/*!  
+ * \brief Returns the negation of this BDD.
+ * \see Cudd_Not
+ */
 BDD
 BDD::operator!() const
 {
@@ -395,6 +412,10 @@ BDD::operator!() const
 } // BDD::operator!
 
 
+/*!  
+ * \brief Returns the negation of this BDD.
+ * \see Cudd_Not
+ */
 BDD
 BDD::operator~() const
 {
@@ -403,6 +424,10 @@ BDD::operator~() const
 } // BDD::operator~
 
 
+/*!  
+ * \brief Returns this BDD AND another.
+ * \see Cudd_bddAnd
+ */
 BDD
 BDD::operator*(
   const BDD& other) const
@@ -415,6 +440,9 @@ BDD::operator*(
 } // BDD::operator*
 
 
+/*!  
+ * \see Cudd_bddAnd
+ */
 BDD
 BDD::operator*=(
   const BDD& other)
@@ -429,7 +457,9 @@ BDD::operator*=(
 
 } // BDD::operator*=
 
-
+/*!  
+ * \see Cudd_bddAnd
+ */
 BDD
 BDD::operator&(
   const BDD& other) const
@@ -441,7 +471,9 @@ BDD::operator&(
 
 } // BDD::operator&
 
-
+/*!  
+ * \see Cudd_bddAnd
+ */
 BDD
 BDD::operator&=(
   const BDD& other)
@@ -456,7 +488,9 @@ BDD::operator&=(
 
 } // BDD::operator&=
 
-
+/*!  
+ * \see Cudd_bddOr
+ */
 BDD
 BDD::operator+(
   const BDD& other) const
@@ -468,7 +502,9 @@ BDD::operator+(
 
 } // BDD::operator+
 
-
+/*!  
+ * \see Cudd_bddOr
+ */
 BDD
 BDD::operator+=(
   const BDD& other)
@@ -483,7 +519,9 @@ BDD::operator+=(
 
 } // BDD::operator+=
 
-
+/*!  
+ * \see Cudd_bddOr
+ */
 BDD
 BDD::operator|(
   const BDD& other) const
@@ -495,7 +533,9 @@ BDD::operator|(
 
 } // BDD::operator|
 
-
+/*!  
+ * \see Cudd_bddOr
+ */
 BDD
 BDD::operator|=(
   const BDD& other)
@@ -510,7 +550,9 @@ BDD::operator|=(
 
 } // BDD::operator|=
 
-
+/*!  
+ * \see Cudd_bddXor
+ */
 BDD
 BDD::operator^(
   const BDD& other) const
@@ -523,6 +565,9 @@ BDD::operator^(
 } // BDD::operator^
 
 
+/*!  
+ * \see Cudd_bddXor
+ */
 BDD
 BDD::operator^=(
   const BDD& other)
@@ -538,6 +583,10 @@ BDD::operator^=(
 } // BDD::operator^=
 
 
+/*!  
+ * \brief Computes this AND Not(other)
+ * \see Cudd_bddAnd, Cudd_Not
+ */
 BDD
 BDD::operator-(
   const BDD& other) const
@@ -549,7 +598,10 @@ BDD::operator-(
 
 } // BDD::operator-
 
-
+/*!  
+ * \brief Computes this AND Not(other)
+ * \see Cudd_bddAnd, Cudd_Not
+ */
 BDD
 BDD::operator-=(
   const BDD& other)
@@ -564,7 +616,9 @@ BDD::operator-=(
 
 } // BDD::operator-=
 
-
+/*!
+ * \see Cudd_ReadLogicZero
+ */
 bool
 BDD::IsZero() const
 {
@@ -599,7 +653,10 @@ ADD::operator=(
 
 } // ADD::operator=
 
-
+/*!  
+ * \brief Compares two ADDs in the same manager using Cudd_addLeq.
+ * \see Cudd_addLeq
+ */
 bool
 ADD::operator<=(
   const ADD& other) const
@@ -609,7 +666,10 @@ ADD::operator<=(
 
 } // ADD::operator<=
 
-
+/*!  
+ * \brief Compares two ADDs in the same manager using Cudd_addLeq.
+ * \see Cudd_addLeq
+ */
 bool
 ADD::operator>=(
   const ADD& other) const
@@ -619,7 +679,10 @@ ADD::operator>=(
 
 } // ADD::operator>=
 
-
+/*!  
+ * \brief Compares two ADDs in the same manager using Cudd_addLeq.
+ * \see Cudd_addLeq
+ */
 bool
 ADD::operator<(
   const ADD& other) const
@@ -630,6 +693,11 @@ ADD::operator<(
 } // ADD::operator<
 
 
+
+/*!  
+ * \brief Compares two ADDs in the same manager using Cudd_addLeq.
+ * \see Cudd_addLeq
+ */
 bool
 ADD::operator>(
   const ADD& other) const
@@ -640,6 +708,9 @@ ADD::operator>(
 } // ADD::operator>
 
 
+/*!  
+ * \see Cudd_addNegate
+ */
 ADD
 ADD::operator-() const
 {
@@ -648,6 +719,10 @@ ADD::operator-() const
 } // ADD::operator-
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addTimes ADD::operator&
+
+ */
 ADD
 ADD::operator*(
   const ADD& other) const
@@ -660,6 +735,9 @@ ADD::operator*(
 } // ADD::operator*
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addTimes ADD::operator&=
+ */
 ADD
 ADD::operator*=(
   const ADD& other)
@@ -675,6 +753,9 @@ ADD::operator*=(
 } // ADD::operator*=
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addPlus
+ */
 ADD
 ADD::operator+(
   const ADD& other) const
@@ -687,6 +768,9 @@ ADD::operator+(
 } // ADD::operator+
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addPlus
+ */
 ADD
 ADD::operator+=(
   const ADD& other)
@@ -702,6 +786,9 @@ ADD::operator+=(
 } // ADD::operator+=
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addMinus
+ */
 ADD
 ADD::operator-(
   const ADD& other) const
@@ -714,6 +801,9 @@ ADD::operator-(
 } // ADD::operator-
 
 
+/*!  
+ * \see Cudd_addApply Cudd_addMinus ADD::operator-
+ */
 ADD
 ADD::operator-=(
   const ADD& other)
@@ -729,6 +819,9 @@ ADD::operator-=(
 } // ADD::operator-=
 
 
+/*!  
+ * \see Cudd_addCmpl
+ */
 ADD
 ADD::operator~() const
 {

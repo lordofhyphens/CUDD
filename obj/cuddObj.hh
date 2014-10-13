@@ -1,18 +1,18 @@
-/**CHeaderFile***************************************************************
+/*!***************************************************************
 
-  FileName    [cuddObj.hh]
+  \file    [cuddObj.hh]
 
   PackageName [cudd]
 
-  Synopsis    [Class definitions for C++ object-oriented encapsulation of
+  \brief    [Class definitions for C++ object-oriented encapsulation of
   CUDD.]
 
-  Description [Class definitions for C++ object-oriented encapsulation of
+  \details [Class definitions for C++ object-oriented encapsulation of
   CUDD.]
 
   SeeAlso     []
 
-  Author      [Fabio Somenzi]
+  \author      [Fabio Somenzi]
 
   Copyright   [Copyright (c) 1995-2012, Regents of the University of Colorado
 
@@ -86,11 +86,11 @@ typedef void (*PFC)(std::string);	// handler function type
 /* Class definitions                                                         */
 /*---------------------------------------------------------------------------*/
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for reference counting of CUDD managers.]
+  \brief     [Class for reference counting of CUDD managers.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd DD ABDD ADD BDD ZDD]
 
@@ -111,11 +111,11 @@ private:
 };
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Base class for all decision diagrams in CUDD.]
+  \brief     [Base class for all decision diagrams in CUDD.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd ABDD ADD BDD ZDD]
 
@@ -148,11 +148,11 @@ public:
 }; // DD
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for ADDs and BDDs.]
+  \brief     [Class for ADDs and BDDs.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd ADD BDD]
 
@@ -197,11 +197,11 @@ public:
 }; // ABDD
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for BDDs.]
+  \brief     [Class for BDDs.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd]
 
@@ -333,11 +333,11 @@ public:
 }; // BDD
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for ADDs.]
+  \brief     [Class for ADDs.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd]
 
@@ -423,11 +423,11 @@ public:
 }; // ADD
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for ZDDs.]
+  \brief     [Class for ZDDs.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [Cudd]
 
@@ -482,11 +482,11 @@ public:
 }; // ZDD
 
 
-/**Class***********************************************************************
+/*!***********************************************************************
 
-  Synopsis     [Class for CUDD managers.]
+  \brief     [Class for CUDD managers.]
 
-  Description  []
+  \details  []
 
   SeeAlso      [DD]
 

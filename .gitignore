@@ -3,3 +3,6 @@ include/*
 *.o
 nanotrav/nanotrav
 *.swp
+cudd/html
+cudd/latex
+cudd/tag

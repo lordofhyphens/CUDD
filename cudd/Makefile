@@ -3,6 +3,7 @@
 #    Cudd - DD package
 #---------------------------
 .SUFFIXES: .o .c .u
+.PHONY: doc
 
 CC	:= gcc
 RANLIB	:= ranlib
@@ -111,7 +112,7 @@ lintpgm: lint
 tags: $(PSRC) $(PHDR)
 	ctags $(PSRC) $(PHDR)
 
-all: lib$(P).a lib$(P).b llib-l$(P).ln tags
+all: lib$(P).a lib$(P).b llib-l$(P).ln tags doc
 
 programs: $(TARGET) $(TARGETu) lintpgm
 
@@ -122,3 +123,5 @@ clean:
 distclean: clean
 	rm -f $(TARGET) $(TARGETu) lib*.a lib$(P).b llib-l$(P).ln \
 	*.bak *~ tags .gdb_history *.qv *.qx
+doc:
+	doxygen doxygen.conf
