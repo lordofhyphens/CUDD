@@ -16,3 +16,18 @@ if test -d include
     $CREATE ../util/util.h .
     $CREATE ../mnemosyne/mnemosyne.h .
 fi
+if test -d lib
+  then
+    :
+  else
+    mkdir lib
+    cd lib
+    $CREATE ../cudd/libcudd.a .
+    $CREATE ../epd/libepd.a .
+    $CREATE ../dddmp/libdddmp.a .
+    $CREATE ../mtr/libmtr.a .
+    $CREATE ../obj/libobj.a .
+    $CREATE ../st/libst.a .
+    $CREATE ../util/libutil.a .
+    $CREATE ../mnemosyne/libmnem.a .
+fi
