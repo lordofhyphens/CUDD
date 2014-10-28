@@ -3589,7 +3589,10 @@ ADD::SwapVariables(
 
 } // ADD::SwapVariables
 
-
+/*!
+ * \brief Renames variables.
+ * \see Cudd_bddPermute
+ */
 BDD
 BDD::Permute(
   int * permut) const
