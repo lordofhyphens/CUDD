@@ -118,6 +118,8 @@ inline DdManager *
 DD::checkSameManager(
   const DD &other) const
 {
+  if (p == NULL)
+    return NULL; // avoid dereferencing a pointer if this was called by a default constructor
     DdManager *mgr = p->manager;
     if (mgr != other.p->manager) {
 	p->errorHandler("Operands come from different manager.");
