@@ -77,7 +77,7 @@ DD::DD() : p(0), node(0) {}
 
 
 DD::DD(Capsule *cap, DdNode *ddNode) : p(cap), node(ddNode) {
-    if (node != 0) Cudd_Ref(node);
+    if (node != nullptr) Cudd_Ref(node);
     if (p->verbose) {
 	cout << "Standard DD constructor for node " << hex << long(node) <<
 	    " ref = " << Cudd_Regular(node)->ref << "\n";
@@ -88,7 +88,7 @@ DD::DD(Capsule *cap, DdNode *ddNode) : p(cap), node(ddNode) {
 
 DD::DD(Cudd const & manager, DdNode *ddNode) : p(manager.p), node(ddNode) {
     checkReturnValue(ddNode);
-    if (node != 0) Cudd_Ref(node);
+    if (node != nullptr) Cudd_Ref(node);
     if (p->verbose) {
 	cout << "Standard DD constructor for node " << hex << long(node) <<
 	    " ref = " << Cudd_Regular(node)->ref << "\n";
@@ -98,18 +98,29 @@ DD::DD(Cudd const & manager, DdNode *ddNode) : p(manager.p), node(ddNode) {
 
 
 DD::DD(const DD &from) {
-    p = from.p;
-    node = from.node;
-    if (node != 0) {
-	Cudd_Ref(node);
-	if (p->verbose) {
-	    cout << "Copy DD constructor for node " << hex << long(node) <<
-		" ref = " << Cudd_Regular(node)->ref << "\n";
-	}
+  p = from.p;
+  node = from.node;
+  if (node != nullptr) {
+    Cudd_Ref(node);
+    if (p->verbose) {
+      cout << "Copy DD constructor for node " << hex << long(node) <<
+        " ref = " << Cudd_Regular(node)->ref << "\n";
     }
+  }
 
 } // DD::DD
 
+// DD move constructor
+DD::DD(const DD &&from) {
+  p = from.p;
+  node = from.node;
+  if (node != nullptr) {
+    if (p->verbose) {
+      cout << "Move DD constructor for node " << hex << long(node) <<
+        " ref = " << Cudd_Regular(node)->ref << "\n";
+    }
+  }
+} // DD::DD
 
 DD::~DD() {}
 
@@ -261,16 +272,16 @@ ABDD::ABDD() : DD() {}
 ABDD::ABDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ABDD::ABDD(Cudd const & manager, DdNode *bddNode) : DD(manager,bddNode) {}
 ABDD::ABDD(const ABDD &from) : DD(from) {}
-
+ABDD::ABDD(const ABDD &&from) : DD(from) {}
 
 ABDD::~ABDD() {
-    if (node != 0) {
-	Cudd_RecursiveDeref(p->manager,node);
-	if (p->verbose) {
-	    cout << "ADD/BDD destructor called for node " << hex <<
-		long(node) << " ref = " << Cudd_Regular(node)->ref << "\n";
-	}
+  if (node != nullptr) {
+    Cudd_RecursiveDeref(p->manager,node);
+    if (p->verbose) {
+      cout << "ADD/BDD destructor called for node " << hex <<
+        long(node) << " ref = " << Cudd_Regular(node)->ref << "\n";
     }
+  }
 
 } // ABDD::~ABDD
 
@@ -323,28 +334,29 @@ BDD::BDD() : ABDD() {}
 BDD::BDD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 BDD::BDD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 BDD::BDD(const BDD &from) : ABDD(from) {}
+BDD::BDD(const BDD &&from) : ABDD(from) {}
 
 
 BDD
 BDD::operator=(
   const BDD& right)
 {
-    if (this == &right) return *this;
-    if (right.node != 0) Cudd_Ref(right.node);
-    if (node != 0) {
-	Cudd_RecursiveDeref(p->manager,node);
-	if (p->verbose) {
-	    cout << "BDD dereferencing for node " << hex << long(node) <<
-		" ref = " << Cudd_Regular(node)->ref << "\n";
-	}
+  if (this == &right) return *this;
+  if (right.node != nullptr) Cudd_Ref(right.node);
+  if (node != nullptr) {
+    Cudd_RecursiveDeref(p->manager,node);
+    if (p->verbose) {
+      cout << "BDD dereferencing for node " << hex << long(node) <<
+        " ref = " << Cudd_Regular(node)->ref << "\n";
     }
-    node = right.node;
-    p = right.p;
-    if (node != 0 && p->verbose) {
-	cout << "BDD assignment for node " << hex << long(node) <<
-	    " ref = " << Cudd_Regular(node)->ref << "\n";
-    }
-    return *this;
+  }
+  node = right.node;
+  p = right.p;
+  if (node != nullptr && p->verbose) {
+    cout << "BDD assignment for node " << hex << long(node) <<
+      " ref = " << Cudd_Regular(node)->ref << "\n";
+  }
+  return *this;
 
 } // BDD::operator=
 
@@ -373,8 +385,7 @@ bool
 BDD::operator<(
   const BDD& other) const
 {
-    DdManager *mgr = checkSameManager(other);
-    return node != other.node && Cudd_bddLeq(mgr,node,other.node);
+    return node != other.node && (*this) <= other;
 
 } // BDD::operator<
 
@@ -383,8 +394,7 @@ bool
 BDD::operator>(
   const BDD& other) const
 {
-    DdManager *mgr = checkSameManager(other);
-    return node != other.node && Cudd_bddLeq(mgr,other.node,node);
+    return node != other.node && (*this) >= other;
 
 } // BDD::operator>
 
@@ -584,6 +594,7 @@ ADD::ADD() : ABDD() {}
 ADD::ADD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 ADD::ADD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 ADD::ADD(const ADD &from) : ABDD(from) {}
+ADD::ADD(const ADD &&from) : ABDD(from) {}
 
 
 ADD
@@ -591,8 +602,8 @@ ADD::operator=(
   const ADD& right)
 {
     if (this == &right) return *this;
-    if (right.node != 0) Cudd_Ref(right.node);
-    if (node != 0) {
+    if (right.node != nullptr) Cudd_Ref(right.node);
+    if (node != nullptr) {
 	Cudd_RecursiveDeref(p->manager,node);
     }
     node = right.node;
@@ -809,10 +820,11 @@ ADD::IsZero() const
 ZDD::ZDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ZDD::ZDD() : DD() {}
 ZDD::ZDD(const ZDD &from) : DD(from) {}
+ZDD::ZDD(const ZDD &&from) : DD(from) {}
 
 
 ZDD::~ZDD() {
-    if (node != 0) {
+    if (node != nullptr) {
 	Cudd_RecursiveDerefZdd(p->manager,node);
 	if (p->verbose) {
 	    cout << "ZDD destructor called for node " << hex << long(node) <<
@@ -828,8 +840,8 @@ ZDD::operator=(
   const ZDD& right)
 {
     if (this == &right) return *this;
-    if (right.node != 0) Cudd_Ref(right.node);
-    if (node != 0) {
+    if (right.node != nullptr) Cudd_Ref(right.node);
+    if (node != nullptr) {
 	Cudd_RecursiveDerefZdd(p->manager,node);
 	if (p->verbose) {
 	    cout << "ZDD dereferencing for node " << hex << long(node) <<
@@ -838,7 +850,7 @@ ZDD::operator=(
     }
     node = right.node;
     p = right.p;
-    if (node != 0 && p->verbose) {
+    if (node != nullptr && p->verbose) {
 	cout << "ZDD assignment for node " << hex << long(node) <<
 	    " ref = " << node->ref << "\n";
     }
