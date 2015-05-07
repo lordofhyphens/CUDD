@@ -137,7 +137,7 @@ public:
     DD(Capsule *cap, DdNode *ddNode);
     DD(Cudd const & manager, DdNode *ddNode);
     DD(const DD &from);
-    DD(const DD &&from); // Move constructor
+    DD(DD &&from); // Move constructor
     virtual ~DD();
     operator bool() const { return node; }
     DdManager *manager() const;
@@ -167,7 +167,7 @@ public:
     ABDD(Capsule *cap, DdNode *bddNode);
     ABDD(Cudd const & manager, DdNode *ddNode);
     ABDD(const ABDD &from);
-    ABDD(const ABDD &&from); // Move constructor
+    ABDD(ABDD &&from); // Move constructor
     virtual ~ABDD();
     bool operator==(const ABDD &other) const;
     bool operator!=(const ABDD &other) const;
@@ -215,7 +215,7 @@ public:
     BDD(Capsule *cap, DdNode *bddNode);
     BDD(Cudd const & manager, DdNode *ddNode);
     BDD(const BDD &from);
-    BDD(const BDD &&from); // Move constructor
+    BDD(BDD &&from); // Move constructor
     BDD operator=(const BDD& right);
     bool operator<=(const BDD& other) const;
     bool operator>=(const BDD& other) const;
@@ -352,7 +352,7 @@ public:
     ADD(Capsule *cap, DdNode *bddNode);
     ADD(Cudd const & manager, DdNode *ddNode);
     ADD(const ADD &from);
-    ADD(const ADD &&from); // Move constructor
+    ADD(ADD &&from); // Move constructor
     ADD operator=(const ADD& right);
     // Relational operators
     bool operator<=(const ADD& other) const;
@@ -442,7 +442,7 @@ public:
     ZDD(Capsule *cap, DdNode *bddNode);
     ZDD();
     ZDD(const ZDD &from);
-    ZDD(const ZDD &&from); // Move Constructor
+    ZDD(ZDD &&from); // Move Constructor
     ~ZDD();
     ZDD operator=(const ZDD& right);
     bool operator==(const ZDD& other) const;

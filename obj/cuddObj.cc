@@ -111,9 +111,11 @@ DD::DD(const DD &from) {
 } // DD::DD
 
 // DD move constructor
-DD::DD(const DD &&from) {
+DD::DD(DD &&from) {
   p = from.p;
   node = from.node;
+  from.p = nullptr;
+  from.node = nullptr;
   if (node != nullptr) {
     if (p->verbose) {
       cout << "Move DD constructor for node " << hex << long(node) <<
@@ -272,7 +274,7 @@ ABDD::ABDD() : DD() {}
 ABDD::ABDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ABDD::ABDD(Cudd const & manager, DdNode *bddNode) : DD(manager,bddNode) {}
 ABDD::ABDD(const ABDD &from) : DD(from) {}
-ABDD::ABDD(const ABDD &&from) : DD(from) {}
+ABDD::ABDD(ABDD &&from) : DD(from) {}
 
 ABDD::~ABDD() {
   if (node != nullptr) {
@@ -334,7 +336,7 @@ BDD::BDD() : ABDD() {}
 BDD::BDD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 BDD::BDD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 BDD::BDD(const BDD &from) : ABDD(from) {}
-BDD::BDD(const BDD &&from) : ABDD(from) {}
+BDD::BDD(BDD &&from) : ABDD(from) {}
 
 
 BDD
@@ -594,7 +596,7 @@ ADD::ADD() : ABDD() {}
 ADD::ADD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 ADD::ADD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 ADD::ADD(const ADD &from) : ABDD(from) {}
-ADD::ADD(const ADD &&from) : ABDD(from) {}
+ADD::ADD(ADD &&from) : ABDD(from) {}
 
 
 ADD
@@ -820,7 +822,7 @@ ADD::IsZero() const
 ZDD::ZDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ZDD::ZDD() : DD() {}
 ZDD::ZDD(const ZDD &from) : DD(from) {}
-ZDD::ZDD(const ZDD &&from) : DD(from) {}
+ZDD::ZDD(ZDD &&from) : DD(from) {}
 
 
 ZDD::~ZDD() {
