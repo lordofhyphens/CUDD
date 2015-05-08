@@ -512,6 +512,7 @@ public:
       unsigned int cacheSize = CUDD_CACHE_SLOTS,
       unsigned long maxMemory = 0);
     Cudd(const Cudd& x);
+    Cudd(Cudd&& x);
     ~Cudd();
     PFC setHandler(PFC newHandler) const;
     PFC getHandler() const;
