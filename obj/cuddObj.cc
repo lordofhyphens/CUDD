@@ -1115,6 +1115,15 @@ Cudd::Cudd(
         cout << "Cudd Copy Constructor" << endl;
 
 } // Cudd::Cudd
+Cudd::Cudd(
+  Cudd&& x)
+{
+    p = x.p;
+    x.p = nullptr;
+    if (p->verbose)
+        cout << "Cudd Move Constructor" << endl;
+
+} // Cudd::Cudd
 
 
 Cudd::~Cudd()
