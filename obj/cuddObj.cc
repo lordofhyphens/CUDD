@@ -50,6 +50,7 @@
 #include <cassert>
 #include <cstdlib>
 #include <algorithm>
+#include <memory>
 #include "cuddObj.hh"
 
 using std::cout;
@@ -59,6 +60,7 @@ using std::hex;
 using std::string;
 using std::vector;
 using std::sort;
+using std::shared_ptr;
 
 // ---------------------------------------------------------------------------
 // Variable declarations
@@ -73,10 +75,10 @@ static char rcsid[] UNUSED = "$Id: cuddObj.cc,v 1.15 2012/02/05 01:06:40 fabio E
 // ---------------------------------------------------------------------------
 
 
-DD::DD() : p(0), node(0) {}
+DD::DD() : p(nullptr), node(0) {}
 
 
-DD::DD(Capsule *cap, DdNode *ddNode) : p(cap), node(ddNode) {
+DD::DD(shared_ptr<Capsule> cap, DdNode *ddNode) : p(cap), node(ddNode) {
     if (node != 0) Cudd_Ref(node);
     if (p->verbose) {
 	cout << "Standard DD constructor for node " << hex << long(node) <<
@@ -97,16 +99,14 @@ DD::DD(Cudd const & manager, DdNode *ddNode) : p(manager.p), node(ddNode) {
 } // DD::DD
 
 
-DD::DD(const DD &from) {
-    p = from.p;
-    node = from.node;
-    if (node != 0) {
-	Cudd_Ref(node);
-	if (p->verbose) {
-	    cout << "Copy DD constructor for node " << hex << long(node) <<
-		" ref = " << Cudd_Regular(node)->ref << "\n";
-	}
+DD::DD(const DD &from) : p(from.p), node(from.node) {
+  if (node != 0) {
+    Cudd_Ref(node);
+    if (p->verbose) {
+      cout << "Copy DD constructor for node " << hex << long(node) <<
+        " ref = " << Cudd_Regular(node)->ref << "\n";
     }
+  }
 
 } // DD::DD
 
@@ -256,7 +256,7 @@ DD::NodeReadIndex() const
 
 
 ABDD::ABDD() : DD() {}
-ABDD::ABDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
+ABDD::ABDD(shared_ptr<Capsule> cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ABDD::ABDD(Cudd const & manager, DdNode *bddNode) : DD(manager,bddNode) {}
 ABDD::ABDD(const ABDD &from) : DD(from) {}
 
@@ -269,7 +269,9 @@ ABDD::~ABDD() {
 		long(node) << " ref = " << Cudd_Regular(node)->ref << "\n";
 	}
     }
-
+  }
+  p = nullptr;
+  node = nullptr;
 } // ABDD::~ABDD
 
 
@@ -318,7 +320,7 @@ ABDD::print(
 // ---------------------------------------------------------------------------
 
 BDD::BDD() : ABDD() {}
-BDD::BDD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
+BDD::BDD(shared_ptr<Capsule> cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 BDD::BDD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 BDD::BDD(const BDD &from) : ABDD(from) {}
 
@@ -579,7 +581,7 @@ BDD::IsZero() const
 
 
 ADD::ADD() : ABDD() {}
-ADD::ADD(Capsule *cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
+ADD::ADD(shared_ptr<Capsule> cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 ADD::ADD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 ADD::ADD(const ADD &from) : ABDD(from) {}
 
@@ -804,7 +806,7 @@ ADD::IsZero() const
 // ---------------------------------------------------------------------------
 
 
-ZDD::ZDD(Capsule *cap, DdNode *bddNode) : DD(cap,bddNode) {}
+ZDD::ZDD(shared_ptr<Capsule> cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ZDD::ZDD() : DD() {}
 ZDD::ZDD(const ZDD &from) : DD(from) {}
 
@@ -817,7 +819,8 @@ ZDD::~ZDD() {
 		" ref = " << Cudd_Regular(node)->ref << "\n";
 	}
     }
-
+  p = nullptr;
+  node = nullptr;
 } // ZDD::~ZDD
 
 
@@ -1066,21 +1069,33 @@ Cudd::Cudd(
   unsigned int cacheSize,
   unsigned long maxMemory)
 {
-    p = new Capsule;
-    p->manager = Cudd_Init(numVars,numVarsZ,numSlots,cacheSize,maxMemory);
+    auto mgr = Cudd_Init(numVars,numVarsZ,numSlots,cacheSize,maxMemory);
+    p = std::shared_ptr<Capsule>(new Capsule(mgr));
     p->errorHandler = defaultError;
     p->timeoutHandler = defaultError;
     p->verbose = 0;		// initially terse
-    p->ref = 1;
 
 } // Cudd::Cudd
 
+Capsule::~Capsule() 
+{
+#ifdef DD_DEBUG
+	int retval = Cudd_CheckZeroRef(manager);
+	if (retval != 0) {
+	    cerr << retval << " unexpected non-zero reference counts" << endl;
+	} else if (verbose) {
+	    cerr << "All went well" << endl;
+	}
+#endif
+  if (verbose)
+    cerr << "Calling capsule destructor\n";
+	Cudd_Quit(manager);
+}
 
 Cudd::Cudd(
   const Cudd& x)
 {
     p = x.p;
-    x.p->ref++;
     if (p->verbose)
         cout << "Cudd Copy Constructor" << endl;
 
@@ -1089,19 +1104,7 @@ Cudd::Cudd(
 
 Cudd::~Cudd()
 {
-    if (--p->ref == 0) {
-#ifdef DD_DEBUG
-	int retval = Cudd_CheckZeroRef(p->manager);
-	if (retval != 0) {
-	    cerr << retval << " unexpected non-zero reference counts" << endl;
-	} else if (p->verbose) {
-	    cerr << "All went well" << endl;
-	}
-#endif
-	Cudd_Quit(p->manager);
-	delete p;
-    }
-
+	p = nullptr;
 } // Cudd::~Cudd
 
 
@@ -1109,19 +1112,8 @@ Cudd&
 Cudd::operator=(
   const Cudd& right)
 {
-    right.p->ref++;
-    if (--p->ref == 0) {	// disconnect self
-	int retval = Cudd_CheckZeroRef(p->manager);
-	if (retval != 0) {
-	    cerr << retval << " unexpected non-zero reference counts" << endl;
-	} else if (p->verbose) {
-	    cerr << "All went well\n";
-	}
-	Cudd_Quit(p->manager);
-	delete p;
-    }
-    p = right.p;
-    return *this;
+  p = right.p;
+  return *this;
 
 } // Cudd::operator=
 
