@@ -70,6 +70,7 @@
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <memory>
 #include "cudd.h"
 
 /*---------------------------------------------------------------------------*/
@@ -81,6 +82,7 @@ class ZDD;
 class Cudd;
 
 using PFC = void (*)(std::string); // C++11 syntax for a handler function
+using std::shared_ptr;
 
 /*---------------------------------------------------------------------------*/
 /* Class definitions                                                         */
@@ -102,12 +104,14 @@ class Capsule {
     friend class ADD;
     friend class ZDD;
     friend class Cudd;
+public:
+    ~Capsule();
+    Capsule(DdManager *mgr) : manager(mgr) { }
 private:
     DdManager *manager;
     PFC errorHandler;
     PFC timeoutHandler;
     bool verbose;
-    int ref;
 };
 
 
@@ -126,7 +130,7 @@ class DD {
     friend class ADD;
     friend class ZDD;
 private:
-    Capsule *p;
+    shared_ptr<Capsule> p;
     DdNode *node;
     inline DdManager * checkSameManager(const DD &other) const;
     inline void checkReturnValue(const DdNode *result) const;
@@ -134,7 +138,7 @@ private:
 	const;
 public:
     DD();
-    DD(Capsule *cap, DdNode *ddNode);
+    DD(shared_ptr<Capsule> cap, DdNode *ddNode);
     DD(Cudd const & manager, DdNode *ddNode);
     DD(const DD &from);
     DD(DD &&from); // Move constructor
@@ -164,7 +168,7 @@ class ABDD : public DD {
     friend class Cudd;
 public:
     ABDD();
-    ABDD(Capsule *cap, DdNode *bddNode);
+    ABDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ABDD(Cudd const & manager, DdNode *ddNode);
     ABDD(const ABDD &from);
     ABDD(ABDD &&from); // Move constructor
@@ -212,7 +216,7 @@ class BDD : public ABDD {
     friend class Cudd;
 public:
     BDD();
-    BDD(Capsule *cap, DdNode *bddNode);
+    BDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     BDD(Cudd const & manager, DdNode *ddNode);
     BDD(const BDD &from);
     BDD(BDD &&from); // Move constructor
@@ -349,7 +353,7 @@ class ADD : public ABDD {
     friend class Cudd;
 public:
     ADD();
-    ADD(Capsule *cap, DdNode *bddNode);
+    ADD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ADD(Cudd const & manager, DdNode *ddNode);
     ADD(const ADD &from);
     ADD(ADD &&from); // Move constructor
@@ -439,7 +443,7 @@ public:
 class ZDD : public DD {
     friend class Cudd;
 public:
-    ZDD(Capsule *cap, DdNode *bddNode);
+    ZDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ZDD();
     ZDD(const ZDD &from);
     ZDD(ZDD &&from); // Move Constructor
@@ -503,7 +507,7 @@ class Cudd {
     friend class ADD;
     friend class ZDD;
 private:
-    Capsule *p;
+    shared_ptr<Capsule> p;
 public:
     Cudd(
       unsigned int numVars = 0,
