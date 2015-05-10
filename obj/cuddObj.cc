@@ -5162,6 +5162,8 @@ BDD
 BDD::PickOneMinterm(
   vector<BDD> vars) const
 {
+  // Cudd_bddPickOneMinterm can return null. Unfortunately, BDDs are assumed to have a not-NULL value for node.
+    if (IsZero) return *this;
     int n = vars.size();
     DdManager *mgr = p->manager;
     DdNode **V = new DdNode *[n];
