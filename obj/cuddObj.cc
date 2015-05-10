@@ -111,7 +111,7 @@ DD::DD(const DD &from) : p(from.p), node(from.node) {
 } // DD::DD
 
 // DD move constructor
-DD::DD(DD &&from) noexcept {
+DD::DD(DD &&from) {
   p = from.p;
   node = from.node;
   from.p = nullptr;
@@ -274,7 +274,7 @@ ABDD::ABDD() : DD() {}
 ABDD::ABDD(shared_ptr<Capsule> cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ABDD::ABDD(Cudd const & manager, DdNode *bddNode) : DD(manager,bddNode) {}
 ABDD::ABDD(const ABDD &from) : DD(from) {}
-ABDD::ABDD(ABDD &&from) noexcept: DD(from) {}
+ABDD::ABDD(ABDD &&from) : DD(from) {}
 
 ABDD::~ABDD() {
   if (node != nullptr) {
@@ -337,7 +337,7 @@ BDD::BDD() : ABDD() {}
 BDD::BDD(shared_ptr<Capsule> cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 BDD::BDD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 BDD::BDD(const BDD &from) : ABDD(from) {}
-BDD::BDD(BDD &&from) noexcept : ABDD(from) {}
+BDD::BDD(BDD &&from) : ABDD(from) {}
 
 
 BDD
@@ -597,7 +597,7 @@ ADD::ADD() : ABDD() {}
 ADD::ADD(shared_ptr<Capsule> cap, DdNode *bddNode) : ABDD(cap,bddNode) {}
 ADD::ADD(Cudd const & manager, DdNode *bddNode) : ABDD(manager,bddNode) {}
 ADD::ADD(const ADD &from) : ABDD(from) {}
-ADD::ADD(ADD &&from) noexcept : ABDD(from) {}
+ADD::ADD(ADD &&from) : ABDD(from) {}
 
 
 ADD
@@ -823,7 +823,7 @@ ADD::IsZero() const
 ZDD::ZDD(shared_ptr<Capsule> cap, DdNode *bddNode) : DD(cap,bddNode) {}
 ZDD::ZDD() : DD() {}
 ZDD::ZDD(const ZDD &from) : DD(from) {}
-ZDD::ZDD(ZDD &&from) noexcept : DD(from) {}
+ZDD::ZDD(ZDD &&from) : DD(from) {}
 
 
 ZDD::~ZDD() {
