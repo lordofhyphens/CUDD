@@ -141,7 +141,7 @@ public:
     DD(shared_ptr<Capsule> cap, DdNode *ddNode);
     DD(Cudd const & manager, DdNode *ddNode);
     DD(const DD &from);
-    DD(DD &&from); // Move constructor
+    DD(DD &&from) noexcept; // Move constructor
     virtual ~DD();
     operator bool() const { return node; }
     DdManager *manager() const;
@@ -171,7 +171,7 @@ public:
     ABDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ABDD(Cudd const & manager, DdNode *ddNode);
     ABDD(const ABDD &from);
-    ABDD(ABDD &&from); // Move constructor
+    ABDD(ABDD &&from) noexcept; // Move constructor
     virtual ~ABDD();
     bool operator==(const ABDD &other) const;
     bool operator!=(const ABDD &other) const;
@@ -219,7 +219,7 @@ public:
     BDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     BDD(Cudd const & manager, DdNode *ddNode);
     BDD(const BDD &from);
-    BDD(BDD &&from); // Move constructor
+    BDD(BDD &&from) noexcept; // Move constructor
     BDD operator=(const BDD& right);
     bool operator<=(const BDD& other) const;
     bool operator>=(const BDD& other) const;
@@ -356,7 +356,7 @@ public:
     ADD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ADD(Cudd const & manager, DdNode *ddNode);
     ADD(const ADD &from);
-    ADD(ADD &&from); // Move constructor
+    ADD(ADD &&from) noexcept; // Move constructor
     ADD operator=(const ADD& right);
     // Relational operators
     bool operator<=(const ADD& other) const;
@@ -446,7 +446,7 @@ public:
     ZDD(shared_ptr<Capsule> cap, DdNode *bddNode);
     ZDD();
     ZDD(const ZDD &from);
-    ZDD(ZDD &&from); // Move Constructor
+    ZDD(ZDD &&from) noexcept; // Move Constructor
     ~ZDD();
     ZDD operator=(const ZDD& right);
     bool operator==(const ZDD& other) const;
