@@ -81,7 +81,7 @@ class ADD;
 class ZDD;
 class Cudd;
 
-using PFC = void (*)(std::string); // C++11 syntax for a handler function
+typedef void (*PFC)(std::string);	// handler function type
 using std::shared_ptr;
 
 /*---------------------------------------------------------------------------*/
