@@ -153,6 +153,7 @@ public:
     DdNode * getRegularNode() const;
     int nodeCount() const;
     unsigned int NodeReadIndex() const;
+    inline bool IsComplement() const { return Cudd_IsComplement(this->getNode());}
 
 }; // DD
 
