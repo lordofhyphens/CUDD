@@ -153,6 +153,7 @@ public:
     DdNode * getRegularNode() const;
     int nodeCount() const;
     unsigned int NodeReadIndex() const;
+    inline bool IsComplement() const { return Cudd_IsComplement(this->getNode());}
 
 }; // DD
 
@@ -561,6 +562,9 @@ public:
     ZDD zddZero(void) const;
     ADD addNewVarAtLevel(int level) const;
     BDD bddNewVarAtLevel(int level) const;
+    inline int bddIsNsVar(int index) const { return Cudd_bddIsNsVar(p->manager, index); }
+    inline int bddIsPiVar(int index) const { return Cudd_bddIsPiVar(p->manager, index); }
+    inline int bddIsPsVar(int index) const { return Cudd_bddIsPsVar(p->manager, index); }
     void zddVarsFromBddVars(int multiplicity) const;
     unsigned long ReadStartTime(void) const;
     unsigned long ReadElapsedTime(void) const;
