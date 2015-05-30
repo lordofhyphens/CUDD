@@ -259,7 +259,7 @@ Dddmp_cuddBddArrayStoreBlif (
   char **inputNames      /* IN: array of variable names (or NULL) */,
   char **outputNames     /* IN: array of root names (or NULL) */,
   char *modelName        /* IN: Model Name */,
-  char *fname            /* IN: File name */,
+  const char *fname            /* IN: File name */,
   FILE *fp               /* IN: File pointer to the store file */
   )
 {
