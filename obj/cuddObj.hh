@@ -563,8 +563,11 @@ public:
     ADD addNewVarAtLevel(int level) const;
     BDD bddNewVarAtLevel(int level) const;
     inline int bddIsNsVar(int index) const { return Cudd_bddIsNsVar(p->manager, index); }
+    inline int bddSetNsVar(int index) const { return Cudd_bddSetNsVar(p->manager, index); }
     inline int bddIsPiVar(int index) const { return Cudd_bddIsPiVar(p->manager, index); }
+    inline int bddSetPiVar(int index) const { return Cudd_bddSetPiVar(p->manager, index); }
     inline int bddIsPsVar(int index) const { return Cudd_bddIsPsVar(p->manager, index); }
+    inline int bddSetPsVar(int index) const { return Cudd_bddSetPsVar(p->manager, index); }
     void zddVarsFromBddVars(int multiplicity) const;
     unsigned long ReadStartTime(void) const;
     unsigned long ReadElapsedTime(void) const;
