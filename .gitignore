@@ -1,0 +1,9 @@
+*.o
+*.a
+include/*
+cudd/r7x8.1.1.out
+cudd/testcudd
+nanotrav/mult32a-test.out
+nanotrav/nanotrav
+obj/testobj
+*.swp

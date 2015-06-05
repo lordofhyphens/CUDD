@@ -317,7 +317,7 @@ extern int Dddmp_cuddBddArrayStoreCnf(DdManager *ddMgr, DdNode **f, int rootN, D
 extern int Dddmp_cuddBddStorePrefix(DdManager *ddMgr, int nRoots, DdNode *f, char **inputNames, char **outputNames, char *modelName, char *fileName, FILE *fp);
 extern int Dddmp_cuddBddArrayStorePrefix(DdManager *ddMgr, int nroots, DdNode **f, char **inputNames, char **outputNames, char *modelName, char *fname, FILE *fp);
 extern int Dddmp_cuddBddStoreBlif(DdManager *ddMgr, int nRoots, DdNode *f, char **inputNames, char **outputNames, char *modelName, char *fileName, FILE *fp);
-extern int Dddmp_cuddBddArrayStoreBlif(DdManager *ddMgr, int nroots, DdNode **f, char **inputNames, char **outputNames, char *modelName, char *fname, FILE *fp);
+extern int Dddmp_cuddBddArrayStoreBlif(DdManager *ddMgr, int nroots, DdNode **f, char **inputNames, char **outputNames, char *modelName, const char *fname, FILE *fp);
 extern int Dddmp_cuddBddStoreSmv(DdManager *ddMgr, int nRoots, DdNode *f, char **inputNames, char **outputNames, char *modelName, char *fileName, FILE *fp);
 extern int Dddmp_cuddBddArrayStoreSmv(DdManager *ddMgr, int nroots, DdNode **f, char **inputNames, char **outputNames, char *modelName, char *fname, FILE *fp);
 
